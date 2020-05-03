@@ -39,6 +39,8 @@ Download the directories to your system.
 
 Install nodejs
 Install FileHound
+Install marked
+Install xregexp
 Set the constant basePath in both scripts to the path of the catchingPhysicsCC directory.
 
 ### Run two scripts:
@@ -59,4 +61,8 @@ To the same directory on a web server.
 
 --
 You can adapt the scripts to easily adjust the relative paths, to allow you to choose where to put the different kinds of files, to suit your tastes. This arrangement is tested and works!
+
+---
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
