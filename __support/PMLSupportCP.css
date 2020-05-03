@@ -1,0 +1,262 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: 'romanFont';
+	src: url('ComicNeue-Angular-Light.ttf'); 
+	format('truetype');
+		}
+@font-face {
+	font-family: 'italicFont';
+	src: url('ComicNeue-Angular-Light-Oblique.ttf'); 
+	format('truetype');
+		}
+		
+@font-face {
+	font-family: 'titleFont';
+	src: url('ComicNeue-Angular-Bold.ttf'); 
+	format('truetype');
+		}
+
+@font-face {
+	font-family: 'comicFont';
+	src: url('fonts/BackIssuesBB_reg.ttf'); 
+	format('truetype');
+}
+
+@font-face {
+	font-family: 'speechFont';
+	src: url('fonts/SF_Cartoonist_Hand.ttf'); 
+	format('truetype');
+}
+
+@font-face {
+	font-family: 'handFont';
+	src: url('fonts/SF_Cartoonist_Hand.ttf'); 
+	format('truetype');
+}
+
+
+
+h1								{ font-size: 1.65em; font-weight:bold;}
+h2, h3 							{ font-size: 1.5em; }
+h3 								{ font-weight:bold; color: #003366;}
+h4,h5  { font-size: 1.2em; color: #003366;}
+p 								{ font-size: 1em; color: #003366;}
+br 								{ clear : both; }
+q 								{ quotes: "‘" "’" "“" "”"; }
+q.double {quotes: "“" "”";}
+q.single {quotes: "‘" "’";}
+img 							{ height : auto; display:block; }
+.thecontent 				{ background:#ffffff; color: #003366; font-family: romanFont, sans-serif; font-size:16px; padding-left:20px; padding-right:20 px; width:90%; max-width:900px; margin-left:10 px; }
+a								{ outline:none; text-decoration:none;}
+
+/*.content {margin-left:50px;}*/
+
+.pagetitle { font-family: romanFont, sans-serif;font-size: 2.5em; font-weight:bold; color:#0278DD; border-top:4px solid #0278dd; background:#e8f2fb; padding-bottom: 30 px; padding-left: 10 px; margin-bottom: 20px;}
+
+.showaslink 					{ margin-top: -4px; display:block; font-size: 1.2em; padding: 4px 7.5px; font-weight:bold; color:#FFFFFF; text-align:right; text-shadow: rgba(51, 60, 66,0.7) 0px 1px 1px; background: rgba(246, 148, 43, 1); /* for non-css3 browsers */
+background: -moz-linear-gradient( center top, rgba(253, 219, 46, 1) 0.01%, rgba(242, 109, 42, 1) 100% ); background: -webkit-gradient( linear, left top, left bottom, color-stop(0.01, rgba(253, 219, 46, 1)), color-stop(0.45, rgba(242, 109, 42, 1)));}
+
+
+a img 							{ border : 1px solid #37697C; }
+
+
+.clear							{ clear:both;}
+
+/*headers and speech*/
+
+.PurposeHeader, .PrepareHeader, .WhatHappensHeader, .WrongTrack, .RightLines, .Thinking, .TeacherTip, .TeacherAttribute
+								{ display:block; margin:6px 0;}
+
+
+.Thinking   					{ display:inline-block; background:#88a0a5; padding-left:10px; padding-right:10px; line-height:46px; color:#fff; margin-bottom:30px !important; border:1px solid #647e83; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; width:80%;}
+.Thinking:after					{ position:absolute; width:44px; height:18px; content:url(cssGraphics/thinking.svg); bottom:-9px; left:1%;}
+
+.WrongTrack   					{ width:73%; float:left; background:#f2e7e7; padding:7px 9px 8px 15px; line-height:22px; color:#003366; margin-bottom:20px !important; border:1px solid #d60d12; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative}
+.WrongTrack:after				{ position:absolute; width:44px; height:18px; content:url(cssGraphics/wrongtrack.svg); bottom:-14px; left:4%;}
+.WrongTrack strong				{ display:block; color:#d60d12; }
+
+.RightLines   					{ width:73%; float:left; background:#e9f6e6; padding:7px 9px 8px 15px; line-height:22px; color:#003366; margin-bottom:20px !important; border:1px solid #44a210; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative}
+.RightLines:after				{ position:absolute; width:44px; height:18px; content:url(cssGraphics/rightlines.svg); bottom:-14px; right:1%;}
+.RightLines strong				{ display:block; color:#44a210; }
+
+.PurposeHeader, .PrepareHeader, .WhatHappensHeader	{ background:#88a0a5; padding-left:12px; padding-right:12px; line-height:46px; color:#fff; font-size:18px; font-weight:bold; margin-bottom:20px !important; border:1px solid #42676f; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; width:100%; display:inline-block;}
+.PurposeHeader:after, .PrepareHeader:after, .WhatHappensHeader:after
+								{ position:absolute; content::url(cssGraphics/headingarrow.svg); bottom:-7px; left:44.85%; -moz-transform: scale(0.98); border-width: 8px 21px 0; border-style: solid; border-color: #88a0a5 transparent; display: block; width: 0; }
+.PurposeHeader:before, .PrepareHeader:before, .WhatHappensHeader:before
+								{ content: ""; position: absolute; bottom: -8px; left:44.7%; border-width: 8px 22px 0; border-style: solid; border-color: #42676f transparent; display: block; width: 0;}
+
+
+.TeacherTip   					{ display:inline-block; background:#36afc9; padding:15px 10px 15px 120px; line-height:16px; color:#fff; margin-bottom:20px !important; border:1px solid #1c95af; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; width:60%;}
+.TeacherTip:after				{ position:absolute; width:14px; height:13px; content:url(cssGraphics/teachertip.svg); bottom:-12px; left:3%; zoom:0.98;}
+.TeacherTip strong				{ position:absolute; left:10px;}
+
+.TeacherAttribute                     { display:inline-block; background:#36afc9; padding:15px 10px 15px 10px; line-height:16px; color:#fff; margin-bottom:20px !important; border:1px solid #1c95af; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; width:80%;}
+.TeacherAttribute:after               { position:absolute; width:14px; height:13px; content:url(cssGraphics/teachertip.svg); bottom:-12px; left:3%; zoom:0.98;}
+.TeacherAttribute strong              { position:absolute; left:10px;}
+
+
+.PupilSpeak						{ background:#f0f3cf; padding:10px; line-height:16px; color:#003366; margin-bottom:20px !important; border:1px solid #cad36c; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; display:inline-block; width:80%; /*left:165px;*/}
+.PupilSpeak:after				{ position:absolute; width:14px; height:13px; content:url(cssGraphics/pupil.svg); bottom:-12px; right:4%;}
+
+.TeacherSpeak					{ background:#cfedf3; padding:10px; line-height:16px; color:#003366; margin-bottom:20px !important; border:1px solid #60c1d4; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; display:inherit; width:80%;}
+.TeacherSpeak:after				{ position:absolute; width:14px; height:13px; content:url(cssGraphics/teacher.svg); bottom:-12px; left:4%;}
+
+.ComicBlock					{ font-family:comicFont; font-size: 0.85em;padding:10px; line-height:16px; color:#003366; margin-bottom:20px  position:relative; display:inherit; width:60%;}
+
+.HandBlock					{ font-family:handFont; font-size: 0.85em;padding:10px; line-height:16px; color:#003366; margin-bottom:20px  position:relative; display:inherit; width:60%;}
+
+.SpeechBlock					{ font-family:speechFont; font-size: 0.85em;padding:10px; line-height:16px; color:#003366; margin-bottom:20px  position:relative; display:inherit; width:60%;}
+
+
+
+.safetynote   					{ background:#FA0007; padding:15px 10px 15px 164px; line-height:16px; color:#fff; margin-bottom:20px !important; border:1px solid #d60d12; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; break-inside:avoid-column; width:60%;}
+.safetynote strong				{ width:106px; line-height:46px; background:url(cssGraphics/safety-note.png) no-repeat 10px center; position:absolute; top:0; left:0px; padding-left:50px; border-top-left-radius:5px; border-bottom-left-radius:5px; -moz-border-top-left-radius:5px; -ms-border-top-left-radius:5px; -o-border-top-left-radius:5px; -webkit-border-top-left-radius:5px; -moz-border-bottom-left-radius:5px; -ms-border-bottom-left-radius:5px; -o-border-bottom-left-radius:5px; -webkit-border-bottom-left-radius:5px;    }
+
+
+/*lists*/
+
+.equipmentlist li {
+    list-style: square inside none;
+    padding-left: 1em;
+ text-indent: -1em;
+}
+
+.equipmentlist .fractionup {
+    padding-left: 1em;
+}
+
+.equipmentlist .fractiondown {
+    padding-left: 1em;
+}
+
+.informationlist li {
+    list-style: circle inside none;
+    padding-left: 1em;
+ text-indent: -1em;
+}
+
+.informationlist .fractionup {
+    padding-left: 1em;
+}
+
+.informationlist .fractiondown {
+    padding-left: 1em;
+}
+
+
+.sequencelist li {
+    list-style: decimal inside none;
+    padding-left: 1em;
+ text-indent: -1em;
+}
+
+.sequencelist .fractionup {
+    padding-left: 1em;
+}
+
+.sequencelist .fractiondown {
+    padding-left: 1em;
+}
+
+
+/* link button css*/
+.internallinkPN, .internallinkTL, .internallinkTA, .printablelink, .internallink, .externallink { padding:8px 10px !important; color:#003366 !important; font-size:14px; font-weight:normal !important; background:#fff !important; box-shadow:none !important; border-radius:10px !important; -moz-border-radius:10px !important; -webkit-border-radius:10px !important; -o-border-radius:10px !important; -ms-border-radius:10px !important;}
+.internallinkPN{ border:3px solid #a4cdf3;}
+.internallinkPN:hover{ background:#a4cdf3;}
+.internallinkTL{ border:3px solid #f4c8a5;}
+.internallinkTL:hover{ background:#f4c8a5;}
+.internallinkTA{ border:3px solid #a2e2a0;}
+.internallinkTA:hover{ background:#a2e2a0;}
+
+.internallink{ border:3px solid #5388A5;}
+.internallink:hover{ background:#5388A5; color:#FFFFFF;}
+
+.externallink{ border:3px solid #5388A5;}
+.externallink:hover{ background:#5388A5; color:#FFFFFF;}
+
+.printablelink{ border:3px solid #FF5449;}
+.printablelink: hover{ background:#FF5449; color:#FFFFFF;}
+
+/* fractions */
+
+
+.fraction {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    letter-spacing: 0.001em;
+    text-align: center;
+
+    }
+.fraction > span {
+    display: block;
+    padding: 0.1em;
+    }
+.fraction span.fractiondown {border-top: thin solid black;}
+.fraction span.fractionup {}
+.fraction span.fractionuproot {border-top: 1px solid #385B71;}
+
+.fractionroot{
+	 position: relative;
+	 white-space: nowrap;
+}
+
+.fractionroot ::before{
+content:url(cssGraphics/radic.svg);
+width:14px;
+height: 48px;
+position:absolute;
+top:-0px;
+left: -12px;
+}
+
+
+
+/*superscript are not italic*/
+
+.sscript{font-style: normal}
+
+/*preventing splits*/
+
+.relationship{white-space:nowrap}
+
+.groupedblock{white-space:nowrap}
+
+/*vectors*/
+
+.vectorarrow{position:relative; bottom: 0.7em; left:0.7em; width; 0px; font-size: 0.9em;}
+.vectorquantity{font-weight: bold;font-style: italic; width:0.6em; position:relative; right:0.3em;}
+
+
+/*teacher dialogue*/
+
+.teacherone 		{ padding:12px 15px; width:80%; margin-bottom:10px; color:#003366; font-size:16px; font-family: 'Open Sans'; position:relative; line-height:16px; background:#d6ebfd; border:1px solid #9bccf6; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
+.teacherone:after{ content:url(cssGraphics/speechbubble1.png); width:14px; height:27px; position:absolute; bottom:-26px; left:1%; margin:0 4px;}
+.teachertwo 		{ padding:12px 15px; width:85%; margin-bottom:10px; float:right; color:#003366; font-size:16px; font-family: 'Open Sans'; position:relative; line-height:16px; background:#ccf6ff; border:1px solid #9bccf6; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
+.teachertwo:after{ content:url(cssGraphics/speechbubble2.png); width:14px; height:27px; position:absolute; bottom:-26px; right:1%; margin:0 4px;}
+.teacherthree 	{ padding:12px 15px; margin-left:12%; width:68%; color:#003366; font-size:16px; font-family: 'Open Sans'; position:relative; line-height:16px; background:#bfdffb; border:1px solid #80c1fa; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
+.teacherthree:after{ content:url(cssGraphics/speechbubble3.png); width:14px; height:27px; position:absolute; bottom:-26px; left:50%; margin:0 4px;}
+
+/*Added to do coaching session blocks 2016-11-22*/
+
+.supporterblocklink {display: inline-block; width: 100%; padding:8px 10px !important; color:#003366 !important; font-size:14px; font-weight:normal !important; background:#fff !important; box-shadow:none !important; border-radius:10px !important; -moz-border-radius:10px !important; -webkit-border-radius:10px !important; -o-border-radius:10px !important; -ms-border-radius:10px !important;border:3px solid #5388A5 !important;}
+.supporterblocklink:hover{ background:#5388A5 !important; color:#FFFFFF !important;}
+.supporterblocknolink {padding:8px 10px !important; color:#003366 !important; font-size:14px; font-weight:normal !important; background:#fff !important; box-shadow:none !important; border-radius:10px !important; -moz-border-radius:10px !important; -webkit-border-radius:10px !important; -o-border-radius:10px !important; -ms-border-radius:10px !important; width: 100%; border:3px solid #5388A5 !important;}
+
+/*nuclei: proton and nucleon numbers*/
+
+
+.hiloHigh{position:relative; bottom: 0.8em; text-align: right; width; 30px; font-size: 0.6em;}
+.hiloLow{position:relative; top: 0.8em; text-align: right; width; 30px; font-size: 0.6em;}
+.hilowrap{ display: inline-block;}
+
+
+/* Specialised headers */
+
+.SPTactivityHeader { display:block; margin:6px 0; background:#88a0a5; padding-left:12px; padding-right:12px; line-height:46px; color:#fff; font-size:18px; font-weight:bold; margin-bottom:20px !important; border:1px solid #42676f; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;  -o-border-radius:5px;  -ms-border-radius:5px; position:relative; width:90%; display:inline-block;}
+
+.SPTactivityHeader:after { position:absolute; content: ""; bottom:-7px; left:44.85%; -moz-transform: scale(0.98); border-width: 8px 21px 0; border-style: solid; border-color: #88a0a5 transparent; display: block; width: 0; }
+
+.SPTactivityHeader:before { content: ""; position: absolute; bottom: -8px; left:44.7%; border-width: 8px 22px 0; border-style: solid; border-color: #42676f transparent; display: block; width: 0;}
