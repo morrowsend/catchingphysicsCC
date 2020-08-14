@@ -3,10 +3,10 @@
 
 
 function preload() {
-	chatterFont= loadFont("../../__support/SF_Cartoonist_Hand.ttf");
-	romanFont= loadFont("../../__support/ComicNeue-Angular-Light.ttf");
-	italicFont= loadFont("../../__support/ComicNeue-Angular-Light-Oblique.ttf");
-	titleFont = loadFont("../../__support/ComicNeue-Angular-Bold.ttf");
+	chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
+	romanFont= loadFont("../__support/ComicNeue-Angular-Light.ttf");
+	italicFont= loadFont("../__support/ComicNeue-Angular-Light-Oblique.ttf");
+	titleFont = loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
 
 function setup(){
@@ -33,7 +33,7 @@ var magnitudetheCurrent =8*sin(runtime/100);
 				loopOne();
 			pop();
 		}
-		circuitSimple("bulb");
+		circuitAC("bulb");
 		
 			push();
 				translate(30,0);
@@ -69,6 +69,50 @@ var magnitudetheCurrent =8*sin(runtime/100);
     titleBold('Alternating electrical loops and rope loops');
 	runtime++;
 }
+
+function circuitAC(kind){
+
+    push();
+    noFill();
+    createACsource(0,0,seriesoffset-4,seriesoffset-4);
+    strokeWeight(1);
+    stroke(ccircuitRed);
+    line(0,-seriesoffset,loopoffset,-seriesoffset);
+    line(0,seriesoffset,loopoffset,seriesoffset);
+    if(kind=="bulb")
+    {
+    createBulb(loopoffset,0,seriesoffset-21,seriesoffset-21);
+    }
+    else if(kind=="resistor")
+    {
+    createResistor(loopoffset,0,seriesoffset-21,seriesoffset-21);
+    }
+    pop();
+   }
+   
+function createACsource(xpos,ypos,upperline,lowerline){ // used to create circuits, not called directly
+	push();
+	strokeWeight(1);
+	stroke(ccircuitRed);
+	line(xpos,ypos-25,0,ypos-(upperline+5));
+	strokeWeight(2);
+	stroke(ccircuitBlack);
+	ellipse(0, 0, 50);
+	beginShape();
+	vertex(-13.5, 0.5);
+	bezierVertex(-13.5, 0.5, -10.55, -11.5, -7, -11.5);
+	bezierVertex(-3.45, -11.5, -0.5, 0.5, -0.5, 0.5);
+	vertex(-0.5, 0.5);
+	bezierVertex(-0.5, 0.5, 2.45, 12.5, 6, 12.5);
+	bezierVertex(9.55, 12.5, 12.5, 0.5, 12.5, 0.5);
+	vertex(12.5, 0.5);
+	endShape()
+	strokeWeight(1);
+	stroke(ccircuitRed);
+	line(xpos,ypos+25,xpos,ypos+lowerline+5);
+	pop();
+   }
+
 
 function mouseReleased(){
 	advicebutton.changeState();
