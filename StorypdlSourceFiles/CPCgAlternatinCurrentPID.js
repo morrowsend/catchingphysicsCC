@@ -66,7 +66,7 @@ var magnitudetheCurrent =8*sin(runtime/100);
 	pop();
 
 
-    titleBold('Alternating electrical loops and rope loops');
+    titleBold('Alternating electrical loops and rope loops XX');
 	runtime++;
 }
 
