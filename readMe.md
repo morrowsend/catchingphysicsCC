@@ -13,6 +13,12 @@ Just as everyone learns to see the world differently as they grow up, so physics
 Physics is suitable for many things but always open to adaption.  It'll always be an unfinished story, although many parts are rather polished. It's the best we have for now.
 [Controlling](https://slowthinkingphysics.net/catchingPhysics/Cg01.html)
 
+## And the rest
+
+There are now 13 readers, covering many of the significant ideas in introductory physics.
+
+[catching Physics jump off](https://slowthinkingphysics.net/readcatchingPhysics)
+
 ## What catching physics made of 
 
 Scripted graphics source files are in p5js, using the physics diagram language (pdl) environment.
