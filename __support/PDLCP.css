@@ -1,32 +1,39 @@
 @font-face {
 	font-family: 'romanFont';
-	src: url('ComicNeue-Angular-Light.ttf'); 
+	src: url('ComicNeue-Angular-Light.ttf');
 	format('truetype');
 		}
 @font-face {
 	font-family: 'italicFont';
-	src: url('ComicNeue-Angular-Light-Oblique.ttf'); 
+	src: url('ComicNeue-Angular-Light-Oblique.ttf');
 	format('truetype');
 		}
-		
+
 @font-face {
 	font-family: 'titleFont';
-	src: url('ComicNeue-Angular-Bold.ttf'); 
+	src: url('ComicNeue-Angular-Bold.ttf');
 	format('truetype');
-		}		
-		
+		}
+
 @font-face {
 	font-family: 'comicFont';
-	src: url('SF_Cartoonist_Hand.ttf'); 
+	src: url('SF_Cartoonist_Hand.ttf');
 	format('truetype');
 		}
-		
+
 @font-face {
 	font-family: 'letterFont';
-	src: url('BackIssuesBB_reg.ttf'); 
+	src: url('BackIssuesBB_reg.ttf');
 	format('truetype');
 		}
-		
+
+
+
+@font-face {
+	font-family: 'codeFont';
+	src: url('SourceCodePro-Regular.ttf');
+	format('truetype');
+		}
 body {padding: 0; margin: 0;}
 p{font-family:romanFont ;color: #003366;font-size: 16px;}
 q { quotes: "‘" "’" "“" "”"; }
@@ -137,7 +144,7 @@ font-size: 32px;
     left:20px;
     z-index: 255;
       }
-      
+
 .topthinkingL:before{
     position:absolute;
     height:12px;
@@ -182,7 +189,7 @@ font-size: 32px;
     right:20px;
     z-index: 255;
       }
-      
+
 .topthinkingR:before{
     position:absolute;
     height:12px;
@@ -336,7 +343,7 @@ white-space:nowrap
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 10px;
-  font-family: Jost-300-Light;
+  font-family: romanFont;
   color: #003366;
   font-size: 14px;
   background: #E6E6E6;
@@ -405,7 +412,7 @@ PDLslider {
     appearance: none;
     width: 25px;
     height: 25px;
-    border-radius: 10%; 
+    border-radius: 10%;
     background: #4CAF50;
     cursor: pointer;
 }

@@ -1,10 +1,38 @@
-// PDLenvironmentcombo 2019-12-28
+// PDLenvironmentcombo 2020-08-13
+
+// catching physics overviews
+function drawcatchingPhysicsIdeaBox(boxText,xpos,ypos,boxWidth,boxHeight) {
+    fill(cWhite);
+    strokeWeight(1);
+	stroke(clabeltext)
+    rectMode(CENTER);
+    rect(xpos,ypos, boxWidth, boxHeight, cornerRound);
+    fill(clabeltext);
+	noStroke();
+    textFont(romanFont,18);
+    text(boxText,xpos+textOffset,ypos+textOffset, boxWidth-textOffset, boxHeight-textOffset);
+		rectMode(CORNER);
+}
+
+function drawcatchingPhysicsFlowLink(xposstart,yposstart,xposfinish,yposfinish,connectorWeight){
+    strokeWeight(connectorWeight*2);
+    stroke(cPlinkblue);
+    noFill();
+    bezier(xposstart, yposstart, xposfinish, yposstart, xposstart, yposfinish, xposfinish, yposfinish);
+ }
+
+function drawcatchingPhysicsCrossLink(xposstart,yposstart,xposfinish,yposfinish,connectorWeight){
+    strokeWeight(connectorWeight*2);
+    stroke(cPlinkorange);
+    noFill();
+    bezier(xposstart, yposstart, xposfinish, yposstart, xposstart, yposfinish, xposfinish, yposfinish);
+ }
 
 // VnR reboot Dev: graphical mathematics
 
 function predictfluxionfluentFluent(){
 	nextfluent = rungekutta4(fluent, fluxionfluent, fluxion)[0];
-	nextfluxionfluent = rungekutta4(fluent, fluxionfluent, fluxion)[1];	
+	nextfluxionfluent = rungekutta4(fluent, fluxionfluent, fluxion)[1];
 	fluent=nextfluent;
 	fluxionfluent=nextfluxionfluent;
 }
@@ -50,7 +78,7 @@ function accumulator(thefactor){
     fill(cideaBlue);
     triangle(-10, 0, 0, -thefactor, 10, 0);
 }
-	
+
 function indicator(value,icolor,label,combine){
     var iwidth=12;
     noFill();
@@ -70,7 +98,7 @@ function indicator(value,icolor,label,combine){
     strokeWeight(2);
     line(-iwidth, 0, iwidth, 0);
 //     input
-    beginShape();   
+    beginShape();
 		vertex(-iwidth,-5);
 		vertex(-iwidth-14,-5);
 		vertex(-iwidth-12,0);
@@ -84,7 +112,7 @@ function indicator(value,icolor,label,combine){
     text(combine,-iwidth-12,4);
     fill(cideaBlue);
 //     output
-    beginShape();   
+    beginShape();
 		vertex(iwidth,-5);
 		vertex(iwidth+10,-5);
 		vertex(iwidth+14,0);
@@ -92,7 +120,7 @@ function indicator(value,icolor,label,combine){
 		vertex(iwidth,5);
 		vertex(iwidth,-5);
     endShape();
-    
+
 }
 
 function contributionlinkbackdown(){
@@ -119,7 +147,7 @@ function contributionlinkdown(){
 	line(122, 0,122,75);
 	translate(140,80);
     }
-    
+
 function accumulatelink(){
 	stroke(cideaGreen);
 	strokeWeight(2);
@@ -228,7 +256,7 @@ function resistor(label){
     words(label,21,-21);
     pop();
    }
-   
+
 function componentCell1(symbol,subscript,xloc,yloc){
 	push();
 		translate(xloc,yloc);
@@ -2589,7 +2617,7 @@ function duration(value,maxValue){
      var time = value/maxValue;
      var durationsize = 30;
      var angle = time * 2*PI;
- 
+
       noStroke();
       fill(cdurationclockBlue);
       ellipse(0,0,durationsize,durationsize);
@@ -2602,13 +2630,13 @@ function duration(value,maxValue){
 		}
 	}
    }
-   
+
 function durationpov(value,maxValue,durationpovcolour){
      if(value>maxValue)value = maxValue;
      var time = value/maxValue;
      var durationsize = 30;
      var angle = time * 2*PI;
- 
+
       noStroke();
       fill(durationpovcolour);
       ellipse(0,0,durationsize,durationsize);
@@ -2621,13 +2649,13 @@ function durationpov(value,maxValue,durationpovcolour){
 		}
 	}
    }
-   
+
 function timepovclock(value,maxValue,timepovcolour){
      if(value>maxValue)value = maxValue;
      var time = value/maxValue;
      var timesize = 30;
      var angle = time * 2*PI;
- 
+
       noStroke();
       fill(timepovcolour);
       ellipse(0,0,timesize,timesize);
@@ -2638,13 +2666,13 @@ function timepovclock(value,maxValue,timepovcolour){
       line(0,0,timesize/2,0);
       pop();
    }
-   
+
 function timeclock(value,maxValue){
      if(value>maxValue)value = maxValue;
      var time = value/maxValue;
      var timesize = 30;
      var angle = time * 2*PI;
- 
+
       noStroke();
       fill(cdurationclockBlue);
       ellipse(0,0,timesize,timesize);
@@ -2669,7 +2697,7 @@ function displacement(magnitude,rotation,dcolour){
     if (magnitude!=0){
 line(-baseWidth/2,-displaymagnitude,baseWidth/2,-displaymagnitude);
     }
-  
+
     pop();
 }
 
@@ -3061,7 +3089,7 @@ function accelerationComponent(magnitude,rotation,acolour){
              vertex(-widthOfArrow/2,-arrowBodyHeight);
              endShape(CLOSE);
 			componentMarker(-arrowBodyHeight-heightOfArrowHead/5,widthOfArrow);
-            
+
          }else{
              beginShape();
              noStroke();
@@ -3144,7 +3172,7 @@ function momentumComponent(magnitude,rotation,momcolour){
       }
       pop();
    }
-   
+
 // 3D for vectors in a plane
 
 
@@ -3250,7 +3278,7 @@ function pathC3D(fromx,fromy,tox,toy,pcolour){
 			translate(0,10,0);
 		}
 	pop();
-		
+
 }
 
 function current3D(value){
@@ -3291,7 +3319,7 @@ function coil3D(radius,turns,wirethickness,coilcolour,connectionlength,LR){
 		rotateY(PI/2);
 		}
 
-		push(); 
+		push();
 			rotateX(-PI/2);
 			translate(radius, -connectionlength/2,0);
 			cylinder(wirethickness, connectionlength, 24, 1, false, false);
@@ -3314,7 +3342,7 @@ function coil3D(radius,turns,wirethickness,coilcolour,connectionlength,LR){
 			pop();
 			pop();
 		push();
-			rotateX(-PI/2); 
+			rotateX(-PI/2);
 			translate(-radius, -connectionlength/2,turns*20-10);
 			cylinder(wirethickness, connectionlength, 24, 1, false, false);
 		pop();
@@ -3335,19 +3363,22 @@ function axis3D(axislength){
 
 //physics compound
 
-function pulleyset(numberofpulleys, separation){
+function pulleyset(numberofpulleys, heightlifted){
 
+   const closestapproach=80;
    var pulleyradius = 30;
    var pulleyincrement=8;
    var pulleysep =50;
    var ropethickness=2;
+   var separation=heightlifted+closestapproach;
    var pulleygap=separation;
    var oldpulleystep=0;
    var totalropelength=50+2*numberofpulleys*separation;
 
-   var ropetaillength=totalropelength-2*numberofpulleys*separation;
-   words('pulley\nseparation:\n'+str(separation),-150, -20);
-   words('rope length:\n'+str(totalropelength),-150, -100);
+   var ropepulled=2*numberofpulleys*heightlifted;
+   words('height\nlifted:\n'+str(heightlifted),-150, -20);
+//    words('rope length:\n'+str(totalropelength),-150, -100);
+   words('rope pulled:\n'+str(ropetaillength),-150, -180);
 
    push();
    scale(-1,-1);
@@ -3381,7 +3412,7 @@ function pulleyset(numberofpulleys, separation){
           rect(0,0,ropethickness,-ropetaillength);
           pop();
           scale(-1,-1);
-          comment('length of rope tail: '+str(ropetaillength),100, -20);
+//           comment('length of rope tail: '+str(ropetaillength),100, -20);
           pop();
       }
       pulley(pulleyradius*2,"D");
@@ -3730,16 +3761,34 @@ function storeEmptying(storekind, pathwayKind){
 				powerPathway(pathwayKind);
 			pop();
 		}
-        
+
     pop();
 }
 
 function describeEnergyOne(energyIn,energy1Out){
 
-//qualitative
+// qualitative
+push();
+		translate(600, 132);
+		noFill();
+		stroke(cpaneBadgehands);
+		strokeWeight(1);
+		line(-557, -8, 133, -8);
+		line(-557, 68, 133, 68);
+		words("snapshot\nbefore", 80, 14);
+		paneBadgeSnapshot();
+		translate(0, 105);
+		noFill();
+		stroke(cpaneBadgehands);
+		strokeWeight(1);
+		line(-557, -8, 133, -8);
+		line(-557, 68, 133, 68);
+		words("snapshot\nafter", 80, 14);
+		paneBadgeSnapshot();
+	pop();
     push();
         translate(20,100);
-		subHead('qualitative',0, 0);
+        subHead('qualitative, identifying stores filling and emptying',0, 0);
         push();
             translate(70,228);
             storeEmptied(energyIn);
@@ -3755,7 +3804,7 @@ function describeEnergyOne(energyIn,energy1Out){
     var pxscale=20;
     push();
         translate(20,364);
-		subHead('semi-quantitative',0, 0);
+        subHead('qualitative, identifying stores filling and emptying',0, 0);
     push();
     translate(80,216);
     if(inputtoDivvy.getValue()!=0){
@@ -3777,9 +3826,27 @@ function describeEnergyOne(energyIn,energy1Out){
 function describeEnergyTwo(energyIn,energy1Out,energy2Out,topslice,bottomslice){
 
 // qualitative
+push();
+		translate(600, 132);
+		noFill();
+		stroke(cpaneBadgehands);
+		strokeWeight(1);
+		line(-557, -8, 133, -8);
+		line(-557, 68, 133, 68);
+		words("snapshot\nbefore", 80, 14);
+		paneBadgeSnapshot();
+		translate(0, 105);
+		noFill();
+		stroke(cpaneBadgehands);
+		strokeWeight(1);
+		line(-557, -8, 133, -8);
+		line(-557, 68, 133, 68);
+		words("snapshot\nafter", 80, 14);
+		paneBadgeSnapshot();
+	pop();
     push();
         translate(20,100);
-		subHead('qualitative',0, 0);
+        subHead('qualitative, identifying stores filling and emptying',0, 0);
 
         push();
             translate(70,228);
@@ -3797,7 +3864,7 @@ function describeEnergyTwo(energyIn,energy1Out,energy2Out,topslice,bottomslice){
     var pxscale=20;
     push();
         translate(20,364);
-		subHead('semi-quantitative',0, 0);
+        subHead('qualitative, identifying stores filling and emptying',0, 0);
     push();
     translate(80,216);
     if(inputtoDivvy.getValue()!=0){
@@ -3822,9 +3889,27 @@ function describeEnergyTwo(energyIn,energy1Out,energy2Out,topslice,bottomslice){
 
 function  describeEnergyThree(energyIn,energy1Out,energy2Out,energy3Out,topslice,midslice,bottomslice){
 // qualitative
+push();
+		translate(600, 132);
+		noFill();
+		stroke(cpaneBadgehands);
+		strokeWeight(1);
+		line(-557, -8, 133, -8);
+		line(-557, 68, 133, 68);
+		words("snapshot\nbefore", 80, 14);
+		paneBadgeSnapshot();
+		translate(0, 105);
+		noFill();
+		stroke(cpaneBadgehands);
+		strokeWeight(1);
+		line(-557, -8, 133, -8);
+		line(-557, 68, 133, 68);
+		words("snapshot\nafter", 80, 14);
+		paneBadgeSnapshot();
+	pop();
     push();
         translate(20,100);
-        subHead('qualitative',0, 0);
+        subHead('qualitative, identifying stores filling and emptying',0, 0);
         push();
             translate(60,228);
             storeEmptied(energyIn);
@@ -3845,7 +3930,7 @@ function  describeEnergyThree(energyIn,energy1Out,energy2Out,energy3Out,topslice
     var pxscale=20;
     push();
         translate(20,364);
-		subHead('semi-quantitative',0, 0);
+		subHead('semi-quantitative, changes in energy in the stores between the snapshots',0, 0);
     push();
     translate(80,216);
     if(inputtoDivvy.getValue()!=0){
@@ -3896,7 +3981,7 @@ function describePowerOne(pathwayIn,pathway1Out){
 
         pop();
     pop();
-    
+
 // quantitative
  var pxscale=20;
     pathwayIn=pathwayIn.replace("electrical", "power in\nelectrical\nworking\npathway");
@@ -4094,7 +4179,7 @@ function DeviceProcess(storeemptying,pathwayemptying,pathwayfilling,storefilling
     push();
         translate(20,100);
         subHead('qualitative',0, 0);
-        
+
         push();
             translate(267,154);
             scale(1.20);
@@ -4113,7 +4198,7 @@ function DeviceProcess(storeemptying,pathwayemptying,pathwayfilling,storefilling
 
         pop();
     pop();
-    
+
     push();
 		translate(150, 320);
 		noStroke();
@@ -4137,9 +4222,9 @@ function DeviceProcess(storeemptying,pathwayemptying,pathwayfilling,storefilling
 			pop();
 		pop();
 	pop();
-	
+
 	push();
-		translate(427, 413);	
+		translate(427, 413);
 		noStroke();
 		fill(cstoreframeGrey);
 		triangle(0, 0, -41, -20, 41, -20);
@@ -4171,10 +4256,10 @@ function DeviceProcess(storeemptying,pathwayemptying,pathwayfilling,storefilling
     pathwayfilling=pathwayfilling.replace("mechanical", "power in\nmechanical\nworking\npathway");
     pathwayfilling=pathwayfilling.replace("particles", "power in\nheating by\nparticles\npathway");
     pathwayfilling=pathwayfilling.replace("radiation", "power in\nheating by\nradiation\npathway");
-    
+
     subHead('semi-quantitative',20, 440);
     push();
-        
+
         push();
             translate(229,560);
 			words(pathwayemptying,-110,-powerInPathway*5-20);
@@ -4182,7 +4267,7 @@ function DeviceProcess(storeemptying,pathwayemptying,pathwayfilling,storefilling
 			power(powerInPathway);
         pop();
         push();
-            translate(359,560);            
+            translate(359,560);
 			words(pathwayfilling,40,-powerInPathway*5-20);
 			scale(1.2);
 			power(powerInPathway);
@@ -4281,7 +4366,7 @@ function pspace1D(plotlabel,pheight,angle,valueNow){
     fill(clabeltext);
     textFont(romanFont, 14);
     text(plotlabel, pspacewidth+20, 0);
-    
+
 
     exploredvalues.push(valueNow);
     noStroke();
@@ -4347,7 +4432,7 @@ push();
     fill(cplotBG);
     switch (quadrants){
     case 1:
-    
+
 		rect(0, -p2Dheight, p2Dwidth, p2Dheight, 0, 20, 0, 0);
 		stroke(cplotaxes);
 		line(-15, 0, p2Dwidth+15, 0);
@@ -4379,7 +4464,7 @@ push();
 		words(plotlabelX, p2Dwidth, 20);
 		words(plotlabelY, 0, -p2Dheight-20);
 		break;
-}	
+}
 	exploredvaluesX.push(valueNowX);
     exploredvaluesY.push(valueNowY);
     noStroke();
@@ -4522,19 +4607,19 @@ constructor(xloc,yloc,buttonwidth,buttonheight){
 	this.buttonheight= buttonheight;
 	this.buttonwasPressed=false;
 	}
-	
+
 	checkPressed(){
-	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight) 
+	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight)
 		{
 		this.buttonwasPressed=true;
 		return this.buttonwasPressed;
 		}
 		}
-		
+
 	drawButton(){
 	stroke(csliderdarkGrey);
 	strokeWeight(1);
-	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight) 
+	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight)
 		{
 		cursor(HAND);
 		fill(91,173,58);
@@ -4547,7 +4632,7 @@ constructor(xloc,yloc,buttonwidth,buttonheight){
   	rect(this.xloc, this.yloc, this.buttonwidth, this.buttonheight,5);
   	}
 	}
-	
+
 class labelButton{
 constructor(xloc,yloc,textLabel){
 	this.xloc=xloc;
@@ -4557,9 +4642,9 @@ constructor(xloc,yloc,textLabel){
 	this.buttonheight= 30;
 	this.buttonwasPressed=false;
 	}
-	
+
 	checkPressed(){
-	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight) 
+	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight)
 		{
 		this.buttonwasPressed=true;
 		return this.buttonwasPressed;
@@ -4568,7 +4653,7 @@ constructor(xloc,yloc,textLabel){
 	drawButton(){
 	stroke(csliderdarkGrey);
 	strokeWeight(1);
-	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight) 
+	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight)
 		{
 		cursor(HAND);
 		fill(91,173,58);
@@ -4581,7 +4666,7 @@ constructor(xloc,yloc,textLabel){
   	rect(this.xloc, this.yloc, this.buttonwidth, this.buttonheight,5);
   	words(this.textLabel, this.xloc+5, this.yloc+this.buttonheight/2+5)
   	}
-	}  
+	}
 
 class checkButton{
 constructor(xloc,yloc,textLabel,state){
@@ -4594,23 +4679,23 @@ constructor(xloc,yloc,textLabel,state){
 // 	this.buttonwasPressed=false;
 	this.buttonisChecked=state;
 	}
-	
+
 	changeState(){
 	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight){
 		this.buttonisChecked=!this.buttonisChecked;
 		return this.buttonisChecked;
 		}
 	}
-	
+
 	drawButton(){
 	stroke(csliderdarkGrey);
 	strokeWeight(1);
-	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight) 
+	if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight)
 		{
 		cursor(HAND);
 		fill(91,173,58);
 			if (mouseIsPressed) {
-			
+
 			}
 		} else {
 		fill(csliderlightGrey);
@@ -4621,7 +4706,7 @@ constructor(xloc,yloc,textLabel,state){
   	noFill();
 //   	rectMode(CENTER);
 	rect(this.xloc+10, this.yloc+this.buttonheight/2-5, 10, 10);
-		
+
   	//checkmark
   	if (this.buttonisChecked==true){
 		strokeWeight(3);
@@ -4630,24 +4715,86 @@ constructor(xloc,yloc,textLabel,state){
 		}
 		words(this.textLabel, this.xloc+30, this.yloc+this.buttonheight/2+5)
   	}
-  	
+
 	}
+
+
+class radioButtons{
+constructor(xloc,yloc,textLabels,state){
+  this.xloc=xloc;
+  this.yloc =yloc;
+  this.textLabels=textLabels;
+  this.currentchoice=0;
+  // find longest label and set button width
+  this.buttonwidth = textWidth(textLabels.reduce(function (a, b) { return a.length > b.length ? a : b; }))+60;
+  const linespacing =22;
+  this.buttonheight= linespacing*this.textLabels.length;
+  this.buttonisChecked=state;
+  }
+
+  makeChoice(){
+  const linespacing=22;
+  stroke(csliderdarkGrey);
+  noFill();
+  rectMode(CORNER);
+  // draw outline
+  rect(this.xloc, this.yloc, this.buttonwidth, this.buttonheight,5);
+  for (let k = 0; k < this.textLabels.length; k++) {
+    words(this.textLabels[k], this.xloc+28, this.yloc+.8*linespacing+linespacing*k);
+    noFill();
+    strokeWeight(1);
+    stroke(csliderdarkGrey);
+    ellipse(this.xloc+15, this.yloc+12+linespacing*k, 15, 15);
+  strokeWeight(1);
+}
+  if (mouseX >= this.xloc && mouseX <= this.xloc+this.buttonwidth && mouseY >= this.yloc && mouseY <= this.yloc+this.buttonheight)
+    {
+    cursor(HAND);
+    fill(91,173,58);
+    rect(this.xloc, this.yloc, this.buttonwidth, this.buttonheight,5);
+    noFill();
+      rectMode(CORNER);
+      // draw outline
+      rect(this.xloc, this.yloc, this.buttonwidth, this.buttonheight,5);
+      for (let k = 0; k < this.textLabels.length; k++) {
+        words(this.textLabels[k], this.xloc+28, this.yloc+.8*linespacing+linespacing*k);
+        noFill();
+        strokeWeight(1);
+        stroke(csliderdarkGrey);
+        ellipse(this.xloc+15, this.yloc+12+linespacing*k, 15, 15);
+      strokeWeight(1);
+    }
+      if (mouseIsPressed) {
+        let choosethis=abs(int((mouseY-this.yloc)/linespacing));
+        this.currentchoice=choosethis;
+                }
+    } else {
+    fill(csliderlightGrey);
+    cursor(ARROW);
+    }
+  fill(csliderdarkGrey)
+  ellipse(this.xloc+15,this.yloc+12+linespacing*this.currentchoice, 15, 15);
+  return this.textLabels[this.currentchoice];
+          }
+  }
+
+
 
 class controlPuck{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=30;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4680,19 +4827,19 @@ class controlPuck{
 
 class controlPuckpositive{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=30;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4728,19 +4875,19 @@ class controlPuckpositive{
 
 class controlStripVerticalPositive{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=60;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4765,22 +4912,22 @@ class controlStripVerticalPositive{
 
 	}
 }
-  
+
 class controlStripHorizontalPositive{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=60;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4805,22 +4952,22 @@ class controlStripHorizontalPositive{
 
 	}
 }
-  
+
 class controlStripHorizontal{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=30;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4848,19 +4995,19 @@ class controlStripHorizontal{
 
 class controlStripVertical{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=30;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4884,24 +5031,24 @@ class controlStripVertical{
 		};
 
 	}
-	
+
 }
 
 class controlStripGraphIndependent{
 	constructor(){
-	
+
 	this.pucksize = 20;
 	this.controlBarrier=200;
 	}
-	
+
 	create(xloc,yloc){
 	this.SetterX=xloc;
 	this.PuckX = xloc;
 	this.SetterY = yloc;
 	this.PuckY= yloc;
-	
+
 	}
-	
+
 	getValues(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -4931,11 +5078,11 @@ class controlStripGraphIndependent{
 
 class exploreScatterQuandrantOne{ //undocumented - what's it for?
 	constructor(){
-	
+
 	this.pucksize = 20;
-	
+
 	}
-	
+
 	create(xloc,yloc,graphHeight,graphWidth,plotlabelX,plotlabelY){
 	this.SetterX=xloc;
 	this.graphLocX = xloc;
@@ -4950,10 +5097,10 @@ class exploreScatterQuandrantOne{ //undocumented - what's it for?
 	this.controlBarrier=graphWidth;
 	this.exploredgraphvaluesX=[];
 	this.exploredgraphvaluesY=[];
-	
-	
+
+
 	}
-	
+
 	setLabels(){
 	this.xlabel=createDiv(this.xlabeltext);
 // 	this.xlabel.id("namedXlabel");
@@ -4968,7 +5115,7 @@ class exploreScatterQuandrantOne{ //undocumented - what's it for?
     this.ylabel.size(150);
     this.ylabel.html(pmlparse(this.ylabel.html()));
     }
-	
+
 	getValues(){
 		fill(cplotBG);
 		noStroke();
@@ -5000,11 +5147,11 @@ class exploreScatterQuandrantOne{ //undocumented - what's it for?
 		};
 
 	}
-	
+
 	plotValues(valueNowX,valueNowY){
 		this.valueNowX=valueNowX*this.graphWidth;
 		this.valueNowY=valueNowY*this.graphHeight;
-	
+
 		this.exploredgraphvaluesX.push(this.valueNowX);
 		this.exploredgraphvaluesY.push(this.valueNowY);
 		noStroke();
@@ -5018,8 +5165,8 @@ class exploreScatterQuandrantOne{ //undocumented - what's it for?
       this.exploredgraphvaluesY.length= 0; //clears the array
     }
     }
-	
-} 
+
+}
 
 class graphExploreBoxArea{
 
@@ -5029,7 +5176,7 @@ class graphExploreBoxArea{
 // 	this.graphOffsetX= 160;
 	this.graphOffsetY= 250;
 	}
-	
+
 	create(xloc,yloc,graphSize,quadrants,plotlabelX,plotlabelY){
 		this.SetterX=xloc;
 		this.PuckX = xloc+this.controlBarrier/3;
@@ -5056,7 +5203,7 @@ class graphExploreBoxArea{
 		this.xlabeltext=plotlabelX;
 		this.ylabeltext=plotlabelY;
 	}
-	
+
 	setLabels(){
 	this.xlabel=createDiv(this.xlabeltext);
     this.xlabel.class("infoBlock");
@@ -5069,7 +5216,7 @@ class graphExploreBoxArea{
 	this.xlabel.position(this.graphLocX+this.graphSize+20, this.graphLocY);
 	this.ylabel.position(this.graphLocX, this.graphLocY-this.graphSize-40);
     }
-	
+
 	draw(){
 		stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -5105,14 +5252,14 @@ class graphExploreBoxArea{
 		line(this.SetterX, this.SetterY, this.PuckX, this.SetterY);
 		line(this.SetterX, this.SetterY, this.SetterX, this.PuckY);
 		ellipse(this.PuckX, this.PuckY, 2, 2);
-		
+
 		this.boxX=(this.PuckX-this.SetterX)/(this.controlBarrier*2);
 		this.boxY=-(this.SetterY-this.PuckY)/(this.controlBarrier*2);
-		
+
 
 		push();
 			translate(this.graphLocX,this.graphLocY);
-			
+
 			switch(this.quadrants){
 				case 4:
 					fill(cplotBG);
@@ -5156,7 +5303,7 @@ class graphExploreBoxArea{
 		pop();
 
 	}
-	
+
 	getValues(){
 	return {
 			boxWidth: this.boxX,
@@ -5165,13 +5312,13 @@ class graphExploreBoxArea{
 		}
 }
 
-    
+
 class exploreRelationshipGraph{
 	constructor(){
 	this.pucksize = 20;
 	this.controlBarrier=30;
 	}
-	
+
 	create(xloc,yloc,graphSize,quadrants,plotlabelX,plotlabelY){
 	this.SetterX=xloc;
 	switch(quadrants){
@@ -5188,7 +5335,7 @@ class exploreRelationshipGraph{
 			this.graphOffsetX= 100;
 			break;
 		}
-	
+
 	this.graphOffsetY=graphSize-this.controlBarrier-10;
 	this.PuckX = xloc+this.controlBarrier/3;
 	this.SetterY = yloc;
@@ -5201,9 +5348,9 @@ class exploreRelationshipGraph{
 	this.ylabeltext=plotlabelY;
 	this.exploredgraphvaluesX=[];
 	this.exploredgraphvaluesY=[];
-	
+
 	}
-	
+
 	setLabels(){
 	this.xlabel=createDiv(this.xlabeltext);
     this.xlabel.class("infoBlock");
@@ -5216,7 +5363,7 @@ class exploreRelationshipGraph{
 	this.xlabel.position(this.graphLocX+this.graphSize+20, this.graphLocY);
 	this.ylabel.position(this.graphLocX, this.graphLocY-this.graphSize-40);
     }
-    
+
     draw(){
     	stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -5253,10 +5400,10 @@ class exploreRelationshipGraph{
 		line(this.SetterX, this.SetterY, this.PuckX, this.SetterY);
 		line(this.SetterX, this.SetterY, this.SetterX, this.PuckY);
 		ellipse(this.PuckX, this.PuckY, 2, 2);
-		
+
 		this.boxX=(this.PuckX-this.SetterX)/(this.controlBarrier*2);
 		this.boxY=-(this.SetterY-this.PuckY)/(this.controlBarrier*2);
-		
+
 
 		push();
 			translate(this.graphLocX,this.graphLocY);
@@ -5295,7 +5442,7 @@ class exploreRelationshipGraph{
 		pop();
 
 	}
-	
+
 	getValues(){
 	return {
 			xSet: -this.boxX,
@@ -5303,11 +5450,11 @@ class exploreRelationshipGraph{
 		};
 
 	}
-	
+
 	plotValues(valueNowX,valueNowY){
 		this.valueNowX=valueNowX*this.graphSize;
 		this.valueNowY=valueNowY*this.graphSize;
-	
+
 		this.exploredgraphvaluesX.push(this.valueNowX);
 		this.exploredgraphvaluesY.push(this.valueNowY);
 		noStroke();
@@ -5321,7 +5468,7 @@ class exploreRelationshipGraph{
       this.exploredgraphvaluesY.length= 0; //clears the array
     }
     }
-	
+
 }
 
 class exploreUnconstrainedGraph{
@@ -5329,7 +5476,7 @@ class exploreUnconstrainedGraph{
 	this.pucksize = 20;
 	this.controlBarrier=30;
 	}
-	
+
 	create(xloc,yloc,graphSize,quadrants,plotlabelX,plotlabelY){
 	this.SetterX=xloc;
 	switch(quadrants){
@@ -5346,7 +5493,7 @@ class exploreUnconstrainedGraph{
 			this.graphOffsetX= 100;
 			break;
 		}
-	
+
 	this.graphOffsetY=graphSize-this.controlBarrier-10;
 	this.PuckX = xloc+this.controlBarrier/3;
 	this.SetterY = yloc;
@@ -5359,9 +5506,9 @@ class exploreUnconstrainedGraph{
 	this.ylabeltext=plotlabelY;
 	this.exploredgraphvaluesX=[];
 	this.exploredgraphvaluesY=[];
-	
+
 	}
-	
+
 	setLabels(){
 	this.xlabel=createDiv(this.xlabeltext);
     this.xlabel.class("infoBlock");
@@ -5374,7 +5521,7 @@ class exploreUnconstrainedGraph{
 	this.xlabel.position(this.graphLocX+this.graphSize+20, this.graphLocY);
 	this.ylabel.position(this.graphLocX, this.graphLocY-this.graphSize-40);
     }
-    
+
     draw(){
     	stroke(csliderdarkGrey);
 		strokeWeight(1);
@@ -5409,7 +5556,7 @@ class exploreUnconstrainedGraph{
 		case 1:
 			this.PuckX=constrain(this.PuckX,this.SetterX,this.SetterX+this.controlBarrier);
 			this.PuckY=constrain(this.PuckY,this.SetterY-this.controlBarrier,this.SetterY);
-			
+
 		break;
 		}
 		rect(this.PuckX-this.pucksize/2, this.PuckY-this.pucksize/2, this.pucksize, this.pucksize,5)
@@ -5419,10 +5566,10 @@ class exploreUnconstrainedGraph{
 		line(this.SetterX, this.SetterY, this.PuckX, this.SetterY);
 		line(this.SetterX, this.SetterY, this.SetterX, this.PuckY);
 		ellipse(this.PuckX, this.PuckY, 2, 2);
-		
+
 		this.boxX=(this.PuckX-this.SetterX)/(this.controlBarrier*2);
 		this.boxY=-(this.SetterY-this.PuckY)/(this.controlBarrier*2);
-		
+
 
 		push();
 			translate(this.graphLocX,this.graphLocY);
@@ -5461,7 +5608,7 @@ class exploreUnconstrainedGraph{
 		pop();
 
 	}
-	
+
 	getValues(){
 	return {
 			xSet: -this.boxX,
@@ -5469,11 +5616,11 @@ class exploreUnconstrainedGraph{
 		};
 
 	}
-	
+
 	plotValues(valueNowX,valueNowY){
 		this.valueNowX=valueNowX*this.graphSize;
 		this.valueNowY=valueNowY*this.graphSize;
-	
+
 		this.exploredgraphvaluesX.push(this.valueNowX);
 		this.exploredgraphvaluesY.push(this.valueNowY);
 		noStroke();
@@ -5487,13 +5634,13 @@ class exploreUnconstrainedGraph{
       this.exploredgraphvaluesY.length= 0; //clears the array
     }
     }
-	
+
 }
 // accumulation engines
 
 function predictMotionAccumulate(){
 	nextposition = rk4(currentposition, currentspeed, calculatedacceleration)[0];
-	nextspeed = rk4(currentposition, currentspeed, calculatedacceleration)[1];	
+	nextspeed = rk4(currentposition, currentspeed, calculatedacceleration)[1];
 	currentposition=nextposition;
 	currentspeed=nextspeed;
 }
@@ -5528,7 +5675,7 @@ function rk4(currentposition, currentspeed, calculatedacceleration) {
   return [xf, vf];
 }
 
-    
+
 
 
 // word annotations
@@ -5785,6 +5932,7 @@ function title(titleText){
 function titleBold(titleText){
   fill(cInvertedTextBG);
   noStroke();
+  rectMode(CORNER);
   rect(20, 10, width-40, 45, 10, 10, 10, 10);
     fill(cInvertedText);
     textFont(titleFont,18);
@@ -6069,43 +6217,6 @@ const tailparameter =15;
 	text(thinkThis, xloc-4*tailparameter+saymargin, yloc-bubbleheight-2*tailparameter+saymargin, bubblewidth-2*saymargin, bubbleheight);
 }
 
-// menton bubbles are not to be called directly
-
-function mentonbubbleTL(thinkThis,xloc,yloc, bubblewidth,bubbleheight){
-const saymargin=5;
-const tailparameter =15;
-	fill(ctalkbubbleBG);
-	noStroke();
-	ellipseMode(CENTER);
-	ellipse(xloc,yloc,12,9);
-	ellipse(xloc-6,yloc-14,16,12);
-	ellipse(xloc-12,yloc-34,32,24);
-	rect(xloc-bubblewidth+4*tailparameter, yloc-2*tailparameter-bubbleheight, bubblewidth, bubbleheight,5);
-	fill(clabeltext);
-	textFont(chatterFont);
-	noStroke();
-	textSize(16);
-	text(thinkThis, xloc-bubblewidth+4*tailparameter+saymargin, yloc-bubbleheight-2*tailparameter+saymargin, bubblewidth-2*saymargin, bubbleheight);
-	translate(xloc-bubblewidth+4*tailparameter, yloc-bubbleheight-2*tailparameter);
-}
-
-function mentonbubbleTR(thinkThis,xloc,yloc, bubblewidth,bubbleheight){
-const saymargin=5;
-const tailparameter =15;
-	fill(ctalkbubbleBG);
-	noStroke();
-	ellipseMode(CENTER);
-	ellipse(xloc,yloc,12,9);
-	ellipse(xloc+6,yloc-14,16,12);
-	ellipse(xloc+12,yloc-34,32,24);	rect(xloc-4*tailparameter, yloc-2*tailparameter-bubbleheight, bubblewidth, bubbleheight,5);
-	fill(clabeltext);
-	textFont(chatterFont);
-	noStroke();
-	textSize(16);
-	text(thinkThis, xloc-4*tailparameter+saymargin, yloc-bubbleheight-2*tailparameter+saymargin, bubblewidth-2*saymargin, bubbleheight);
-	translate(xloc-4*tailparameter, yloc-bubbleheight-2*tailparameter);
-}
-
 
 function thinkRL(thinkThis,xloc,yloc, bubblewidth,bubbleheight){
 push();
@@ -6351,8 +6462,8 @@ const flipdroid =false;
 	stroke(cdrawGuides);
 	strokeWeight(1);
 	noFill();
-	discoursedroid(personid,xloc,yloc,bubbleloc=="R",false);
-		
+	discoursedroid(personid,xloc,yloc,bubbleloc=="R",false,cdrawGuides,1);
+
 }
 
 function thinkdroid(personid,xloc,yloc,thinkThis,bubblewidth,bubbleheight,bubbleloc){
@@ -6369,8 +6480,50 @@ const flipdroid =false;
 	stroke(cdrawGuides);
 	strokeWeight(1);
 	noFill();
-	discoursedroid(personid,xloc,yloc,bubbleloc=="R",false);
-		
+	discoursedroid(personid,xloc,yloc,bubbleloc=="R",false,cdrawGuides,1);
+
+}
+
+// menton bubbles are not to be called directly
+
+function mentonbubbleTL(thinkThis,xloc,yloc, bubblewidth,bubbleheight){
+const saymargin=5;
+const tailparameter =15;
+	fill(ctalkbubbleBG);
+	noStroke();
+	ellipseMode(CENTER);
+	ellipse(xloc,yloc,12,9);
+	ellipse(xloc-6,yloc-14,16,12);
+	ellipse(xloc-12,yloc-34,32,24);
+	rect(xloc-bubblewidth+4*tailparameter, yloc-2*tailparameter-bubbleheight, bubblewidth, bubbleheight,5);
+	stroke(ctalkbubbleBG);
+	mentonrep.scribbleRoundedRect(xloc+bubblewidth/2-bubblewidth+4*tailparameter, yloc+bubbleheight/2-2*tailparameter-bubbleheight, bubblewidth, bubbleheight,5);
+	fill(clabeltext);
+	textFont(chatterFont);
+	noStroke();
+	textSize(16);
+	text(thinkThis, xloc-bubblewidth+4*tailparameter+saymargin, yloc-bubbleheight-2*tailparameter+saymargin, bubblewidth-2*saymargin, bubbleheight);
+	translate(xloc-bubblewidth+4*tailparameter, yloc-bubbleheight-2*tailparameter);
+}
+
+function mentonbubbleTR(thinkThis,xloc,yloc, bubblewidth,bubbleheight){
+const saymargin=5;
+const tailparameter =15;
+	fill(ctalkbubbleBG);
+	noStroke();
+	ellipseMode(CENTER);
+	ellipse(xloc,yloc,12,9);
+	ellipse(xloc+6,yloc-14,16,12);
+	ellipse(xloc+12,yloc-34,32,24);
+	rect(xloc-4*tailparameter, yloc-2*tailparameter-bubbleheight, bubblewidth, bubbleheight,5);
+	stroke(ctalkbubbleBG);
+	mentonrep.scribbleRoundedRect(xloc+bubblewidth/2-4*tailparameter, yloc+bubbleheight/2-2*tailparameter-bubbleheight, bubblewidth, bubbleheight,5);
+	fill(clabeltext);
+	textFont(chatterFont);
+	noStroke();
+	textSize(16);
+	text(thinkThis, xloc-4*tailparameter+saymargin, yloc-bubbleheight-2*tailparameter+saymargin, bubblewidth-2*saymargin, bubbleheight);
+	translate(xloc-4*tailparameter, yloc-bubbleheight-2*tailparameter);
 }
 
 
@@ -6380,9 +6533,9 @@ function mentondroid(droidid,droidpose,xloc,yloc,thinkThis,bubblewidth,bubblehei
 	stroke(droidid);
 // 	strokeWeight(5);
 	noFill();
-	
+
 	discoursedroid(droidpose,xloc,yloc,bubbleloc=="R",false,droidid,2);
-	
+
 	if (bubbleloc=="L"){
 	mentonbubbleTL(thinkThis,xloc,yloc, bubblewidth,bubbleheight);
 	const flipdroid =true;
@@ -6391,7 +6544,7 @@ function mentondroid(droidid,droidpose,xloc,yloc,thinkThis,bubblewidth,bubblehei
 	mentonbubbleTR(thinkThis,xloc,yloc, bubblewidth,bubbleheight);
 	const flipdroid =false;
 	}
-		
+
 }
 
 function mentonxtra(parentwidth, parentheight,mentontext,bubblewidth,bubbleheight,transitiontype){
@@ -6400,14 +6553,16 @@ function mentonxtra(parentwidth, parentheight,mentontext,bubblewidth,bubbleheigh
 	noStroke();
 	const xtraoffset=30;
 	rect(parentwidth+xtraoffset, -xtraoffset, bubblewidth, bubbleheight,5);
+	stroke(ctalkbubbleBG);
+	mentonrep.scribbleRoundedRect(parentwidth+xtraoffset+bubblewidth/2, -xtraoffset+bubbleheight/2, bubblewidth, bubbleheight,5);
 	if(transitiontype=="evolve"){
-		transitionEvolve(parentwidth+xtraoffset/2,+xtraoffset,0);
+		mentonTransitionEvolve(parentwidth+xtraoffset/2,+xtraoffset,0);
 	}
 	if(transitiontype=="redescribe"){
-		transitionRedescribe(parentwidth+xtraoffset/2,+xtraoffset,0);
+		mentonTransitionRedescribe(parentwidth+xtraoffset/2,+xtraoffset,0);
 	}
 	if(transitiontype=="intervene"){
-		transitionIntervene(parentwidth+xtraoffset/2,+xtraoffset,0);
+		mentonTransitionIntervene(parentwidth+xtraoffset/2,+xtraoffset,0);
 	}
 	fill(clabeltext);
 	textFont(chatterFont);
@@ -6427,13 +6582,13 @@ function mentonarrow(magnitude,rotation,mcolour,xloc,yloc,thickness){
       push();
       translate(xloc,yloc);
       rotate(radians(rotation));
-      
+
       if(magnitude!=0){
         if(magnitude>0){
         mentonrep.scribbleLine(0,0,0,-heightOfArrow);
         mentonrep.scribbleLine(0,-heightOfArrow,-widthOfArrowHead,-heightOfArrow+heightOfArrowHead);
         mentonrep.scribbleLine(0,-heightOfArrow,widthOfArrowHead,-heightOfArrow+heightOfArrowHead);
-         
+
          }else{
            mentonrep.scribbleLine(0,0,0,heightOfArrow);
         mentonrep.scribbleLine(0,heightOfArrow,-widthOfArrowHead,heightOfArrow-heightOfArrowHead);
@@ -6445,7 +6600,7 @@ function mentonarrow(magnitude,rotation,mcolour,xloc,yloc,thickness){
 }
 
 function mentonline(magnitude,rotation,mcolour,xloc,yloc,thickness){
-      
+
       var linelength = abs(magnitude) * pixelscaling;
 
 		strokeWeight(thickness);
@@ -6453,7 +6608,7 @@ function mentonline(magnitude,rotation,mcolour,xloc,yloc,thickness){
       push();
       translate(xloc,yloc);
       rotate(radians(rotation));
-      
+
       if(magnitude!=0){
         mentonrep.scribbleLine(0,0,0,-linelength);
          }
@@ -6461,7 +6616,7 @@ function mentonline(magnitude,rotation,mcolour,xloc,yloc,thickness){
 }
 
 function mentonbox(magnitude,rotation,mcolour,xloc,yloc, thickness,isfilled){
-      
+
 	var boxWidth = abs(magnitude)/2 * pixelscaling;
 	strokeWeight(thickness);
 	stroke(mcolour);
@@ -6478,7 +6633,7 @@ function mentonbox(magnitude,rotation,mcolour,xloc,yloc, thickness,isfilled){
 }
 
 function mentonrect(thewidth,theheight,rotation,mcolour,xloc,yloc, thickness,isfilled){
-      
+
 	var boxWidth = abs(thewidth)/2 * pixelscaling;
 	var boxHeight = abs(theheight)/2 * pixelscaling;
 	strokeWeight(thickness);
@@ -6502,7 +6657,1952 @@ function mentonwords(thisLabel, xloc, yloc,thewidth){
     text(thisLabel,xloc,yloc,thewidth);
 }
 
+function mentonTransitionEvolve(xloc,yloc, rotation) {
 
+ push();
+     translate(xloc+24,yloc);
+     rotate(PI/2+radians(rotation));
+     scale(0.5);
+fill(ctransitionBadgesBlueBG);
+noStroke();
+beginShape();
+        vertex(44.44, 95.3);
+        bezierVertex(27.72, 95.26, 18.68, 95.22, 17.3, 95.16);
+        bezierVertex(15.92, 95.09, 14.88, 95.03, 14.18, 94.95);
+        bezierVertex(13.48, 94.87, 12.9, 94.8, 12.44, 94.72);
+        bezierVertex(11.98, 94.64, 11.57, 94.56, 11.19, 94.48);
+        bezierVertex(10.81, 94.39, 10.47, 94.31, 10.17, 94.23);
+        bezierVertex(9.88, 94.14, 9.6, 94.06, 9.34, 93.97);
+        bezierVertex(9.08, 93.88, 8.76, 93.76, 8.37, 93.61);
+        bezierVertex(7.99, 93.45, 7.5, 93.21, 6.92, 92.9);
+        bezierVertex(6.34, 92.59, 5.97, 92.38, 5.8, 92.28);
+        bezierVertex(5.63, 92.17, 5.46, 92.05, 5.28, 91.93);
+        bezierVertex(5.1, 91.81, 4.9, 91.66, 4.69, 91.51);
+        bezierVertex(4.48, 91.35, 4.26, 91.17, 4.02, 90.98);
+        bezierVertex(3.77, 90.67, 3.55, 90.38, 3.37, 90.13);
+        bezierVertex(3.19, 89.88, 3.03, 89.65, 2.9, 89.43);
+        bezierVertex(2.75, 89.21, 2.51, 88.77, 2.17, 88.11);
+        bezierVertex(1.83, 87.44, 1.6, 86.96, 1.48, 86.64);
+        bezierVertex(1.36, 86.33, 1.24, 85.98, 1.13, 85.6);
+        bezierVertex(1.01, 85.22, 0.9, 84.78, 0.79, 84.29);
+        bezierVertex(0.68, 83.8, 0.58, 83.25, 0.49, 82.66);
+        bezierVertex(0.4, 82.06, 0.32, 81.41, 0.26, 80.69);
+        bezierVertex(0.2, 79.98, 0.14, 77.96, 0.08, 74.63);
+        bezierVertex(0.02, 71.31, -0, 61.74, 0, 45.92);
+        bezierVertex(0, 30.1, 0.02, 21.49, 0.05, 20.09);
+        bezierVertex(0.07, 18.69, 0.11, 17.58, 0.15, 16.77);
+        bezierVertex(0.2, 15.97, 0.24, 15.36, 0.27, 14.96);
+        bezierVertex(0.31, 14.56, 0.35, 14.17, 0.4, 13.78);
+        bezierVertex(0.44, 13.4, 0.49, 13.03, 0.55, 12.67);
+        bezierVertex(0.61, 12.32, 0.67, 11.97, 0.73, 11.64);
+        bezierVertex(0.79, 11.31, 0.86, 10.99, 0.94, 10.68);
+        bezierVertex(1.01, 10.37, 1.09, 10.06, 1.17, 9.77);
+        bezierVertex(1.25, 9.48, 1.34, 9.2, 1.42, 8.94);
+        bezierVertex(1.51, 8.68, 1.72, 8.15, 2.08, 7.35);
+        bezierVertex(2.43, 6.54, 2.72, 5.95, 2.95, 5.58);
+        bezierVertex(3.18, 5.2, 3.41, 4.84, 3.66, 4.5);
+        bezierVertex(3.91, 4.16, 4.17, 3.83, 4.45, 3.52);
+        bezierVertex(4.67, 3.36, 4.9, 3.19, 5.15, 3.03);
+        bezierVertex(5.4, 2.87, 5.66, 2.72, 5.93, 2.57);
+        bezierVertex(6.2, 2.42, 6.49, 2.28, 6.78, 2.15);
+        bezierVertex(7.07, 2.02, 7.57, 1.82, 8.29, 1.57);
+        bezierVertex(9.01, 1.32, 9.53, 1.16, 9.87, 1.07);
+        bezierVertex(10.21, 0.99, 10.64, 0.89, 11.17, 0.79);
+        bezierVertex(11.69, 0.69, 12.26, 0.6, 12.89, 0.51);
+        bezierVertex(13.51, 0.43, 14.15, 0.36, 14.81, 0.3);
+        bezierVertex(15.48, 0.24, 16.2, 0.19, 17, 0.15);
+        bezierVertex(17.8, 0.12, 20.91, 0.06, 26.34, 0);
+        bezierVertex(56.35, 0, 72.42, 0.02, 74.54, 0.04);
+        bezierVertex(76.66, 0.07, 78.3, 0.11, 79.46, 0.16);
+        bezierVertex(80.62, 0.21, 81.43, 0.26, 81.9, 0.29);
+        bezierVertex(82.37, 0.33, 82.8, 0.36, 83.18, 0.4);
+        bezierVertex(83.56, 0.44, 83.97, 0.49, 84.41, 0.54);
+        bezierVertex(84.85, 0.6, 85.25, 0.65, 85.62, 0.71);
+        bezierVertex(85.98, 0.76, 86.38, 0.83, 86.81, 0.91);
+        bezierVertex(87.24, 0.99, 87.78, 1.1, 88.43, 1.26);
+        bezierVertex(89.07, 1.41, 89.72, 1.59, 90.38, 1.79);
+        bezierVertex(91.04, 1.99, 91.6, 2.19, 92.08, 2.38);
+        bezierVertex(92.56, 2.57, 93.04, 2.8, 93.54, 3.06);
+        bezierVertex(94.04, 3.33, 94.55, 3.64, 95.08, 4);
+        bezierVertex(95.37, 4.35, 95.65, 4.71, 95.92, 5.08);
+        bezierVertex(96.18, 5.45, 96.4, 5.78, 96.58, 6.08);
+        bezierVertex(96.76, 6.37, 96.93, 6.69, 97.11, 7.03);
+        bezierVertex(97.28, 7.37, 97.57, 8.02, 97.97, 8.99);
+        bezierVertex(98.37, 9.96, 98.64, 10.63, 98.76, 11);
+        bezierVertex(98.88, 11.37, 99, 11.77, 99.13, 12.19);
+        bezierVertex(99.25, 12.61, 99.37, 13.06, 99.48, 13.54);
+        bezierVertex(99.59, 14.01, 99.7, 14.52, 99.8, 15.05);
+        bezierVertex(99.91, 15.59, 99.99, 16.12, 100.07, 16.64);
+        bezierVertex(100.14, 17.16, 100.21, 17.68, 100.26, 18.19);
+        bezierVertex(100.31, 18.7, 100.37, 19.43, 100.43, 20.37);
+        bezierVertex(100.49, 21.32, 100.53, 22.31, 100.56, 23.34);
+        bezierVertex(100.59, 24.38, 100.61, 31.3, 100.62, 44.1);
+        bezierVertex(100.63, 56.9, 100.64, 64.13, 100.63, 65.78);
+        bezierVertex(100.62, 67.43, 100.61, 68.61, 100.6, 69.33);
+        bezierVertex(100.58, 70.04, 100.56, 70.79, 100.54, 71.58);
+        bezierVertex(100.51, 72.37, 100.48, 73.08, 100.44, 73.72);
+        bezierVertex(100.4, 74.36, 100.36, 74.94, 100.31, 75.47);
+        bezierVertex(100.26, 76, 100.2, 76.58, 100.11, 77.22);
+        bezierVertex(100.02, 77.85, 99.94, 78.41, 99.85, 78.9);
+        bezierVertex(99.76, 79.38, 99.67, 79.83, 99.57, 80.25);
+        bezierVertex(99.48, 80.67, 99.38, 81.05, 99.28, 81.4);
+        bezierVertex(99.18, 81.75, 99.07, 82.12, 98.95, 82.5);
+        bezierVertex(98.83, 82.88, 98.7, 83.27, 98.55, 83.67);
+        bezierVertex(98.4, 84.07, 98.14, 84.69, 97.77, 85.53);
+        bezierVertex(97.39, 86.36, 97.04, 87.07, 96.72, 87.64);
+        bezierVertex(96.4, 88.21, 96.12, 88.66, 95.89, 89.01);
+        bezierVertex(95.66, 89.35, 95.33, 89.79, 94.9, 90.32);
+        bezierVertex(94.56, 90.57, 94.27, 90.78, 94.01, 90.94);
+        bezierVertex(93.76, 91.11, 93.41, 91.32, 92.97, 91.56);
+        bezierVertex(92.53, 91.8, 92.11, 92.02, 91.72, 92.2);
+        bezierVertex(91.32, 92.39, 90.87, 92.59, 90.35, 92.79);
+        bezierVertex(89.84, 93, 89.34, 93.19, 88.85, 93.35);
+        bezierVertex(88.36, 93.52, 87.87, 93.67, 87.39, 93.8);
+        bezierVertex(86.91, 93.94, 86.44, 94.06, 85.98, 94.16);
+        bezierVertex(85.51, 94.27, 85.06, 94.36, 84.62, 94.44);
+        bezierVertex(84.18, 94.53, 83.76, 94.6, 83.37, 94.65);
+        bezierVertex(82.98, 94.71, 82.52, 94.77, 82, 94.83);
+        bezierVertex(81.47, 94.89, 80.98, 94.94, 80.53, 94.98);
+        bezierVertex(80.08, 95.02, 79.29, 95.06, 78.18, 95.12);
+        bezierVertex(77.06, 95.17, 75.59, 95.21, 73.78, 95.24);
+        bezierVertex(71.96, 95.27, 58.41, 95.29, 33.14, 95.3);
+endShape();
+ fill(ctransitionBadgesWhite);
+
+beginShape();
+        vertex(51.77, 56.43);
+        bezierVertex(51.64, 56.43, 51.47, 56.44, 51.28, 56.47);
+        bezierVertex(51.09, 56.5, 50.89, 56.55, 50.68, 56.62);
+        bezierVertex(50.48, 56.69, 50.28, 56.77, 50.08, 56.86);
+        bezierVertex(49.88, 56.96, 49.57, 57.15, 49.14, 57.44);
+        bezierVertex(48.7, 57.73, 48.34, 58, 48.06, 58.25);
+        bezierVertex(47.78, 58.5, 47.51, 58.76, 47.25, 59.02);
+        bezierVertex(46.99, 59.28, 46.74, 59.54, 46.51, 59.79);
+        bezierVertex(46.28, 60.03, 45.72, 60.66, 44.83, 61.68);
+        bezierVertex(43.94, 62.7, 43.28, 63.46, 42.85, 63.96);
+        bezierVertex(42.42, 64.46, 42.1, 64.84, 41.88, 65.09);
+        bezierVertex(41.66, 65.34, 41.46, 65.56, 41.28, 65.75);
+        bezierVertex(41.11, 65.95, 40.76, 66.32, 40.24, 66.86);
+        bezierVertex(39.72, 67.41, 39.36, 67.78, 39.15, 67.99);
+        bezierVertex(38.95, 68.19, 38.62, 68.5, 38.17, 68.91);
+        bezierVertex(37.72, 69.31, 37.26, 69.71, 36.78, 70.1);
+        bezierVertex(36.31, 70.5, 35.87, 70.84, 35.48, 71.12);
+        bezierVertex(35.08, 71.41, 34.79, 71.62, 34.58, 71.75);
+        bezierVertex(34.38, 71.88, 34.04, 72.08, 33.58, 72.34);
+        bezierVertex(33.11, 72.6, 32.77, 72.78, 32.58, 72.88);
+        bezierVertex(32.38, 72.97, 32.04, 73.11, 31.58, 73.3);
+        bezierVertex(31.11, 73.49, 30.49, 73.68, 29.71, 73.88);
+        bezierVertex(28.94, 74.09, 28.35, 74.21, 27.96, 74.27);
+        bezierVertex(27.57, 74.32, 26.98, 74.34, 26.2, 74.34);
+        bezierVertex(25.42, 74.34, 24.85, 74.31, 24.49, 74.26);
+        bezierVertex(24.14, 74.21, 23.72, 74.13, 23.24, 74.01);
+        bezierVertex(22.76, 73.88, 22.38, 73.77, 22.1, 73.66);
+        bezierVertex(21.82, 73.55, 21.59, 73.46, 21.44, 73.39);
+        bezierVertex(21.28, 73.31, 21.09, 73.22, 20.89, 73.11);
+        bezierVertex(20.69, 73, 20.46, 72.85, 20.19, 72.67);
+        bezierVertex(19.93, 72.49, 19.6, 72.22, 19.2, 71.87);
+        bezierVertex(18.81, 71.52, 18.5, 71.21, 18.27, 70.94);
+        bezierVertex(18.05, 70.67, 17.81, 70.35, 17.57, 69.97);
+        bezierVertex(17.33, 69.6, 17.09, 69.13, 16.84, 68.57);
+        bezierVertex(16.59, 68, 16.42, 67.56, 16.33, 67.25);
+        bezierVertex(16.24, 66.94, 16.16, 66.58, 16.08, 66.17);
+        bezierVertex(16.01, 65.75, 15.96, 65.32, 15.93, 64.87);
+        bezierVertex(15.9, 64.42, 15.89, 64.06, 15.9, 63.8);
+        bezierVertex(15.91, 63.53, 15.93, 63.23, 15.97, 62.9);
+        bezierVertex(16.01, 62.57, 16.07, 62.18, 16.16, 61.75);
+        bezierVertex(16.24, 61.32, 16.35, 60.87, 16.48, 60.41);
+        bezierVertex(16.61, 59.94, 16.75, 59.51, 16.89, 59.09);
+        bezierVertex(17.04, 58.68, 17.21, 58.25, 17.4, 57.81);
+        bezierVertex(17.59, 57.36, 17.77, 56.96, 17.94, 56.61);
+        bezierVertex(18.11, 56.25, 18.48, 55.58, 19.03, 54.59);
+        bezierVertex(19.58, 53.6, 19.92, 53.01, 20.03, 52.83);
+        bezierVertex(20.14, 52.65, 20.43, 52.21, 20.89, 51.52);
+        bezierVertex(21.35, 50.82, 21.66, 50.38, 21.8, 50.18);
+        bezierVertex(21.94, 49.98, 22.21, 49.61, 22.61, 49.08);
+        bezierVertex(23, 48.55, 23.3, 48.15, 23.5, 47.89);
+        bezierVertex(23.7, 47.64, 23.9, 47.39, 24.08, 47.17);
+        bezierVertex(24.26, 46.94, 24.51, 46.62, 24.84, 46.21);
+        bezierVertex(25.18, 45.8, 25.63, 45.24, 26.2, 44.53);
+        bezierVertex(26.77, 43.82, 27.24, 43.25, 27.59, 42.81);
+        bezierVertex(27.94, 42.38, 28.25, 42, 28.51, 41.67);
+        bezierVertex(28.77, 41.34, 29.1, 40.9, 29.51, 40.36);
+        bezierVertex(29.92, 39.82, 30.27, 39.35, 30.55, 38.96);
+        bezierVertex(30.83, 38.58, 31.06, 38.26, 31.24, 38.01);
+        bezierVertex(31.42, 37.77, 31.74, 37.33, 32.19, 36.69);
+        bezierVertex(32.64, 36.05, 33.18, 35.29, 33.81, 34.41);
+        bezierVertex(34.43, 33.53, 34.88, 32.9, 35.17, 32.51);
+        bezierVertex(35.45, 32.11, 35.81, 31.61, 36.26, 31.01);
+        bezierVertex(36.7, 30.41, 37.39, 29.51, 38.33, 28.32);
+        bezierVertex(39.28, 27.13, 40.1, 26.15, 40.82, 25.37);
+        bezierVertex(41.53, 24.59, 42.19, 23.93, 42.8, 23.4);
+        bezierVertex(43.41, 22.86, 43.95, 22.44, 44.41, 22.12);
+        bezierVertex(44.87, 21.8, 45.24, 21.57, 45.5, 21.42);
+        bezierVertex(45.77, 21.27, 46.05, 21.13, 46.34, 21);
+        bezierVertex(46.62, 20.87, 46.84, 20.78, 46.99, 20.73);
+        bezierVertex(47.13, 20.67, 47.29, 20.62, 47.47, 20.56);
+        bezierVertex(47.65, 20.51, 48.06, 20.42, 48.7, 20.29);
+        bezierVertex(49.34, 20.17, 50.13, 20.12, 51.08, 20.13);
+        bezierVertex(52.03, 20.14, 52.69, 20.18, 53.08, 20.25);
+        bezierVertex(53.47, 20.33, 53.86, 20.42, 54.25, 20.54);
+        bezierVertex(54.64, 20.66, 55.09, 20.83, 55.6, 21.05);
+        bezierVertex(56.11, 21.28, 56.48, 21.45, 56.71, 21.58);
+        bezierVertex(56.94, 21.71, 57.18, 21.85, 57.43, 22.01);
+        bezierVertex(57.69, 22.18, 57.93, 22.34, 58.17, 22.52);
+        bezierVertex(58.41, 22.7, 58.82, 23.05, 59.4, 23.59);
+        bezierVertex(59.99, 24.13, 60.37, 24.49, 60.54, 24.67);
+        bezierVertex(60.71, 24.86, 60.94, 25.12, 61.22, 25.45);
+        bezierVertex(61.5, 25.79, 61.98, 26.41, 62.66, 27.32);
+        bezierVertex(63.33, 28.23, 64.03, 29.23, 64.75, 30.33);
+        bezierVertex(65.47, 31.42, 66.04, 32.3, 66.47, 32.96);
+        bezierVertex(66.9, 33.62, 67.19, 34.06, 67.35, 34.29);
+        bezierVertex(67.5, 34.52, 67.81, 34.99, 68.3, 35.69);
+        bezierVertex(68.79, 36.4, 69.13, 36.9, 69.34, 37.19);
+        bezierVertex(69.55, 37.48, 69.92, 38.01, 70.47, 38.76);
+        bezierVertex(71.02, 39.51, 71.47, 40.12, 71.83, 40.59);
+        bezierVertex(72.18, 41.05, 72.67, 41.67, 73.28, 42.44);
+        bezierVertex(73.9, 43.21, 74.5, 43.96, 75.08, 44.67);
+        bezierVertex(75.67, 45.38, 76.34, 46.2, 77.09, 47.11);
+        bezierVertex(77.85, 48.03, 78.37, 48.68, 78.67, 49.06);
+        bezierVertex(78.97, 49.43, 79.32, 49.88, 79.72, 50.39);
+        bezierVertex(80.12, 50.9, 80.66, 51.65, 81.33, 52.63);
+        bezierVertex(82, 53.61, 82.48, 54.36, 82.77, 54.86);
+        bezierVertex(83.05, 55.37, 83.3, 55.83, 83.5, 56.25);
+        bezierVertex(83.7, 56.68, 83.88, 57.08, 84.03, 57.45);
+        bezierVertex(84.18, 57.83, 84.33, 58.3, 84.49, 58.85);
+        bezierVertex(84.65, 59.4, 84.77, 59.89, 84.85, 60.31);
+        bezierVertex(84.92, 60.73, 84.97, 61.04, 85, 61.25);
+        bezierVertex(85.02, 61.46, 85.04, 61.83, 85.05, 62.36);
+        bezierVertex(85.07, 62.9, 85.04, 63.5, 84.97, 64.18);
+        bezierVertex(84.9, 64.86, 84.79, 65.51, 84.63, 66.13);
+        bezierVertex(84.48, 66.76, 84.33, 67.26, 84.18, 67.64);
+        bezierVertex(84.03, 68.03, 83.72, 68.63, 83.24, 69.45);
+        bezierVertex(82.76, 70.27, 82.36, 70.86, 82.05, 71.23);
+        bezierVertex(81.74, 71.59, 81.44, 71.91, 81.16, 72.17);
+        bezierVertex(80.88, 72.43, 80.57, 72.68, 80.23, 72.94);
+        bezierVertex(79.88, 73.19, 79.53, 73.41, 79.17, 73.61);
+        bezierVertex(78.81, 73.81, 78.41, 73.99, 77.96, 74.17);
+        bezierVertex(77.51, 74.34, 77.13, 74.46, 76.81, 74.55);
+        bezierVertex(76.49, 74.63, 76.18, 74.69, 75.9, 74.73);
+        bezierVertex(75.61, 74.78, 75.25, 74.81, 74.82, 74.83);
+        bezierVertex(74.38, 74.84, 73.98, 74.83, 73.6, 74.8);
+        bezierVertex(73.23, 74.76, 72.93, 74.72, 72.7, 74.68);
+        bezierVertex(72.46, 74.63, 72.19, 74.57, 71.88, 74.47);
+        bezierVertex(71.57, 74.38, 71.32, 74.3, 71.12, 74.23);
+        bezierVertex(70.93, 74.16, 70.76, 74.08, 70.6, 74.01);
+        bezierVertex(70.45, 73.94, 70.28, 73.85, 70.08, 73.75);
+        bezierVertex(69.88, 73.64, 69.6, 73.46, 69.23, 73.22);
+        bezierVertex(68.86, 72.97, 68.42, 72.64, 67.92, 72.22);
+        bezierVertex(67.42, 71.8, 66.91, 71.33, 66.38, 70.8);
+        bezierVertex(65.86, 70.28, 65.41, 69.81, 65.04, 69.39);
+        bezierVertex(64.67, 68.98, 64.27, 68.52, 63.83, 68);
+        bezierVertex(63.39, 67.48, 62.92, 66.92, 62.42, 66.31);
+        bezierVertex(61.91, 65.7, 61.43, 65.11, 60.96, 64.54);
+        bezierVertex(60.49, 63.97, 59.97, 63.35, 59.4, 62.68);
+        bezierVertex(58.83, 62.01, 58.35, 61.44, 57.94, 60.99);
+        bezierVertex(57.54, 60.53, 57.22, 60.17, 56.99, 59.92);
+        bezierVertex(56.75, 59.66, 56.51, 59.41, 56.25, 59.15);
+        bezierVertex(56, 58.9, 55.74, 58.65, 55.47, 58.41);
+        bezierVertex(55.21, 58.18, 55.01, 58, 54.88, 57.9);
+        bezierVertex(54.75, 57.79, 54.58, 57.66, 54.38, 57.51);
+        bezierVertex(54.17, 57.36, 54, 57.23, 53.86, 57.14);
+        bezierVertex(53.72, 57.06, 53.46, 56.93, 53.08, 56.77);
+        bezierVertex(52.7, 56.61, 52.38, 56.5, 52.14, 56.45);
+        bezierVertex(52.03, 56.44, 51.91, 56.43, 51.77, 56.43);
+endShape();
+	strokeWeight(2);
+	noFill();
+     stroke(ctransitionBadgesBluedetail);
+     mentonrep.scribbleEllipse( 50, 50, 40, 40);
+     stroke(cideaBlue);
+     mentonrep.scribbleLine(50, 50, 32, 50);
+     mentonrep.scribbleLine(50, 50, 50, 38);
+pop();
+}
+
+function mentonTransitionIntervene(xloc,yloc, rotation) {
+
+ push();
+     translate(xloc+24,yloc);
+     rotate(PI/2+radians(rotation));
+     scale(0.5);
+fill(ctransitionBadgesBlueBG);
+noStroke();
+beginShape();
+        vertex(44.44, 95.3);
+        bezierVertex(27.72, 95.26, 18.68, 95.22, 17.3, 95.16);
+        bezierVertex(15.92, 95.09, 14.88, 95.03, 14.18, 94.95);
+        bezierVertex(13.48, 94.87, 12.9, 94.8, 12.44, 94.72);
+        bezierVertex(11.98, 94.64, 11.57, 94.56, 11.19, 94.48);
+        bezierVertex(10.81, 94.39, 10.47, 94.31, 10.17, 94.23);
+        bezierVertex(9.87, 94.14, 9.6, 94.06, 9.34, 93.97);
+        bezierVertex(9.08, 93.88, 8.76, 93.76, 8.37, 93.61);
+        bezierVertex(7.99, 93.45, 7.5, 93.21, 6.92, 92.9);
+        bezierVertex(6.34, 92.59, 5.97, 92.38, 5.8, 92.28);
+        bezierVertex(5.63, 92.17, 5.46, 92.05, 5.28, 91.93);
+        bezierVertex(5.1, 91.81, 4.9, 91.66, 4.69, 91.51);
+        bezierVertex(4.48, 91.35, 4.26, 91.17, 4.02, 90.98);
+        bezierVertex(3.77, 90.67, 3.55, 90.38, 3.37, 90.13);
+        bezierVertex(3.2, 89.88, 3.04, 89.65, 2.89, 89.43);
+        bezierVertex(2.76, 89.21, 2.51, 88.77, 2.17, 88.11);
+        bezierVertex(1.83, 87.44, 1.6, 86.96, 1.48, 86.64);
+        bezierVertex(1.36, 86.33, 1.24, 85.98, 1.13, 85.6);
+        bezierVertex(1.01, 85.22, 0.9, 84.78, 0.79, 84.29);
+        bezierVertex(0.68, 83.8, 0.58, 83.25, 0.49, 82.66);
+        bezierVertex(0.4, 82.06, 0.32, 81.41, 0.26, 80.69);
+        bezierVertex(0.2, 79.98, 0.14, 77.96, 0.08, 74.63);
+        bezierVertex(0.02, 71.31, -0, 61.74, 0, 45.92);
+        bezierVertex(0, 30.1, 0.02, 21.49, 0.05, 20.09);
+        bezierVertex(0.07, 18.69, 0.11, 17.58, 0.15, 16.77);
+        bezierVertex(0.2, 15.96, 0.24, 15.36, 0.27, 14.96);
+        bezierVertex(0.31, 14.56, 0.35, 14.17, 0.4, 13.78);
+        bezierVertex(0.44, 13.4, 0.49, 13.03, 0.55, 12.67);
+        bezierVertex(0.61, 12.32, 0.67, 11.97, 0.73, 11.64);
+        bezierVertex(0.79, 11.31, 0.86, 10.99, 0.94, 10.68);
+        bezierVertex(1.01, 10.37, 1.09, 10.06, 1.17, 9.77);
+        bezierVertex(1.25, 9.48, 1.34, 9.2, 1.42, 8.94);
+        bezierVertex(1.51, 8.68, 1.73, 8.15, 2.08, 7.35);
+        bezierVertex(2.43, 6.54, 2.72, 5.95, 2.95, 5.58);
+        bezierVertex(3.17, 5.2, 3.41, 4.84, 3.66, 4.5);
+        bezierVertex(3.91, 4.16, 4.17, 3.83, 4.45, 3.52);
+        bezierVertex(4.67, 3.36, 4.9, 3.19, 5.15, 3.03);
+        bezierVertex(5.4, 2.87, 5.66, 2.72, 5.93, 2.57);
+        bezierVertex(6.2, 2.42, 6.49, 2.28, 6.78, 2.15);
+        bezierVertex(7.07, 2.02, 7.57, 1.82, 8.29, 1.57);
+        bezierVertex(9.01, 1.32, 9.53, 1.16, 9.87, 1.07);
+        bezierVertex(10.21, 0.99, 10.64, 0.89, 11.17, 0.79);
+        bezierVertex(11.69, 0.69, 12.26, 0.6, 12.89, 0.51);
+        bezierVertex(13.51, 0.43, 14.15, 0.36, 14.81, 0.3);
+        bezierVertex(15.48, 0.24, 16.21, 0.19, 17, 0.15);
+        bezierVertex(17.8, 0.12, 20.91, 0.06, 26.34, 0);
+        bezierVertex(56.35, 0, 72.42, 0.02, 74.54, 0.04);
+        bezierVertex(76.67, 0.07, 78.31, 0.11, 79.46, 0.16);
+        bezierVertex(80.62, 0.21, 81.43, 0.26, 81.9, 0.29);
+        bezierVertex(82.37, 0.33, 82.8, 0.36, 83.18, 0.4);
+        bezierVertex(83.57, 0.44, 83.98, 0.49, 84.41, 0.54);
+        bezierVertex(84.85, 0.6, 85.25, 0.65, 85.62, 0.71);
+        bezierVertex(85.98, 0.76, 86.38, 0.83, 86.81, 0.91);
+        bezierVertex(87.24, 0.99, 87.78, 1.1, 88.43, 1.26);
+        bezierVertex(89.07, 1.41, 89.72, 1.59, 90.38, 1.79);
+        bezierVertex(91.04, 1.99, 91.6, 2.19, 92.08, 2.38);
+        bezierVertex(92.56, 2.57, 93.04, 2.8, 93.54, 3.06);
+        bezierVertex(94.04, 3.33, 94.55, 3.64, 95.08, 4);
+        bezierVertex(95.37, 4.35, 95.65, 4.71, 95.92, 5.08);
+        bezierVertex(96.18, 5.45, 96.4, 5.78, 96.58, 6.08);
+        bezierVertex(96.76, 6.37, 96.93, 6.69, 97.11, 7.03);
+        bezierVertex(97.29, 7.37, 97.57, 8.02, 97.97, 8.99);
+        bezierVertex(98.37, 9.96, 98.64, 10.63, 98.76, 11);
+        bezierVertex(98.88, 11.37, 99.01, 11.77, 99.13, 12.19);
+        bezierVertex(99.25, 12.61, 99.37, 13.06, 99.48, 13.54);
+        bezierVertex(99.59, 14.01, 99.7, 14.52, 99.8, 15.05);
+        bezierVertex(99.91, 15.59, 99.99, 16.12, 100.07, 16.64);
+        bezierVertex(100.14, 17.16, 100.21, 17.68, 100.26, 18.19);
+        bezierVertex(100.31, 18.7, 100.37, 19.43, 100.43, 20.37);
+        bezierVertex(100.49, 21.32, 100.53, 22.31, 100.56, 23.34);
+        bezierVertex(100.59, 24.38, 100.61, 31.3, 100.62, 44.1);
+        bezierVertex(100.63, 56.9, 100.64, 64.13, 100.63, 65.78);
+        bezierVertex(100.62, 67.43, 100.61, 68.61, 100.6, 69.33);
+        bezierVertex(100.58, 70.04, 100.56, 70.79, 100.54, 71.58);
+        bezierVertex(100.51, 72.37, 100.48, 73.08, 100.44, 73.72);
+        bezierVertex(100.4, 74.36, 100.36, 74.94, 100.31, 75.47);
+        bezierVertex(100.26, 76, 100.2, 76.58, 100.11, 77.22);
+        bezierVertex(100.03, 77.85, 99.94, 78.41, 99.85, 78.9);
+        bezierVertex(99.76, 79.38, 99.67, 79.83, 99.57, 80.25);
+        bezierVertex(99.47, 80.67, 99.38, 81.05, 99.28, 81.4);
+        bezierVertex(99.18, 81.75, 99.08, 82.12, 98.95, 82.5);
+        bezierVertex(98.83, 82.88, 98.7, 83.27, 98.55, 83.67);
+        bezierVertex(98.4, 84.07, 98.14, 84.69, 97.77, 85.53);
+        bezierVertex(97.39, 86.36, 97.04, 87.07, 96.72, 87.64);
+        bezierVertex(96.4, 88.21, 96.12, 88.66, 95.89, 89.01);
+        bezierVertex(95.66, 89.35, 95.33, 89.79, 94.9, 90.32);
+        bezierVertex(94.56, 90.57, 94.27, 90.78, 94.01, 90.94);
+        bezierVertex(93.76, 91.11, 93.41, 91.32, 92.97, 91.56);
+        bezierVertex(92.53, 91.8, 92.11, 92.02, 91.72, 92.2);
+        bezierVertex(91.32, 92.39, 90.87, 92.59, 90.35, 92.79);
+        bezierVertex(89.84, 93, 89.34, 93.19, 88.85, 93.35);
+        bezierVertex(88.36, 93.52, 87.87, 93.67, 87.39, 93.8);
+        bezierVertex(86.91, 93.94, 86.44, 94.06, 85.98, 94.16);
+        bezierVertex(85.51, 94.27, 85.06, 94.36, 84.62, 94.44);
+        bezierVertex(84.18, 94.53, 83.76, 94.6, 83.37, 94.65);
+        bezierVertex(82.98, 94.71, 82.52, 94.77, 82, 94.83);
+        bezierVertex(81.47, 94.89, 80.98, 94.94, 80.53, 94.98);
+        bezierVertex(80.08, 95.02, 79.29, 95.06, 78.18, 95.12);
+        bezierVertex(77.06, 95.17, 75.59, 95.21, 73.78, 95.24);
+        bezierVertex(71.96, 95.27, 58.41, 95.29, 33.14, 95.3);
+endShape();
+fill(ctransitionBadgesWhite);
+beginShape();
+        vertex(51.17, 68.76);
+        bezierVertex(51.04, 68.76, 50.88, 68.77, 50.68, 68.81);
+        bezierVertex(50.49, 68.84, 50.29, 68.89, 50.09, 68.95);
+        bezierVertex(49.88, 69.02, 49.68, 69.1, 49.48, 69.2);
+        bezierVertex(49.29, 69.29, 48.97, 69.49, 48.54, 69.78);
+        bezierVertex(48.11, 70.07, 47.75, 70.34, 47.47, 70.59);
+        bezierVertex(47.18, 70.83, 46.91, 71.09, 46.65, 71.35);
+        bezierVertex(46.39, 71.62, 46.14, 71.87, 45.91, 72.12);
+        bezierVertex(45.69, 72.37, 45.13, 73, 44.23, 74.02);
+        bezierVertex(43.34, 75.04, 42.68, 75.79, 42.25, 76.3);
+        bezierVertex(41.82, 76.8, 41.5, 77.17, 41.28, 77.42);
+        bezierVertex(41.06, 77.67, 40.86, 77.89, 40.69, 78.09);
+        bezierVertex(40.51, 78.28, 40.16, 78.65, 39.64, 79.2);
+        bezierVertex(39.12, 79.74, 38.76, 80.12, 38.56, 80.32);
+        bezierVertex(38.35, 80.53, 38.02, 80.83, 37.57, 81.24);
+        bezierVertex(37.12, 81.65, 36.66, 82.05, 36.18, 82.44);
+        bezierVertex(35.71, 82.83, 35.28, 83.17, 34.88, 83.46);
+        bezierVertex(34.49, 83.75, 34.19, 83.95, 33.99, 84.09);
+        bezierVertex(33.78, 84.22, 33.45, 84.41, 32.98, 84.68);
+        bezierVertex(32.51, 84.94, 32.18, 85.12, 31.98, 85.21);
+        bezierVertex(31.78, 85.31, 31.45, 85.45, 30.98, 85.64);
+        bezierVertex(30.51, 85.82, 29.89, 86.02, 29.11, 86.22);
+        bezierVertex(28.34, 86.42, 27.76, 86.55, 27.36, 86.6);
+        bezierVertex(26.97, 86.65, 26.38, 86.68, 25.6, 86.67);
+        bezierVertex(24.82, 86.67, 24.26, 86.65, 23.9, 86.6);
+        bezierVertex(23.54, 86.55, 23.12, 86.46, 22.65, 86.34);
+        bezierVertex(22.17, 86.22, 21.79, 86.1, 21.5, 85.99);
+        bezierVertex(21.22, 85.89, 21, 85.8, 20.84, 85.72);
+        bezierVertex(20.68, 85.65, 20.5, 85.55, 20.3, 85.44);
+        bezierVertex(20.1, 85.33, 19.86, 85.19, 19.59, 85.01);
+        bezierVertex(19.33, 84.82, 19, 84.56, 18.61, 84.21);
+        bezierVertex(18.21, 83.86, 17.91, 83.55, 17.68, 83.27);
+        bezierVertex(17.45, 83, 17.22, 82.68, 16.98, 82.31);
+        bezierVertex(16.74, 81.93, 16.49, 81.46, 16.24, 80.9);
+        bezierVertex(15.99, 80.34, 15.82, 79.9, 15.73, 79.59);
+        bezierVertex(15.64, 79.28, 15.56, 78.92, 15.49, 78.5);
+        bezierVertex(15.41, 78.08, 15.36, 77.65, 15.33, 77.2);
+        bezierVertex(15.31, 76.75, 15.3, 76.39, 15.31, 76.13);
+        bezierVertex(15.31, 75.87, 15.34, 75.57, 15.38, 75.23);
+        bezierVertex(15.41, 74.9, 15.48, 74.52, 15.56, 74.09);
+        bezierVertex(15.65, 73.65, 15.75, 73.21, 15.88, 72.74);
+        bezierVertex(16.01, 72.28, 16.15, 71.84, 16.3, 71.43);
+        bezierVertex(16.44, 71.01, 16.61, 70.58, 16.8, 70.14);
+        bezierVertex(16.99, 69.7, 17.17, 69.3, 17.35, 68.94);
+        bezierVertex(17.52, 68.59, 17.88, 67.91, 18.43, 66.92);
+        bezierVertex(18.99, 65.93, 19.32, 65.34, 19.43, 65.17);
+        bezierVertex(19.54, 64.99, 19.83, 64.55, 20.29, 63.85);
+        bezierVertex(20.76, 63.16, 21.06, 62.71, 21.2, 62.51);
+        bezierVertex(21.34, 62.31, 21.61, 61.95, 22.01, 61.41);
+        bezierVertex(22.41, 60.88, 22.71, 60.49, 22.91, 60.23);
+        bezierVertex(23.11, 59.97, 23.3, 59.73, 23.48, 59.5);
+        bezierVertex(23.66, 59.28, 23.92, 58.96, 24.25, 58.55);
+        bezierVertex(24.58, 58.14, 25.03, 57.58, 25.6, 56.87);
+        bezierVertex(26.18, 56.16, 26.64, 55.58, 26.99, 55.15);
+        bezierVertex(27.34, 54.71, 27.65, 54.33, 27.91, 54);
+        bezierVertex(28.17, 53.67, 28.5, 53.24, 28.91, 52.69);
+        bezierVertex(29.32, 52.15, 29.67, 51.69, 29.95, 51.3);
+        bezierVertex(30.24, 50.91, 30.47, 50.59, 30.65, 50.35);
+        bezierVertex(30.82, 50.1, 31.14, 49.66, 31.59, 49.02);
+        bezierVertex(32.05, 48.39, 32.59, 47.63, 33.21, 46.75);
+        bezierVertex(33.83, 45.87, 34.29, 45.23, 34.57, 44.84);
+        bezierVertex(34.85, 44.45, 35.22, 43.95, 35.66, 43.35);
+        bezierVertex(36.1, 42.74, 36.79, 41.85, 37.74, 40.66);
+        bezierVertex(38.68, 39.47, 39.51, 38.48, 40.22, 37.7);
+        bezierVertex(40.93, 36.92, 41.59, 36.27, 42.21, 35.73);
+        bezierVertex(42.82, 35.2, 43.35, 34.77, 43.81, 34.45);
+        bezierVertex(44.28, 34.13, 44.64, 33.9, 44.91, 33.75);
+        bezierVertex(45.17, 33.61, 45.45, 33.47, 45.74, 33.34);
+        bezierVertex(46.03, 33.21, 46.25, 33.12, 46.39, 33.06);
+        bezierVertex(46.53, 33.01, 46.7, 32.95, 46.88, 32.9);
+        bezierVertex(47.06, 32.84, 47.47, 32.75, 48.11, 32.63);
+        bezierVertex(48.74, 32.51, 49.54, 32.45, 50.48, 32.46);
+        bezierVertex(51.43, 32.47, 52.1, 32.52, 52.48, 32.59);
+        bezierVertex(52.87, 32.66, 53.26, 32.76, 53.65, 32.87);
+        bezierVertex(54.04, 32.99, 54.49, 33.16, 55, 33.39);
+        bezierVertex(55.51, 33.61, 55.88, 33.79, 56.11, 33.91);
+        bezierVertex(56.34, 34.04, 56.59, 34.19, 56.84, 34.35);
+        bezierVertex(57.09, 34.51, 57.34, 34.68, 57.57, 34.85);
+        bezierVertex(57.81, 35.03, 58.22, 35.39, 58.81, 35.92);
+        bezierVertex(59.39, 36.46, 59.77, 36.82, 59.94, 37.01);
+        bezierVertex(60.11, 37.19, 60.34, 37.45, 60.63, 37.79);
+        bezierVertex(60.91, 38.12, 61.39, 38.74, 62.06, 39.65);
+        bezierVertex(62.73, 40.56, 63.43, 41.57, 64.15, 42.66);
+        bezierVertex(64.87, 43.75, 65.45, 44.63, 65.88, 45.29);
+        bezierVertex(66.31, 45.95, 66.6, 46.4, 66.75, 46.63);
+        bezierVertex(66.9, 46.85, 67.22, 47.32, 67.7, 48.03);
+        bezierVertex(68.19, 48.73, 68.54, 49.23, 68.74, 49.53);
+        bezierVertex(68.95, 49.82, 69.33, 50.34, 69.87, 51.09);
+        bezierVertex(70.42, 51.85, 70.87, 52.46, 71.23, 52.92);
+        bezierVertex(71.58, 53.39, 72.07, 54, 72.69, 54.78);
+        bezierVertex(73.3, 55.55, 73.9, 56.29, 74.49, 57);
+        bezierVertex(75.07, 57.71, 75.74, 58.53, 76.5, 59.45);
+        bezierVertex(77.25, 60.37, 77.78, 61.01, 78.08, 61.39);
+        bezierVertex(78.38, 61.77, 78.73, 62.21, 79.13, 62.72);
+        bezierVertex(79.52, 63.24, 80.06, 63.98, 80.73, 64.97);
+        bezierVertex(81.41, 65.95, 81.89, 66.69, 82.17, 67.2);
+        bezierVertex(82.46, 67.7, 82.7, 68.17, 82.91, 68.59);
+        bezierVertex(83.11, 69.01, 83.28, 69.41, 83.43, 69.79);
+        bezierVertex(83.58, 70.17, 83.74, 70.63, 83.9, 71.18);
+        bezierVertex(84.05, 71.73, 84.17, 72.22, 84.25, 72.64);
+        bezierVertex(84.33, 73.06, 84.38, 73.37, 84.4, 73.58);
+        bezierVertex(84.42, 73.79, 84.44, 74.16, 84.46, 74.7);
+        bezierVertex(84.47, 75.23, 84.45, 75.84, 84.37, 76.51);
+        bezierVertex(84.3, 77.19, 84.19, 77.84, 84.04, 78.47);
+        bezierVertex(83.88, 79.09, 83.73, 79.59, 83.58, 79.98);
+        bezierVertex(83.44, 80.36, 83.12, 80.96, 82.64, 81.78);
+        bezierVertex(82.16, 82.6, 81.76, 83.2, 81.45, 83.56);
+        bezierVertex(81.14, 83.93, 80.85, 84.24, 80.57, 84.5);
+        bezierVertex(80.29, 84.76, 79.97, 85.02, 79.63, 85.27);
+        bezierVertex(79.28, 85.52, 78.93, 85.75, 78.57, 85.95);
+        bezierVertex(78.21, 86.14, 77.81, 86.33, 77.36, 86.5);
+        bezierVertex(76.91, 86.67, 76.53, 86.8, 76.21, 86.88);
+        bezierVertex(75.89, 86.96, 75.59, 87.03, 75.3, 87.07);
+        bezierVertex(75.02, 87.11, 74.66, 87.14, 74.22, 87.16);
+        bezierVertex(73.78, 87.17, 73.38, 87.17, 73.01, 87.13);
+        bezierVertex(72.64, 87.1, 72.34, 87.06, 72.1, 87.01);
+        bezierVertex(71.86, 86.97, 71.59, 86.9, 71.28, 86.81);
+        bezierVertex(70.97, 86.72, 70.72, 86.64, 70.53, 86.56);
+        bezierVertex(70.33, 86.49, 70.16, 86.42, 70.01, 86.35);
+        bezierVertex(69.85, 86.28, 69.68, 86.19, 69.48, 86.08);
+        bezierVertex(69.28, 85.97, 69, 85.8, 68.63, 85.55);
+        bezierVertex(68.26, 85.31, 67.82, 84.98, 67.32, 84.56);
+        bezierVertex(66.82, 84.14, 66.31, 83.66, 65.79, 83.14);
+        bezierVertex(65.26, 82.61, 64.81, 82.14, 64.44, 81.73);
+        bezierVertex(64.07, 81.32, 63.67, 80.85, 63.23, 80.33);
+        bezierVertex(62.8, 79.82, 62.33, 79.25, 61.82, 78.64);
+        bezierVertex(61.32, 78.03, 60.83, 77.44, 60.36, 76.87);
+        bezierVertex(59.89, 76.31, 59.37, 75.69, 58.8, 75.01);
+        bezierVertex(58.24, 74.34, 57.75, 73.78, 57.35, 73.32);
+        bezierVertex(56.95, 72.86, 56.63, 72.5, 56.39, 72.25);
+        bezierVertex(56.16, 72, 55.91, 71.74, 55.65, 71.49);
+        bezierVertex(55.4, 71.23, 55.14, 70.99, 54.88, 70.75);
+        bezierVertex(54.61, 70.51, 54.41, 70.34, 54.28, 70.23);
+        bezierVertex(54.15, 70.13, 53.98, 70, 53.78, 69.84);
+        bezierVertex(53.57, 69.69, 53.4, 69.57, 53.26, 69.48);
+        bezierVertex(53.12, 69.39, 52.86, 69.26, 52.48, 69.1);
+        bezierVertex(52.1, 68.94, 51.78, 68.83, 51.54, 68.78);
+        bezierVertex(51.43, 68.77, 51.31, 68.77, 51.17, 68.76);
+endShape();
+
+beginShape();
+        vertex(51.44, 25.07);
+        bezierVertex(51.38, 25.07, 51.31, 25.07, 51.22, 25.09);
+        bezierVertex(51.14, 25.1, 51.05, 25.12, 50.97, 25.15);
+        bezierVertex(50.88, 25.17, 50.79, 25.21, 50.7, 25.25);
+        bezierVertex(50.62, 25.28, 50.48, 25.36, 50.29, 25.48);
+        bezierVertex(50.11, 25.6, 49.95, 25.71, 49.83, 25.81);
+        bezierVertex(49.71, 25.91, 49.59, 26.02, 49.48, 26.13);
+        bezierVertex(49.36, 26.23, 49.26, 26.34, 49.16, 26.44);
+        bezierVertex(49.06, 26.54, 48.81, 26.8, 48.43, 27.21);
+        bezierVertex(48.04, 27.63, 47.75, 27.94, 47.57, 28.14);
+        bezierVertex(47.38, 28.35, 47.24, 28.5, 47.15, 28.6);
+        bezierVertex(47.05, 28.7, 46.97, 28.79, 46.89, 28.87);
+        bezierVertex(46.81, 28.95, 46.66, 29.1, 46.44, 29.32);
+        bezierVertex(46.21, 29.55, 46.06, 29.7, 45.97, 29.78);
+        bezierVertex(45.88, 29.87, 45.73, 29.99, 45.54, 30.16);
+        bezierVertex(45.34, 30.32, 45.14, 30.49, 44.94, 30.65);
+        bezierVertex(44.73, 30.81, 44.54, 30.94, 44.37, 31.06);
+        bezierVertex(44.2, 31.18, 44.07, 31.26, 43.98, 31.32);
+        bezierVertex(43.9, 31.37, 43.75, 31.45, 43.55, 31.56);
+        bezierVertex(43.34, 31.67, 43.2, 31.74, 43.11, 31.78);
+        bezierVertex(43.03, 31.82, 42.88, 31.87, 42.68, 31.95);
+        bezierVertex(42.48, 32.03, 42.21, 32.11, 41.87, 32.19);
+        bezierVertex(41.54, 32.27, 41.28, 32.32, 41.11, 32.34);
+        bezierVertex(40.94, 32.36, 40.69, 32.37, 40.35, 32.37);
+        bezierVertex(40.01, 32.37, 39.77, 32.36, 39.61, 32.34);
+        bezierVertex(39.45, 32.32, 39.27, 32.29, 39.07, 32.24);
+        bezierVertex(38.86, 32.19, 38.69, 32.14, 38.57, 32.1);
+        bezierVertex(38.45, 32.05, 38.35, 32.02, 38.28, 31.99);
+        bezierVertex(38.21, 31.95, 38.14, 31.92, 38.05, 31.87);
+        bezierVertex(37.96, 31.83, 37.86, 31.77, 37.74, 31.69);
+        bezierVertex(37.63, 31.62, 37.49, 31.51, 37.31, 31.37);
+        bezierVertex(37.15, 31.22, 37.01, 31.1, 36.91, 30.99);
+        bezierVertex(36.81, 30.88, 36.71, 30.75, 36.61, 30.59);
+        bezierVertex(36.5, 30.44, 36.4, 30.25, 36.29, 30.02);
+        bezierVertex(36.18, 29.79, 36.11, 29.61, 36.07, 29.48);
+        bezierVertex(36.03, 29.36, 35.99, 29.21, 35.96, 29.04);
+        bezierVertex(35.93, 28.87, 35.91, 28.69, 35.9, 28.51);
+        bezierVertex(35.88, 28.33, 35.88, 28.18, 35.88, 28.07);
+        bezierVertex(35.89, 27.97, 35.9, 27.84, 35.91, 27.71);
+        bezierVertex(35.93, 27.57, 35.96, 27.42, 35.99, 27.24);
+        bezierVertex(36.03, 27.06, 36.08, 26.88, 36.13, 26.69);
+        bezierVertex(36.19, 26.5, 36.25, 26.32, 36.31, 26.15);
+        bezierVertex(36.38, 25.99, 36.45, 25.81, 36.53, 25.63);
+        bezierVertex(36.62, 25.45, 36.69, 25.29, 36.77, 25.14);
+        bezierVertex(36.84, 25, 37, 24.72, 37.24, 24.32);
+        bezierVertex(37.48, 23.91, 37.62, 23.67, 37.67, 23.6);
+        bezierVertex(37.72, 23.53, 37.85, 23.35, 38.05, 23.07);
+        bezierVertex(38.25, 22.78, 38.38, 22.6, 38.44, 22.52);
+        bezierVertex(38.5, 22.44, 38.62, 22.29, 38.79, 22.07);
+        bezierVertex(38.96, 21.85, 39.09, 21.69, 39.18, 21.59);
+        bezierVertex(39.27, 21.48, 39.35, 21.38, 39.43, 21.29);
+        bezierVertex(39.51, 21.2, 39.62, 21.07, 39.76, 20.9);
+        bezierVertex(39.9, 20.74, 40.1, 20.51, 40.35, 20.22);
+        bezierVertex(40.6, 19.93, 40.8, 19.69, 40.95, 19.52);
+        bezierVertex(41.1, 19.34, 41.24, 19.18, 41.35, 19.05);
+        bezierVertex(41.46, 18.91, 41.61, 18.74, 41.78, 18.51);
+        bezierVertex(41.96, 18.29, 42.11, 18.1, 42.23, 17.95);
+        bezierVertex(42.36, 17.79, 42.46, 17.66, 42.53, 17.56);
+        bezierVertex(42.61, 17.46, 42.75, 17.28, 42.95, 17.02);
+        bezierVertex(43.14, 16.76, 43.38, 16.45, 43.65, 16.09);
+        bezierVertex(43.92, 15.73, 44.11, 15.47, 44.24, 15.31);
+        bezierVertex(44.36, 15.15, 44.52, 14.95, 44.71, 14.7);
+        bezierVertex(44.9, 14.46, 45.2, 14.09, 45.61, 13.61);
+        bezierVertex(46.02, 13.12, 46.38, 12.72, 46.69, 12.4);
+        bezierVertex(47, 12.08, 47.28, 11.82, 47.55, 11.6);
+        bezierVertex(47.81, 11.38, 48.04, 11.2, 48.25, 11.07);
+        bezierVertex(48.45, 10.94, 48.6, 10.85, 48.72, 10.79);
+        bezierVertex(48.83, 10.73, 48.95, 10.67, 49.08, 10.62);
+        bezierVertex(49.21, 10.57, 49.3, 10.53, 49.36, 10.51);
+        bezierVertex(49.43, 10.49, 49.5, 10.46, 49.57, 10.44);
+        bezierVertex(49.65, 10.42, 49.83, 10.38, 50.11, 10.33);
+        bezierVertex(50.38, 10.28, 50.73, 10.26, 51.14, 10.26);
+        bezierVertex(51.55, 10.27, 51.84, 10.29, 52, 10.31);
+        bezierVertex(52.17, 10.34, 52.34, 10.38, 52.51, 10.43);
+        bezierVertex(52.68, 10.48, 52.88, 10.55, 53.1, 10.64);
+        bezierVertex(53.32, 10.73, 53.48, 10.8, 53.58, 10.85);
+        bezierVertex(53.68, 10.91, 53.78, 10.97, 53.89, 11.03);
+        bezierVertex(54, 11.1, 54.11, 11.17, 54.21, 11.24);
+        bezierVertex(54.32, 11.31, 54.49, 11.46, 54.75, 11.67);
+        bezierVertex(55, 11.89, 55.16, 12.04, 55.24, 12.12);
+        bezierVertex(55.31, 12.19, 55.41, 12.3, 55.53, 12.43);
+        bezierVertex(55.66, 12.57, 55.87, 12.82, 56.16, 13.2);
+        bezierVertex(56.45, 13.57, 56.75, 13.98, 57.06, 14.42);
+        bezierVertex(57.38, 14.87, 57.63, 15.23, 57.81, 15.5);
+        bezierVertex(58, 15.77, 58.13, 15.95, 58.19, 16.04);
+        bezierVertex(58.26, 16.13, 58.39, 16.32, 58.6, 16.61);
+        bezierVertex(58.81, 16.9, 58.97, 17.1, 59.06, 17.22);
+        bezierVertex(59.15, 17.34, 59.31, 17.56, 59.55, 17.86);
+        bezierVertex(59.78, 18.17, 59.98, 18.42, 60.13, 18.61);
+        bezierVertex(60.29, 18.8, 60.5, 19.05, 60.76, 19.36);
+        bezierVertex(61.03, 19.68, 61.29, 19.98, 61.55, 20.27);
+        bezierVertex(61.8, 20.56, 62.09, 20.9, 62.42, 21.27);
+        bezierVertex(62.74, 21.64, 62.97, 21.91, 63.1, 22.06);
+        bezierVertex(63.23, 22.21, 63.39, 22.4, 63.56, 22.61);
+        bezierVertex(63.73, 22.81, 63.96, 23.12, 64.25, 23.52);
+        bezierVertex(64.55, 23.92, 64.75, 24.22, 64.88, 24.43);
+        bezierVertex(65, 24.64, 65.11, 24.83, 65.2, 25);
+        bezierVertex(65.28, 25.17, 65.36, 25.33, 65.43, 25.49);
+        bezierVertex(65.49, 25.64, 65.56, 25.83, 65.63, 26.06);
+        bezierVertex(65.69, 26.28, 65.75, 26.48, 65.78, 26.65);
+        bezierVertex(65.81, 26.82, 65.83, 26.95, 65.84, 27.03);
+        bezierVertex(65.85, 27.12, 65.86, 27.27, 65.87, 27.49);
+        bezierVertex(65.88, 27.71, 65.86, 27.95, 65.83, 28.23);
+        bezierVertex(65.8, 28.51, 65.75, 28.77, 65.69, 29.03);
+        bezierVertex(65.62, 29.28, 65.55, 29.49, 65.49, 29.64);
+        bezierVertex(65.43, 29.8, 65.29, 30.04, 65.08, 30.38);
+        bezierVertex(64.87, 30.71, 64.7, 30.95, 64.57, 31.1);
+        bezierVertex(64.43, 31.25, 64.3, 31.38, 64.18, 31.49);
+        bezierVertex(64.06, 31.59, 63.93, 31.7, 63.78, 31.8);
+        bezierVertex(63.63, 31.9, 63.47, 32, 63.32, 32.08);
+        bezierVertex(63.16, 32.16, 62.99, 32.23, 62.79, 32.3);
+        bezierVertex(62.6, 32.37, 62.43, 32.42, 62.29, 32.46);
+        bezierVertex(62.15, 32.49, 62.02, 32.52, 61.9, 32.53);
+        bezierVertex(61.78, 32.55, 61.62, 32.56, 61.43, 32.57);
+        bezierVertex(61.24, 32.58, 61.07, 32.57, 60.91, 32.56);
+        bezierVertex(60.74, 32.55, 60.61, 32.53, 60.51, 32.51);
+        bezierVertex(60.41, 32.49, 60.29, 32.47, 60.16, 32.43);
+        bezierVertex(60.02, 32.39, 59.91, 32.36, 59.83, 32.33);
+        bezierVertex(59.75, 32.3, 59.67, 32.27, 59.6, 32.24);
+        bezierVertex(59.54, 32.21, 59.46, 32.17, 59.38, 32.13);
+        bezierVertex(59.29, 32.09, 59.17, 32.02, 59.01, 31.92);
+        bezierVertex(58.85, 31.82, 58.66, 31.68, 58.44, 31.51);
+        bezierVertex(58.22, 31.34, 58, 31.14, 57.77, 30.93);
+        bezierVertex(57.55, 30.72, 57.35, 30.52, 57.19, 30.36);
+        bezierVertex(57.03, 30.19, 56.86, 30, 56.67, 29.79);
+        bezierVertex(56.48, 29.58, 56.27, 29.35, 56.05, 29.1);
+        bezierVertex(55.84, 28.85, 55.62, 28.61, 55.42, 28.38);
+        bezierVertex(55.22, 28.14, 54.99, 27.89, 54.75, 27.62);
+        bezierVertex(54.5, 27.34, 54.29, 27.11, 54.11, 26.93);
+        bezierVertex(53.94, 26.74, 53.8, 26.59, 53.7, 26.49);
+        bezierVertex(53.6, 26.39, 53.49, 26.28, 53.38, 26.18);
+        bezierVertex(53.27, 26.08, 53.16, 25.98, 53.04, 25.88);
+        bezierVertex(52.93, 25.78, 52.84, 25.71, 52.79, 25.67);
+        bezierVertex(52.73, 25.62, 52.66, 25.57, 52.57, 25.51);
+        bezierVertex(52.48, 25.45, 52.4, 25.4, 52.34, 25.36);
+        bezierVertex(52.28, 25.32, 52.17, 25.27, 52, 25.21);
+        bezierVertex(51.84, 25.14, 51.7, 25.1, 51.6, 25.07);
+        bezierVertex(51.55, 25.07, 51.5, 25.07, 51.44, 25.07);
+endShape();
+
+pop();
+}
+
+function mentonTransitionStep(xloc,yloc, rotation) {
+
+ push();
+     translate(xloc+24,yloc);
+     rotate(PI/2+radians(rotation));
+     scale(0.5);
+fill(ctransitionBadgesBlueBG);
+noStroke();
+beginShape();
+        vertex(44.44, 95.3);
+        bezierVertex(27.72, 95.26, 18.68, 95.22, 17.3, 95.16);
+        bezierVertex(15.92, 95.09, 14.88, 95.03, 14.18, 94.95);
+        bezierVertex(13.48, 94.87, 12.9, 94.8, 12.44, 94.72);
+        bezierVertex(11.98, 94.64, 11.57, 94.56, 11.19, 94.48);
+        bezierVertex(10.81, 94.39, 10.47, 94.31, 10.17, 94.23);
+        bezierVertex(9.88, 94.14, 9.6, 94.06, 9.34, 93.97);
+        bezierVertex(9.08, 93.88, 8.76, 93.76, 8.37, 93.61);
+        bezierVertex(7.99, 93.45, 7.5, 93.21, 6.92, 92.9);
+        bezierVertex(6.34, 92.59, 5.97, 92.38, 5.8, 92.28);
+        bezierVertex(5.63, 92.17, 5.46, 92.05, 5.28, 91.93);
+        bezierVertex(5.1, 91.81, 4.9, 91.66, 4.69, 91.51);
+        bezierVertex(4.48, 91.35, 4.26, 91.17, 4.02, 90.98);
+        bezierVertex(3.77, 90.67, 3.55, 90.38, 3.37, 90.13);
+        bezierVertex(3.19, 89.88, 3.03, 89.65, 2.9, 89.43);
+        bezierVertex(2.75, 89.21, 2.51, 88.77, 2.17, 88.11);
+        bezierVertex(1.83, 87.44, 1.6, 86.96, 1.48, 86.64);
+        bezierVertex(1.36, 86.33, 1.24, 85.98, 1.13, 85.6);
+        bezierVertex(1.01, 85.22, 0.9, 84.78, 0.79, 84.29);
+        bezierVertex(0.68, 83.8, 0.58, 83.25, 0.49, 82.66);
+        bezierVertex(0.4, 82.06, 0.32, 81.41, 0.26, 80.69);
+        bezierVertex(0.2, 79.98, 0.14, 77.96, 0.08, 74.63);
+        bezierVertex(0.02, 71.31, -0, 61.74, 0, 45.92);
+        bezierVertex(0, 30.1, 0.02, 21.49, 0.05, 20.09);
+        bezierVertex(0.07, 18.69, 0.11, 17.58, 0.15, 16.77);
+        bezierVertex(0.2, 15.97, 0.24, 15.36, 0.27, 14.96);
+        bezierVertex(0.31, 14.56, 0.35, 14.17, 0.4, 13.78);
+        bezierVertex(0.44, 13.4, 0.49, 13.03, 0.55, 12.67);
+        bezierVertex(0.61, 12.32, 0.67, 11.97, 0.73, 11.64);
+        bezierVertex(0.79, 11.31, 0.86, 10.99, 0.94, 10.68);
+        bezierVertex(1.01, 10.37, 1.09, 10.06, 1.17, 9.77);
+        bezierVertex(1.25, 9.48, 1.34, 9.2, 1.42, 8.94);
+        bezierVertex(1.51, 8.68, 1.72, 8.15, 2.08, 7.35);
+        bezierVertex(2.43, 6.54, 2.72, 5.95, 2.95, 5.58);
+        bezierVertex(3.18, 5.2, 3.41, 4.84, 3.66, 4.5);
+        bezierVertex(3.91, 4.16, 4.17, 3.83, 4.45, 3.52);
+        bezierVertex(4.67, 3.36, 4.9, 3.19, 5.15, 3.03);
+        bezierVertex(5.4, 2.87, 5.66, 2.72, 5.93, 2.57);
+        bezierVertex(6.2, 2.42, 6.49, 2.28, 6.78, 2.15);
+        bezierVertex(7.07, 2.02, 7.57, 1.82, 8.29, 1.57);
+        bezierVertex(9.01, 1.32, 9.53, 1.16, 9.87, 1.07);
+        bezierVertex(10.21, 0.99, 10.64, 0.89, 11.17, 0.79);
+        bezierVertex(11.69, 0.69, 12.26, 0.6, 12.89, 0.51);
+        bezierVertex(13.51, 0.43, 14.15, 0.36, 14.81, 0.3);
+        bezierVertex(15.48, 0.24, 16.2, 0.19, 17, 0.15);
+        bezierVertex(17.8, 0.12, 20.91, 0.06, 26.34, 0);
+        bezierVertex(56.35, 0, 72.42, 0.02, 74.54, 0.04);
+        bezierVertex(76.66, 0.07, 78.3, 0.11, 79.46, 0.16);
+        bezierVertex(80.62, 0.21, 81.43, 0.26, 81.9, 0.29);
+        bezierVertex(82.37, 0.33, 82.8, 0.36, 83.18, 0.4);
+        bezierVertex(83.56, 0.44, 83.97, 0.49, 84.41, 0.54);
+        bezierVertex(84.85, 0.6, 85.25, 0.65, 85.62, 0.71);
+        bezierVertex(85.98, 0.76, 86.38, 0.83, 86.81, 0.91);
+        bezierVertex(87.24, 0.99, 87.78, 1.1, 88.43, 1.26);
+        bezierVertex(89.07, 1.41, 89.72, 1.59, 90.38, 1.79);
+        bezierVertex(91.04, 1.99, 91.6, 2.19, 92.08, 2.38);
+        bezierVertex(92.56, 2.57, 93.04, 2.8, 93.54, 3.06);
+        bezierVertex(94.04, 3.33, 94.55, 3.64, 95.08, 4);
+        bezierVertex(95.37, 4.35, 95.65, 4.71, 95.92, 5.08);
+        bezierVertex(96.18, 5.45, 96.4, 5.78, 96.58, 6.08);
+        bezierVertex(96.76, 6.37, 96.93, 6.69, 97.11, 7.03);
+        bezierVertex(97.28, 7.37, 97.57, 8.02, 97.97, 8.99);
+        bezierVertex(98.37, 9.96, 98.64, 10.63, 98.76, 11);
+        bezierVertex(98.88, 11.37, 99, 11.77, 99.13, 12.19);
+        bezierVertex(99.25, 12.61, 99.37, 13.06, 99.48, 13.54);
+        bezierVertex(99.59, 14.01, 99.7, 14.52, 99.8, 15.05);
+        bezierVertex(99.91, 15.59, 99.99, 16.12, 100.07, 16.64);
+        bezierVertex(100.14, 17.16, 100.21, 17.68, 100.26, 18.19);
+        bezierVertex(100.31, 18.7, 100.37, 19.43, 100.43, 20.37);
+        bezierVertex(100.49, 21.32, 100.53, 22.31, 100.56, 23.34);
+        bezierVertex(100.59, 24.38, 100.61, 31.3, 100.62, 44.1);
+        bezierVertex(100.63, 56.9, 100.64, 64.13, 100.63, 65.78);
+        bezierVertex(100.62, 67.43, 100.61, 68.61, 100.6, 69.33);
+        bezierVertex(100.58, 70.04, 100.56, 70.79, 100.54, 71.58);
+        bezierVertex(100.51, 72.37, 100.48, 73.08, 100.44, 73.72);
+        bezierVertex(100.4, 74.36, 100.36, 74.94, 100.31, 75.47);
+        bezierVertex(100.26, 76, 100.2, 76.58, 100.11, 77.22);
+        bezierVertex(100.02, 77.85, 99.94, 78.41, 99.85, 78.9);
+        bezierVertex(99.76, 79.38, 99.67, 79.83, 99.57, 80.25);
+        bezierVertex(99.48, 80.67, 99.38, 81.05, 99.28, 81.4);
+        bezierVertex(99.18, 81.75, 99.07, 82.12, 98.95, 82.5);
+        bezierVertex(98.83, 82.88, 98.7, 83.27, 98.55, 83.67);
+        bezierVertex(98.4, 84.07, 98.14, 84.69, 97.77, 85.53);
+        bezierVertex(97.39, 86.36, 97.04, 87.07, 96.72, 87.64);
+        bezierVertex(96.4, 88.21, 96.12, 88.66, 95.89, 89.01);
+        bezierVertex(95.66, 89.35, 95.33, 89.79, 94.9, 90.32);
+        bezierVertex(94.56, 90.57, 94.27, 90.78, 94.01, 90.94);
+        bezierVertex(93.76, 91.11, 93.41, 91.32, 92.97, 91.56);
+        bezierVertex(92.53, 91.8, 92.11, 92.02, 91.72, 92.2);
+        bezierVertex(91.32, 92.39, 90.87, 92.59, 90.35, 92.79);
+        bezierVertex(89.84, 93, 89.34, 93.19, 88.85, 93.35);
+        bezierVertex(88.36, 93.52, 87.87, 93.67, 87.39, 93.8);
+        bezierVertex(86.91, 93.94, 86.44, 94.06, 85.98, 94.16);
+        bezierVertex(85.51, 94.27, 85.06, 94.36, 84.62, 94.44);
+        bezierVertex(84.18, 94.53, 83.76, 94.6, 83.37, 94.65);
+        bezierVertex(82.98, 94.71, 82.52, 94.77, 82, 94.83);
+        bezierVertex(81.47, 94.89, 80.98, 94.94, 80.53, 94.98);
+        bezierVertex(80.08, 95.02, 79.29, 95.06, 78.18, 95.12);
+        bezierVertex(77.06, 95.17, 75.59, 95.21, 73.78, 95.24);
+        bezierVertex(71.96, 95.27, 58.41, 95.29, 33.14, 95.3);
+endShape();
+fill(ctransitionBadgesWhite);
+
+beginShape();
+        vertex(51.77, 56.43);
+        bezierVertex(51.64, 56.43, 51.47, 56.44, 51.28, 56.47);
+        bezierVertex(51.09, 56.5, 50.89, 56.55, 50.68, 56.62);
+        bezierVertex(50.48, 56.69, 50.28, 56.77, 50.08, 56.86);
+        bezierVertex(49.88, 56.96, 49.57, 57.15, 49.14, 57.44);
+        bezierVertex(48.7, 57.73, 48.34, 58, 48.06, 58.25);
+        bezierVertex(47.78, 58.5, 47.51, 58.76, 47.25, 59.02);
+        bezierVertex(46.99, 59.28, 46.74, 59.54, 46.51, 59.79);
+        bezierVertex(46.28, 60.03, 45.72, 60.66, 44.83, 61.68);
+        bezierVertex(43.94, 62.7, 43.28, 63.46, 42.85, 63.96);
+        bezierVertex(42.42, 64.46, 42.1, 64.84, 41.88, 65.09);
+        bezierVertex(41.66, 65.34, 41.46, 65.56, 41.28, 65.75);
+        bezierVertex(41.11, 65.95, 40.76, 66.32, 40.24, 66.86);
+        bezierVertex(39.72, 67.41, 39.36, 67.78, 39.15, 67.99);
+        bezierVertex(38.95, 68.19, 38.62, 68.5, 38.17, 68.91);
+        bezierVertex(37.72, 69.31, 37.26, 69.71, 36.78, 70.1);
+        bezierVertex(36.31, 70.5, 35.87, 70.84, 35.48, 71.12);
+        bezierVertex(35.08, 71.41, 34.79, 71.62, 34.58, 71.75);
+        bezierVertex(34.38, 71.88, 34.04, 72.08, 33.58, 72.34);
+        bezierVertex(33.11, 72.6, 32.77, 72.78, 32.58, 72.88);
+        bezierVertex(32.38, 72.97, 32.04, 73.11, 31.58, 73.3);
+        bezierVertex(31.11, 73.49, 30.49, 73.68, 29.71, 73.88);
+        bezierVertex(28.94, 74.09, 28.35, 74.21, 27.96, 74.27);
+        bezierVertex(27.57, 74.32, 26.98, 74.34, 26.2, 74.34);
+        bezierVertex(25.42, 74.34, 24.85, 74.31, 24.49, 74.26);
+        bezierVertex(24.14, 74.21, 23.72, 74.13, 23.24, 74.01);
+        bezierVertex(22.76, 73.88, 22.38, 73.77, 22.1, 73.66);
+        bezierVertex(21.82, 73.55, 21.59, 73.46, 21.44, 73.39);
+        bezierVertex(21.28, 73.31, 21.09, 73.22, 20.89, 73.11);
+        bezierVertex(20.69, 73, 20.46, 72.85, 20.19, 72.67);
+        bezierVertex(19.93, 72.49, 19.6, 72.22, 19.2, 71.87);
+        bezierVertex(18.81, 71.52, 18.5, 71.21, 18.27, 70.94);
+        bezierVertex(18.05, 70.67, 17.81, 70.35, 17.57, 69.97);
+        bezierVertex(17.33, 69.6, 17.09, 69.13, 16.84, 68.57);
+        bezierVertex(16.59, 68, 16.42, 67.56, 16.33, 67.25);
+        bezierVertex(16.24, 66.94, 16.16, 66.58, 16.08, 66.17);
+        bezierVertex(16.01, 65.75, 15.96, 65.32, 15.93, 64.87);
+        bezierVertex(15.9, 64.42, 15.89, 64.06, 15.9, 63.8);
+        bezierVertex(15.91, 63.53, 15.93, 63.23, 15.97, 62.9);
+        bezierVertex(16.01, 62.57, 16.07, 62.18, 16.16, 61.75);
+        bezierVertex(16.24, 61.32, 16.35, 60.87, 16.48, 60.41);
+        bezierVertex(16.61, 59.94, 16.75, 59.51, 16.89, 59.09);
+        bezierVertex(17.04, 58.68, 17.21, 58.25, 17.4, 57.81);
+        bezierVertex(17.59, 57.36, 17.77, 56.96, 17.94, 56.61);
+        bezierVertex(18.11, 56.25, 18.48, 55.58, 19.03, 54.59);
+        bezierVertex(19.58, 53.6, 19.92, 53.01, 20.03, 52.83);
+        bezierVertex(20.14, 52.65, 20.43, 52.21, 20.89, 51.52);
+        bezierVertex(21.35, 50.82, 21.66, 50.38, 21.8, 50.18);
+        bezierVertex(21.94, 49.98, 22.21, 49.61, 22.61, 49.08);
+        bezierVertex(23, 48.55, 23.3, 48.15, 23.5, 47.89);
+        bezierVertex(23.7, 47.64, 23.9, 47.39, 24.08, 47.17);
+        bezierVertex(24.26, 46.94, 24.51, 46.62, 24.84, 46.21);
+        bezierVertex(25.18, 45.8, 25.63, 45.24, 26.2, 44.53);
+        bezierVertex(26.77, 43.82, 27.24, 43.25, 27.59, 42.81);
+        bezierVertex(27.94, 42.38, 28.25, 42, 28.51, 41.67);
+        bezierVertex(28.77, 41.34, 29.1, 40.9, 29.51, 40.36);
+        bezierVertex(29.92, 39.82, 30.27, 39.35, 30.55, 38.96);
+        bezierVertex(30.83, 38.58, 31.06, 38.26, 31.24, 38.01);
+        bezierVertex(31.42, 37.77, 31.74, 37.33, 32.19, 36.69);
+        bezierVertex(32.64, 36.05, 33.18, 35.29, 33.81, 34.41);
+        bezierVertex(34.43, 33.53, 34.88, 32.9, 35.17, 32.51);
+        bezierVertex(35.45, 32.11, 35.81, 31.61, 36.26, 31.01);
+        bezierVertex(36.7, 30.41, 37.39, 29.51, 38.33, 28.32);
+        bezierVertex(39.28, 27.13, 40.1, 26.15, 40.82, 25.37);
+        bezierVertex(41.53, 24.59, 42.19, 23.93, 42.8, 23.4);
+        bezierVertex(43.41, 22.86, 43.95, 22.44, 44.41, 22.12);
+        bezierVertex(44.87, 21.8, 45.24, 21.57, 45.5, 21.42);
+        bezierVertex(45.77, 21.27, 46.05, 21.13, 46.34, 21);
+        bezierVertex(46.62, 20.87, 46.84, 20.78, 46.99, 20.73);
+        bezierVertex(47.13, 20.67, 47.29, 20.62, 47.47, 20.56);
+        bezierVertex(47.65, 20.51, 48.06, 20.42, 48.7, 20.29);
+        bezierVertex(49.34, 20.17, 50.13, 20.12, 51.08, 20.13);
+        bezierVertex(52.03, 20.14, 52.69, 20.18, 53.08, 20.25);
+        bezierVertex(53.47, 20.33, 53.86, 20.42, 54.25, 20.54);
+        bezierVertex(54.64, 20.66, 55.09, 20.83, 55.6, 21.05);
+        bezierVertex(56.11, 21.28, 56.48, 21.45, 56.71, 21.58);
+        bezierVertex(56.94, 21.71, 57.18, 21.85, 57.43, 22.01);
+        bezierVertex(57.69, 22.18, 57.93, 22.34, 58.17, 22.52);
+        bezierVertex(58.41, 22.7, 58.82, 23.05, 59.4, 23.59);
+        bezierVertex(59.99, 24.13, 60.37, 24.49, 60.54, 24.67);
+        bezierVertex(60.71, 24.86, 60.94, 25.12, 61.22, 25.45);
+        bezierVertex(61.5, 25.79, 61.98, 26.41, 62.66, 27.32);
+        bezierVertex(63.33, 28.23, 64.03, 29.23, 64.75, 30.33);
+        bezierVertex(65.47, 31.42, 66.04, 32.3, 66.47, 32.96);
+        bezierVertex(66.9, 33.62, 67.19, 34.06, 67.35, 34.29);
+        bezierVertex(67.5, 34.52, 67.81, 34.99, 68.3, 35.69);
+        bezierVertex(68.79, 36.4, 69.13, 36.9, 69.34, 37.19);
+        bezierVertex(69.55, 37.48, 69.92, 38.01, 70.47, 38.76);
+        bezierVertex(71.02, 39.51, 71.47, 40.12, 71.83, 40.59);
+        bezierVertex(72.18, 41.05, 72.67, 41.67, 73.28, 42.44);
+        bezierVertex(73.9, 43.21, 74.5, 43.96, 75.08, 44.67);
+        bezierVertex(75.67, 45.38, 76.34, 46.2, 77.09, 47.11);
+        bezierVertex(77.85, 48.03, 78.37, 48.68, 78.67, 49.06);
+        bezierVertex(78.97, 49.43, 79.32, 49.88, 79.72, 50.39);
+        bezierVertex(80.12, 50.9, 80.66, 51.65, 81.33, 52.63);
+        bezierVertex(82, 53.61, 82.48, 54.36, 82.77, 54.86);
+        bezierVertex(83.05, 55.37, 83.3, 55.83, 83.5, 56.25);
+        bezierVertex(83.7, 56.68, 83.88, 57.08, 84.03, 57.45);
+        bezierVertex(84.18, 57.83, 84.33, 58.3, 84.49, 58.85);
+        bezierVertex(84.65, 59.4, 84.77, 59.89, 84.85, 60.31);
+        bezierVertex(84.92, 60.73, 84.97, 61.04, 85, 61.25);
+        bezierVertex(85.02, 61.46, 85.04, 61.83, 85.05, 62.36);
+        bezierVertex(85.07, 62.9, 85.04, 63.5, 84.97, 64.18);
+        bezierVertex(84.9, 64.86, 84.79, 65.51, 84.63, 66.13);
+        bezierVertex(84.48, 66.76, 84.33, 67.26, 84.18, 67.64);
+        bezierVertex(84.03, 68.03, 83.72, 68.63, 83.24, 69.45);
+        bezierVertex(82.76, 70.27, 82.36, 70.86, 82.05, 71.23);
+        bezierVertex(81.74, 71.59, 81.44, 71.91, 81.16, 72.17);
+        bezierVertex(80.88, 72.43, 80.57, 72.68, 80.23, 72.94);
+        bezierVertex(79.88, 73.19, 79.53, 73.41, 79.17, 73.61);
+        bezierVertex(78.81, 73.81, 78.41, 73.99, 77.96, 74.17);
+        bezierVertex(77.51, 74.34, 77.13, 74.46, 76.81, 74.55);
+        bezierVertex(76.49, 74.63, 76.18, 74.69, 75.9, 74.73);
+        bezierVertex(75.61, 74.78, 75.25, 74.81, 74.82, 74.83);
+        bezierVertex(74.38, 74.84, 73.98, 74.83, 73.6, 74.8);
+        bezierVertex(73.23, 74.76, 72.93, 74.72, 72.7, 74.68);
+        bezierVertex(72.46, 74.63, 72.19, 74.57, 71.88, 74.47);
+        bezierVertex(71.57, 74.38, 71.32, 74.3, 71.12, 74.23);
+        bezierVertex(70.93, 74.16, 70.76, 74.08, 70.6, 74.01);
+        bezierVertex(70.45, 73.94, 70.28, 73.85, 70.08, 73.75);
+        bezierVertex(69.88, 73.64, 69.6, 73.46, 69.23, 73.22);
+        bezierVertex(68.86, 72.97, 68.42, 72.64, 67.92, 72.22);
+        bezierVertex(67.42, 71.8, 66.91, 71.33, 66.38, 70.8);
+        bezierVertex(65.86, 70.28, 65.41, 69.81, 65.04, 69.39);
+        bezierVertex(64.67, 68.98, 64.27, 68.52, 63.83, 68);
+        bezierVertex(63.39, 67.48, 62.92, 66.92, 62.42, 66.31);
+        bezierVertex(61.91, 65.7, 61.43, 65.11, 60.96, 64.54);
+        bezierVertex(60.49, 63.97, 59.97, 63.35, 59.4, 62.68);
+        bezierVertex(58.83, 62.01, 58.35, 61.44, 57.94, 60.99);
+        bezierVertex(57.54, 60.53, 57.22, 60.17, 56.99, 59.92);
+        bezierVertex(56.75, 59.66, 56.51, 59.41, 56.25, 59.15);
+        bezierVertex(56, 58.9, 55.74, 58.65, 55.47, 58.41);
+        bezierVertex(55.21, 58.18, 55.01, 58, 54.88, 57.9);
+        bezierVertex(54.75, 57.79, 54.58, 57.66, 54.38, 57.51);
+        bezierVertex(54.17, 57.36, 54, 57.23, 53.86, 57.14);
+        bezierVertex(53.72, 57.06, 53.46, 56.93, 53.08, 56.77);
+        bezierVertex(52.7, 56.61, 52.38, 56.5, 52.14, 56.45);
+        bezierVertex(52.03, 56.44, 51.91, 56.43, 51.77, 56.43);
+
+endShape();
+
+pop();
+}
+
+function mentonTransitionRedescribe(xloc,yloc, rotation) {
+
+ push();
+     translate(xloc+24,yloc);
+     rotate(PI/2+radians(rotation));
+     scale(0.5);
+fill(ctransitionBadgesBlueBG);
+noStroke();
+beginShape();
+        vertex(-6.36, 47.83);
+        bezierVertex(-23.08, 47.79, -32.13, 47.75, -33.51, 47.69);
+        bezierVertex(-34.89, 47.62, -35.93, 47.56, -36.63, 47.48);
+        bezierVertex(-37.33, 47.4, -37.91, 47.33, -38.36, 47.25);
+        bezierVertex(-38.82, 47.17, -39.24, 47.09, -39.62, 47.01);
+        bezierVertex(-39.99, 46.92, -40.33, 46.84, -40.63, 46.76);
+        bezierVertex(-40.93, 46.67, -41.21, 46.59, -41.46, 46.5);
+        bezierVertex(-41.72, 46.41, -42.04, 46.29, -42.43, 46.14);
+        bezierVertex(-42.82, 45.98, -43.3, 45.74, -43.88, 45.43);
+        bezierVertex(-44.46, 45.12, -44.83, 44.91, -45, 44.81);
+        bezierVertex(-45.17, 44.7, -45.34, 44.58, -45.52, 44.46);
+        bezierVertex(-45.7, 44.34, -45.9, 44.19, -46.11, 44.04);
+        bezierVertex(-46.32, 43.88, -46.54, 43.7, -46.78, 43.51);
+        bezierVertex(-47.03, 43.2, -47.25, 42.91, -47.43, 42.66);
+        bezierVertex(-47.61, 42.41, -47.77, 42.18, -47.91, 41.96);
+        bezierVertex(-48.05, 41.74, -48.29, 41.3, -48.63, 40.64);
+        bezierVertex(-48.97, 39.97, -49.2, 39.49, -49.32, 39.17);
+        bezierVertex(-49.44, 38.86, -49.56, 38.51, -49.68, 38.13);
+        bezierVertex(-49.79, 37.75, -49.9, 37.31, -50.01, 36.82);
+        bezierVertex(-50.12, 36.33, -50.22, 35.78, -50.31, 35.19);
+        bezierVertex(-50.41, 34.59, -50.48, 33.94, -50.54, 33.22);
+        bezierVertex(-50.61, 32.51, -50.67, 30.49, -50.72, 27.16);
+        bezierVertex(-50.78, 23.84, -50.81, 14.27, -50.8, -1.55);
+        bezierVertex(-50.8, -17.37, -50.78, -25.98, -50.76, -27.38);
+        bezierVertex(-50.73, -28.78, -50.69, -29.89, -50.65, -30.7);
+        bezierVertex(-50.61, -31.51, -50.57, -32.11, -50.53, -32.51);
+        bezierVertex(-50.49, -32.91, -50.45, -33.3, -50.41, -33.69);
+        bezierVertex(-50.36, -34.07, -50.31, -34.44, -50.25, -34.8);
+        bezierVertex(-50.2, -35.15, -50.14, -35.5, -50.07, -35.83);
+        bezierVertex(-50.01, -36.16, -49.94, -36.48, -49.87, -36.79);
+        bezierVertex(-49.79, -37.1, -49.72, -37.41, -49.63, -37.7);
+        bezierVertex(-49.55, -37.99, -49.47, -38.27, -49.38, -38.53);
+        bezierVertex(-49.3, -38.79, -49.08, -39.32, -48.73, -40.12);
+        bezierVertex(-48.37, -40.93, -48.08, -41.52, -47.86, -41.89);
+        bezierVertex(-47.63, -42.27, -47.39, -42.63, -47.14, -42.97);
+        bezierVertex(-46.89, -43.31, -46.63, -43.64, -46.36, -43.95);
+        bezierVertex(-46.14, -44.11, -45.9, -44.28, -45.65, -44.44);
+        bezierVertex(-45.4, -44.6, -45.14, -44.75, -44.87, -44.9);
+        bezierVertex(-44.6, -45.05, -44.32, -45.19, -44.03, -45.32);
+        bezierVertex(-43.74, -45.45, -43.23, -45.65, -42.52, -45.9);
+        bezierVertex(-41.8, -46.15, -41.27, -46.31, -40.93, -46.4);
+        bezierVertex(-40.59, -46.48, -40.16, -46.58, -39.64, -46.68);
+        bezierVertex(-39.11, -46.78, -38.54, -46.87, -37.92, -46.96);
+        bezierVertex(-37.3, -47.04, -36.65, -47.11, -35.99, -47.17);
+        bezierVertex(-35.33, -47.23, -34.6, -47.28, -33.8, -47.32);
+        bezierVertex(-33.01, -47.35, -29.9, -47.41, -24.46, -47.47);
+        bezierVertex(5.55, -47.47, 21.61, -47.45, 23.74, -47.43);
+        bezierVertex(25.86, -47.4, 27.5, -47.36, 28.66, -47.31);
+        bezierVertex(29.81, -47.26, 30.63, -47.21, 31.1, -47.18);
+        bezierVertex(31.57, -47.14, 32, -47.11, 32.38, -47.07);
+        bezierVertex(32.76, -47.03, 33.17, -46.98, 33.61, -46.93);
+        bezierVertex(34.05, -46.87, 34.45, -46.82, 34.81, -46.76);
+        bezierVertex(35.18, -46.71, 35.58, -46.64, 36.01, -46.56);
+        bezierVertex(36.44, -46.48, 36.98, -46.37, 37.62, -46.21);
+        bezierVertex(38.27, -46.06, 38.92, -45.88, 39.58, -45.68);
+        bezierVertex(40.23, -45.48, 40.8, -45.28, 41.28, -45.09);
+        bezierVertex(41.75, -44.9, 42.24, -44.67, 42.74, -44.41);
+        bezierVertex(43.23, -44.14, 43.75, -43.83, 44.27, -43.47);
+        bezierVertex(44.57, -43.12, 44.85, -42.76, 45.11, -42.39);
+        bezierVertex(45.38, -42.02, 45.6, -41.69, 45.78, -41.39);
+        bezierVertex(45.95, -41.1, 46.13, -40.78, 46.31, -40.44);
+        bezierVertex(46.48, -40.1, 46.77, -39.45, 47.17, -38.48);
+        bezierVertex(47.57, -37.51, 47.83, -36.84, 47.95, -36.47);
+        bezierVertex(48.08, -36.1, 48.2, -35.7, 48.32, -35.28);
+        bezierVertex(48.44, -34.86, 48.56, -34.41, 48.68, -33.93);
+        bezierVertex(48.79, -33.46, 48.9, -32.95, 49, -32.42);
+        bezierVertex(49.1, -31.88, 49.19, -31.35, 49.27, -30.83);
+        bezierVertex(49.34, -30.31, 49.4, -29.79, 49.46, -29.28);
+        bezierVertex(49.51, -28.77, 49.56, -28.04, 49.62, -27.1);
+        bezierVertex(49.68, -26.15, 49.73, -25.16, 49.76, -24.13);
+        bezierVertex(49.78, -23.09, 49.8, -16.17, 49.82, -3.37);
+        bezierVertex(49.83, 9.43, 49.83, 16.66, 49.82, 18.31);
+        bezierVertex(49.82, 19.96, 49.8, 21.14, 49.79, 21.86);
+        bezierVertex(49.78, 22.57, 49.76, 23.32, 49.73, 24.11);
+        bezierVertex(49.71, 24.9, 49.68, 25.61, 49.64, 26.25);
+        bezierVertex(49.6, 26.89, 49.56, 27.47, 49.51, 28);
+        bezierVertex(49.46, 28.53, 49.39, 29.11, 49.31, 29.75);
+        bezierVertex(49.22, 30.38, 49.13, 30.94, 49.05, 31.43);
+        bezierVertex(48.96, 31.91, 48.86, 32.36, 48.77, 32.78);
+        bezierVertex(48.67, 33.2, 48.57, 33.58, 48.48, 33.93);
+        bezierVertex(48.38, 34.28, 48.27, 34.65, 48.15, 35.03);
+        bezierVertex(48.03, 35.41, 47.89, 35.8, 47.75, 36.2);
+        bezierVertex(47.6, 36.6, 47.34, 37.22, 46.96, 38.06);
+        bezierVertex(46.59, 38.89, 46.24, 39.6, 45.92, 40.17);
+        bezierVertex(45.6, 40.74, 45.32, 41.19, 45.09, 41.54);
+        bezierVertex(44.86, 41.88, 44.52, 42.32, 44.09, 42.85);
+        bezierVertex(43.76, 43.1, 43.46, 43.31, 43.21, 43.47);
+        bezierVertex(42.95, 43.64, 42.6, 43.85, 42.16, 44.09);
+        bezierVertex(41.72, 44.33, 41.31, 44.55, 40.91, 44.73);
+        bezierVertex(40.52, 44.92, 40.06, 45.12, 39.55, 45.32);
+        bezierVertex(39.04, 45.53, 38.54, 45.72, 38.05, 45.88);
+        bezierVertex(37.56, 46.05, 37.07, 46.2, 36.59, 46.33);
+        bezierVertex(36.11, 46.47, 35.64, 46.59, 35.17, 46.69);
+        bezierVertex(34.71, 46.8, 34.26, 46.89, 33.82, 46.97);
+        bezierVertex(33.38, 47.06, 32.96, 47.13, 32.57, 47.18);
+        bezierVertex(32.18, 47.24, 31.72, 47.3, 31.19, 47.36);
+        bezierVertex(30.67, 47.42, 30.18, 47.47, 29.73, 47.51);
+        bezierVertex(29.27, 47.55, 28.49, 47.59, 27.37, 47.65);
+        bezierVertex(26.26, 47.7, 24.79, 47.74, 22.97, 47.77);
+        bezierVertex(21.15, 47.8, 7.61, 47.82, -17.66, 47.83);
+endShape();
+
+
+	fill(ctransitionBadgesWhite);
+beginShape();
+        vertex(-3.08, 29.21);
+        bezierVertex(-3.26, 29.27, -3.57, 29.36, -4.03, 29.48);
+        bezierVertex(-4.48, 29.6, -4.72, 29.66, -4.74, 29.66);
+        bezierVertex(-4.76, 29.67, -5.03, 29.72, -5.56, 29.81);
+        bezierVertex(-6.1, 29.91, -6.54, 29.98, -6.9, 30.02);
+        bezierVertex(-7.25, 30.06, -7.6, 30.09, -7.96, 30.11);
+        bezierVertex(-8.31, 30.13, -8.63, 30.15, -8.92, 30.16);
+        bezierVertex(-9.21, 30.16, -9.53, 30.16, -9.87, 30.16);
+        bezierVertex(-10.22, 30.15, -10.45, 30.14, -10.58, 30.13);
+        bezierVertex(-10.71, 30.13, -10.9, 30.11, -11.13, 30.09);
+        bezierVertex(-11.36, 30.06, -11.66, 30.03, -12.04, 29.98);
+        bezierVertex(-12.41, 29.93, -12.79, 29.87, -13.17, 29.8);
+        bezierVertex(-13.56, 29.73, -13.94, 29.65, -14.34, 29.56);
+        bezierVertex(-14.73, 29.47, -15.08, 29.39, -15.38, 29.31);
+        bezierVertex(-15.68, 29.23, -15.98, 29.14, -16.29, 29.04);
+        bezierVertex(-16.6, 28.95, -16.93, 28.84, -17.26, 28.72);
+        bezierVertex(-17.59, 28.6, -17.88, 28.49, -18.12, 28.39);
+        bezierVertex(-18.37, 28.29, -18.63, 28.18, -18.9, 28.06);
+        bezierVertex(-19.17, 27.95, -19.39, 27.85, -19.57, 27.78);
+        bezierVertex(-19.74, 27.7, -19.88, 27.64, -19.99, 27.58);
+        bezierVertex(-20.1, 27.53, -20.33, 27.42, -20.67, 27.24);
+        bezierVertex(-21.01, 27.06, -21.32, 26.89, -21.6, 26.74);
+        bezierVertex(-21.88, 26.58, -22.18, 26.4, -22.51, 26.19);
+        bezierVertex(-22.83, 25.99, -23.11, 25.82, -23.33, 25.67);
+        bezierVertex(-23.55, 25.53, -23.72, 25.41, -23.85, 25.32);
+        bezierVertex(-23.97, 25.24, -24.12, 25.12, -24.31, 24.97);
+        bezierVertex(-24.5, 24.83, -24.73, 24.65, -24.98, 24.44);
+        bezierVertex(-25.24, 24.23, -25.47, 24.03, -25.7, 23.83);
+        bezierVertex(-25.92, 23.64, -26.13, 23.44, -26.32, 23.26);
+        bezierVertex(-26.51, 23.08, -26.72, 22.86, -26.95, 22.61);
+        bezierVertex(-27.18, 22.37, -27.43, 22.09, -27.69, 21.78);
+        bezierVertex(-27.95, 21.48, -28.22, 21.15, -28.48, 20.8);
+        bezierVertex(-28.74, 20.45, -29, 20.08, -29.27, 19.7);
+        bezierVertex(-29.52, 19.31, -29.74, 18.98, -29.91, 18.71);
+        bezierVertex(-30.07, 18.44, -30.22, 18.2, -30.34, 17.98);
+        bezierVertex(-30.47, 17.75, -30.57, 17.57, -30.64, 17.43);
+        bezierVertex(-30.72, 17.29, -30.85, 17.03, -31.03, 16.65);
+        bezierVertex(-31.22, 16.27, -31.37, 15.94, -31.49, 15.67);
+        bezierVertex(-31.61, 15.4, -31.73, 15.11, -31.85, 14.82);
+        bezierVertex(-31.97, 14.53, -32.06, 14.3, -32.13, 14.14);
+        bezierVertex(-32.2, 13.97, -32.24, 13.85, -32.27, 13.79);
+        bezierVertex(-32.29, 13.73, -32.38, 13.45, -32.55, 12.95);
+        bezierVertex(-32.72, 12.46, -32.86, 12, -32.98, 11.59);
+        bezierVertex(-33.1, 11.17, -33.21, 10.76, -33.3, 10.35);
+        bezierVertex(-33.4, 9.94, -33.49, 9.58, -33.55, 9.28);
+        bezierVertex(-33.61, 8.98, -33.66, 8.77, -33.68, 8.66);
+        bezierVertex(-33.7, 8.55, -33.73, 8.38, -33.77, 8.16);
+        bezierVertex(-33.8, 7.94, -33.85, 7.65, -33.91, 7.28);
+        bezierVertex(-34.03, 6.56, -34.11, 6, -34.16, 5.62);
+        bezierVertex(-34.21, 5.23, -34.25, 4.9, -34.28, 4.61);
+        bezierVertex(-34.3, 4.32, -34.33, 4.03, -34.34, 3.74);
+        bezierVertex(-34.36, 3.45, -34.38, 3.11, -34.4, 2.72);
+        bezierVertex(-34.42, 2.33, -34.43, 1.94, -34.43, 1.53);
+        bezierVertex(-34.44, 1.13, -34.44, 0.72, -34.43, 0.3);
+        bezierVertex(-34.41, -0.54, -34.39, -1.12, -34.36, -1.45);
+        bezierVertex(-34.34, -1.77, -34.31, -2.1, -34.27, -2.44);
+        bezierVertex(-34.23, -2.77, -34.17, -3.16, -34.1, -3.61);
+        bezierVertex(-34.02, -4.05, -33.95, -4.41, -33.89, -4.68);
+        bezierVertex(-33.84, -4.96, -33.77, -5.24, -33.69, -5.52);
+        bezierVertex(-33.62, -5.8, -33.56, -6.04, -33.5, -6.23);
+        bezierVertex(-33.44, -6.42, -33.35, -6.69, -33.22, -7.04);
+        bezierVertex(-33.1, -7.39, -32.97, -7.75, -32.82, -8.11);
+        bezierVertex(-32.67, -8.47, -32.55, -8.75, -32.46, -8.95);
+        bezierVertex(-32.37, -9.14, -32.3, -9.31, -32.23, -9.45);
+        bezierVertex(-32.16, -9.6, -32.03, -9.88, -31.82, -10.29);
+        bezierVertex(-31.62, -10.7, -31.48, -10.97, -31.41, -11.1);
+        bezierVertex(-31.34, -11.23, -31.18, -11.5, -30.94, -11.91);
+        bezierVertex(-30.7, -12.31, -30.56, -12.55, -30.53, -12.62);
+        bezierVertex(-30.49, -12.68, -30.43, -12.77, -30.35, -12.9);
+        bezierVertex(-30.27, -13.02, -30.17, -13.16, -30.05, -13.33);
+        bezierVertex(-29.93, -13.5, -29.82, -13.65, -29.73, -13.78);
+        bezierVertex(-29.63, -13.91, -29.52, -14.06, -29.38, -14.24);
+        bezierVertex(-29.25, -14.41, -29.14, -14.55, -29.07, -14.66);
+        bezierVertex(-28.99, -14.77, -28.91, -14.88, -28.83, -15);
+        bezierVertex(-28.75, -15.13, -28.6, -15.38, -28.39, -15.75);
+        bezierVertex(-28.18, -16.13, -28.06, -16.38, -28.02, -16.49);
+        bezierVertex(-27.98, -16.6, -27.9, -16.89, -27.8, -17.35);
+        bezierVertex(-27.84, -17.77, -27.95, -18.13, -28.15, -18.44);
+        bezierVertex(-28.34, -18.75, -28.56, -19, -28.79, -19.19);
+        bezierVertex(-29.03, -19.38, -29.17, -19.48, -29.2, -19.5);
+        bezierVertex(-29.23, -19.52, -29.46, -19.65, -29.89, -19.88);
+        bezierVertex(-30.32, -20.11, -30.7, -20.33, -31.04, -20.54);
+        bezierVertex(-31.37, -20.75, -31.67, -20.99, -31.95, -21.27);
+        bezierVertex(-32.22, -21.55, -32.38, -21.72, -32.41, -21.78);
+        bezierVertex(-32.44, -21.84, -32.52, -22.03, -32.64, -22.37);
+        bezierVertex(-32.65, -22.41, -32.63, -22.58, -32.59, -22.88);
+        bezierVertex(-32.55, -23.17, -32.5, -23.37, -32.44, -23.47);
+        bezierVertex(-32.38, -23.57, -32.2, -23.77, -31.88, -24.07);
+        bezierVertex(-31.56, -24.37, -31.32, -24.55, -31.15, -24.62);
+        bezierVertex(-30.99, -24.69, -30.85, -24.74, -30.73, -24.79);
+        bezierVertex(-30.61, -24.83, -30.45, -24.88, -30.26, -24.94);
+        bezierVertex(-30.07, -25, -29.82, -25.07, -29.51, -25.14);
+        bezierVertex(-29.19, -25.21, -28.83, -25.28, -28.43, -25.35);
+        bezierVertex(-28.02, -25.42, -27.69, -25.47, -27.43, -25.52);
+        bezierVertex(-27.16, -25.56, -26.9, -25.6, -26.63, -25.65);
+        bezierVertex(-26.36, -25.7, -26.07, -25.75, -25.75, -25.82);
+        bezierVertex(-25.43, -25.88, -25.1, -25.96, -24.76, -26.04);
+        bezierVertex(-24.42, -26.13, -24.22, -26.19, -24.15, -26.2);
+        bezierVertex(-24.09, -26.22, -23.91, -26.28, -23.61, -26.38);
+        bezierVertex(-23.31, -26.48, -23.02, -26.58, -22.73, -26.68);
+        bezierVertex(-22.45, -26.79, -22.12, -26.92, -21.74, -27.07);
+        bezierVertex(-21.36, -27.23, -21, -27.37, -20.64, -27.52);
+        bezierVertex(-20.29, -27.67, -19.94, -27.81, -19.6, -27.95);
+        bezierVertex(-19.25, -28.08, -18.94, -28.21, -18.65, -28.32);
+        bezierVertex(-18.36, -28.43, -18.04, -28.54, -17.69, -28.66);
+        bezierVertex(-17.34, -28.77, -16.99, -28.87, -16.61, -28.96);
+        bezierVertex(-16.24, -29.05, -15.97, -29.11, -15.79, -29.14);
+        bezierVertex(-15.61, -29.17, -15.26, -29.19, -14.74, -29.2);
+        bezierVertex(-14.22, -29.21, -13.9, -29.2, -13.79, -29.18);
+        bezierVertex(-13.68, -29.15, -13.55, -29.11, -13.4, -29.06);
+        bezierVertex(-13.25, -29.01, -13.12, -28.94, -13.01, -28.86);
+        bezierVertex(-12.9, -28.79, -12.77, -28.67, -12.64, -28.53);
+        bezierVertex(-12.62, -28.51, -12.58, -28.42, -12.52, -28.28);
+        bezierVertex(-12.45, -28.13, -12.41, -28.01, -12.39, -27.89);
+        bezierVertex(-12.36, -27.77, -12.36, -27.6, -12.37, -27.36);
+        bezierVertex(-12.38, -27.13, -12.42, -26.81, -12.49, -26.4);
+        bezierVertex(-12.56, -25.99, -12.62, -25.64, -12.67, -25.34);
+        bezierVertex(-12.73, -25.05, -12.79, -24.77, -12.85, -24.51);
+        bezierVertex(-12.91, -24.26, -12.97, -23.93, -13.05, -23.54);
+        bezierVertex(-13.12, -23.15, -13.2, -22.7, -13.27, -22.19);
+        bezierVertex(-13.34, -21.68, -13.38, -21.33, -13.4, -21.14);
+        bezierVertex(-13.42, -20.94, -13.45, -20.67, -13.48, -20.32);
+        bezierVertex(-13.51, -19.97, -13.54, -19.66, -13.56, -19.39);
+        bezierVertex(-13.57, -19.12, -13.59, -18.83, -13.6, -18.53);
+        bezierVertex(-13.62, -18.22, -13.63, -18.01, -13.63, -17.91);
+        bezierVertex(-13.63, -17.8, -13.64, -17.5, -13.66, -17);
+        bezierVertex(-13.68, -16.51, -13.69, -16.16, -13.7, -15.97);
+        bezierVertex(-13.7, -15.78, -13.71, -15.55, -13.72, -15.3);
+        bezierVertex(-13.73, -15.05, -13.76, -14.72, -13.8, -14.31);
+        bezierVertex(-13.84, -13.89, -13.89, -13.33, -13.95, -12.61);
+        bezierVertex(-13.99, -12.41, -14.04, -12.15, -14.11, -11.85);
+        bezierVertex(-14.17, -11.55, -14.26, -11.2, -14.38, -10.81);
+        bezierVertex(-14.5, -10.42, -14.6, -10.11, -14.7, -9.88);
+        bezierVertex(-14.8, -9.65, -14.89, -9.47, -14.96, -9.34);
+        bezierVertex(-15.04, -9.21, -15.1, -9.11, -15.13, -9.04);
+        bezierVertex(-15.17, -8.98, -15.24, -8.88, -15.33, -8.75);
+        bezierVertex(-15.42, -8.62, -15.61, -8.45, -15.88, -8.25);
+        bezierVertex(-16.16, -8.04, -16.4, -7.91, -16.63, -7.85);
+        bezierVertex(-16.8, -7.85, -17.01, -7.91, -17.26, -8.02);
+        bezierVertex(-17.52, -8.13, -17.74, -8.26, -17.94, -8.41);
+        bezierVertex(-18.15, -8.56, -18.36, -8.75, -18.6, -8.98);
+        bezierVertex(-18.84, -9.21, -19.04, -9.41, -19.23, -9.59);
+        bezierVertex(-19.41, -9.77, -19.59, -9.95, -19.78, -10.12);
+        bezierVertex(-19.97, -10.3, -20.27, -10.49, -20.67, -10.69);
+        bezierVertex(-21.08, -10.9, -21.31, -11, -21.38, -11.01);
+        bezierVertex(-21.46, -11.02, -21.53, -11.01, -21.6, -11);
+        bezierVertex(-21.67, -10.98, -21.77, -10.96, -21.88, -10.93);
+        bezierVertex(-22, -10.9, -22.14, -10.84, -22.3, -10.76);
+        bezierVertex(-22.47, -10.67, -22.63, -10.57, -22.77, -10.45);
+        bezierVertex(-22.91, -10.33, -23.06, -10.17, -23.23, -9.97);
+        bezierVertex(-23.4, -9.77, -23.56, -9.55, -23.71, -9.32);
+        bezierVertex(-23.86, -9.09, -24.03, -8.78, -24.22, -8.4);
+        bezierVertex(-24.41, -8.02, -24.56, -7.7, -24.68, -7.45);
+        bezierVertex(-24.79, -7.19, -24.91, -6.93, -25.02, -6.67);
+        bezierVertex(-25.12, -6.41, -25.22, -6.18, -25.29, -5.98);
+        bezierVertex(-25.37, -5.79, -25.44, -5.59, -25.51, -5.4);
+        bezierVertex(-25.58, -5.21, -25.65, -5.02, -25.7, -4.84);
+        bezierVertex(-25.76, -4.66, -25.83, -4.43, -25.9, -4.15);
+        bezierVertex(-25.98, -3.87, -26.07, -3.5, -26.17, -3.06);
+        bezierVertex(-26.38, -2.2, -26.51, -1.6, -26.55, -1.27);
+        bezierVertex(-26.59, -0.94, -26.62, -0.66, -26.64, -0.41);
+        bezierVertex(-26.66, -0.16, -26.68, 0.11, -26.69, 0.39);
+        bezierVertex(-26.7, 0.67, -26.71, 0.92, -26.71, 1.14);
+        bezierVertex(-26.71, 1.35, -26.7, 1.54, -26.69, 1.69);
+        bezierVertex(-26.67, 2, -26.65, 2.26, -26.63, 2.47);
+        bezierVertex(-26.61, 2.67, -26.57, 2.95, -26.51, 3.3);
+        bezierVertex(-26.45, 3.65, -26.39, 3.95, -26.33, 4.21);
+        bezierVertex(-26.27, 4.46, -26.21, 4.72, -26.13, 4.99);
+        bezierVertex(-26.06, 5.26, -25.98, 5.51, -25.91, 5.73);
+        bezierVertex(-25.85, 5.96, -25.77, 6.2, -25.67, 6.47);
+        bezierVertex(-25.58, 6.74, -25.48, 7.02, -25.36, 7.32);
+        bezierVertex(-25.25, 7.62, -25.14, 7.92, -25.02, 8.21);
+        bezierVertex(-24.9, 8.5, -24.77, 8.82, -24.63, 9.15);
+        bezierVertex(-24.48, 9.49, -24.31, 9.89, -24.12, 10.34);
+        bezierVertex(-23.92, 10.79, -23.77, 11.11, -23.68, 11.31);
+        bezierVertex(-23.59, 11.51, -23.49, 11.71, -23.39, 11.91);
+        bezierVertex(-23.29, 12.11, -23.18, 12.35, -23.05, 12.62);
+        bezierVertex(-22.92, 12.88, -22.8, 13.13, -22.69, 13.34);
+        bezierVertex(-22.59, 13.56, -22.47, 13.78, -22.34, 14.02);
+        bezierVertex(-22.21, 14.27, -22.02, 14.57, -21.79, 14.94);
+        bezierVertex(-21.55, 15.31, -21.35, 15.6, -21.19, 15.82);
+        bezierVertex(-21.03, 16.03, -20.8, 16.3, -20.52, 16.62);
+        bezierVertex(-20.23, 16.94, -19.96, 17.2, -19.72, 17.41);
+        bezierVertex(-19.49, 17.62, -19.25, 17.81, -19.02, 17.98);
+        bezierVertex(-18.9, 18.07, -18.73, 18.18, -18.5, 18.32);
+        bezierVertex(-18.26, 18.46, -17.97, 18.62, -17.61, 18.8);
+        bezierVertex(-17.25, 18.99, -16.9, 19.15, -16.55, 19.3);
+        bezierVertex(-16.21, 19.44, -15.88, 19.56, -15.55, 19.66);
+        bezierVertex(-15.23, 19.77, -14.94, 19.85, -14.67, 19.92);
+        bezierVertex(-14.4, 19.99, -14.11, 20.06, -13.8, 20.12);
+        bezierVertex(-13.49, 20.19, -13.17, 20.25, -12.82, 20.31);
+        bezierVertex(-12.48, 20.38, -12.14, 20.43, -11.81, 20.48);
+        bezierVertex(-11.48, 20.53, -11.13, 20.59, -10.75, 20.64);
+        bezierVertex(-10.37, 20.7, -10.06, 20.75, -9.83, 20.79);
+        bezierVertex(-9.6, 20.82, -9.36, 20.87, -9.13, 20.91);
+        bezierVertex(-8.9, 20.96, -8.62, 21.02, -8.31, 21.08);
+        bezierVertex(-8, 21.15, -7.72, 21.21, -7.49, 21.27);
+        bezierVertex(-7.26, 21.33, -7.03, 21.39, -6.8, 21.46);
+        bezierVertex(-6.57, 21.53, -6.34, 21.61, -6.12, 21.7);
+        bezierVertex(-5.89, 21.79, -5.62, 21.92, -5.31, 22.07);
+        bezierVertex(-4.99, 22.23, -4.71, 22.4, -4.45, 22.57);
+        bezierVertex(-4.19, 22.75, -3.97, 22.92, -3.81, 23.07);
+        bezierVertex(-3.64, 23.22, -3.52, 23.34, -3.45, 23.42);
+        bezierVertex(-3.38, 23.5, -3.31, 23.57, -3.26, 23.64);
+        bezierVertex(-3.2, 23.71, -3.12, 23.82, -3.02, 23.98);
+        bezierVertex(-2.92, 24.14, -2.82, 24.32, -2.72, 24.52);
+        vertex(-2.6, 24.82);
+        bezierVertex(-2.54, 24.93, -2.51, 25, -2.49, 25.04);
+        bezierVertex(-2.47, 25.07, -2.45, 25.12, -2.43, 25.2);
+        bezierVertex(-2.41, 25.27, -2.39, 25.33, -2.38, 25.38);
+        bezierVertex(-2.38, 25.43, -2.36, 25.5, -2.35, 25.6);
+        bezierVertex(-2.33, 25.69, -2.31, 25.8, -2.29, 25.91);
+        bezierVertex(-2.29, 25.97, -2.3, 26.22, -2.33, 26.66);
+        bezierVertex(-2.56, 27.51, -2.81, 28.36, -3.08, 29.21);
+endShape();
+
+beginShape();
+        vertex(-0.13, -29.41);
+        bezierVertex(0.04, -29.46, 0.36, -29.55, 0.81, -29.67);
+        bezierVertex(1.27, -29.79, 1.51, -29.85, 1.52, -29.86);
+        bezierVertex(1.54, -29.86, 1.82, -29.91, 2.35, -30.01);
+        bezierVertex(2.88, -30.11, 3.33, -30.17, 3.68, -30.21);
+        bezierVertex(4.04, -30.25, 4.39, -30.29, 4.74, -30.31);
+        bezierVertex(5.09, -30.33, 5.42, -30.34, 5.71, -30.35);
+        bezierVertex(6, -30.36, 6.31, -30.36, 6.66, -30.35);
+        bezierVertex(7, -30.34, 7.24, -30.34, 7.37, -30.33);
+        bezierVertex(7.5, -30.32, 7.68, -30.3, 7.91, -30.28);
+        bezierVertex(8.15, -30.26, 8.45, -30.22, 8.82, -30.17);
+        bezierVertex(9.2, -30.13, 9.57, -30.07, 9.96, -30);
+        bezierVertex(10.34, -29.93, 10.73, -29.85, 11.12, -29.76);
+        bezierVertex(11.52, -29.67, 11.86, -29.58, 12.16, -29.5);
+        bezierVertex(12.46, -29.42, 12.77, -29.33, 13.08, -29.24);
+        bezierVertex(13.39, -29.14, 13.71, -29.03, 14.04, -28.91);
+        bezierVertex(14.37, -28.79, 14.66, -28.68, 14.91, -28.58);
+        bezierVertex(15.15, -28.48, 15.41, -28.37, 15.68, -28.26);
+        bezierVertex(15.96, -28.14, 16.18, -28.04, 16.35, -27.97);
+        bezierVertex(16.53, -27.9, 16.67, -27.83, 16.78, -27.78);
+        bezierVertex(16.89, -27.73, 17.11, -27.61, 17.45, -27.44);
+        bezierVertex(17.79, -27.26, 18.1, -27.09, 18.38, -26.93);
+        bezierVertex(18.66, -26.77, 18.96, -26.59, 19.29, -26.39);
+        bezierVertex(19.62, -26.19, 19.89, -26.01, 20.11, -25.87);
+        bezierVertex(20.34, -25.72, 20.51, -25.61, 20.63, -25.52);
+        bezierVertex(20.75, -25.43, 20.91, -25.31, 21.1, -25.17);
+        bezierVertex(21.29, -25.02, 21.51, -24.84, 21.77, -24.64);
+        bezierVertex(22.02, -24.43, 22.26, -24.22, 22.48, -24.03);
+        bezierVertex(22.7, -23.83, 22.91, -23.64, 23.1, -23.45);
+        bezierVertex(23.29, -23.27, 23.5, -23.05, 23.73, -22.81);
+        bezierVertex(23.96, -22.56, 24.21, -22.29, 24.47, -21.98);
+        bezierVertex(24.74, -21.67, 25, -21.34, 25.27, -20.99);
+        bezierVertex(25.53, -20.65, 25.79, -20.28, 26.05, -19.89);
+        bezierVertex(26.31, -19.5, 26.52, -19.17, 26.69, -18.91);
+        bezierVertex(26.86, -18.64, 27, -18.39, 27.13, -18.17);
+        bezierVertex(27.25, -17.95, 27.35, -17.77, 27.43, -17.63);
+        bezierVertex(27.5, -17.49, 27.63, -17.22, 27.82, -16.84);
+        bezierVertex(28, -16.46, 28.15, -16.14, 28.27, -15.86);
+        bezierVertex(28.39, -15.59, 28.51, -15.31, 28.63, -15.02);
+        bezierVertex(28.75, -14.73, 28.84, -14.5, 28.91, -14.33);
+        bezierVertex(28.98, -14.16, 29.03, -14.05, 29.05, -13.98);
+        bezierVertex(29.07, -13.92, 29.17, -13.64, 29.34, -13.15);
+        bezierVertex(29.5, -12.65, 29.65, -12.2, 29.76, -11.78);
+        bezierVertex(29.88, -11.37, 29.99, -10.96, 30.09, -10.55);
+        bezierVertex(30.19, -10.14, 30.27, -9.78, 30.33, -9.48);
+        bezierVertex(30.4, -9.17, 30.44, -8.96, 30.47, -8.85);
+        bezierVertex(30.49, -8.74, 30.52, -8.57, 30.55, -8.36);
+        bezierVertex(30.59, -8.13, 30.64, -7.84, 30.69, -7.48);
+        bezierVertex(30.81, -6.75, 30.9, -6.2, 30.95, -5.81);
+        bezierVertex(31, -5.43, 31.03, -5.09, 31.06, -4.8);
+        bezierVertex(31.09, -4.51, 31.11, -4.22, 31.13, -3.93);
+        bezierVertex(31.15, -3.64, 31.17, -3.3, 31.19, -2.91);
+        bezierVertex(31.2, -2.53, 31.21, -2.13, 31.22, -1.73);
+        bezierVertex(31.23, -1.32, 31.22, -0.91, 31.22, -0.49);
+        bezierVertex(31.2, 0.35, 31.17, 0.93, 31.15, 1.25);
+        bezierVertex(31.12, 1.58, 31.09, 1.91, 31.05, 2.24);
+        bezierVertex(31.01, 2.58, 30.96, 2.97, 30.88, 3.41);
+        bezierVertex(30.81, 3.85, 30.74, 4.21, 30.68, 4.49);
+        bezierVertex(30.62, 4.76, 30.55, 5.04, 30.48, 5.32);
+        bezierVertex(30.41, 5.61, 30.34, 5.84, 30.28, 6.03);
+        bezierVertex(30.22, 6.23, 30.13, 6.5, 30.01, 6.85);
+        bezierVertex(29.89, 7.2, 29.75, 7.55, 29.6, 7.92);
+        bezierVertex(29.45, 8.28, 29.33, 8.56, 29.25, 8.75);
+        bezierVertex(29.16, 8.95, 29.08, 9.12, 29.01, 9.26);
+        bezierVertex(28.95, 9.41, 28.81, 9.68, 28.61, 10.09);
+        bezierVertex(28.4, 10.5, 28.26, 10.77, 28.19, 10.91);
+        bezierVertex(28.12, 11.04, 27.97, 11.31, 27.73, 11.71);
+        bezierVertex(27.49, 12.12, 27.35, 12.36, 27.31, 12.42);
+        bezierVertex(27.27, 12.49, 27.21, 12.58, 27.13, 12.7);
+        bezierVertex(27.05, 12.82, 26.95, 12.97, 26.83, 13.14);
+        bezierVertex(26.72, 13.31, 26.61, 13.45, 26.51, 13.58);
+        bezierVertex(26.42, 13.71, 26.3, 13.87, 26.17, 14.04);
+        bezierVertex(26.03, 14.22, 25.93, 14.36, 25.85, 14.46);
+        bezierVertex(25.77, 14.57, 25.7, 14.69, 25.61, 14.81);
+        bezierVertex(25.53, 14.93, 25.39, 15.18, 25.18, 15.56);
+        bezierVertex(24.97, 15.94, 24.84, 16.18, 24.8, 16.3);
+        bezierVertex(24.76, 16.41, 24.69, 16.7, 24.59, 17.16);
+        bezierVertex(24.62, 17.57, 24.74, 17.93, 24.93, 18.24);
+        bezierVertex(25.12, 18.55, 25.34, 18.8, 25.58, 18.99);
+        bezierVertex(25.82, 19.18, 25.95, 19.29, 25.98, 19.31);
+        bezierVertex(26.02, 19.33, 26.25, 19.45, 26.68, 19.68);
+        bezierVertex(27.11, 19.92, 27.49, 20.14, 27.82, 20.34);
+        bezierVertex(28.16, 20.55, 28.46, 20.8, 28.73, 21.08);
+        bezierVertex(29.01, 21.35, 29.16, 21.52, 29.19, 21.58);
+        bezierVertex(29.22, 21.65, 29.3, 21.84, 29.43, 22.17);
+        bezierVertex(29.44, 22.22, 29.42, 22.39, 29.38, 22.68);
+        bezierVertex(29.34, 22.98, 29.29, 23.18, 29.23, 23.27);
+        bezierVertex(29.17, 23.37, 28.98, 23.57, 28.66, 23.87);
+        bezierVertex(28.34, 24.17, 28.1, 24.36, 27.94, 24.42);
+        bezierVertex(27.77, 24.49, 27.63, 24.55, 27.51, 24.59);
+        bezierVertex(27.4, 24.64, 27.24, 24.69, 27.05, 24.75);
+        bezierVertex(26.85, 24.81, 26.6, 24.88, 26.29, 24.94);
+        bezierVertex(25.98, 25.01, 25.62, 25.08, 25.21, 25.15);
+        bezierVertex(24.8, 25.22, 24.47, 25.28, 24.21, 25.32);
+        bezierVertex(23.95, 25.36, 23.68, 25.41, 23.42, 25.46);
+        bezierVertex(23.15, 25.5, 22.85, 25.56, 22.53, 25.62);
+        bezierVertex(22.21, 25.69, 21.88, 25.76, 21.54, 25.85);
+        bezierVertex(21.2, 25.94, 21, 25.99, 20.94, 26.01);
+        bezierVertex(20.87, 26.03, 20.69, 26.09, 20.39, 26.18);
+        bezierVertex(20.09, 26.28, 19.8, 26.39, 19.52, 26.49);
+        bezierVertex(19.23, 26.6, 18.9, 26.73, 18.53, 26.88);
+        bezierVertex(18.15, 27.03, 17.78, 27.18, 17.43, 27.33);
+        bezierVertex(17.07, 27.47, 16.72, 27.61, 16.38, 27.75);
+        bezierVertex(16.04, 27.89, 15.72, 28.01, 15.43, 28.12);
+        bezierVertex(15.14, 28.24, 14.82, 28.35, 14.48, 28.46);
+        bezierVertex(14.13, 28.58, 13.77, 28.68, 13.4, 28.77);
+        bezierVertex(13.02, 28.86, 12.75, 28.92, 12.57, 28.95);
+        bezierVertex(12.4, 28.98, 12.05, 29, 11.53, 29.01);
+        bezierVertex(11, 29.02, 10.69, 29.01, 10.57, 28.98);
+        bezierVertex(10.46, 28.96, 10.33, 28.92, 10.19, 28.87);
+        bezierVertex(10.04, 28.81, 9.91, 28.75, 9.79, 28.67);
+        bezierVertex(9.68, 28.59, 9.56, 28.48, 9.42, 28.34);
+        bezierVertex(9.41, 28.31, 9.37, 28.23, 9.3, 28.08);
+        bezierVertex(9.24, 27.94, 9.19, 27.81, 9.17, 27.69);
+        bezierVertex(9.15, 27.58, 9.14, 27.4, 9.16, 27.17);
+        bezierVertex(9.17, 26.94, 9.21, 26.62, 9.27, 26.21);
+        bezierVertex(9.34, 25.79, 9.4, 25.44, 9.46, 25.15);
+        bezierVertex(9.52, 24.85, 9.57, 24.57, 9.63, 24.32);
+        bezierVertex(9.69, 24.06, 9.76, 23.74, 9.83, 23.35);
+        bezierVertex(9.91, 22.96, 9.98, 22.51, 10.05, 22);
+        bezierVertex(10.12, 21.49, 10.17, 21.13, 10.19, 20.94);
+        bezierVertex(10.21, 20.75, 10.23, 20.48, 10.27, 20.12);
+        bezierVertex(10.3, 19.77, 10.32, 19.46, 10.34, 19.19);
+        bezierVertex(10.36, 18.93, 10.37, 18.64, 10.39, 18.33);
+        bezierVertex(10.4, 18.03, 10.41, 17.82, 10.41, 17.71);
+        bezierVertex(10.42, 17.61, 10.43, 17.31, 10.44, 16.81);
+        bezierVertex(10.46, 16.31, 10.47, 15.97, 10.48, 15.78);
+        bezierVertex(10.49, 15.58, 10.5, 15.36, 10.51, 15.11);
+        bezierVertex(10.51, 14.85, 10.54, 14.52, 10.58, 14.11);
+        bezierVertex(10.62, 13.7, 10.67, 13.13, 10.73, 12.42);
+        bezierVertex(10.78, 12.21, 10.83, 11.96, 10.89, 11.66);
+        bezierVertex(10.95, 11.35, 11.04, 11.01, 11.16, 10.62);
+        bezierVertex(11.28, 10.23, 11.39, 9.92, 11.49, 9.69);
+        bezierVertex(11.58, 9.46, 11.67, 9.28, 11.75, 9.14);
+        bezierVertex(11.82, 9.01, 11.88, 8.91, 11.92, 8.85);
+        bezierVertex(11.96, 8.79, 12.02, 8.69, 12.12, 8.56);
+        bezierVertex(12.21, 8.43, 12.39, 8.26, 12.67, 8.06);
+        bezierVertex(12.94, 7.85, 13.19, 7.72, 13.41, 7.66);
+        bezierVertex(13.59, 7.66, 13.8, 7.72, 14.05, 7.83);
+        bezierVertex(14.3, 7.94, 14.53, 8.07, 14.73, 8.22);
+        bezierVertex(14.93, 8.37, 15.15, 8.55, 15.39, 8.78);
+        bezierVertex(15.62, 9.01, 15.83, 9.22, 16.01, 9.4);
+        bezierVertex(16.19, 9.58, 16.38, 9.75, 16.57, 9.93);
+        bezierVertex(16.76, 10.11, 17.05, 10.29, 17.46, 10.5);
+        bezierVertex(17.86, 10.7, 18.1, 10.81, 18.17, 10.82);
+        bezierVertex(18.24, 10.82, 18.31, 10.82, 18.39, 10.8);
+        bezierVertex(18.46, 10.79, 18.55, 10.77, 18.67, 10.74);
+        bezierVertex(18.78, 10.71, 18.92, 10.65, 19.09, 10.56);
+        bezierVertex(19.26, 10.48, 19.41, 10.38, 19.55, 10.26);
+        bezierVertex(19.69, 10.14, 19.85, 9.98, 20.02, 9.78);
+        bezierVertex(20.18, 9.58, 20.34, 9.36, 20.49, 9.13);
+        bezierVertex(20.64, 8.89, 20.81, 8.59, 21, 8.21);
+        bezierVertex(21.19, 7.83, 21.35, 7.51, 21.46, 7.25);
+        bezierVertex(21.58, 7, 21.69, 6.74, 21.8, 6.47);
+        bezierVertex(21.91, 6.21, 22, 5.98, 22.08, 5.79);
+        bezierVertex(22.16, 5.59, 22.23, 5.4, 22.3, 5.21);
+        bezierVertex(22.37, 5.01, 22.43, 4.83, 22.49, 4.65);
+        bezierVertex(22.55, 4.47, 22.61, 4.24, 22.69, 3.95);
+        bezierVertex(22.76, 3.67, 22.85, 3.31, 22.96, 2.87);
+        bezierVertex(23.17, 2, 23.29, 1.41, 23.34, 1.08);
+        bezierVertex(23.38, 0.75, 23.41, 0.46, 23.43, 0.21);
+        bezierVertex(23.45, -0.04, 23.46, -0.3, 23.47, -0.58);
+        bezierVertex(23.49, -0.87, 23.49, -1.11, 23.49, -1.33);
+        bezierVertex(23.49, -1.55, 23.49, -1.73, 23.48, -1.89);
+        bezierVertex(23.46, -2.2, 23.44, -2.45, 23.42, -2.66);
+        bezierVertex(23.4, -2.87, 23.36, -3.15, 23.29, -3.5);
+        bezierVertex(23.24, -3.85, 23.18, -4.15, 23.12, -4.4);
+        bezierVertex(23.06, -4.65, 22.99, -4.91, 22.92, -5.18);
+        bezierVertex(22.84, -5.45, 22.77, -5.7, 22.7, -5.93);
+        bezierVertex(22.63, -6.15, 22.55, -6.4, 22.46, -6.66);
+        bezierVertex(22.36, -6.93, 22.26, -7.22, 22.15, -7.52);
+        bezierVertex(22.04, -7.82, 21.92, -8.11, 21.8, -8.41);
+        bezierVertex(21.69, -8.7, 21.56, -9.01, 21.41, -9.35);
+        bezierVertex(21.27, -9.69, 21.1, -10.08, 20.9, -10.53);
+        bezierVertex(20.7, -10.98, 20.56, -11.31, 20.47, -11.51);
+        bezierVertex(20.37, -11.71, 20.28, -11.91, 20.18, -12.11);
+        bezierVertex(20.08, -12.31, 19.96, -12.54, 19.83, -12.81);
+        bezierVertex(19.7, -13.08, 19.59, -13.32, 19.48, -13.53);
+        bezierVertex(19.37, -13.75, 19.25, -13.98, 19.12, -14.22);
+        bezierVertex(18.99, -14.46, 18.81, -14.77, 18.57, -15.14);
+        bezierVertex(18.33, -15.51, 18.13, -15.8, 17.97, -16.01);
+        bezierVertex(17.81, -16.22, 17.59, -16.49, 17.3, -16.81);
+        bezierVertex(17.01, -17.13, 16.75, -17.4, 16.51, -17.61);
+        bezierVertex(16.27, -17.82, 16.04, -18.01, 15.81, -18.18);
+        bezierVertex(15.69, -18.26, 15.51, -18.37, 15.28, -18.51);
+        bezierVertex(15.05, -18.65, 14.75, -18.81, 14.39, -19);
+        bezierVertex(14.03, -19.18, 13.68, -19.35, 13.34, -19.49);
+        bezierVertex(13, -19.63, 12.66, -19.75, 12.34, -19.86);
+        bezierVertex(12.02, -19.96, 11.72, -20.05, 11.45, -20.12);
+        bezierVertex(11.19, -20.19, 10.9, -20.25, 10.59, -20.32);
+        bezierVertex(10.28, -20.38, 9.95, -20.45, 9.61, -20.51);
+        bezierVertex(9.26, -20.57, 8.92, -20.63, 8.59, -20.68);
+        bezierVertex(8.27, -20.73, 7.91, -20.78, 7.53, -20.84);
+        bezierVertex(7.15, -20.9, 6.85, -20.94, 6.61, -20.98);
+        bezierVertex(6.38, -21.02, 6.15, -21.06, 5.91, -21.11);
+        bezierVertex(5.68, -21.15, 5.41, -21.21, 5.09, -21.28);
+        bezierVertex(4.78, -21.34, 4.51, -21.41, 4.28, -21.46);
+        bezierVertex(4.04, -21.52, 3.81, -21.59, 3.58, -21.66);
+        bezierVertex(3.36, -21.73, 3.13, -21.81, 2.9, -21.9);
+        bezierVertex(2.68, -21.99, 2.41, -22.11, 2.09, -22.27);
+        bezierVertex(1.78, -22.42, 1.49, -22.59, 1.23, -22.77);
+        bezierVertex(0.97, -22.95, 0.76, -23.11, 0.59, -23.26);
+        bezierVertex(0.43, -23.41, 0.31, -23.53, 0.23, -23.61);
+        bezierVertex(0.16, -23.69, 0.1, -23.76, 0.04, -23.83);
+        bezierVertex(-0.01, -23.9, -0.09, -24.02, -0.19, -24.17);
+        bezierVertex(-0.3, -24.33, -0.4, -24.51, -0.49, -24.71);
+        vertex(-0.61, -25.02);
+        bezierVertex(-0.67, -25.13, -0.71, -25.2, -0.73, -25.23);
+        bezierVertex(-0.74, -25.27, -0.76, -25.32, -0.79, -25.39);
+        bezierVertex(-0.81, -25.46, -0.82, -25.52, -0.83, -25.57);
+        bezierVertex(-0.84, -25.63, -0.85, -25.7, -0.87, -25.79);
+        bezierVertex(-0.89, -25.89, -0.91, -25.99, -0.93, -26.1);
+        bezierVertex(-0.93, -26.17, -0.91, -26.42, -0.89, -26.85);
+        bezierVertex(-0.66, -27.71, -0.41, -28.56, -0.13, -29.41);
+endShape();
+
+pop();
+}
+
+function mentonWaypoint(xloc,yloc,fcolour){
+push();
+		translate(xloc+41,yloc-95);
+		rotate(PI/2);
+		scale(0.6);
+		noStroke();
+		fill(fcolour);
+		beginShape();
+        vertex(11.86, 62.28);
+        bezierVertex(11.61, 62.1, 11.41, 61.84, 11.25, 61.49);
+        bezierVertex(11.08, 61.14, 10.85, 60.52, 10.55, 59.62);
+        bezierVertex(10.25, 58.72, 10.03, 57.99, 9.88, 57.43);
+        bezierVertex(9.73, 56.87, 9.63, 56.45, 9.57, 56.19);
+        bezierVertex(9.51, 55.92, 9.43, 55.52, 9.32, 54.98);
+        bezierVertex(9.22, 54.43, 9.09, 53.7, 8.94, 52.76);
+        bezierVertex(8.79, 51.83, 8.68, 51.07, 8.61, 50.48);
+        bezierVertex(8.55, 49.89, 8.5, 49.4, 8.48, 49.01);
+        bezierVertex(8.46, 48.61, 8.44, 47.97, 8.43, 47.07);
+        bezierVertex(8.41, 46.17, 8.41, 45.5, 8.41, 45.04);
+        bezierVertex(8.42, 44.58, 8.45, 43.98, 8.5, 43.25);
+        bezierVertex(8.55, 42.51, 8.6, 41.99, 8.65, 41.68);
+        bezierVertex(8.7, 41.37, 8.74, 41.13, 8.78, 40.95);
+        bezierVertex(8.81, 40.77, 8.87, 40.56, 8.94, 40.31);
+        bezierVertex(9.01, 40.06, 9.09, 39.84, 9.17, 39.65);
+        bezierVertex(9.24, 39.47, 9.4, 39.17, 9.62, 38.76);
+        bezierVertex(9.85, 38.35, 10.04, 38.02, 10.21, 37.75);
+        bezierVertex(10.37, 37.48, 10.6, 37.09, 10.91, 36.59);
+        bezierVertex(11.22, 36.08, 11.45, 35.71, 11.59, 35.47);
+        bezierVertex(11.74, 35.23, 11.89, 34.99, 12.04, 34.75);
+        bezierVertex(12.2, 34.5, 12.41, 34.17, 12.69, 33.77);
+        bezierVertex(12.96, 33.36, 13.25, 32.91, 13.56, 32.43);
+        bezierVertex(13.87, 31.94, 14.09, 31.58, 14.23, 31.36);
+        bezierVertex(14.36, 31.13, 14.54, 30.83, 14.75, 30.45);
+        bezierVertex(14.96, 30.07, 15.16, 29.69, 15.35, 29.31);
+        bezierVertex(15.54, 28.94, 15.8, 28.44, 16.13, 27.83);
+        bezierVertex(16.46, 27.21, 16.72, 26.72, 16.92, 26.36);
+        bezierVertex(17.13, 25.99, 17.4, 25.5, 17.74, 24.88);
+        bezierVertex(18.09, 24.25, 18.34, 23.8, 18.49, 23.53);
+        bezierVertex(18.65, 23.26, 18.8, 22.99, 18.94, 22.74);
+        bezierVertex(19.09, 22.49, 19.26, 22.19, 19.46, 21.82);
+        bezierVertex(19.66, 21.45, 19.83, 21.13, 19.96, 20.86);
+        bezierVertex(20.09, 20.59, 20.23, 20.27, 20.39, 19.9);
+        bezierVertex(20.54, 19.53, 20.75, 18.94, 21, 18.11);
+        bezierVertex(21.25, 17.29, 21.42, 16.66, 21.51, 16.2);
+        bezierVertex(21.6, 15.75, 21.68, 15.26, 21.75, 14.72);
+        bezierVertex(21.82, 14.18, 21.86, 13.8, 21.88, 13.59);
+        bezierVertex(21.9, 13.37, 21.91, 13.06, 21.93, 12.66);
+        bezierVertex(21.95, 12.26, 21.96, 11.85, 21.96, 11.45);
+        bezierVertex(21.96, 11.04, 21.95, 10.56, 21.93, 10);
+        bezierVertex(21.91, 9.43, 21.89, 8.99, 21.88, 8.68);
+        bezierVertex(21.86, 8.36, 21.83, 7.94, 21.8, 7.41);
+        bezierVertex(21.77, 6.89, 21.71, 6.16, 21.63, 5.23);
+        bezierVertex(21.54, 4.3, 21.48, 3.67, 21.43, 3.36);
+        bezierVertex(21.39, 3.05, 21.33, 2.67, 21.26, 2.22);
+        bezierVertex(21.2, 1.77, 21.15, 1.4, 21.13, 1.11);
+        bezierVertex(21.12, 0.83, 21.15, 0.47, 21.24, 0.03);
+        bezierVertex(21.42, 0, 21.55, -0.01, 21.63, 0);
+        bezierVertex(21.72, 0.01, 21.91, 0.06, 22.2, 0.15);
+        bezierVertex(22.49, 0.25, 22.83, 0.38, 23.2, 0.55);
+        bezierVertex(23.58, 0.72, 24.04, 0.93, 24.57, 1.18);
+        bezierVertex(25.1, 1.44, 25.58, 1.66, 25.99, 1.85);
+        bezierVertex(26.41, 2.04, 27.04, 2.32, 27.9, 2.7);
+        bezierVertex(28.75, 3.09, 29.45, 3.39, 29.99, 3.62);
+        bezierVertex(30.53, 3.85, 31.2, 4.12, 32, 4.42);
+        bezierVertex(32.8, 4.73, 33.32, 4.92, 33.56, 5);
+        bezierVertex(33.81, 5.08, 34.1, 5.16, 34.45, 5.25);
+        bezierVertex(34.8, 5.34, 35.4, 5.43, 36.25, 5.53);
+        bezierVertex(37.11, 5.64, 37.84, 5.67, 38.43, 5.65);
+        bezierVertex(39.03, 5.63, 39.54, 5.58, 39.97, 5.51);
+        bezierVertex(40.4, 5.43, 40.7, 5.38, 40.87, 5.34);
+        bezierVertex(41.05, 5.3, 41.51, 5.18, 42.25, 4.99);
+        bezierVertex(42.99, 4.8, 43.59, 4.63, 44.06, 4.49);
+        bezierVertex(44.52, 4.35, 45.12, 4.17, 45.86, 3.97);
+        bezierVertex(46.59, 3.76, 47.12, 3.63, 47.44, 3.59);
+        bezierVertex(47.76, 3.55, 48, 3.53, 48.15, 3.53);
+        bezierVertex(48.29, 3.54, 48.68, 3.63, 49.3, 3.83);
+        bezierVertex(49.43, 3.94, 49.57, 4.13, 49.73, 4.41);
+        bezierVertex(49.89, 4.68, 50.05, 5.15, 50.21, 5.81);
+        bezierVertex(50.38, 6.47, 50.48, 6.98, 50.54, 7.34);
+        bezierVertex(50.59, 7.7, 50.64, 8.05, 50.67, 8.39);
+        bezierVertex(50.71, 8.73, 50.75, 9.19, 50.8, 9.78);
+        bezierVertex(50.85, 10.37, 50.9, 10.94, 50.94, 11.49);
+        bezierVertex(50.99, 12.05, 51.01, 12.35, 51.01, 12.4);
+        bezierVertex(51.02, 12.45, 51.04, 12.81, 51.08, 13.48);
+        bezierVertex(51.12, 14.15, 51.15, 14.69, 51.16, 15.08);
+        bezierVertex(51.18, 15.47, 51.2, 15.82, 51.21, 16.13);
+        bezierVertex(51.22, 16.44, 51.23, 17, 51.24, 17.81);
+        bezierVertex(51.25, 18.62, 51.25, 19.42, 51.22, 20.19);
+        bezierVertex(51.2, 20.96, 51.16, 21.64, 51.12, 22.22);
+        bezierVertex(51.08, 22.8, 51.03, 23.3, 50.98, 23.7);
+        bezierVertex(50.94, 24.11, 50.84, 24.67, 50.71, 25.37);
+        bezierVertex(50.57, 26.07, 50.45, 26.57, 50.35, 26.87);
+        bezierVertex(50.26, 27.17, 50.15, 27.45, 50.05, 27.71);
+        bezierVertex(49.94, 27.97, 49.83, 28.22, 49.72, 28.44);
+        bezierVertex(49.6, 28.67, 49.44, 28.96, 49.24, 29.3);
+        bezierVertex(49.03, 29.64, 48.86, 29.91, 48.71, 30.11);
+        bezierVertex(48.57, 30.31, 48.33, 30.62, 47.98, 31.04);
+        bezierVertex(47.62, 31.47, 47.18, 31.97, 46.65, 32.54);
+        bezierVertex(46.12, 33.12, 45.67, 33.6, 45.32, 33.98);
+        bezierVertex(44.96, 34.36, 44.66, 34.68, 44.41, 34.92);
+        bezierVertex(44.17, 35.16, 43.78, 35.54, 43.26, 36.03);
+        bezierVertex(42.74, 36.53, 42.33, 36.93, 42.03, 37.23);
+        bezierVertex(41.73, 37.54, 41.42, 37.87, 41.1, 38.23);
+        bezierVertex(40.77, 38.59, 40.46, 38.97, 40.15, 39.38);
+        bezierVertex(39.84, 39.78, 39.54, 40.2, 39.26, 40.64);
+        bezierVertex(38.98, 41.09, 38.64, 41.69, 38.26, 42.45);
+        bezierVertex(37.88, 43.21, 37.6, 43.81, 37.44, 44.24);
+        bezierVertex(37.28, 44.67, 37.11, 45.18, 36.94, 45.77);
+        bezierVertex(36.78, 46.37, 36.65, 46.95, 36.56, 47.53);
+        bezierVertex(36.48, 48.12, 36.42, 48.62, 36.4, 49.05);
+        bezierVertex(36.37, 49.48, 36.36, 49.94, 36.37, 50.43);
+        bezierVertex(36.37, 50.92, 36.39, 51.41, 36.42, 51.91);
+        bezierVertex(36.46, 52.4, 36.5, 52.84, 36.56, 53.24);
+        bezierVertex(36.61, 53.64, 36.7, 54.13, 36.83, 54.7);
+        bezierVertex(36.96, 55.26, 37.09, 55.77, 37.23, 56.21);
+        bezierVertex(37.36, 56.65, 37.49, 57.07, 37.63, 57.47);
+        bezierVertex(37.77, 57.88, 37.89, 58.21, 37.99, 58.46);
+        bezierVertex(38.08, 58.71, 38.27, 59.17, 38.55, 59.84);
+        bezierVertex(38.84, 60.51, 39.05, 61, 39.19, 61.3);
+        bezierVertex(39.32, 61.61, 39.46, 61.93, 39.61, 62.28);
+        bezierVertex(39.75, 62.63, 39.85, 62.95, 39.91, 63.24);
+        bezierVertex(39.97, 63.54, 39.99, 63.73, 39.99, 63.82);
+        bezierVertex(39.98, 63.91, 39.96, 64, 39.94, 64.08);
+        vertex(39.88, 64.13);
+        vertex(38.82, 64.5);
+        bezierVertex(38.66, 64.52, 38.27, 64.53, 37.67, 64.53);
+        bezierVertex(37.07, 64.54, 36.51, 64.53, 35.99, 64.51);
+        bezierVertex(35.47, 64.49, 35.04, 64.47, 34.71, 64.45);
+        bezierVertex(34.38, 64.43, 33.93, 64.38, 33.34, 64.31);
+        bezierVertex(32.76, 64.24, 32.4, 64.2, 32.27, 64.18);
+        bezierVertex(32.13, 64.16, 31.57, 64.05, 30.58, 63.86);
+        bezierVertex(29.59, 63.67, 28.89, 63.54, 28.46, 63.46);
+        bezierVertex(28.04, 63.38, 27.67, 63.32, 27.34, 63.27);
+        bezierVertex(27.01, 63.23, 26.61, 63.19, 26.16, 63.16);
+        bezierVertex(25.71, 63.12, 25.25, 63.1, 24.8, 63.09);
+        bezierVertex(24.35, 63.09, 23.71, 63.07, 22.9, 63.05);
+        bezierVertex(22.09, 63.02, 21.51, 63, 21.17, 62.97);
+        bezierVertex(20.83, 62.95, 20.44, 62.92, 20, 62.9);
+        bezierVertex(19.56, 62.87, 19.16, 62.84, 18.8, 62.8);
+        bezierVertex(18.44, 62.77, 17.95, 62.72, 17.33, 62.67);
+        bezierVertex(16.71, 62.61, 16.34, 62.58, 16.23, 62.57);
+        bezierVertex(16.12, 62.57, 15.93, 62.56, 15.65, 62.56);
+        bezierVertex(15.38, 62.56, 15.13, 62.56, 14.9, 62.57);
+        bezierVertex(14.68, 62.58, 14.39, 62.59, 14.03, 62.61);
+        bezierVertex(13.67, 62.63, 13.38, 62.65, 13.18, 62.66);
+        bezierVertex(12.98, 62.67, 12.71, 62.66, 12.38, 62.63);
+        bezierVertex(12.28, 62.57, 12.1, 62.45, 11.86, 62.28);
+    endShape();
+    noFill();
+    stroke(cdeviceGrey);
+    strokeWeight(2);
+    mentonrep.scribbleLine(70,68,10,62);
+	pop();
+}
+
+function mentonTransducer(xloc,yloc,rotation, tcolour){
+push();
+		translate(xloc+30,yloc-30);
+		rotate(radians(109+rotation));
+		scale(0.4);
+		noStroke();
+		fill(tcolour);
+
+beginShape();
+ vertex(76.48, 80.8);
+            bezierVertex(75.67, 80.91, 75.01, 80.99, 74.52, 81.06);
+            bezierVertex(74.02, 81.13, 73.22, 81.23, 72.11, 81.38);
+            bezierVertex(71, 81.53, 69.95, 81.67, 68.97, 81.8);
+            bezierVertex(67.98, 81.93, 66.7, 82.11, 65.13, 82.32);
+            bezierVertex(63.56, 82.53, 62.15, 82.72, 60.92, 82.89);
+            bezierVertex(59.69, 83.07, 58.37, 83.25, 56.97, 83.44);
+            bezierVertex(55.56, 83.63, 53.83, 83.85, 51.78, 84.09);
+            bezierVertex(49.72, 84.34, 48.07, 84.52, 46.81, 84.63);
+            bezierVertex(45.56, 84.74, 44.33, 84.83, 43.13, 84.88);
+            bezierVertex(41.94, 84.93, 41.18, 84.96, 40.87, 84.96);
+            bezierVertex(40.56, 84.97, 40.07, 84.96, 39.4, 84.94);
+            bezierVertex(38.72, 84.93, 37.58, 84.85, 35.96, 84.69);
+            bezierVertex(34.35, 84.53, 33.36, 84.42, 33, 84.36);
+            bezierVertex(32.64, 84.3, 32.14, 84.2, 31.48, 84.06);
+            bezierVertex(30.83, 83.93, 30.17, 83.76, 29.5, 83.58);
+            bezierVertex(28.83, 83.4, 28.02, 83.14, 27.07, 82.81);
+            bezierVertex(26.13, 82.49, 25.42, 82.23, 24.95, 82.03);
+            bezierVertex(24.48, 81.84, 24.03, 81.65, 23.6, 81.45);
+            bezierVertex(23.16, 81.26, 22.67, 81.02, 22.11, 80.73);
+            bezierVertex(21.55, 80.45, 20.8, 80.03, 19.86, 79.48);
+            bezierVertex(18.91, 78.92, 18.1, 78.41, 17.43, 77.96);
+            bezierVertex(16.75, 77.5, 15.97, 76.94, 15.08, 76.27);
+            bezierVertex(14.18, 75.59, 13.33, 74.91, 12.51, 74.22);
+            bezierVertex(11.69, 73.53, 11.13, 73.05, 10.84, 72.79);
+            bezierVertex(10.55, 72.53, 10, 72.02, 9.21, 71.26);
+            bezierVertex(8.42, 70.5, 7.76, 69.86, 7.23, 69.31);
+            bezierVertex(6.7, 68.77, 6.2, 68.25, 5.74, 67.76);
+            bezierVertex(5.28, 67.27, 4.8, 66.75, 4.28, 66.18);
+            bezierVertex(3.77, 65.62, 3.34, 65.13, 2.99, 64.73);
+            bezierVertex(2.64, 64.33, 2.19, 63.81, 1.65, 63.16);
+            bezierVertex(1.1, 62.52, 0.74, 62.09, 0.56, 61.87);
+            bezierVertex(0.39, 61.66, 0.17, 61.4, -0.08, 61.1);
+            vertex(-0.08, 61.1);
+            bezierVertex(0.53, 61.14, 0.97, 61.18, 1.24, 61.2);
+            bezierVertex(1.5, 61.22, 2.26, 61.28, 3.51, 61.4);
+            bezierVertex(4.76, 61.51, 5.83, 61.61, 6.72, 61.69);
+            bezierVertex(7.61, 61.77, 8.39, 61.83, 9.06, 61.89);
+            bezierVertex(9.74, 61.95, 10.85, 62.03, 12.41, 62.15);
+            bezierVertex(13.97, 62.27, 15.31, 62.37, 16.41, 62.44);
+            bezierVertex(17.51, 62.52, 18.44, 62.58, 19.2, 62.63);
+            bezierVertex(19.95, 62.67, 20.74, 62.72, 21.56, 62.77);
+            bezierVertex(22.38, 62.81, 23.69, 62.88, 25.49, 62.96);
+            bezierVertex(27.29, 63.04, 28.79, 63.1, 30.01, 63.14);
+            bezierVertex(31.23, 63.18, 32.27, 63.21, 33.14, 63.23);
+            bezierVertex(34.01, 63.24, 34.83, 63.26, 35.58, 63.26);
+            bezierVertex(36.34, 63.27, 37.29, 63.27, 38.43, 63.26);
+            bezierVertex(39.57, 63.26, 40.48, 63.25, 41.15, 63.24);
+            bezierVertex(41.82, 63.22, 42.69, 63.2, 43.75, 63.16);
+            bezierVertex(44.8, 63.12, 45.83, 63.08, 46.83, 63.02);
+            bezierVertex(47.83, 62.97, 49.04, 62.89, 50.45, 62.79);
+            bezierVertex(51.86, 62.69, 53.16, 62.58, 54.34, 62.47);
+            bezierVertex(55.52, 62.36, 56.78, 62.22, 58.12, 62.06);
+            bezierVertex(59.46, 61.91, 60.45, 61.79, 61.1, 61.7);
+            bezierVertex(61.75, 61.61, 62.31, 61.54, 62.8, 61.47);
+            bezierVertex(63.28, 61.4, 64.01, 61.29, 64.99, 61.14);
+            bezierVertex(65.97, 60.98, 66.8, 60.85, 67.5, 60.73);
+            bezierVertex(68.19, 60.61, 68.98, 60.48, 69.85, 60.32);
+            bezierVertex(70.73, 60.16, 71.47, 60.02, 72.07, 59.9);
+            bezierVertex(72.68, 59.79, 73.33, 59.66, 74.02, 59.52);
+            bezierVertex(74.71, 59.38, 75.5, 59.22, 76.4, 59.02);
+            bezierVertex(77.3, 58.83, 78.48, 58.57, 79.95, 58.23);
+            bezierVertex(80.69, 58.06, 81.39, 57.89, 82.06, 57.73);
+            bezierVertex(82.73, 57.57, 83.37, 57.42, 83.98, 57.26);
+            bezierVertex(84.59, 57.11, 85.16, 56.97, 85.68, 56.84);
+            bezierVertex(86.2, 56.71, 86.68, 56.58, 87.11, 56.47);
+            bezierVertex(87.54, 56.36, 88.04, 56.22, 88.6, 56.07);
+            bezierVertex(89.15, 55.92, 89.77, 55.75, 90.46, 55.56);
+            bezierVertex(91.14, 55.36, 91.8, 55.18, 92.43, 54.99);
+            bezierVertex(93.06, 54.81, 93.67, 54.63, 94.25, 54.46);
+            bezierVertex(94.83, 54.28, 95.37, 54.12, 95.86, 53.97);
+            bezierVertex(96.35, 53.82, 96.8, 53.68, 97.19, 53.55);
+            bezierVertex(97.59, 53.43, 98.04, 53.28, 98.55, 53.11);
+            bezierVertex(99.05, 52.94, 99.62, 52.75, 100.25, 52.54);
+            bezierVertex(100.88, 52.32, 101.51, 52.11, 102.13, 51.89);
+            bezierVertex(102.75, 51.67, 103.37, 51.45, 103.98, 51.22);
+            bezierVertex(104.59, 51, 105.17, 50.78, 105.72, 50.58);
+            bezierVertex(106.27, 50.37, 106.74, 50.19, 107.14, 50.04);
+            bezierVertex(107.54, 49.88, 107.96, 49.72, 108.4, 49.55);
+            bezierVertex(108.84, 49.38, 109.26, 49.21, 109.68, 49.05);
+            bezierVertex(110.09, 48.89, 110.5, 48.72, 110.89, 48.57);
+            bezierVertex(111.28, 48.41, 111.7, 48.24, 112.15, 48.05);
+            bezierVertex(112.59, 47.87, 113.06, 47.67, 113.56, 47.46);
+            bezierVertex(114.06, 47.25, 114.5, 47.06, 114.88, 46.89);
+            bezierVertex(115.25, 46.73, 115.62, 46.56, 115.98, 46.39);
+            bezierVertex(116.34, 46.22, 116.82, 46, 117.39, 45.71);
+            bezierVertex(117.97, 45.43, 118.58, 45.12, 119.2, 44.79);
+            bezierVertex(119.82, 44.45, 120.37, 44.15, 120.84, 43.88);
+            bezierVertex(121.31, 43.61, 121.8, 43.32, 122.32, 43);
+            bezierVertex(122.84, 42.68, 123.37, 42.35, 123.91, 42);
+            bezierVertex(124.45, 41.65, 124.99, 41.3, 125.54, 40.93);
+            bezierVertex(126.09, 40.57, 126.59, 40.23, 127.06, 39.93);
+            bezierVertex(127.52, 39.63, 128.03, 39.31, 128.59, 38.96);
+            bezierVertex(129.15, 38.62, 129.67, 38.32, 130.14, 38.06);
+            bezierVertex(130.62, 37.8, 131.03, 37.58, 131.38, 37.41);
+            bezierVertex(131.73, 37.24, 132.03, 37.1, 132.29, 36.99);
+            bezierVertex(132.54, 36.88, 132.74, 36.79, 132.9, 36.73);
+            bezierVertex(133.05, 36.67, 133.21, 36.6, 133.37, 36.54);
+            bezierVertex(133.53, 36.48, 133.7, 36.4, 133.9, 36.31);
+            bezierVertex(134.09, 36.22, 134.25, 36.15, 134.39, 36.08);
+            bezierVertex(134.52, 36.01, 134.65, 35.95, 134.77, 35.89);
+            bezierVertex(134.89, 35.82, 135.03, 35.75, 135.18, 35.67);
+            bezierVertex(135.33, 35.59, 135.5, 35.5, 135.68, 35.4);
+            bezierVertex(135.87, 35.3, 136.06, 35.19, 136.27, 35.07);
+            bezierVertex(136.48, 34.96, 136.64, 34.87, 136.76, 34.8);
+            bezierVertex(136.87, 34.74, 136.93, 34.7, 136.95, 34.7);
+            bezierVertex(136.96, 34.69, 137.05, 34.63, 137.23, 34.52);
+            bezierVertex(137.41, 34.41, 137.68, 34.24, 138.06, 34.01);
+            bezierVertex(138.43, 33.78, 138.83, 33.54, 139.24, 33.28);
+            bezierVertex(139.65, 33.03, 140.03, 32.79, 140.37, 32.57);
+            bezierVertex(140.71, 32.35, 141.02, 32.16, 141.29, 31.98);
+            bezierVertex(141.56, 31.81, 141.85, 31.62, 142.16, 31.41);
+            bezierVertex(142.47, 31.2, 142.81, 30.98, 143.17, 30.73);
+            bezierVertex(143.53, 30.49, 143.91, 30.22, 144.31, 29.94);
+            bezierVertex(144.72, 29.66, 145.11, 29.38, 145.5, 29.1);
+            bezierVertex(145.89, 28.83, 146.26, 28.56, 146.62, 28.3);
+            bezierVertex(146.99, 28.05, 147.33, 27.8, 147.66, 27.56);
+            bezierVertex(148, 27.32, 148.39, 27.04, 148.84, 26.72);
+            bezierVertex(149.29, 26.4, 149.77, 26.07, 150.26, 25.72);
+            bezierVertex(150.76, 25.37, 151.2, 25.06, 151.58, 24.78);
+            bezierVertex(152.35, 24.23, 152.92, 23.83, 153.27, 23.56);
+            bezierVertex(153.63, 23.3, 153.96, 23.04, 154.28, 22.8);
+            bezierVertex(154.59, 22.56, 154.93, 22.29, 155.32, 21.99);
+            bezierVertex(155.7, 21.69, 156.07, 21.38, 156.44, 21.07);
+            bezierVertex(156.8, 20.77, 157.16, 20.46, 157.51, 20.15);
+            bezierVertex(157.85, 19.83, 158.21, 19.5, 158.56, 19.16);
+            bezierVertex(158.92, 18.81, 159.28, 18.45, 159.64, 18.07);
+            bezierVertex(160.01, 17.69, 160.37, 17.29, 160.74, 16.87);
+            bezierVertex(161.11, 16.46, 161.48, 16.02, 161.86, 15.57);
+            bezierVertex(162.24, 15.12, 162.58, 14.71, 162.88, 14.34);
+            bezierVertex(163.19, 13.96, 163.45, 13.63, 163.69, 13.33);
+            bezierVertex(163.92, 13.04, 164.17, 12.72, 164.45, 12.37);
+            bezierVertex(164.73, 12.03, 164.98, 11.71, 165.2, 11.43);
+            bezierVertex(165.42, 11.16, 165.66, 10.85, 165.92, 10.53);
+            bezierVertex(166.18, 10.2, 166.43, 9.88, 166.69, 9.56);
+            bezierVertex(166.94, 9.24, 167.26, 8.85, 167.63, 8.38);
+            bezierVertex(168.01, 7.92, 168.44, 7.4, 168.93, 6.83);
+            bezierVertex(169.41, 6.24, 169.87, 5.68, 170.31, 5.17);
+            bezierVertex(170.75, 4.65, 171.17, 4.18, 171.57, 3.74);
+            bezierVertex(172.37, 2.87, 172.88, 2.32, 173.11, 2.1);
+            bezierVertex(173.35, 1.88, 173.59, 1.67, 173.84, 1.48);
+            bezierVertex(174.09, 1.3, 174.38, 1.09, 174.72, 0.87);
+            bezierVertex(175.06, 0.64, 175.35, 0.47, 175.57, 0.34);
+            bezierVertex(175.79, 0.21, 175.98, 0.11, 176.14, 0.06);
+            bezierVertex(176.3, 0, 176.45, -0.04, 176.6, -0.07);
+            bezierVertex(176.74, -0.09, 176.96, -0.08, 177.25, -0.04);
+            bezierVertex(177.54, 0, 177.75, 0.07, 177.9, 0.15);
+            bezierVertex(178.01, 0.27, 178.11, 0.4, 178.2, 0.53);
+            bezierVertex(178.28, 0.67, 178.33, 0.76, 178.35, 0.81);
+            bezierVertex(178.37, 0.86, 178.4, 1, 178.42, 1.22);
+            bezierVertex(178.45, 1.44, 178.48, 1.76, 178.51, 2.18);
+            bezierVertex(178.55, 2.61, 178.56, 3.04, 178.56, 3.48);
+            bezierVertex(178.55, 3.92, 178.51, 4.47, 178.45, 5.15);
+            bezierVertex(178.38, 5.82, 178.29, 6.53, 178.19, 7.27);
+            bezierVertex(178.08, 8.01, 177.97, 8.72, 177.85, 9.41);
+            bezierVertex(177.73, 10.1, 177.62, 10.73, 177.52, 11.3);
+            bezierVertex(177.42, 11.86, 177.31, 12.48, 177.19, 13.14);
+            bezierVertex(177.07, 13.8, 176.96, 14.4, 176.86, 14.96);
+            bezierVertex(176.75, 15.51, 176.64, 16.11, 176.5, 16.78);
+            bezierVertex(176.37, 17.44, 176.24, 18.05, 176.11, 18.62);
+            bezierVertex(175.98, 19.19, 175.85, 19.69, 175.74, 20.12);
+            bezierVertex(175.63, 20.55, 175.51, 21.02, 175.37, 21.51);
+            bezierVertex(175.23, 22, 175.07, 22.55, 174.88, 23.16);
+            bezierVertex(174.68, 23.77, 174.46, 24.44, 174.22, 25.16);
+            bezierVertex(173.97, 25.89, 173.71, 26.59, 173.45, 27.27);
+            bezierVertex(173.18, 27.95, 172.91, 28.61, 172.63, 29.25);
+            bezierVertex(172.35, 29.89, 172.06, 30.5, 171.77, 31.09);
+            bezierVertex(171.47, 31.67, 171.18, 32.23, 170.87, 32.75);
+            bezierVertex(170.57, 33.28, 170.27, 33.77, 169.97, 34.21);
+            bezierVertex(169.67, 34.65, 169.41, 35.03, 169.19, 35.34);
+            bezierVertex(168.97, 35.65, 168.74, 35.97, 168.49, 36.3);
+            bezierVertex(168.24, 36.63, 168, 36.94, 167.75, 37.26);
+            bezierVertex(167.5, 37.57, 167.19, 37.94, 166.81, 38.38);
+            bezierVertex(166.44, 38.83, 165.99, 39.31, 165.48, 39.83);
+            bezierVertex(164.97, 40.36, 164.52, 40.81, 164.11, 41.21);
+            bezierVertex(163.71, 41.6, 163.36, 41.93, 163.06, 42.2);
+            bezierVertex(162.76, 42.46, 162.44, 42.74, 162.1, 43.02);
+            bezierVertex(161.76, 43.3, 161.4, 43.6, 161.02, 43.9);
+            bezierVertex(160.65, 44.2, 160.3, 44.47, 159.99, 44.71);
+            bezierVertex(159.68, 44.95, 159.4, 45.17, 159.15, 45.35);
+            bezierVertex(158.9, 45.54, 158.57, 45.77, 158.17, 46.04);
+            bezierVertex(157.78, 46.32, 157.41, 46.57, 157.07, 46.8);
+            bezierVertex(156.73, 47.03, 156.36, 47.28, 155.96, 47.55);
+            bezierVertex(155.55, 47.83, 155.14, 48.1, 154.72, 48.38);
+            bezierVertex(154.31, 48.66, 153.89, 48.94, 153.46, 49.22);
+            bezierVertex(153.04, 49.5, 152.61, 49.78, 152.18, 50.06);
+            bezierVertex(151.75, 50.34, 151.32, 50.62, 150.88, 50.91);
+            bezierVertex(150.44, 51.19, 150.03, 51.45, 149.64, 51.7);
+            bezierVertex(149.26, 51.94, 148.9, 52.16, 148.58, 52.36);
+            bezierVertex(148.25, 52.57, 147.95, 52.75, 147.68, 52.91);
+            bezierVertex(147.41, 53.07, 147.12, 53.25, 146.8, 53.43);
+            bezierVertex(146.48, 53.62, 146.09, 53.84, 145.64, 54.1);
+            bezierVertex(145.18, 54.35, 144.7, 54.61, 144.21, 54.87);
+            bezierVertex(143.72, 55.13, 143.2, 55.39, 142.64, 55.66);
+            bezierVertex(142.09, 55.93, 141.51, 56.21, 140.9, 56.5);
+            bezierVertex(140.29, 56.77, 139.7, 57.04, 139.15, 57.29);
+            bezierVertex(138.61, 57.54, 138.09, 57.78, 137.61, 58.01);
+            bezierVertex(137.12, 58.24, 136.64, 58.47, 136.17, 58.71);
+            bezierVertex(135.69, 58.95, 135.22, 59.2, 134.75, 59.46);
+            bezierVertex(134.27, 59.72, 133.85, 59.95, 133.47, 60.16);
+            bezierVertex(133.1, 60.37, 132.78, 60.55, 132.5, 60.7);
+            bezierVertex(132.23, 60.85, 131.94, 61, 131.62, 61.17);
+            bezierVertex(131.31, 61.33, 131.01, 61.47, 130.74, 61.59);
+            bezierVertex(130.47, 61.71, 130.17, 61.83, 129.84, 61.96);
+            bezierVertex(129.5, 62.09, 129.19, 62.21, 128.89, 62.32);
+            bezierVertex(128.59, 62.43, 128.23, 62.55, 127.83, 62.68);
+            bezierVertex(127.42, 62.81, 127.08, 62.93, 126.79, 63.05);
+            bezierVertex(126.5, 63.16, 126.14, 63.36, 125.72, 63.63);
+            bezierVertex(125.31, 63.91, 124.92, 64.3, 124.56, 64.82);
+            bezierVertex(124.19, 65.33, 124.02, 65.82, 124.03, 66.29);
+            bezierVertex(124.04, 66.76, 124.1, 67.17, 124.19, 67.52);
+            bezierVertex(124.28, 67.88, 124.35, 68.12, 124.4, 68.25);
+            bezierVertex(124.45, 68.39, 124.55, 68.62, 124.7, 68.95);
+            bezierVertex(124.85, 69.29, 125.05, 69.73, 125.28, 70.29);
+            bezierVertex(125.52, 70.85, 125.7, 71.32, 125.84, 71.71);
+            bezierVertex(125.98, 72.09, 126.11, 72.47, 126.22, 72.84);
+            bezierVertex(126.34, 73.21, 126.48, 73.62, 126.65, 74.09);
+            bezierVertex(126.82, 74.56, 126.97, 74.96, 127.09, 75.29);
+            bezierVertex(127.22, 75.63, 127.35, 75.97, 127.49, 76.34);
+            bezierVertex(127.63, 76.7, 127.8, 77.11, 127.99, 77.56);
+            bezierVertex(128.18, 78.02, 128.38, 78.53, 128.61, 79.09);
+            bezierVertex(128.83, 79.65, 129.03, 80.16, 129.2, 80.62);
+            bezierVertex(129.37, 81.08, 129.52, 81.47, 129.63, 81.79);
+            bezierVertex(129.75, 82.11, 129.87, 82.44, 129.99, 82.78);
+            bezierVertex(130.11, 83.11, 130.22, 83.43, 130.33, 83.72);
+            bezierVertex(130.43, 84.02, 130.55, 84.36, 130.69, 84.75);
+            bezierVertex(130.83, 85.14, 130.96, 85.51, 131.09, 85.88);
+            bezierVertex(131.36, 86.61, 131.57, 87.2, 131.74, 87.67);
+            bezierVertex(131.91, 88.13, 132.05, 88.54, 132.18, 88.89);
+            bezierVertex(132.31, 89.24, 132.44, 89.61, 132.58, 90.01);
+            bezierVertex(132.86, 90.8, 133.33, 92.12, 133.98, 93.99);
+            bezierVertex(134.63, 95.86, 135.11, 97.24, 135.41, 98.13);
+            bezierVertex(135.72, 99.02, 136.04, 99.96, 136.38, 100.96);
+            bezierVertex(136.72, 101.96, 137.07, 102.98, 137.42, 104.04);
+            bezierVertex(137.78, 105.09, 138.08, 105.98, 138.32, 106.72);
+            bezierVertex(138.56, 107.45, 138.79, 108.15, 139, 108.8);
+            bezierVertex(139.22, 109.46, 139.4, 110.02, 139.54, 110.48);
+            bezierVertex(139.69, 110.94, 139.86, 111.46, 140.04, 112.05);
+            bezierVertex(140.23, 112.63, 140.44, 113.32, 140.68, 114.09);
+            bezierVertex(140.92, 114.87, 141.21, 115.82, 141.55, 116.95);
+            bezierVertex(141.89, 118.08, 142.19, 119.07, 142.44, 119.92);
+            bezierVertex(142.7, 120.77, 142.96, 121.65, 143.23, 122.56);
+            bezierVertex(143.49, 123.47, 143.79, 124.48, 144.12, 125.59);
+            bezierVertex(144.44, 126.71, 144.74, 127.7, 144.99, 128.57);
+            bezierVertex(145.25, 129.45, 145.48, 130.24, 145.69, 130.95);
+            bezierVertex(145.91, 131.66, 146.22, 132.72, 146.65, 134.12);
+            bezierVertex(147.08, 135.52, 147.41, 136.6, 147.65, 137.37);
+            bezierVertex(147.89, 138.14, 148.09, 138.77, 148.24, 139.25);
+            bezierVertex(148.4, 139.74, 148.58, 140.32, 148.8, 141.01);
+            bezierVertex(149.03, 141.7, 149.21, 142.28, 149.36, 142.74);
+            bezierVertex(149.51, 143.2, 149.7, 143.79, 149.93, 144.52);
+            bezierVertex(150.15, 145.24, 150.45, 146.16, 150.83, 147.29);
+            bezierVertex(151.2, 148.42, 151.53, 149.45, 151.83, 150.37);
+            bezierVertex(152.13, 151.3, 152.45, 152.32, 152.78, 153.42);
+            bezierVertex(153.11, 154.52, 153.36, 155.36, 153.51, 155.93);
+            bezierVertex(153.67, 156.51, 153.82, 157.12, 153.98, 157.76);
+            bezierVertex(154.13, 158.41, 154.26, 158.98, 154.37, 159.47);
+            bezierVertex(154.47, 159.96, 154.59, 160.63, 154.72, 161.48);
+            bezierVertex(154.86, 162.34, 154.96, 163.08, 155.03, 163.71);
+            bezierVertex(155.09, 164.34, 155.14, 165.34, 155.17, 166.73);
+            bezierVertex(155.2, 168.11, 155.18, 169.17, 155.12, 169.89);
+            bezierVertex(155.06, 170.62, 154.93, 171.52, 154.73, 172.6);
+            bezierVertex(154.52, 173.69, 154.34, 174.49, 154.19, 175);
+            bezierVertex(154.04, 175.5, 153.83, 176.11, 153.56, 176.8);
+            bezierVertex(153.29, 177.5, 153.01, 178.12, 152.73, 178.68);
+            bezierVertex(152.45, 179.24, 151.99, 179.99, 151.35, 180.94);
+            bezierVertex(150.72, 181.89, 149.99, 182.82, 149.15, 183.73);
+            bezierVertex(148.32, 184.64, 147.26, 185.59, 145.99, 186.57);
+            bezierVertex(144.72, 187.55, 143.53, 188.34, 142.42, 188.94);
+            bezierVertex(141.31, 189.55, 140.41, 189.99, 139.72, 190.27);
+            bezierVertex(139.02, 190.55, 138.16, 190.83, 137.13, 191.13);
+            bezierVertex(136.1, 191.42, 135.23, 191.63, 134.52, 191.76);
+            bezierVertex(133.81, 191.88, 133.06, 191.98, 132.25, 192.04);
+            bezierVertex(131.45, 192.11, 130.62, 192.13, 129.78, 192.11);
+            bezierVertex(128.94, 192.09, 128.05, 192.01, 127.11, 191.87);
+            bezierVertex(126.18, 191.74, 124.99, 191.44, 123.56, 190.98);
+            bezierVertex(122.12, 190.52, 120.96, 190.06, 120.09, 189.6);
+            bezierVertex(119.21, 189.15, 118.6, 188.8, 118.25, 188.57);
+            bezierVertex(117.91, 188.34, 117.52, 188.06, 117.09, 187.73);
+            bezierVertex(116.67, 187.4, 116.37, 187.16, 116.2, 187);
+            bezierVertex(116.03, 186.85, 115.81, 186.64, 115.55, 186.38);
+            bezierVertex(115.29, 186.12, 114.85, 185.62, 114.22, 184.87);
+            bezierVertex(113.59, 184.12, 112.94, 183.21, 112.26, 182.14);
+            bezierVertex(111.58, 181.07, 111.05, 180.15, 110.68, 179.37);
+            bezierVertex(110.3, 178.6, 109.77, 177.31, 109.08, 175.51);
+            bezierVertex(108.4, 173.71, 107.91, 172.31, 107.61, 171.3);
+            bezierVertex(107.31, 170.29, 107.04, 169.33, 106.8, 168.42);
+            bezierVertex(106.56, 167.52, 106.32, 166.58, 106.08, 165.62);
+            bezierVertex(105.84, 164.66, 105.59, 163.64, 105.32, 162.56);
+            bezierVertex(105.05, 161.48, 104.73, 160.19, 104.34, 158.68);
+            bezierVertex(103.95, 157.16, 103.63, 155.92, 103.36, 154.96);
+            bezierVertex(103.1, 154, 102.85, 153.12, 102.63, 152.33);
+            bezierVertex(102.4, 151.54, 102.17, 150.77, 101.95, 150.03);
+            bezierVertex(101.73, 149.3, 101.53, 148.62, 101.33, 148);
+            bezierVertex(101.14, 147.39, 100.98, 146.88, 100.86, 146.5);
+            bezierVertex(100.73, 146.11, 100.55, 145.55, 100.3, 144.83);
+            bezierVertex(100.06, 144.1, 99.8, 143.34, 99.52, 142.54);
+            bezierVertex(99.24, 141.74, 99.01, 141.09, 98.83, 140.58);
+            bezierVertex(98.64, 140.08, 98.32, 139.18, 97.85, 137.9);
+            bezierVertex(97.37, 136.61, 96.82, 135.11, 96.19, 133.4);
+            bezierVertex(95.56, 131.69, 95.13, 130.52, 94.9, 129.89);
+            bezierVertex(94.67, 129.26, 94.39, 128.51, 94.08, 127.64);
+            bezierVertex(93.76, 126.76, 93.28, 125.43, 92.64, 123.65);
+            bezierVertex(91.99, 121.87, 91.47, 120.39, 91.05, 119.23);
+            bezierVertex(90.64, 118.06, 90.16, 116.71, 89.61, 115.17);
+            bezierVertex(89.07, 113.64, 88.62, 112.38, 88.27, 111.41);
+            bezierVertex(87.92, 110.43, 87.58, 109.49, 87.25, 108.58);
+            bezierVertex(86.92, 107.68, 86.36, 106.19, 85.58, 104.11);
+            bezierVertex(84.8, 102.03, 84.19, 100.4, 83.74, 99.22);
+            bezierVertex(83.29, 98.05, 82.94, 97.13, 82.69, 96.47);
+            bezierVertex(82.43, 95.8, 81.93, 94.52, 81.19, 92.61);
+            bezierVertex(80.45, 90.7, 79.93, 89.37, 79.64, 88.64);
+            bezierVertex(79.35, 87.9, 78.63, 86.1, 77.49, 83.24);
+            vertex(76.48, 80.8);
+   endShape();
+   pop();
+   }
 // graphic annotations
 //people
 
@@ -11424,18 +13524,18 @@ function advicedroid(xloc,yloc,theadvice,advicewidth,adviceheight){
 	discoursedroid(11,xloc,yloc,false,false,cdrawGuides,1);
 	talkbubbleBL(theadvice, xloc+10, yloc+50, advicewidth,adviceheight);
 	}
-	
-	
+
+
 function challengedroid(xloc,yloc,theadvice,advicewidth,adviceheight){
 	discoursedroid(1,xloc,yloc,true,false,cdrawGuides,1);
 	talkbubbleTR(theadvice, xloc-10, yloc+10, advicewidth,adviceheight);
 	}
-	
+
 function RLdroid(xloc,yloc,theadvice,advicewidth,adviceheight){
 	discoursedroid(7,xloc,yloc,true,false,cideaGreen,1);
 	talkbubbleTR(theadvice, xloc-20, yloc+10, advicewidth,adviceheight);
 	}
-	
+
 function WTdroid(xloc,yloc,theadvice,advicewidth,adviceheight){
 	discoursedroid(9,xloc,yloc,true,false,cideaRed,1);
 	talkbubbleTR(theadvice, xloc, yloc+10, advicewidth,adviceheight);
@@ -11450,8 +13550,8 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 	stroke(thecolour);
 	noFill();
 	strokeWeight(theweight);
-	
-	
+
+
 	push();
 		translate(xloc,yloc);
 		if (flip==true){
@@ -11460,7 +13560,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 		if (bigger==true){
 		scale(2.0);
 		}
-		
+
 	switch(personid){
 
 	case 0:
@@ -11539,10 +13639,10 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 		bezierVertex(10.65, 30.21, 11.46, 31.58, 13.81, 31.08);
 		bezierVertex(14.29, 30.98, 14.73, 30.68, 15.13, 30.26);
 		endShape();
-            
+
 	break;
 	case 1:
-	
+
 		beginShape();
 		vertex(10.05, 23.58);
 		bezierVertex(10.05, 23.58, 9.46, 22.48, 7.79, 20.8);
@@ -11606,11 +13706,11 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 		bezierVertex(31.97, 60.83, 31.87, 56.01, 31.87, 53.75);
 		bezierVertex(31.87, 51.5, 30.72, 49.75, 29.92, 48.48);
 		bezierVertex(29.11, 47.21, 29.96, 39.04, 28.72, 37.54);
-		endShape(); 
-		 
+		endShape();
+
 	break;
 	case 2:
-	
+
 		beginShape();
 		vertex(34.4, 32.56);
 		bezierVertex(34.91, 33.66, 31.77, 34.99, 32.14, 36.44);
@@ -11670,7 +13770,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 		bezierVertex(37.46, 51.5, 36.31, 49.75, 35.51, 48.48);
 		bezierVertex(34.71, 47.2, 35.55, 39.04, 34.32, 37.54);
 		endShape();
-            
+
 	break;
 	case 3:
 
@@ -11726,7 +13826,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 		bezierVertex(5.53, 44, 4.39, 40.06, 4.43, 36.08);
 		bezierVertex(4.46, 34.25, 5.08, 31.59, 4.43, 26.87);
 		endShape();
-		
+
 	break;
 	case 4:
 
@@ -11822,7 +13922,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 
 	break;
 	case 5:
-  
+
 		beginShape();
 		vertex(8.89, 13.24);
 		bezierVertex(8.89, 13.24, 9.23, 11.64, 10.2, 11.64);
@@ -11896,7 +13996,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 
 	break;
 	case 6:
-	
+
 		beginShape();
 		vertex(10.39, 39.78);
 		bezierVertex(11.8, 40.4, 12.14, 47.61, 11.91, 48.85);
@@ -12038,7 +14138,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 	break;
 	case 8:
 
-  
+
 		beginShape();
 		vertex(32.21, 29.36);
 		bezierVertex(32.09, 30.59, 28.67, 30.13, 28.24, 31.58);
@@ -12115,11 +14215,11 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 		bezierVertex(16.3, 23.48, 13.64, 27.31, 10.98, 27.38);
 		bezierVertex(8.32, 27.46, 3.63, 16.11, 2.98, 15.67);
 		endShape();
-		
+
 	break;
 	case 9:
 
-  
+
 		beginShape();
 		vertex(18.28, 37.28);
 		bezierVertex(18.28, 37.28, 15.7, 45.28, 14.33, 47.24);
@@ -12179,7 +14279,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 	break;
 	case 10:
 
-  
+
 		beginShape();
 		vertex(9.41, 23.02);
 		bezierVertex(8.6, 24.97, 7.56, 28.62, 5.33, 28.56);
@@ -12245,7 +14345,7 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 	break;
 	case 11:
 
-  
+
 		beginShape();
 		vertex(7.48, 33.27);
 		bezierVertex(8.13, 30.27, 8.53, 27.02, 7.83, 25.25);
@@ -12320,8 +14420,8 @@ function discoursedroid(personid,xloc,yloc,flip,bigger,thecolour,theweight){
 	break;
 
 	}
-		
-	
+
+
 	pop();
 }
 
@@ -12362,7 +14462,7 @@ function paneNumber(paneNumber,paneKind,xloc,yloc) {
         fill(cideaGreen);
     }
 	textFont(titleFont, 18);
-	text(paneNumber, xloc-textWidth(paneNumber)/2,yloc+6); 
+	text(paneNumber, xloc-textWidth(paneNumber)/2,yloc+6);
 }
 
 function paneBadgeSnapshot(){
@@ -12949,7 +15049,7 @@ function SIDPane(paneKind, paneNumber, paneAction, titleText){
     pop();
 }
 
-  
+
 function linkArrowUp(xloc,yloc,lengthofArrow){
     var widthOfArrow = 8;
     var widthOfArrowHead = 24;
@@ -13034,7 +15134,7 @@ function linkedBox(xloc,yloc,bwidth,bhight){
 	rectMode(CORNER);
 
 }
-	
+
 function linkBarRight(xloc,yloc,lengthBar){
 	var widthOfBar = 8;
 	noStroke();
@@ -13049,6 +15149,158 @@ function linkBarUp(xloc,yloc,lengthBar){
 	rect(xloc-(widthOfBar/2), yloc+(widthOfBar/2), widthOfBar,-(lengthBar+(widthOfBar/2)));
 }
 
+function linkArrowUpColour(xloc,yloc,lengthofArrow,linkcolour){
+  var widthOfArrow = 8;
+  var widthOfArrowHead = 24;
+  var heightOfArrowHead = 18;
+  var arrowIndent =8;
+  push();
+    translate(xloc, yloc-lengthofArrow-arrowIndent);
+    rotate(-PI/2);
+    beginShape();
+    noStroke();
+    fill(linkcolour);
+    vertex(0,0);
+    vertex(-heightOfArrowHead,-widthOfArrowHead/2);
+    vertex(-heightOfArrowHead,-widthOfArrow/2);
+    vertex(-lengthofArrow-(widthOfArrow/2)-arrowIndent,-widthOfArrow/2);
+    vertex(-lengthofArrow-(widthOfArrow/2)-arrowIndent,widthOfArrow/2);
+    vertex(-heightOfArrowHead,widthOfArrow/2);
+    vertex(-heightOfArrowHead,widthOfArrowHead/2);
+    vertex(0,0);
+    endShape(CLOSE);
+  pop();
+}
+
+function linkArrowDownColour(xloc,yloc,lengthofArrow,linkcolour){
+  var widthOfArrow = 8;
+  var widthOfArrowHead = 24;
+  var heightOfArrowHead = 18;
+  var arrowIndent =8;
+  push();
+    translate(xloc, yloc+lengthofArrow+arrowIndent);
+    rotate(PI/2);
+    beginShape();
+    noStroke();
+    fill(linkcolour);
+    vertex(0,0);
+    vertex(-heightOfArrowHead,-widthOfArrowHead/2);
+    vertex(-heightOfArrowHead,-widthOfArrow/2);
+    vertex(-lengthofArrow-(widthOfArrow/2)-arrowIndent,-widthOfArrow/2);
+    vertex(-lengthofArrow-(widthOfArrow/2)-arrowIndent,widthOfArrow/2);
+    vertex(-heightOfArrowHead,widthOfArrow/2);
+    vertex(-heightOfArrowHead,widthOfArrowHead/2);
+    vertex(0,0);
+    endShape(CLOSE);
+  pop();
+}
+
+function linkArrowRightColour(xloc,yloc,lengthofArrow,linkcolour){
+  var widthOfArrow = 8;
+  var widthOfArrowHead = 24;
+  var heightOfArrowHead = 18;
+  var arrowIndent =8;
+  push();
+    translate(xloc+lengthofArrow+arrowIndent, yloc);
+    beginShape();
+    noStroke();
+    fill(linkcolour);
+    vertex(0,0);
+    vertex(-heightOfArrowHead,-widthOfArrowHead/2);
+    vertex(-heightOfArrowHead,-widthOfArrow/2);
+    vertex(-lengthofArrow-(widthOfArrow/2)-arrowIndent,-widthOfArrow/2);
+    vertex(-lengthofArrow-(widthOfArrow/2)-arrowIndent,widthOfArrow/2);
+    vertex(-heightOfArrowHead,widthOfArrow/2);
+    vertex(-heightOfArrowHead,widthOfArrowHead/2);
+    vertex(0,0);
+    endShape(CLOSE);
+  pop();
+}
+
+function linkArrowLeftColour(xloc,yloc,lengthofArrow,linkcolour){
+push();
+    translate(xloc,yloc);
+    rotate(PI);
+    linkArrowRightColour(0, 0, lengthofArrow,linkcolour);
+  pop();
+}
+
+function linkedBoxColour(xloc,yloc,bwidth,bhight){
+  rectMode(CENTER);
+  noStroke();
+  fill(linkcolour);
+  rect(xloc,yloc,bwidth,bhight);
+  rectMode(CORNER);
+
+}
+
+function linkBarRightColour(xloc,yloc,lengthBar,linkcolour){
+  var widthOfBar = 8;
+  noStroke();
+  fill(linkcolour);
+  rect(xloc, yloc-(widthOfBar/2), lengthBar,widthOfBar);
+}
+
+function linkBarUpColour(xloc,yloc,lengthBar,linkcolour){
+  var widthOfBar = 8;
+  noStroke();
+  fill(linkcolour);
+  rect(xloc-(widthOfBar/2), yloc+(widthOfBar/2), widthOfBar,-(lengthBar+(widthOfBar/2)));
+}
+
+// lesson sequences
+
+function sequenceactivityview(){
+const povoffset =57;
+const offsetH=85;
+const offsetV=16;
+const profileLocX= povoffset+offsetH;
+const profileLocY= datadisplayheight+offsetV;
+const profilebarwidth = 30;
+const profilebarfactor=10;
+strokeWeight(1);
+rectMode(CORNER);
+
+const activityProfileLong=["connecting  physics to the lived-in world", "providing tools for children to think with", "linking to other parts of physics", "showing practices of physics", "engaging physical experiences", "exemplifying thinking in physics", "elucidating children's thinking", "structuring a fertile ecosystem", "feeding back on children's thinking"];
+
+push();
+		translate(povoffset, datadisplayheight);
+	push();
+		scale(2.5);
+		durationpov(activitydata[thelesson][theactivity].duration, 60, cideaBlue);
+	pop();
+		translate(offsetH, offsetV);
+		textAlign(RIGHT);
+		words("children's thinking", 5*profilebarwidth-8, 16);
+		stroke(cdeviceGrey);
+		line(5*profilebarwidth,0,5*profilebarwidth,20);
+		textAlign(LEFT);
+		words("teacher practices", 5*profilebarwidth+8, 16);
+		for (i = 0; i < activitydata[thelesson][theactivity].profile.length; i++) {
+			if (i<5){
+			fill(cideaGreen);
+			} else{
+			fill(cideaBlue);
+			}
+			noStroke();
+			rect(i*profilebarwidth, 0, profilebarwidth, -profilebarfactor*activitydata[thelesson][theactivity].profile[i]);
+			if (mouseY<profileLocY && mouseY>profileLocY-100){
+			if (mouseX>profileLocX && mouseX<profileLocX+activitydata[thelesson][theactivity].profile.length*profilebarwidth){
+			cursor(CROSS);
+			}else{
+			cursor(ARROW);
+			}
+			var thisindex = int((mouseX-profileLocX)/profilebarwidth);
+			words(activityProfileLong[thisindex], thisindex*profilebarwidth+profilebarwidth/2, -profilebarfactor*5);
+			fill(cideaRed);
+			rect(thisindex*profilebarwidth, 0, profilebarwidth, -profilebarfactor*activitydata[thelesson][theactivity].profile[thisindex]);
+			stroke(cdeviceBlue);
+			line(thisindex*profilebarwidth+profilebarwidth/2, -profilebarfactor*5+6, thisindex*profilebarwidth+profilebarwidth/2, -profilebarfactor*activitydata[thelesson][theactivity].profile[thisindex]);
+			}
+				}
+	pop();
+
+}
 
 
 
@@ -13088,11 +15340,22 @@ var cleadline = 'rgb(204, 204, 204)';
 var cItemOverviewBlue = 'rgb(102, 154, 179)';
 var cideaGrey='rgb(150,150,150)';
 var cideaBlue='rgb(86, 137, 164)';
+var cideaBlue3D='rgba(86, 137, 164,0.8)';
 var cideaGreen='rgb(86, 164, 112)';
+var cideaGreen3D='rgba(86, 164, 112,0.8)';
 var cideaRed='rgb(171, 90, 117)';
+var cideaRed3D='rgba(171, 90, 117,0.8)';
 var cideaBrown='rgb(181, 152, 95)';
 var cpathlinks='rgba(179,179,179,0.80)';
 var cboxLightGrey = 'rgb(240, 240, 240)';
+
+var ccyan ='rgb(0,255,255)';
+var ccyan3D ='rgba(0,255,255,0.6)';
+var cyellow ='rgb(255,255,0)';
+var cyellow3D ='rgba(255,255,0,0.6)';
+var cmagenta ='rgb(255,0,255)';
+var cmagenta3D ='rgba(255,0,255,0.6)';
+
 
 // energy and power
 var cstoresdarkBlue = 'rgb(33,84,119)';
@@ -13247,6 +15510,15 @@ var cmagnetcompassBlue = 'rgb(42, 58, 140)';
 var cmagnetgrey3D = 'rgba(150,150,150,0.8)';
 var cmagnetgrey = 'rgb(150,150,150)';
 
+// path links for catching physics
+
+var cPlinkblue='rgba(62, 156, 191,0.80)';
+var cPlinklightblue='rgba(167, 236, 242,0.80)';
+var cPlinkorange='rgba(242, 196, 61,0.80)';
+var cPlinkdeeporange='rgba(241, 124, 55,0.80)';
+var cPlinkred='rgba(242, 109, 80,0.80)';
+
+
 // --end of colours--
 
 //useful values
@@ -13286,7 +15558,7 @@ function IanSlider(xPos,yPos,sliderheight,sliderwidth,noOfSteps,handlepostions,s
    *  @param yPos: y coordinate of the position of slider,default 0.
    *  @returns nothing.
    **/
-   
+
 
 
 IanSlider.prototype.moveTo=function(xPos,yPos)
@@ -13344,13 +15616,13 @@ IanSlider.prototype.getValue=function(index)
 		this.handles[index].setValue(value)
 		}
 	}
-    
+
   }
 IanSlider.prototype.draw=function()
 {
 
-	
-	
+
+
 	push();
     stroke('#B3B3B3');
     strokeWeight(1);
@@ -13409,10 +15681,10 @@ IanSlider.prototype.draw=function()
 					var difference2=100000;
 					for(var m=0;m<this.handles.length;m++)
 					{
-						
+
 						if(Math.abs(this.handles[m].magnitude-(this.sliderheight-(-this.yPos+mouseY)-this.top))<difference2)
 						{
-							
+
 							difference2=Math.abs(this.handles[m].magnitude-(this.sliderheight-(-this.yPos+mouseY)-this.top));
 							this.handleIndex=m;
 						}
@@ -13431,8 +15703,8 @@ IanSlider.prototype.draw=function()
 		this.handles[m].draw();
 	}
     pop();
-	
-	
+
+
 }
 IanSlider.prototype.mousePressed=function()
 {
@@ -13474,7 +15746,7 @@ IanSlideHandle.prototype.draw=function()
     line(0,this.offsetY,this.parentWidth,this.offsetY);
     if(this.showlabel==true)
     {
-     
+
       fill("#444444");
       textAlign(LEFT, CENTER)
       text(parseFloat(Math.round(this.value * 100) / 100).toFixed(2), this.parentWidth+10, this.offsetY);
@@ -18004,7 +20276,7 @@ module.exports = XRegExp;
 // temp, to hide SWF, CMR
 
 // text = XRegExp.replace(text,/InsertSWF{(.*?)}/,'<p>deflashing to do</p>\n',"all")//processes swf, temp: to remove in prod
-// 
+//
 // text = XRegExp.replace(text,/InsertCMR{(.*?)}/,'<p>deCMR to do</p>\n',"all")//processes swf, temp: to remove in prod
 
 function pmlparse(text){
@@ -18016,14 +20288,14 @@ function pmlparse(text){
 	text = XRegExp.replace(text,/{\-\-(.*?)\-\-\}/,'','all');//removes any critic markup deletions
 	text = XRegExp.replace(text,/{~~(.*?)~>(.*?)~~}/,'','all');//removes any critic markup substitutions
 	text = XRegExp.replace(text,/{==(.*?)==}/,'','all');//removes any critic markup highlights
-	
+
 
 
 
 // InsertGlyph
-        
-	
-	
+
+
+
 // 	Unitary operators, expects to find, and strip, a trailing space
 	text = XRegExp.replace(text,' SymbolDelta ','&Delta;','all');//writes  delta (change in) character
 	text = XRegExp.replace(text,' SymbolDifferential ','d','all');//writes  delta (change in) character
@@ -18031,7 +20303,7 @@ function pmlparse(text){
 	text = XRegExp.replace(text,' SymbolPositive ','&plus;&thinsp;','all');//writes  plus or minus, and a following thin space
 	text = XRegExp.replace(text,' SymbolNegative ','&minus;&thinsp;','all');//writes  plus or minus, and a following thin space
 
-	
+
 // 	Binary operators,expects to find, and strips, and space from before and after, then inserts non-breaking space
 	text = XRegExp.replace(text,' SymbolProportion ','&nbsp;&prop;&nbsp;','all');//writes  proportion wrapped by non-breaking spaces
 	text = XRegExp.replace(text,' SymbolEquivalent ','&nbsp;&equiv;&nbsp;','all');//writes  equivalent to wrapped by non-breaking spaces
@@ -18040,8 +20312,8 @@ function pmlparse(text){
 	text = XRegExp.replace(text,' SymbolPlus ','&nbsp;&plus;&nbsp;','all');//writes  minus sign wrapped by non-breaking spaces
 	text = XRegExp.replace(text,' SymbolArrowright ','&nbsp;&rarr;&nbsp;','all');//writes  arrow right, wrapped in non-breaking spaces
 	text = XRegExp.replace(text,' SymbolEqual ','&nbsp;&equals;&nbsp;','all');//writes  equals sign wrapped by non-breaking spaces
-	
-	
+
+
 	text = XRegExp.replace(text,' SymbolPi ','&pi;','all');//writes  pi character
 	text = XRegExp.replace(text,' SymbolCopyright ','&copy;','all');//writes  copyright character
 	text = XRegExp.replace(text,' SymbolEndash ','&ndash;','all');//writes  ndash character
@@ -18058,10 +20330,10 @@ function pmlparse(text){
 	text = XRegExp.replace(text,' SymbolTemperaturecentigrade ','&deg;C','all');//writes  degress centigrade as physical quantity
 	text = XRegExp.replace(text,' SymbolOhm ','&Omega;','all');//writes  abbreviation for the unit ohms character
 	text = XRegExp.replace(text,' SymbolEMF ','&#8496;','all');//writes  abbreviation for the unit ohms character
-	
+
 // 	 Physical qunatites, represented by greek letters, italicised
 	text = XRegExp.replace(text,' SymbolAngle ','&theta;','all');//writes  theta as angle
-	
+
 	text = XRegExp.replace(text,' SymbolAngularv ','<i>&omega;</i>','all');//writes  angular velocity symbol
 	text = XRegExp.replace(text,' SymbolAngulara ','<i>&alpha;</i>','all');//writes  angular acceleration symbol
 	text = XRegExp.replace(text,' SymbolWavelength ','<i>&lambda;</i>','all');//writes  wavelength symbol
@@ -18072,9 +20344,9 @@ function pmlparse(text){
 	text = XRegExp.replace(text,' SymbolSigma ','<i>&sigma;</i>','all');//writes  sigma, as charge density symbol
 	text = XRegExp.replace(text,' SymbolStrain ','<i>&epsilon;</i>','all');//writes  sigma, as charge density symbol
 	text = XRegExp.replace(text,' SymbolStress ','<i>&sigma;</i>','all');//writes  sigma, as charge density symbol
-	
+
 // 	Just greek
-	
+
 	text = XRegExp.replace(text,'UcAlpha','&Alpha;','all');//writes  greek character
 	text = XRegExp.replace(text,'UcBeta','&Beta;','all');//writes  greek character
 	text = XRegExp.replace(text,'UcGamma','&Gamma;','all');//writes  greek character
@@ -18124,7 +20396,7 @@ function pmlparse(text){
 	text = XRegExp.replace(text,'LcPsi','&psi;','all');//writes  greek character
 	text = XRegExp.replace(text,'LcOmega','&omega;','all');//writes  greek character
 
-// add spacing   
+// add spacing
 	text = XRegExp.replace(text,"SpacingLinebreak", '<br/>','all'); // adds line breaks
 	text = XRegExp.replace(text,"SpacingParabreak", '<br/><br/>','all'); // adds para breaks
 	text = XRegExp.replace(text,"SpacingThinspace", '&#8201;','all'); // adds thinspaces
@@ -18139,46 +20411,46 @@ function pmlparse(text){
 	text = XRegExp.replace(text,/InsertGraphic{(.*?IMCP)}/,'<div class="graphic"><img src="SPTGraphics/$1.png"></div>\n',"all")//processes png monocromatic, single column
 	text = XRegExp.replace(text,/InsertGraphic{(.*?ICSP)}/,'<div class="spangraphic"><img src="SPTGraphics/$1.png"></div>\n<div class = "clear"></div>\n',"all")//processes png  colour, span
 	text = XRegExp.replace(text,/InsertGraphic{(.*?ICCP)}/,'<div class="graphic"><img src="SPTGraphics/$1.png"></div>\n',"all")//processes png  colour, single column
-	
+
 	text = XRegExp.replace(text,/InsertGraphic{(.*?INCH)}/,'<div class="graphic"><img src="SPTGraphics/$1.svg"></div>\n',"all")//processes heads
-	
+
 	text = XRegExp.replace(text,/InsertGraphic{(.*?INSC)}/,'<div class="spangraphic_topopup"><a href="SPTGraphics/$1.svg" class="pop-spangraphic"><img src="SPTGraphics/$1.svg"></a></div>\n<div class = "clear"></div>\n',"all");//processes SVG Wide drawn conceptual diagram
 	text = XRegExp.replace(text,/InsertGraphic{(.*?INCC)}/,'<div class="graphic_topopup"><a href="SPTGraphics/$1.svg" class="pop-singlegraphic"><img src="SPTGraphics/$1.svg"></a></div>\n',"all");//processes SVG Narrow drawn conceptual diagram
-	
+
 	text = XRegExp.replace(text,/InsertGraphic{(.*?IFSC)}/,'<div class="spangraphic_topopup"><a href="SPTGraphics/' + '$1.svg" class="pop-spangraphic"><img src="SPTGraphics/' + '$1.svg"></a></div>\n<div class = "clear"></div>\n',"all");//processes SVG Wide drawn flow diagram
 	text = XRegExp.replace(text,/InsertGraphic{(.*?IFCC)}/,'<div class="graphic_topopup"><a href="SPTGraphics/' + '$1.svg" class="pop-singlegraphic"><img src="SPTGraphics/' + '$1.svg"></a></div>\n',"all");//processes SVG Narrow drawn flow diagram
 
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)IPSC}/,'<div class="spangraphic_topopup"><a href="SPTGraphics/$1EPSC.svg" class="pop-spangraphic" target="_blank"><img src="SPTGraphics/$1IPSC.svg"></a></div>\n<div class = "clear"></div>\n',"all");//processes SVG Wide paned paned conceptual diagram, that  has an explorable interactive version
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)IPCC}/,'<div class="graphic_topopup"><a href="SPTGraphics/$1EPCC.svg" class="pop-singlegraphic" target="_blank"><img src="SPTGraphics/$1IPCC.svg"></a></div>\n',"all");//processes SVG narrow paned drawn conceptual diagram, that has an explorable interactive version
-	
+
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)PID}{(.*?)}{(.*?)}/,'<iframe  src="SPTGraphics/$1PID" class="iframe" scrolling="no" style="border: 0" width = "$2" height = "$3"></iframe>\n',"all");//processes PID (one of two pdl graphic types supported)
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)DIP}{(.*?)}{(.*?)}/,'<iframe  src="http://supportingphysicsteaching.net/SPTGraphics/$1PID" class="iframe" scrolling="no" style="border: 0" width = "$2" height = "$3"></iframe>\n',"all");//processes DIP (one of two pdl graphic types supported)
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)PSS}{(.*?)}{(.*?)}/,'<iframe  src="http://supportingphysicsteaching.net/SPTGraphics/ShowStory.html?file=http://supportingphysicsteaching.net/SPTGraphics/$1PSS.md" class="iframe" scrolling="no" style="border: 0" width = "$2" height = "$3"></iframe>\n',"all");//processes PSS (Story space embed)
 
-	
+
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)CLIP}{(.*?)}{(.*?)}/,'<video width="$2" height="$3" controls>\n<source src="SPTWebGraphics/$1.mp4"\ntype="video/mp4">\n</video>\n',"all") // processes mp4 video clips
-	
+
 	text = XRegExp.replace(text,/InsertGraphic{(.*?)}/,'<div><img src="$1"></div>\n',"all") // processes non-typed graphics
-	
-	
+
+
 	text = XRegExp.replace(text,/InsertLink\{(.+?)FILE\}/,'<p class = "download_doc_btn"><a href="SupportFiles/$1.zip"> download and unzip files to use</a></p></br>',"all"); // deals with internal links for videoclips (CLIP suffix triggers)
-	 
+
 	text = XRegExp.replace(text,/InsertLink\{(.*?)\}\{(.+?)PSD\}/,'<p><a href="http://supportingphysicsteaching.net/SupportPrintableDocuments/$2.html" class="printablelink">$1</a></p></br>',"all"); // deals with internal links for printables
-	
+
 	text = XRegExp.replace(text,/InsertLink\{(.+?)CLIP\}/,'<p class = "download_doc_btn"><a href="SPTMediaFiles/$1.swf"> download clip to view</a></p></br>',"all"); // deals with internal links for videoclips (CLIP suffix triggers)
-	
+
 	text = XRegExp.replace(text,/InsertLink\{(.+?)FILE\}/,'<p class = "download_doc_btn"><a href="SupportFiles/$1.zip"> download and unzip files to use</a></p></br>',"all"); // deals with internal links for Files
-	
+
 	text = XRegExp.replace(text,/InsertLink\{(.+?)PDF\}/,'<p class = "download_doc_btn"><a href="SupportFiles/$1.pdf"> download the pdf to use</a></p></br>',"all"); // deals with internal links for Files
-	
+
 	text = XRegExp.replace(text,/InsertLink{(.*?)}{(.+?)}/,'<p><a href="$2" class="internallink">$1</a></p></br>',"all"); // deals with internal links
-	
+
 	text = XRegExp.replace(text,/InsertLinkPN\{(.*?)\}\{(.+?)\}/,'<p><a href="$2" class="internallinkPN">$1</a></p></br>',"all"); // deals with internal links
 	text = XRegExp.replace(text,/InsertLinkTL\{(.*?)\}\{(.+?)\}/,'<p><a href="$2" class="internallinkTL">$1</a></p></br>',"all"); // deals with internal links
 	text = XRegExp.replace(text,/InsertLinkTA\{(.*?)\}\{(.+?)\}/,'<p><a href="$2" class="internallinkTA">$1</a></p></br>',"all");// deals with internal links
-	
+
 	text = XRegExp.replace(text,/URLLink\{(.*?)\}\{(.+?)\}/,'<p><a href="$2" class="externallink">$1</a></p></br>',"all"); // deals with external links
-	
+
 	//Slideshows
 
         text = XRegExp.replace(text,/StartSlideShow/,'<div class="SPTslideshow">',"all");// does start of slide show
@@ -18186,18 +20458,18 @@ function pmlparse(text){
         text = XRegExp.replace(text,/ShowPicture{(.*)}{(.*)}/,'<img class="$1" src="$2" style="width:30%">',"all");// does every image
 
         text = XRegExp.replace(text,/EndSlideShow{(.*)}{(.*)}/,'</div>\n<script>\nvar myIndex = 0;\ncarousel$1();\nfunction carousel$1() {\nvar i;\nvar x = document.getElementsByClassName("$1");\nfor (i = 0; i < x.length; i++) {\nx[i].style.display = "none";\n}\nmyIndex++;\nif (myIndex > x.length) {myIndex = 1}\nx[myIndex-1].style.display = "block";\nsetTimeout(carousel$1, $2); // Change image every 2 seconds\n}</script>',"all");// ends show and inserts script
-        
-        
-        
+
+
+
 
 // techical-subscript and superscript
 text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // processes symbols
         text =  XRegExp.replace(text,/QuantitySub{(.*?)}{(.*?)}/,'<i>$1</i><sub>$2</sub>',"all") // processes symbols with subscript
         text =  XRegExp.replace(text,/QuantitySuper{(.*?)}{(.*?)}/,'<i>$1</i><sup>&thinsp;$2</sup>',"all") //processes symbols with subscript
-      
+
 
         text = XRegExp.replace(text,/NPNucleus{(.*?)}{(.*?)}{(.*?)}/,'<span class = "hilowrap"><span class = "hiloHigh">$1</span><span class = "hiloLow">$2</span></span>$3',"all"); //NPNucleus{nucleonNumber}{protonNumber}{nucleus}, for nuclei, mostly
- 
+
 
 // techical-vectors
         text =  XRegExp.replace(text,/VectorSub{(\w)}{(.*?)}/,'<span class = "vector"><span class = "vectorarrow">&rarr;</span><span class = "vectorquantity">$1</span></span><sub>$2</sub>',"all") // processes vectors with arrows and subscript
@@ -18205,12 +20477,12 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
         text =  XRegExp.replace(text,/VectorMagnitude{(\w)}/,'||<span class = "vector"><span class = "vectorarrow">&rarr;</span><span class = "vectorquantity">$1</span></span>&thinsp;||',"all") // processes vector magnitudes
 
 // technical-quantities and units
-       
+
 		text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // processes symbols
-		
+
 		text =  XRegExp.replace(text,/QuantityVector{(\w)}/,'<b><i>$1</i></b>',"all") // processes symbols
-		
-		
+
+
 //         JustUnit
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18229,8 +20501,8 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
-        
+
+
 	   //ValueUnit
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18250,7 +20522,7 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
+
         //QuantityUnit
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18271,7 +20543,7 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
+
 	  //QuantityValue
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18292,7 +20564,7 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
+
           //QuantityOrder
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18313,7 +20585,7 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
+
         //ValueOrder
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18333,9 +20605,9 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
-                
-        
+
+
+
 		   //ValueExponent
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18356,7 +20628,7 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
+
         //QuantityExponent
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18378,10 +20650,10 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
 
-        
-        
+
+
+
          //ValueRange
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18402,7 +20674,7 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
+
         //QuantityRange
 
         wordsHere = XRegExp.match(text,/[\w!]+/,'all');
@@ -18424,8 +20696,8 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
             }
             wordsHere = XRegExp.match(text,/[\w]+/,'all');
         }
-        
-        
+
+
 
   text =  XRegExp.replace(text,/WordSub{(.*?)}{(.*?)}/,'$1<sub>$2</sub>',"all") // processes symbols with subscript
         text =  XRegExp.replace(text,/WordSuper{(.*?)}{(.*?)}/,'$1<sup>$2</sup>',"all") //processes words with subscript
@@ -18433,13 +20705,13 @@ text =  XRegExp.replace(text,/QuantitySymbol{(\w)}/,'<i>$1</i>',"all") // proces
 
 //technical-blocks, take 1
         text =  XRegExp.replace(text,/FractionBlock{(.*?)}{(.*?)}/,'<span class = "relationship"><span class="fraction"><span class="fractionup">$1</span><span class="fractiondown">$2</span></span></span>',"all");
-        
+
 
 // technical- square roots
 	text =  XRegExp.replace(text,/QuantityRoot{(.*?)}/,'<span style="white-space: nowrap;">&radic;<span style="border-top: 1px solid #000000;">&nbsp;<i>$1</i>&nbsp;</span></span>',"all")
-	
+
 	text =  XRegExp.replace(text,/NumberRoot{(.*?)}/,'<span style="white-space: nowrap;">&radic;<span style="border-top: 1px solid #000000;">&nbsp;$1&nbsp;</span></span>',"all")
-	
+
 	text =  XRegExp.replace(text,/WordRoot{(.*?)}/,'&nbsp;&nbsp;&nbsp;<span class="fractionroot"><span class="fraction">$1</span></span>',"all");
 
 	text =  XRegExp.replace(text,/FractionRoot{(.*?)}{(.*?)}/,'&nbsp;&nbsp;&nbsp;<span class="fractionroot"><span class="fraction"><span class="fractionuproot">&nbsp;<i>$1</i>&nbsp;</span><span class="fractiondown"><i>$2</i></span></span></span>',"all");
@@ -18466,14 +20738,14 @@ text =  XRegExp.replace(text,/VectorMatrix{(\w)}{(.*?)}{(.*?)}{(.*?)}/,'<span><s
 	text = XRegExp.replace(text,/FractionQuantityAnBC{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span><i>$1</i>&nbsp;=&nbsp;&minus;&thinsp;<span class="fraction"><span class="fractionup"><i>$2</i></span><span class="fractiondown"><i>$3</i></span></span></span></span>'); //FractionQuantityAnBC
 	text = XRegExp.replace(text,/FractionQuantityABC{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span><i>$1</i>&nbsp;=&nbsp;<span class="fraction"><span class="fractionup"><i>$2</i></span><span class="fractiondown"><i>$3</i></span></span></span></span>'); //FractionQuantityABC
 	text = XRegExp.replace(text,/FractionVectorABC{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span><b><i>$1</i></b>&nbsp;=&nbsp;<span class="fraction"><span class="fractionup"><b><i>$2</i></b></span><span class="fractiondown"><i>$3</i></span></span></span></span>'); //FractionQuantityABC
-	text = XRegExp.replace(text,/FractionAnBC{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span>$1&nbsp;=&nbsp;&minus;&thinsp;<span class="fraction"><span class="fractionup">$2</span><span class="fractiondown">$3</span></span></span></span>'); //FractionAnBC    
+	text = XRegExp.replace(text,/FractionAnBC{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span>$1&nbsp;=&nbsp;&minus;&thinsp;<span class="fraction"><span class="fractionup">$2</span><span class="fractiondown">$3</span></span></span></span>'); //FractionAnBC
 	text = XRegExp.replace(text,/FractionABC{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span>$1&nbsp;=&nbsp;<span class="fraction"><span class="fractionup">$2</span><span class="fractiondown">$3</span></span></span></span>'); //FractionABC
 	text = XRegExp.replace(text,/FractionQuantityBdCeqA{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span class="fraction"><span class="fractionup"><i>$2</i></span><span class="fractiondown"><i>$3</i></span></span>&nbsp;=&nbsp;<i>$1</i></span>'); //FractionQuantityBdAeqC
 	text = XRegExp.replace(text,/FractionBdCeqA{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span class="fraction"><span class="fractionup">$2</span><span class="fractiondown">$3</span></span>&nbsp;=&nbsp;$1</span>'); //FractionBdCeqA
 	text = XRegExp.replace(text,/FractionAdBeqCDdEF{(.*?)}{(.*?)}{(.*?)}{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><span><span class="fraction"><span class="fractionup">$1</span><span class="fractiondown">$2</span></span>&nbsp;=&nbsp;<span class="fraction"><span class="fractionup">$3</span><span class="fractiondown">$4</span></span>&nbsp;&times;&nbsp;<span class="fraction"><span class="fractionup">$5</span><span class="fractiondown">$6</span></span></span></span>'); //FractionAdBeqCDdEF
 	text = XRegExp.replace(text,/EfficiencyCalc{(.*?)}{(.*?)}/g, '<span class = "relationship"> efficiency&nbsp;=&nbsp;<span class="fraction"><span class="fractionup">$1</span><span class="fractiondown">$2</span></span>&nbsp;&times;&nbsp;100&nbsp;&percnt;</span>'); // EfficiencyCalc
 	text = XRegExp.replace(text,/AccumulateRelationship{(.*?)}{(.*?)}{(.*?)}/g, '<span class = "relationship"><i>$1</i><sub> final($3)</sub>&nbsp;=&nbsp;<i>$1</i><sub> initial($3)</sub>&nbsp;+&nbsp;$2&nbsp;&times;&nbsp;&Delta;<i>t</i></span>'); // AccumulateRelationship
-	
+
 
 // Style text
 	text = XRegExp.replace(text,XRegExp('(?s)QuotationThis{(.*?)}'),'<q class="double">$1</q>',"all"); //processes quotes double (quotation)
@@ -18491,7 +20763,7 @@ text =  XRegExp.replace(text,/VectorMatrix{(\w)}{(.*?)}{(.*?)}{(.*?)}/,'<span><s
     text = XRegExp.replace(text,/StepHeader{Happens}/,'<br><p class="SPTactivityHeader"><strong>What happens during this activity</strong></p>',"all"); //reworks SPT prepareheader
 	text = XRegExp.replace(text,/StepHeader{(.*?)}/,'<h4>$1</h4>',"all"); //covers most cases
 	text = XRegExp.replace(text,/ThinkHeader{(.*?)}/,'<p class="clear"></p><p class="Thinking"> <strong>$1</strong>\n</p><p class="clear"></p>',"all");
-       
+
 
 
 // SpeechBubbles
@@ -18519,7 +20791,7 @@ text =  XRegExp.replace(text,/VectorMatrix{(\w)}{(.*?)}{(.*?)}{(.*?)}/,'<span><s
 	text = XRegExp.replace(text,"ListSequence",'<div class="sequencelist">','all');
 	text = XRegExp.replace(text,"ListInformationEnd",'</div ><p class="clear"></p>','all');
 	text = XRegExp.replace(text,"ListInformation",'<div class="informationlist">','all');
-	
+
 	XRegExp.replace(text,"ListMultipleChoiceEnd",'</div><p class="clear"></p>','all');
 	text = XRegExp.replace(text,"ListMultipleChoice",'<div class="multiplechoicelist">','all');
 
@@ -18571,7 +20843,7 @@ text =  XRegExp.replace(text,/VectorMatrix{(\w)}{(.*?)}{(.*?)}{(.*?)}/,'<span><s
 
         text = XRegExp.replace(text,/GuideBlockNoLink{(.*)}{(.*)}/,'<div class="SessionBlock">\n<p class="supporterblocknolink">$1</p>\n\t<div class= "SessionBlockData">\n\t<p class="TeacherSpeak">$2</p><p class="clear"></p><p><br/></p></div>',"all");// does GuideBlock
 
-         
+
 // Diagnostic questions
 
 	text = XRegExp.replace(text,/QuestionStem{(.*)}/g,'<div class="Mcquestion">\n<hr>\n<p class="Mcstem">$1</p></div>\n',"all");
@@ -18594,9 +20866,9 @@ text =  XRegExp.replace(text,/VectorMatrix{(\w)}{(.*?)}{(.*?)}{(.*?)}/,'<span><s
     };
 
 function parseUnit(unitString){
-	
+
 	var unitBits = unitString.split(" ");
-	
+
 	for (var i=1 ;i < unitBits.length; i++){ // the first array element needs nothing in front, and will not be a number, so don't process
 		if (/\d/.test(unitBits[i])){
 			unitBits[i]='<sup>'+unitBits[i]+'</sup>';
@@ -18606,7 +20878,7 @@ function parseUnit(unitString){
 	}
 
 	var htmLunitString=unitBits.join('');
-	
+
 	return htmLunitString;
 }
 
@@ -18616,7 +20888,7 @@ function parseUnit(unitString){
 
 class SparkLineGraph{
 	constructor(){
-	
+
 	}
 // 	plotKind can be one of "PN" for positive or negative values, autoscaling; "PO" for positive values, autoscaling; "FX" for fixed scale, when the value of maxFixedValue is used: for PO and PN this is not used
 	create(xloc,yloc,slwidth,slheight,slLabel,plotKind,maxFixedValue){
@@ -18629,12 +20901,12 @@ class SparkLineGraph{
 	this.maxFixedValue=maxFixedValue;
 	this.slValues=[];
 	}
-	
+
 	acquire(valueNow){
 	this.valueNow=valueNow;
 	this.slValues.push(this.valueNow);
 	}
-	
+
 	plot(){
 	push();
 	translate(this.locX, this.locY);
@@ -18651,18 +20923,18 @@ class SparkLineGraph{
     case "PN":
         var maxTimeSeries = max(abs(max(this.slValues)),abs(min(this.slValues)));
     break;
-    
+
     case "PO":
         var maxTimeSeries = max(this.slValues);
     break;
-    
+
     case "FX":
         var maxTimeSeries = this.maxFixedValue;
     break;
     }
 
 	var thusfar =min(this.slValues.length,masterTicker);
-    
+
     for (var i = 1; i < thusfar; i = i+1) {
       var ploty = -map(this.slValues[i], -maxTimeSeries, maxTimeSeries, -this.slheight+20, this.slheight-20);
       strokeWeight(2);
