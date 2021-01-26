@@ -15,14 +15,14 @@ function preload() {
 
 function setup() {
     createCanvas(750,340);
-    storeChoice=new radioButtons(20, 73,["chemical","gravity","kinetic","thermal","elastic","vibration","nuclear","electric-magnetic"],false);
+    storeChoice=new CreateRadioButtons(20, 73,["chemical","gravity","kinetic","thermal","elastic","vibration","nuclear","electric-magnetic"]);
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
     var storekind=storeChoice.makeChoice();
 
-    subHead("for the "+storekind+" store", xloc-40, yloc-15);
+    placeSubHead("for the "+storekind+" store", xloc-40, yloc-15);
 
     switch(storekind){
         case "chemical":
@@ -65,14 +65,14 @@ function draw() {
 
      push();
         translate(xloc,yloc+210);
-        storeFilled(storekind);
+        drawStoreFilled(storekind);
         translate(offset,0);
-        storeEmptied(storekind);
+        drawStoreEmptied(storekind);
     pop();
 
-     wordsframe(storekind+' store filled if: ' + storefilling, xloc+50, yloc+10,150,200);
-     wordsframe(storekind+' store emptied if: ' + storefilling, xloc+offset+50, yloc+10,150,200);
+     placeWordsFrame(storekind+' store filled if: ' + storefilling, xloc+50, yloc+10,150,200);
+     placeWordsFrame(storekind+' store emptied if: ' + storefilling, xloc+offset+50, yloc+10,150,200);
 
- titleBold("Identifying energy stores which are filled and emptied using physical clues");
+ placeTitleBold("Identifying energy stores which are filled and emptied using physical clues");
 }
 

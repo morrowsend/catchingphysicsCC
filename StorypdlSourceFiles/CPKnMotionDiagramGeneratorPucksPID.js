@@ -20,13 +20,13 @@ function preload() {
 }
 function setup(){
 	createCanvas(800, 800);	
-	valuesbutton = new checkButton(100,750,"values",false);
-    displacementsbutton = new checkButton(213,750,"displacements",false);
-    segmentsbutton = new checkButton(370,750,"track segments",false);
+	valuesbutton = new CreateCheckButton(100,750,"values",false);
+    displacementsbutton = new CreateCheckButton(213,750,"displacements",false);
+    segmentsbutton = new CreateCheckButton(370,750,"track segments",false);
     
     const xloc =width-50;
     for (let i = 0; i<numberVectors; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 141+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -37,8 +37,8 @@ function setup(){
 	}
 
 function draw() {
-	background(cWhite);
-	conceptualPane(width/2, height/2, 600, 600);
+	background(CWHITE);
+	placeConceptualPane(width/2, height/2, 600, 600);
 	
 	for (let i = 0; i<controllers.length; i++){
 		displacements[i]=createVector(controllers[i].getValues().xSet,controllers[i].getValues().ySet,).mult(scaleFactor);
@@ -51,20 +51,20 @@ function draw() {
 	if(valuesbutton.buttonisChecked){
 		if (-300<mouseX-width/2 && mouseX-width/2<300 && mouseY-width/2<300 && -300<mouseY-width/2){
 		mouseDisplacement.set(mouseX-width/2,-mouseY+width/2);
-			meterinteger(mouseDisplacement.mag(), "", 20, 730);
-			meterinteger(degrees(mouseDisplacement.heading()), "", 20, 765);
+			placeMeterInteger(mouseDisplacement.mag(), "", 20, 730);
+			placeMeterInteger(degrees(mouseDisplacement.heading()), "", 20, 765);
 			push();
 				translate(width/2, height/2);
-				displacement(mouseDisplacement.mag()*.1, -degrees(mouseDisplacement.heading()-PI/2), cideaGreen);
+				showDisplacement(mouseDisplacement.mag()*.1, -degrees(mouseDisplacement.heading()-PI/2), CIDEAGREEN);
 			pop();
 		}
-		words("an image appears every 60 seconds; one unit on the screen represents 1 metre", 100, 740);
+		placeWords("an image appears every 60 seconds; one unit on the screen represents 1 metre", 100, 740);
 	}
 		
 	push();
 		translate(width/2, height/2);
 	// 	ellipse(0,0,5,5); origin marker
-		fill(cideaBlue);
+		fill(CIDEABLUE);
 		noStroke();
 		for (let i = 0; i<controllers.length; i++){
 			if (i!=0){
@@ -78,10 +78,10 @@ function draw() {
 				lastDisplacement.set(0,0);
 			}
 			if (segmentsbutton.buttonisChecked){
-				trackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
+				showTrackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
 			}
 			if (displacementsbutton.buttonisChecked){
-			displacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), cpovAlice); //draws displacements
+			showDisplacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), CPOVALICE); //draws displacements
 			}
 			ellipse(displacements[i].x,-displacements[i].y,8,8);// draws marker
 			push();
@@ -95,7 +95,7 @@ function draw() {
 	pop();
 	
 
-	title("A motion diagram");
+	placeTitleBold("A motion diagram");
 }
 
 function mouseReleased(){

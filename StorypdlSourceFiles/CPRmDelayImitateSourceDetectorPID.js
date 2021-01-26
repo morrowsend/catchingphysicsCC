@@ -15,11 +15,11 @@ function preload() {
 
 function setup(){
     createCanvas(800, 400);
-    controlbutton=new controlButton(20,350,60,30);
+    controlbutton=new CreateControlButton(20,350,60,30);
 
-    amplitudeSet=new controlStripVerticalPositive();
-    frequencySet=new controlStripVerticalPositive();
-    delaysetter=new controlStripHorizontalPositive();
+    amplitudeSet=new CreateControlStripVerticalPositive();
+    frequencySet=new CreateControlStripVerticalPositive();
+    delaysetter=new CreateControlStripHorizontalPositive();
 
     amplitudeSet.create(20,170);
     frequencySet.create(20,280);
@@ -27,7 +27,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
 
     var theamplitude = amplitudeSet.getValues().ySet*maxamplitude;
@@ -41,36 +41,36 @@ function draw() {
     var thedelay = -delaysetter.getValues().xSet*maxDelay;
 
 
-    words("set source\nfrequency",40,268);
-	words("set source\namplitude",40,158);
-	words("set delay",443,315);
-	words("delay\nbefore\nimitation",285,340);
+    placeWords("set source\nfrequency",40,268);
+	placeWords("set source\namplitude",40,158);
+	placeWords("set delay",443,315);
+	placeWords("delay\nbefore\nimitation",285,340);
 
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
             push();
 				translate(180,200);
-				transducer(clight, 0);
-					displacement(theamplitude, 0, cideaBlue);
+				drawTransducer(CLIGHT, 0);
+					showDisplacement(theamplitude, 0, CIDEABLUE);
 				translate(120, 110);
-				duration(thedelay, maxDelay);
+				showDuration(thedelay, maxDelay);
 				translate(-120, -110);
 			translate(mimicoffset,0);
-			transducer(cBlack, 180);
+			drawTransducer(CBLACK, 180);
 			pop();
 
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
+            placeWords("pause",28,height-32);
             runtime++;
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
+            placeWords("reset",28,height-32);
             break;
                       }
 
@@ -80,18 +80,18 @@ function draw() {
     if (runtime!=0){
 		push();
 			translate(180,200);
-			transducer(clight, 0);
-			displacement(theamplitude*sin(thefrequency*runtime),0, cideaBlue);
+			drawTransducer(CLIGHT, 0);
+			showDisplacement(theamplitude*sin(thefrequency*runtime),0, CIDEABLUE);
 			translate(120, 110);
-			duration(thedelay, maxDelay);
+			showDuration(thedelay, maxDelay);
 
 			translate(-120, -110);
 			translate(mimicoffset,0);
-			transducer(cBlack, 180);
-			displacement(theamplitude*sin(thefrequency*(runtime-thedelay)), 0, cideaGreen);
+			drawTransducer(CBLACK, 180);
+			showDisplacement(theamplitude*sin(thefrequency*(runtime-thedelay)), 0, CIDEAGREEN);
 		pop();
     }
-  titleBold("Detector mimics source after a delay");
+  placeTitleBold("Detector mimics source after a delay");
 }
 
 

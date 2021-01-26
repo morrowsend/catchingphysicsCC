@@ -13,15 +13,15 @@ function preload() {
 
 function setup(){
     createCanvas(800,740);
-	sliderHeight=new IanSlider(40,220,100,15,0,[0],false);
-	sliderPulleys=new IanSlider(40,80,60,15,2,[0.334],false);
-	forcesbutton = new checkButton(574+80,80,"show forces",false);
-	distancesbutton = new checkButton(574+63,120,"show distances",false);
-	morebutton = new checkButton(574+79,160,"tell me more",false);
+	sliderHeight=new createSliderDivider(40,220,100,15,0,[0],false);
+	sliderPulleys=new createSliderDivider(40,80,60,15,2,[0.334],false);
+	forcesbutton = new CreateCheckButton(574+80,80,"show forces",false);
+	distancesbutton = new CreateCheckButton(574+63,120,"show distances",false);
+	morebutton = new CreateCheckButton(574+79,160,"tell me more",false);
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	forcesbutton.drawButton();
 	distancesbutton.drawButton();
 	morebutton.drawButton();
@@ -38,14 +38,14 @@ function draw() {
 		pulleysetY(howmanypulleys, heightlifted);
 	pop();
 
-    words("choose number\nof ropes to\nshare your load", 70, 90);
-    words("lift the load\nby pulling\nthe rope", 70, 230);
+    placeWords("choose number\nof ropes to\nshare your load", 70, 90);
+    placeWords("lift the load\nby pulling\nthe rope", 70, 230);
 
         if(morebutton.buttonisChecked){
-advicedroid(730, 200, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 270, 90);
+placeAdviceDroid(730, 200, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 270, 90);
 		}
 
-	titleBold("Sharing the load with ropes: using pulleys to lift");
+	placeTitleBold("Sharing the load with ropes: using pulleys to lift");
 }
 
 
@@ -63,7 +63,7 @@ function pulleysetY(numberofpulleys, heightlifted){
 
 
 		noStroke();
-		fill(cpulleydarkGrey);
+		fill(CPULLEYDARKGREY);
 switch(numberofpulleys){
 
         case 1:
@@ -96,7 +96,7 @@ switch(numberofpulleys){
       pulleyradius= 15+i*pulleyincrement;
       var pulleystep=pulleysep+i*pulleyradius*.6;
 
-      fill(cpulleyropeRed);
+      fill(CPULLEYROPERED);
       if (i==0){
          push();
          translate(-pulleyradius,0);
@@ -122,7 +122,7 @@ switch(numberofpulleys){
 				  rect(0,0,ropethickness,-90);
 			  pop();
 			translate(0,-40);
-			fill(cideaBrown);
+			fill(CIDEABROWN);
 			ellipse(0, 0, 200, 50);
 			rectMode(CENTER);
 			rect(0, -15, 200, 30);
@@ -131,28 +131,28 @@ switch(numberofpulleys){
 			if(forcesbutton.buttonisChecked){
 			push();
 // 				translate(-4, 0);
-				force(-loadweight, 0, ctension);
+				showForce(-loadweight, 0, CTENSION);
 			pop();
 			}
 			if(distancesbutton.buttonisChecked){
 				noFill();
 				strokeWeight(2);
-				stroke(cideaRed);
+				stroke(CIDEARED);
 				line(120, 0, 120, -heightlifted);
 				line(-215,-heightlifted,-215,heightlifted*(numberofpulleys));
 			}
 
 			strokeWeight(2);
 			noFill();
-			stroke(cpulleyropeRed);
+			stroke(CPULLEYROPERED);
 			curve(-90, -100, -119, 0, -84-30,73-30,-44,53);
 			for (i = 0; i < 2*numberofpulleys; i++) {
 				noStroke();
-				fill(cpulleyropeRed);
+				fill(CPULLEYROPERED);
 					rect(-120-10*i,0,ropethickness,-heightlifted);
 					strokeWeight(2);
 					noFill();
-					stroke(cpulleyropeRed);
+					stroke(CPULLEYROPERED);
 					if (i!=2*numberofpulleys-1){
 					if (i%2==0){
 						arc(-124-10*i,-heightlifted,10,5,PI,0,OPEN);
@@ -166,11 +166,11 @@ switch(numberofpulleys){
 			if(forcesbutton.buttonisChecked){
 			push();
 				translate(6, 13)
-				force(loadweight/(numberofpulleys*2), 0, ctension);
+				showForce(loadweight/(numberofpulleys*2), 0, CTENSION);
 			pop();
 			}
 	// 		thehand
-	stroke(cdrawTiFo);
+	stroke(CDRAWTIFO);
 	strokeWeight(1);
 	noFill();
 
@@ -625,7 +625,7 @@ switch(numberofpulleys){
 pop();
           pop();
       }
-      pulley(pulleyradius*2,"D");
+      drawPulley(pulleyradius*2,"D");
       oldpulleystep=pulleysep+i*pulleyradius*.6;
       pulleygap+=2*pulleystep;
       translate(0,pulleystep);
@@ -638,7 +638,7 @@ pop();
    rotate(0);
    for (var i = 0; i < numberofpulleys; i = i+1){
       pulleyradius= 15+i*pulleyincrement;
-      pulley(pulleyradius*2,"D");
+      drawPulley(pulleyradius*2,"D");
       translate(0,pulleysep+i*pulleyradius*.6);
    }
    pop();
@@ -667,7 +667,7 @@ function keyTyped() {
 }
 
 function thehand(){
-stroke(cdrawTiFo);
+stroke(CDRAWTIFO);
 strokeWeight(1);
 noFill();
 

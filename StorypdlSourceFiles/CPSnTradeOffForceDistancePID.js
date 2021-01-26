@@ -16,52 +16,52 @@ function preload() {
 function setup() {
     createCanvas(640,400);
     
-    magnitudes[0]= new controlPuckpositive();
+    magnitudes[0]= new CreateControlPuckPositive();
 	magnitudes[0].create(locpucks[0],locpucks[1]);
 	
-	sliderLifts=new IanSlider(20,80,60,15,1,[0.5],false);
-	boxesbutton = new checkButton(474, 340,"trade-off",false);
+	sliderLifts=new createSliderDivider(20,80,60,15,1,[0.5],false);
+	boxesbutton = new CreateCheckButton(474, 340,"trade-off",false);
 
 }
 
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	boxesbutton.drawButton();
 	sliderLifts.draw();
     
     var liftdifficulty = int(sliderLifts.getValue()*2);
     console.log(liftdifficulty);
-	words("set quantities", locpucks[0]-40,locpucks[1]-45);
+	placeWords("set quantities", locpucks[0]-40,locpucks[1]-45);
 
       values[0] = createVector(magnitudes[0].getValues().xSet,magnitudes[0].getValues().ySet).mult(scaleFactor);
     
-	words("distance", locpucks[0],locpucks[1]+61);
-	words("force", locpucks[0]+50, locpucks[1]-28);
+	placeWords("distance", locpucks[0],locpucks[1]+61);
+	placeWords("force", locpucks[0]+50, locpucks[1]-28);
 // console.log(values[0].y);
 	push();
 		translate(100, 373);
-		displacement(values[0].x/8, 0, cideaGreen);
-		translate(40, -values[0].x/8*pxscale);
-		force(values[0].y/8, 0, cideaBlue);
-// 			hydraulicsystem((values[0].y/30)+.3,(values[0].x*4));
+		showDisplacement(values[0].x/8, 0, CIDEAGREEN);
+		translate(40, -values[0].x/8*PXSCALE);
+		showForce(values[0].y/8, 0, CIDEABLUE);
+// 			drawHydraulicSystem((values[0].y/30)+.3,(values[0].x*4));
 	pop();
 	
 	push();
 		translate(220,373);
-		energy(11*((values[0].y/80)*(values[0].x/80)));
-		stroke(cdeviceGrey);
+		showEnergy(11*((values[0].y/80)*(values[0].x/80)));
+		stroke(CDEVICEGREY);
 			for (i = 0; i < 11; i++) {
 					line(25, -i*20, 45, -i*20)
 				}
-				leadlinediagramshort("to get lift done", 55, -40-liftdifficulty*60)
+				placeLeadLineShort("to get lift done", 55, -40-liftdifficulty*60)
 	pop();
         
 	if (boxesbutton.buttonisChecked){
-	tradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,cconlightgreen,cconpink);
+	drawTradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,CCONLIGHTGREEN,CCONPINK);
 	}
-	wordsframe("set what's needed to get the job done (how much lifting)", 45, 70, 80, 100);
- titleBold("Trade-offs in lifting: between force and distance");
+	placeWordsFrame("set what's needed to get the job done (how much lifting)", 45, 70, 80, 100);
+ placeTitleBold("Trade-offs in lifting: between force and distance");
 }
 
 function mousePressed(){

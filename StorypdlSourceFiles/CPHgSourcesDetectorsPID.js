@@ -1,70 +1,64 @@
-// HgSourcesDetectorsPID
+// {CPHgSourcesDetectorsPID}{500}{250}
 
-var sourcedata=["guitar","car engine","scratching fingernail","frying bacon","saxophone reed"]
 
 function preload() {
-   chatterFont= loadFont("../../__support/SF_Cartoonist_Hand.ttf");
-	romanFont= loadFont("../../__support/ComicNeue-Angular-Light.ttf");
-	italicFont= loadFont("../../__support/ComicNeue-Angular-Light-Oblique.ttf");
-	titleFont = loadFont("../../__support/ComicNeue-Angular-Bold.ttf");
+   chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
+   romanFont= loadFont("../__support/ComicNeue-Angular-Light.ttf");
+   italicFont= loadFont("../__support/ComicNeue-Angular-Light-Oblique.ttf");
+   titleFont = loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 	guitar = loadImage("../__PDLgraphics/HgSourcesDetectorsGuitarPDL.svg");
 	carengine = loadImage("../__PDLgraphics/HgSourcesDetectorsMotorPDL.svg");
 	fingernail = loadImage("../__PDLgraphics/HgSourcesDetectorsFingernailPDL.svg");
 	frybacon = loadImage("../__PDLgraphics/HgSourcesDetectorsFryingBaconPDL.svg");
 	saxophone = loadImage("../__PDLgraphics/HgSourcesSaxophonePDL.svg");
 
+
 }
 function setup(){
     createCanvas(500, 250);
-	sourceChoice=new IanSlider(20,85,115,15,3,[0.0],false);
+	sourcechoice=new CreateRadioButtons(20, 80,["guitar","car engine","scratching fingernail","frying bacon","saxophone reed"]);
+
 
 }
 
 function draw() {
-    background(cWhite);
-    sourceChoice.draw();
-	var thechoice = int((sourceChoice.getValue()+0.1)*4);
-	for (i = 0; i < sourcedata.length; i++) {
-		words(sourcedata[i], 44, 206-i*28);
-				}
-				
+    background(CWHITE);
+	var thechoice=sourcechoice.makeChoice();
+
 	switch(thechoice){
-        case 0:
+        case "guitar":
 			image(guitar, 200, 100);
             break;
-        case 1:
+        case "car engine":
             image(carengine, 200, 100);
-        
             break;
-        case 2:
+        case "scratching fingernail":
             image(fingernail, 200, 100);
-            
             break;
-        case 3:
+        case "frying bacon":
             image(frybacon, 200, 100);
             break;
-        case 4:
+        case "saxophone reed":
             image(saxophone, 200, 100);
             break;
          }
-		
-	subHead("source",200,80);
-	subHead("detector",380,80);
-	subHead("to",360-30,80);
 
-	words(sourcedata[thechoice],200,220);
-	words("ear",380,220);
+	placeSubHead("source",200,80);
+	placeSubHead("detector",380,80);
+	placeSubHead("to",360-30,80);
 
-	titleBold("hearing: from a source to the detector");  
+	placeWords(thechoice,200,220);
+	placeWords("ear",380,220);
+
+	placeTitleBold("hearing: from a source to the detector");
 }
 
-
-function mousePressed(){
-        sourceChoice.mousePressed();
+function keyTyped() {
+	if (key === "s") {
+	saveCanvas("aSnapshot", "png");
 	}
-function mouseReleased(){
-        sourceChoice.mouseReleased();
-    }
+	return false;
+}
 
 
 

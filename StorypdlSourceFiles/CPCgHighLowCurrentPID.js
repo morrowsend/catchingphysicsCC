@@ -1,71 +1,66 @@
-// CgHighLowCurrentPID
+// {CPCgHighLowCurrentPID}{600}{350}
 
 var  highcurrent=true;
 var magnitudetheCurrent =0;
 var commentwords="";
 
 function preload() {
-	chatterFont= loadFont("../../__support/SF_Cartoonist_Hand.ttf");
-	romanFont= loadFont("../../__support/ComicNeue-Angular-Light.ttf");
-	italicFont= loadFont("../../__support/ComicNeue-Angular-Light-Oblique.ttf");
-	titleFont = loadFont("../../__support/ComicNeue-Angular-Bold.ttf");
+	chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
+	romanFont= loadFont("../__support/ComicNeue-Angular-Light.ttf");
+	italicFont= loadFont("../__support/ComicNeue-Angular-Light-Oblique.ttf");
+	titleFont = loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
 
 function setup(){
     createCanvas(600, 350);
-    controlbutton=new controlButton(336,284,112,30);
-	advicebutton = new checkButton(600-147, 65,"tell me more",false);
-	loopbutton = new checkButton(600-147+11, 284,"show loop",false);
+	advicebutton = new CreateCheckButton(600-147, 65,"tell me more",false);
+	loopbutton = new CreateCheckButton(600-147+11, 284,"show loop",false);
+	choosecurrent=new CreateRadioButtons(316, 65,["high current","low current"]);
 
 }
 
 function draw() {
-    background(cWhite);
-    controlbutton.drawButton();
+    background(CWHITE);
     advicebutton.drawButton();
     loopbutton.drawButton();
-    
-    if (controlbutton.buttonwasPressed){
-		highcurrent=!highcurrent;
-		controlbutton.buttonwasPressed=false;
-    }
-     
-    if(highcurrent==true){
-		words("less current",344,306);
-		magnitudetheCurrent=8;
-		commentwords="A large current everywhere in the loop. You must have chosen a lower resistance bulb.";
-    }
-    
-    if(highcurrent==false){
-		words("more current",344,306);
-		magnitudetheCurrent=3;
-		commentwords="A small current everywhere in the loop. You must have chosen a higher resistance bulb.";
-    }
- 
+	var thecurrent=choosecurrent.makeChoice();
+
+	switch(thecurrent){
+		case "high current":
+			magnitudetheCurrent=8;
+			commentwords="A large current everywhere in the loop. You must have chosen a lower resistance bulb.";
+			break;
+		case "low current":
+			magnitudetheCurrent=3;
+			commentwords="A small current everywhere in the loop. You must have chosen a higher resistance bulb.";
+			break;
+		 }
+
+
+
      push();
-		translate(100, 200);
+		translate(80, 200);
 		if(loopbutton.buttonisChecked){
-			loopOne();
+			drawLoopOne();
 		}
-		circuitSimple("bulb");
+		drawCircuitSimple("bulb");
 		push();
 			translate(30,0);
-			currentArrow(magnitudetheCurrent,0);
+			showCurrentArrow(magnitudetheCurrent,0);
 			translate(156,0);
-			currentArrow(magnitudetheCurrent,180);
+			showCurrentArrow(magnitudetheCurrent,180);
 			translate(-80, 0);
-			currentArrow(magnitudetheCurrent,90);
-			currentArrow(magnitudetheCurrent,270);
+			showCurrentArrow(magnitudetheCurrent,90);
+			showCurrentArrow(magnitudetheCurrent,270);
 		pop();
 		if (advicebutton.buttonisChecked){
-			advicedroid(428,-90,commentwords, 140, 90);
-		} 	
+			placeAdviceDroid(448,-90,commentwords, 140, 90);
+		}
 	pop();
-    titleBold("Choose high or low current");
+    placeTitleBold("Choose high or low current");
 }
 
 function mouseReleased(){
-	controlbutton.checkPressed();
 	advicebutton.changeState();
 	loopbutton.changeState();
 	}

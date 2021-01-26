@@ -1,10 +1,9 @@
-// SgBeamReflectionPID
+// {CPSgBeamReflectionPID}{600}{380}
 function preload() {
-	chatterFont= loadFont("../../__support/SF_Cartoonist_Hand.ttf");
-	romanFont= loadFont("../../__support/ComicNeue-Angular-Light.ttf");
-	italicFont= loadFont("../../__support/ComicNeue-Angular-Light-Oblique.ttf");
-	titleFont = loadFont("../../__support/ComicNeue-Angular-Bold.ttf");
-
+	chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
+	romanFont= loadFont("../__support/ComicNeue-Angular-Light.ttf");
+	italicFont= loadFont("../__support/ComicNeue-Angular-Light-Oblique.ttf");
+	titleFont = loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
 function setup(){
     createCanvas(600, 380);
@@ -12,21 +11,21 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
-        
+    background(CWHITE);
+
 	push();
 		translate(100, 120);
-		transducer(clight, 45);
-		beamC(0,0,200,200,clight);
+		drawTransducer(CLIGHT, 45);
+		showBeamC(0,0,200,200,CLIGHT);
 		translate(200, 200);
-		beamC(0,0,200,-200,clight);
-		reflector("good", 90, 100);
+		showBeamC(0,0,200,-200,CLIGHT);
+		drawReflector("good", 90, 100);
 		translate(190, -210);
-		eye(135-180);
-// 		transducer(cBlack, 135);
+		 drawEye(135-180);
+// 		drawTransducer(CBLACK, 135);
 	pop();
-	
-	advicedroid(320+210, 60+105+40, "You can see the beam if you put your eye in the right place.\nBut how can you predict where the right place is?", 200, 90);
 
-	titleBold("A beam of light reflects from a mirror into an eye");
+	placeAdviceDroid(320+210, 60+105+40, "You can see the beam if you put your eye in the correct place.\n\nBut how can you predict where the correct place is?", 210, 108);
+
+	placeTitleBold("A beam of light reflects from a mirror into an eye");
 }

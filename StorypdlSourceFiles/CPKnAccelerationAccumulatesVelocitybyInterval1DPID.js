@@ -29,18 +29,18 @@ function preload() {
 function setup(){
     createCanvas(900, 650);
     for (let i = 0; i<numberoffluxions; i++){
-		fluxions[i]= new controlStripVertical();
+		fluxions[i]= new CreateControlStripVertical();
 		let xloc = xlocfluxion1+xstepdisplay*i;
 		fluxions[i].create(xloc,ylocfluxion);
     }
     
     
-    fluents[0]= new controlStripVertical();
+    fluents[0]= new CreateControlStripVertical();
     fluents[0].create(xlocfluentIntial,ylocfluentIntial);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     
     for (let i = 0; i<fluxions.length; i++){
 		pqfluxions[i]=createVector(fluxions[i].getValues().xSet,fluxions[i].getValues().ySet,).mult(fluxionscaling);
@@ -53,7 +53,7 @@ function draw() {
     }
     
 //     eye-guiding grid
-    stroke(cideaGrey);
+    stroke(CIDEAGREY);
     strokeWeight(0.5);
     push();
 		translate(xlocfluent1,0);
@@ -66,7 +66,7 @@ function draw() {
     push();
 		translate(xlocfluent1,0);
 		for (let i = 1; i<fluxions.length+2; i++){
-			words("t="+i,-11,height-20);
+			placeWords("t="+i,-11,height-20);
 			translate(xstepdisplay, 0);
 		}
     pop();
@@ -84,7 +84,7 @@ function draw() {
 	push();
 		translate(xlocfluxion1, ylocfluxionrep);
 		for (let i = 0; i<pqfluxions.length; i++){
-			acceleration(pqfluxions[i].mag(), degrees(-pqfluxions[i].heading()+PI/2), cacceleration);
+			showAcceleration(pqfluxions[i].mag(), degrees(-pqfluxions[i].heading()+PI/2), CACCELERATION);
 			translate(xstepdisplay, 0);
 				}
     pop();
@@ -92,19 +92,19 @@ function draw() {
     push();
 		translate(xlocfluent1, ylocfluentrep);
 		for (let i = 0; i<pqfluents.length; i++){
-				velocity(pqfluents[i].mag(), degrees(-pqfluents[i].heading()+PI/2), cideaGreen);
+				showVelocity(pqfluents[i].mag(), degrees(-pqfluents[i].heading()+PI/2), CIDEAGREEN);
 			translate(xstepdisplay, 0);
 			}
     pop();
 
 	
-	words("set\ninitial\nvelocity", xlocfluent1+xstepdisplay*(fluxions.length)+95, 188);
-	words("set\nthe fluxions\nfor each interval", xlocfluxion1+xstepdisplay*(fluxions.length-1)+100, 88);
+	placeWords("set\ninitial\nvelocity", xlocfluent1+xstepdisplay*(fluxions.length)+95, 188);
+	placeWords("set\nthe fluxions\nfor each interval", xlocfluxion1+xstepdisplay*(fluxions.length-1)+100, 88);
 
-	words("velocity\nat\nthis\ntime", xlocfluent1+xstepdisplay*(fluxions.length)+95, ylocfluentrep);
-	words("acceleration\nduring\nthis\ninterval", xlocfluxion1+xstepdisplay*(fluxions.length-1)+95, ylocfluxionrep);
+	placeWords("velocity\nat\nthis\ntime", xlocfluent1+xstepdisplay*(fluxions.length)+95, ylocfluentrep);
+	placeWords("acceleration\nduring\nthis\ninterval", xlocfluxion1+xstepdisplay*(fluxions.length-1)+95, ylocfluxionrep);
 	
-    titleBold("Acceleration accumulates velocity, interval by interval");
+    placeTitleBold("Acceleration accumulates velocity, interval by interval");
 }
 
 

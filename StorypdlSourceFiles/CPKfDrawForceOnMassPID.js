@@ -13,33 +13,33 @@ function setup() {
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     
 	push();
 		translate(350-18,150);
-		mass(3,cdeviceGrey);
-		force(8,180,cgravity);
-		words("non-contact", -40, -30);
+		showMass(3,CDEVICEGREY);
+		showForce(8,180,CGRAVITY);
+		placeWords("non-contact", -40, -30);
 	pop();
     
     push();
     translate(160,150);
-    mass(3,cdeviceGrey);
-    words("frictional", -25, -30);
+    showMass(3,CDEVICEGREY);
+    placeWords("frictional", -25, -30);
     translate(0,15);
-    force(6,90,cslip);
+    showForce(6,90,CSLIP);
     pop();
     
     push();
     translate(50,150);
-    mass(2,cdeviceGrey);
-    words("support", -25, 30);
+    showMass(2,CDEVICEGREY);
+    placeWords("support", -25, 30);
     translate(0,10);
-   force(8,0,cbuoyancy);
+   showForce(8,0,CBUOYANCY);
     pop();
     
     
-  titleBold("drawing forces exerted on masses");
+  placeTitleBold("drawing forces exerted on masses");
 }
 
 function keyTyped() {

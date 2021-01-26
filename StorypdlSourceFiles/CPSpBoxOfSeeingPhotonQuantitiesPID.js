@@ -14,45 +14,45 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	stroke(cideaGrey);
+	stroke(CIDEAGREY);
 	strokeWeight(1);
 	rect(90, 120, 566, 323);
 
 
 
-	words("quite dim",110,105);
-	words("very bright",580,105);
-	words("very red",670,411);
-	words("very blue",670,140);
-	words("brightness increasing",300,105);
-	words("colour\nchanging",670,280);
+	placeWords("quite dim",110,105);
+	placeWords("very bright",580,105);
+	placeWords("very red",670,411);
+	placeWords("very blue",670,140);
+	placeWords("brightness increasing",300,105);
+	placeWords("colour\nchanging",670,280);
 
 	push();
 		translate(110, 500);
-		quantity(1,cactivity,"");
-		words("few photons\nevery second", 20, 0);
+		showQuantity(1,CACTIVITY,"");
+		placeWords("few photons\nevery second", 20, 0);
 	pop();
 
 	push();
 		translate(636, 500);
-		quantity(5,cactivity,"");
-		words("many photons\nevery second", 20, 0);
+		showQuantity(5,CACTIVITY,"");
+		placeWords("many photons\nevery second", 20, 0);
 	pop();
 
 	push();
 		translate(770, 411);
-		phasorArrow(4, .1, timeoclock, ccongray);
+		showPhasorArrow(4, .1, timeoclock, CCONGRAY);
 
 	pop();
 
 	push();
 		translate(770, 140);
-		phasorArrow(4, .2, timeoclock, ccongray);
+		showPhasorArrow(4, .2, timeoclock, CCONGRAY);
 	pop();
 
-	titleBold("The box of seeing: a photon description");
+	placeTitleBold("The box of seeing: a photon description");
 
 	timeoclock++;
 

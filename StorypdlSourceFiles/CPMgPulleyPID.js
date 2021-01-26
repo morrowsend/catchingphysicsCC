@@ -1,4 +1,4 @@
-// MgPulleyPID
+// CPMgPulleyPID
 
 // add interpreter droids?
 const maxheightlifted=100;
@@ -12,30 +12,30 @@ function preload() {
 
 function setup(){
     createCanvas(600	,740);
-	sliderHeight=new IanSlider(40,220,100,15,0,[0],false);
-	sliderPulleys=new IanSlider(40,80,60,15,2,[0.334],false);
+	sliderHeight=new createSliderDivider(40,220,100,15,0,[0],false);
+	sliderPulleys=new createSliderDivider(40,80,60,15,2,[0.334],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
-  
+
 	sliderHeight.draw();
 
 	var heightlifted = maxheightlifted-(1-sliderHeight.getValue())*maxheightlifted;
     sliderPulleys.draw();
-    
+
     var howmanypulleys = 1+int(sliderPulleys.getValue()*3);
- 
+
 	push();
 		translate(280,300);
 		pulleysetY(howmanypulleys, heightlifted);
 	pop();
-    
-    words("choose number\nof ropes to\nshare your load", 70, 90);
-    words("lift the load\nby pulling\nthe rope", 70, 230);
- 
-	titleBold("Sharing the load with ropes: using pulleys to lift");  
+
+    placeWords("choose number\nof ropes to\nshare your load", 70, 90);
+    placeWords("lift the load\nby pulling\nthe rope", 70, 230);
+
+	placeTitleBold("Sharing the load with ropes: using pulleys to lift");
 }
 
 
@@ -53,7 +53,7 @@ function pulleysetY(numberofpulleys, heightlifted){
 
 
 		noStroke();
-		fill(cpulleydarkGrey);
+		fill(CPULLEYDARKGREY);
 switch(numberofpulleys){
 
         case 1:
@@ -77,7 +77,7 @@ switch(numberofpulleys){
             rect(-2, -225, 4, -8);
 // ellipse(0,0,130,130);
             break;
-           
+
          }
 
    push();
@@ -86,7 +86,7 @@ switch(numberofpulleys){
       pulleyradius= 15+i*pulleyincrement;
       var pulleystep=pulleysep+i*pulleyradius*.6;
 
-      fill(cpulleyropeRed);
+      fill(CPULLEYROPERED);
       if (i==0){
          push();
          translate(-pulleyradius,0);
@@ -112,27 +112,27 @@ switch(numberofpulleys){
 				  rect(0,0,ropethickness,-90);
 			  pop();
 			translate(0,-40);
-			fill(cideaBrown);
+			fill(CIDEABROWN);
 			ellipse(0, 0, 200, 50);
 			rectMode(CENTER);
 			rect(0, -15, 200, 30);
 			rectMode(CORNER);
 			ellipse(0, -30, 200, 50);
 			noFill();
-			stroke(cdeviceGrey);
+			stroke(CDEVICEGREY);
 			line(120, 0, 120, -heightlifted);
 
 			strokeWeight(2);
 			noFill();
-			stroke(cpulleyropeRed);
+			stroke(CPULLEYROPERED);
 			curve(-90, -100, -119, 0, -84-30,73-30,-44,53);
 			for (i = 0; i < 2*numberofpulleys; i++) {
 				noStroke();
-				fill(cpulleyropeRed);
+				fill(CPULLEYROPERED);
 					rect(-120-10*i,0,ropethickness,-heightlifted);
 					strokeWeight(2);
 					noFill();
-					stroke(cpulleyropeRed);
+					stroke(CPULLEYROPERED);
 					if (i!=2*numberofpulleys-1){
 					if (i%2==0){
 						arc(-124-10*i,-heightlifted,10,5,PI,0,OPEN);
@@ -144,7 +144,7 @@ switch(numberofpulleys){
 			scale(-1,-1);
 			translate(74, -85);
 	// 		thehand
-	stroke(cdrawTiFo);
+	stroke(CDRAWTIFO);
 	strokeWeight(1);
 	noFill();
 
@@ -599,7 +599,7 @@ switch(numberofpulleys){
 pop();
           pop();
       }
-      pulley(pulleyradius*2,"D");
+      drawPulley(pulleyradius*2,"D");
       oldpulleystep=pulleysep+i*pulleyradius*.6;
       pulleygap+=2*pulleystep;
       translate(0,pulleystep);
@@ -612,7 +612,7 @@ pop();
    rotate(0);
    for (var i = 0; i < numberofpulleys; i = i+1){
       pulleyradius= 15+i*pulleyincrement;
-      pulley(pulleyradius*2,"D");
+      drawPulley(pulleyradius*2,"D");
       translate(0,pulleysep+i*pulleyradius*.6);
    }
    pop();
@@ -633,12 +633,12 @@ function mouseReleased(){
 function keyTyped() {
   if (key == 's') {
     saveCanvas('aSnapshot', 'png');
-  } 
+  }
     return false;
 }
 
 function thehand(){
-stroke(cdrawTiFo);
+stroke(CDRAWTIFO);
 strokeWeight(1);
 noFill();
 

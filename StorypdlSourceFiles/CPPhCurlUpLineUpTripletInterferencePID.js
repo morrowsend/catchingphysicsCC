@@ -13,7 +13,7 @@ const controllers=[];
 const scaleFactorSurfaceExplore=500;
 const scaleFactorSourceDetector=400;
 const maxtime=1000;
-contribcolours=[ccongreen,cconpink,cconorange,cconlightgreen,cconcyan,cconpurple,ccongray];
+contribcolours=[CCONGREEN,CCONPINK,CCONORANGE,CCONLIGHTGREEN,CCONCYAN,CCONPURPLE,CCONGRAY];
 
 
 
@@ -27,29 +27,29 @@ function preload() {
 function setup() {
     createCanvas(800, 600);
  const yloc =550;
- controllers[0]= new controlPuck();
+ controllers[0]= new CreateControlPuck();
  controllers[0].create(sourceLocX,yloc);
- controllers[1]= new controlStripVertical();
+ controllers[1]= new CreateControlStripVertical();
  controllers[1].create(60,waypointLocTY);
- controllers[3]= new controlStripVertical();
+ controllers[3]= new CreateControlStripVertical();
  controllers[3].create(60,waypointLocBY);
- controllers[2]= new controlPuck();
+ controllers[2]= new CreateControlPuck();
  controllers[2].create(detectorLocX,yloc);
  
-slitsbutton = new checkButton(668, 60,"draw slits",false);
+slitsbutton = new CreateCheckButton(668, 60,"draw slits",false);
 
  
 }
 
 function draw() {
 
-background(cWhite);
+background(CWHITE);
 	slitsbutton.drawButton();
 
 if (slitsbutton.buttonisChecked){
 		push();
 			translate(320, 280);
-			stroke(cBlack);
+			stroke(CBLACK);
 			strokeWeight(8);
 			strokeCap(SQUARE);
 			line(0, -220, 0, -120);
@@ -128,31 +128,31 @@ waypointtodetectorBR.sub(waypointlocationB);
 
 push();
 	translate(sourcelocation.x, sourcelocation.y);
-	transducer(clight, degrees((sourcetowaypointT.heading()+sourcetowaypointB.heading())/2));
+	drawTransducer(CLIGHT, degrees((sourcetowaypointT.heading()+sourcetowaypointB.heading())/2));
 pop();
 
 push();
 	translate(detectorlocation.x, detectorlocation.y);
-	transducer(cBlack, (degrees((waypointtodetectorT.heading()+waypointtodetectorB.heading()/2))-180));
+	drawTransducer(CBLACK, (degrees((waypointtodetectorT.heading()+waypointtodetectorB.heading()/2))-180));
 pop();
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocationTL.x, waypointlocationTL.y, contribcolours[0]);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocationTL.x, waypointlocationTL.y, contribcolours[0]);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocationTL.x, waypointlocationTL.y, contribcolours[0]);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocationTL.x, waypointlocationTL.y, contribcolours[0]);
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocationT.x, waypointlocationT.y, contribcolours[1]);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocationT.x, waypointlocationT.y, contribcolours[1]);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocationT.x, waypointlocationT.y, contribcolours[1]);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocationT.x, waypointlocationT.y, contribcolours[1]);
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocationTR.x, waypointlocationTR.y, contribcolours[2]);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocationTR.x, waypointlocationTR.y, contribcolours[2]);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocationTR.x, waypointlocationTR.y, contribcolours[2]);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocationTR.x, waypointlocationTR.y, contribcolours[2]);
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocationBL.x, waypointlocationBL.y, contribcolours[3]);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocationBL.x, waypointlocationBL.y, contribcolours[3]);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocationBL.x, waypointlocationBL.y, contribcolours[3]);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocationBL.x, waypointlocationBL.y, contribcolours[3]);
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocationB.x, waypointlocationB.y, contribcolours[4]);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocationB.x, waypointlocationB.y, contribcolours[4]);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocationB.x, waypointlocationB.y, contribcolours[4]);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocationB.x, waypointlocationB.y, contribcolours[4]);
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocationBR.x, waypointlocationBR.y, contribcolours[5]);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocationBR.x, waypointlocationBR.y, contribcolours[5]);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocationBR.x, waypointlocationBR.y, contribcolours[5]);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocationBR.x, waypointlocationBR.y, contribcolours[5]);
 
 var triptimeT = sourcetowaypointT.mag()+waypointtodetectorT.mag();
 var triptimeTL = sourcetowaypointTL.mag()+waypointtodetectorTR.mag();
@@ -165,31 +165,31 @@ var triptimeBR = sourcetowaypointBL.mag()+waypointtodetectorBR.mag();
 
 push();
 	translate(waypointlocationT.x, waypointlocationT.y);
-	waypoint(contribcolours[1]);
+	drawWaypoint(contribcolours[1]);
 pop();
 
 push();
 	translate(waypointlocationTL.x, waypointlocationTL.y);
-	waypoint(contribcolours[0]);
+	drawWaypoint(contribcolours[0]);
 pop();
 
 push();
 	translate(waypointlocationTR.x, waypointlocationTR.y);
-	waypoint(contribcolours[2]);
+	drawWaypoint(contribcolours[2]);
 pop();
 push();
 	translate(waypointlocationB.x, waypointlocationB.y);
-	waypoint(contribcolours[4]);
+	drawWaypoint(contribcolours[4]);
 pop();
 
 push();
 	translate(waypointlocationBL.x, waypointlocationBL.y);
-	waypoint(contribcolours[3]);
+	drawWaypoint(contribcolours[3]);
 pop();
 
 push();
 	translate(waypointlocationBR.x, waypointlocationBR.y);
-	waypoint(contribcolours[5]);
+	drawWaypoint(contribcolours[5]);
 pop();
 
 // the indicator bars
@@ -197,26 +197,26 @@ pop();
 // 	translate(20, waypointLocTY+40);
 // 	strokeWeight(8);
 // 	strokeCap(SQUARE);
-// 	stroke(cconcyan);
+// 	stroke(CCONCYAN);
 // 	line(4, 0, 4, -(triptimeT-400));
 // 	translate(-8, 0);
-// 	stroke(cconorange);
+// 	stroke(CCONORANGE);
 // 	line(4, 0, 4, -(triptimeTL-400));
 // 	translate(16, 0);
-// 	stroke(cconpink);
+// 	stroke(CCONPINK);
 // 	line(4, 0, 4, -(triptimeTR-400));
 // pop();
 
 // the phasors
 push();
 		translate(detectorlocation.x+80, detectorlocation.y);
-		phasormultiplebrightness(3, .04, [[triptimeTL, contribcolours[0]],[triptimeT, contribcolours[1]],[triptimeTR, contribcolours[2]],[triptimeBL, contribcolours[3]],[triptimeB, contribcolours[4]],[triptimeBR, contribcolours[5]]]);
+		showPhasorMultipleBrightness(3, .04, [[triptimeTL, contribcolours[0]],[triptimeT, contribcolours[1]],[triptimeTR, contribcolours[2]],[triptimeBL, contribcolours[3]],[triptimeB, contribcolours[4]],[triptimeBR, contribcolours[5]]]);
 	pop();
 	
 	
 
 
-titleBold("Exploring a pair of triplets for interference");
+placeTitleBold("Exploring a pair of triplets for interference");
 
 }
 

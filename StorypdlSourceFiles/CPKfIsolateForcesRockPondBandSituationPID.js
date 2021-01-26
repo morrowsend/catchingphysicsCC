@@ -13,15 +13,15 @@ function setup(){
 	noLoop();
 }
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	advicedroid(480, 80, "Identifying the forces on the rock. First isolate the rock its environment, then consider the interactions with the environment that it had, but no longer has. Each will be replaced with a force.", 290, 90)
+	placeAdviceDroid(480, 80, "Identifying the forces on the rock. First isolate the rock its environment, then consider the interactions with the environment that it had, but no longer has. Each will be replaced with a force.", 290, 90)
 
-	physicalPane(120, 150, 200, 100);
+	placePhysicalPane(120, 150, 200, 100);
 	imageMode(CENTER);
 	image(situation,120,150);
 
 
-	titleBold("The situation: a rock hanging on a rubber band, in a liquid");
+	placeTitleBold("The situation: a rock hanging on a rubber band, in a liquid");
 }
 

@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(660, 450);
-    totalmassSet=new IanSlider(20,80,100,15,0,[0.7],false);
-    chunkdivideSet=new IanSlider(420,80,100,15,0,[0.5],false);
+    totalmassSet=new createSliderDivider(20,80,100,15,0,[0.7],false);
+    chunkdivideSet=new createSliderDivider(420,80,100,15,0,[0.5],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     chunkdivideSet.draw();
     totalmassSet.draw();
@@ -30,24 +30,24 @@ function draw() {
 
     push();
     translate(250, 250);
-    pspace2D(150, 150,  " momentum of object two","momentum of object one", chunkone*70, 70*chunktwo);
+    createPossSpace2D(150, 150,  " momentum of object two","momentum of object one", chunkone*70, 70*chunktwo);
     pop();
 
     push();
     translate(440,400);
-    momentum((chunkone+chunktwo)*pxscale, 0, cideaBlue);
+    showMomentum((chunkone+chunktwo)*PXSCALE, 0, CIDEABLUE);
     translate(60,0);
-    momentum(chunkone*pxscale, 0, cideaRed);
-    translate(0,-chunkone*pxscale*pxscale);
-    momentum(chunktwo*pxscale, 0, cideaGreen);
+    showMomentum(chunkone*PXSCALE, 0, CIDEARED);
+    translate(0,-chunkone*PXSCALE*PXSCALE);
+    showMomentum(chunktwo*PXSCALE, 0, CIDEAGREEN);
     pop();
 
 
-	words("share out momentum",445,135);
-	words("all momentum to object one",445,85);
-	words("all momentum to object two",445,185);
-  words("momentum:\nset\ntotal",45,90);
-	titleBold("Possibilities limited: momentum is conserved");
+	placeWords("share out momentum",445,135);
+	placeWords("all momentum to object one",445,85);
+	placeWords("all momentum to object two",445,185);
+  placeWords("momentum:\nset\ntotal",45,90);
+	placeTitleBold("Possibilities limited: momentum is conserved");
 }
 
 function mousePressed(){

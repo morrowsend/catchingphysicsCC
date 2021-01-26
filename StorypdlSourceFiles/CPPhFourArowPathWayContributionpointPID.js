@@ -24,7 +24,7 @@ var detectorlocationadjusted="";
 
 const maxtime=1000;
 const yloc =500;
-const contribcolours=[ccongreen,cconpink,cconorange,cconlightgreen,ccongray,cconpurple,cconcyan];
+const contribcolours=[CCONGREEN,CCONPINK,CCONORANGE,CCONLIGHTGREEN,CCONGRAY,CCONPURPLE,CCONCYAN];
 const sfTriptimes = 40;
 
 function preload() {
@@ -37,9 +37,9 @@ function preload() {
 function setup() {
     createCanvas(800, 650);
  
- SDcontrollers[0]= new controlPuck();
+ SDcontrollers[0]= new CreateControlPuck();
  SDcontrollers[0].create(sourceinitialLoc[0],yloc);
- SDcontrollers[1]= new controlPuck();
+ SDcontrollers[1]= new CreateControlPuck();
  SDcontrollers[1].create(detectorinitialLoc[0],yloc);
  
 sourcelocation=createVector(sourceinitialLoc[0],sourceinitialLoc[1]);
@@ -49,7 +49,7 @@ detectorlocationadjusted=createVector(detectorinitialLoc[0],detectorinitialLoc[1
 
 
  for (let i = 0; i<numberWaypoints; i++){
-	WPcontrollers[i]= new controlPuck();
+	WPcontrollers[i]= new CreateControlPuck();
 	const WPinitialLocx = 200+i*110;
 	const WPinitialLocy = 300;
 	WPcontrollers[i].create(WPinitialLocx,yloc);
@@ -64,7 +64,7 @@ detectorlocationadjusted=createVector(detectorinitialLoc[0],detectorinitialLoc[1
 
 function draw() {
 
-	background(cWhite);
+	background(CWHITE);
 
 
 	var sourceangle=0;
@@ -82,18 +82,18 @@ function draw() {
 
 		push();
 		translate(waypointlocations[i].x, waypointlocations[i].y);
-		waypoint(contribcolours[i]);
+		drawWaypoint(contribcolours[i]);
 		pop();
 
-		pathC(sourcelocation.x, sourcelocation.y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
-		pathC(detectorlocation.x, detectorlocation.y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
+		showPathC(sourcelocation.x, sourcelocation.y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
+		showPathC(detectorlocation.x, detectorlocation.y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
 
 		waypointstodetector[i].set(detectorlocation).sub(waypointlocations[i]);
 		sourcetowaypoints[i].set(sourcelocation).sub(waypointlocations[i]);
 		triptimes[i]=(sourcetowaypoints[i].mag()+waypointstodetector[i].mag());
 		push();
 			translate(200+i*110, 620);
-			durationpov(triptimes[i],maxtime,contribcolours[i]);
+			showDurationPoV(triptimes[i],maxtime,contribcolours[i]);
 		pop();
 		sourcetowaypoints[i].mult(-1);
 		sourceangle+=sourcetowaypoints[i].heading();
@@ -103,37 +103,37 @@ function draw() {
 			}
 		push();
 			translate(sourcelocation.x, sourcelocation.y);
-			phasorArrow(4, .08,timeoclock,cdeviceGrey);
+			showPhasorArrow(4, .08,timeoclock,CDEVICEGREY);
 			push();
 				rotate(PI);
-				transducer(clight, degrees(sourceangle-PI));
+				drawTransducer(CLIGHT, degrees(sourceangle-PI));
 				translate(abs(10*sin(degrees(sourceangle-PI))),0);
 			pop();
 		pop();
 
 		push();
 			translate(detectorlocation.x, detectorlocation.y);
-			transducer(cideaGrey, degrees(detectorangle-PI));
+			drawTransducer(CIDEAGREY, degrees(detectorangle-PI));
 		pop();
 
 
 
-		words('source\nlocation', sourceinitialLoc[0]-38, yloc+60);
-		words('detector\nlocation', detectorinitialLoc[0]-38, yloc+60);
-		words('green\nwaypoint', 160, yloc+60);
-		words('pink\nwaypoint', 160+110, yloc+60);
-		words('orange\nwaypoint', 160+2*110, yloc+60);
-		words('lime\nwaypoint', 160+3*110, yloc+60);
+		placeWords('source\nlocation', sourceinitialLoc[0]-38, yloc+60);
+		placeWords('detector\nlocation', detectorinitialLoc[0]-38, yloc+60);
+		placeWords('green\nwaypoint', 160, yloc+60);
+		placeWords('pink\nwaypoint', 160+110, yloc+60);
+		placeWords('orange\nwaypoint', 160+2*110, yloc+60);
+		placeWords('lime\nwaypoint', 160+3*110, yloc+60);
 
 	
 push();
 		translate(detectorlocation.x, detectorlocation.y);
-		phasormultiple(4, .08, [[timeoclock-triptimes[0],contribcolours[0]],[timeoclock-triptimes[1],contribcolours[1]],[timeoclock-triptimes[2],contribcolours[2]],[timeoclock-triptimes[3],contribcolours[3]]]);
+		showPhasorMultiple(4, .08, [[timeoclock-triptimes[0],contribcolours[0]],[timeoclock-triptimes[1],contribcolours[1]],[timeoclock-triptimes[2],contribcolours[2]],[timeoclock-triptimes[3],contribcolours[3]]]);
 	pop();
 
 timeoclock++;
 
-titleBold("Four paths, defined by four waypoints, and four contributions");
+placeTitleBold("Four paths, defined by four waypoints, and four contributions");
 
 }
 

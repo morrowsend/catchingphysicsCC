@@ -16,21 +16,21 @@ function setup() {
     cp3 = color(78, 109, 238);
     cp4 = color(37, 58, 232);
 //    noLoop();
-    setDepth=new IanSlider(400,170,200,15,0,[0.9],false);
+    setDepth=new createSliderDivider(400,170,200,15,0,[0.9],false);
 }
 
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     pressureGradient(0, 150, width, 300, cp1, cp4);
     setDepth.draw();
     push();
 		translate(width/2,170-(setDepth.getValue()-1)*200);
-		pressuregauge((1-setDepth.getValue())*4);
+		drawPressureGauge((1-setDepth.getValue())*4);
     pop();
 
-    titleBold("changing pressure with depth");
+    placeTitleBold("changing pressure with depth");
 }
 
 function keyTyped() {
@@ -58,7 +58,7 @@ function pressureGradient(xloc, yloc, fluidWidth, fluidDepth, pressurestart, pre
       stroke(plotColour);
       line(xloc, i, xloc+fluidWidth, i);
     }
-    stroke(cdeviceGrey);
+    stroke(CDEVICEGREY);
     strokeWeight(4);
     line(xloc,yloc,xloc,yloc+fluidDepth);
     line(xloc,yloc+fluidDepth,xloc+fluidWidth,yloc+fluidDepth);

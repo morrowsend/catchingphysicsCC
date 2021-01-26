@@ -14,12 +14,12 @@ function preload() {
 
 function setup() {
     createCanvas(750, 550);
-    aheadornot=new IanSlider(200,200,200,15,0,[0.5],false);
+    aheadornot=new createSliderDivider(200,200,200,15,0,[0.5],false);
 }
 
 function draw() {
 
-background(cWhite);
+background(CWHITE);
 const Afreq=.01;
 
 aheadornot.draw();
@@ -27,23 +27,23 @@ var phaseAngle=(aheadornot.getValue(0)-0.5)*2*PI*80;
 
 push();
 	translate(100, 300);
-	phasorArrow(scaleAmplitude, Afreq, timeoclock, cconcyan);
-	phasorArrow(scaleAmplitude, Afreq, timeoclock+phaseAngle, cconpink);
-	phasorArrow(scaleAmplitude, Afreq, timeoclock-phaseAngle, cconorange);
+	showPhasorArrow(scaleAmplitude, Afreq, timeoclock, CCONCYAN);
+	showPhasorArrow(scaleAmplitude, Afreq, timeoclock+phaseAngle, CCONPINK);
+	showPhasorArrow(scaleAmplitude, Afreq, timeoclock-phaseAngle, CCONORANGE);
 	
 pop();
 
 push();
 	translate(500, 300);
-phasormultipleresultant(scaleAmplitude, Afreq, [[timeoclock, cconcyan],[timeoclock+phaseAngle, cconpink],[timeoclock-phaseAngle, cconorange]])
+showPhasorMultipleResultant(scaleAmplitude, Afreq, [[timeoclock, CCONCYAN],[timeoclock+phaseAngle, CCONPINK],[timeoclock-phaseAngle, CCONORANGE]])
 pop();
 
 
-words("arrows curl up", 230, 219);
-words("arrows curl up", 230, 387);
-words("arrows line up", 230, 302);
+placeWords("arrows curl up", 230, 219);
+placeWords("arrows curl up", 230, 387);
+placeWords("arrows line up", 230, 302);
 
-titleBold("Lining up and Curling up: three spinning arrows");
+placeTitleBold("Lining up and Curling up: three spinning arrows");
 timeoclock++;
 }
 

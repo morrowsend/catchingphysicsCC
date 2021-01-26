@@ -9,15 +9,15 @@ function preload() {
 
 function setup(){
   createCanvas(600, 600, WEBGL);
-justWords("polarisation of electromagnetic waves", "invertedtitle", 20, 10, width-60);
+justplaceWords("polarisation of electromagnetic waves", "invertedtitle", 20, 10, width-60);
 
-justWords("Two waves with different polarisations. SpacingParabreak Green arrow: direction of propagation SpacingLinebreak red arrow: electric vibration SpacingLinebreak blue arrow: magnetic vibration.  SpacingParabreak Drag to rotate your view", "infoBlock", 20, 40, width-60);
+justplaceWords("Two waves with different polarisations. SpacingParabreak Green arrow: direction of propagation SpacingLinebreak red arrow: electric vibration SpacingLinebreak blue arrow: magnetic vibration.  SpacingParabreak Drag to rotate your view", "infoBlock", 20, 40, width-60);
 
 
 }
 
 function draw(){
- background(cWhite);
+ background(CWHITE);
    orbitControl();
 
    var omegatee = frameCount/200;
@@ -28,23 +28,23 @@ function draw(){
 	push();
 		var Bfield =12*sin(omegatee);
 		if (Bfield>0){
-		force3D(abs(Bfield), 90, cBfield);
+		showForce3D(abs(Bfield), 90, CBFIELD);
 		}else{
-		force3D(abs(Bfield), -90, cBfield);}
+		showForce3D(abs(Bfield), -90, CBFIELD);}
 	pop();
 
 	push();
 		rotateZ(PI/2);
 		var Efield =8*cos(omegatee);
 		if (Efield>0){
-		force3D(abs(Efield), 90, cEfield);
+		showForce3D(abs(Efield), 90, CEFIELD);
 		}else{
-		force3D(abs(Efield), -90, cEfield);}
+		showForce3D(abs(Efield), -90, CEFIELD);}
 	pop();
 
 	push();
 	rotateX(PI/2);
-	velocity3D(3, 0, cpovAlice);
+	showVelocity3D(3, 0, CPOVALICE);
 	pop();
 
 	push();
@@ -53,23 +53,23 @@ function draw(){
 		push();
 			var Bfield =12*sin(omegatee);
 			if (Bfield>0){
-			force3D(abs(Bfield), 90, cBfield);
+			showForce3D(abs(Bfield), 90, CBFIELD);
 			}else{
-			force3D(abs(Bfield), -90, cBfield);}
+			showForce3D(abs(Bfield), -90, CBFIELD);}
 		pop();
 
 		push();
 			rotateZ(PI/2);
 			var Efield =8*cos(omegatee);
 			if (Efield>0){
-			force3D(abs(Efield), 90, cEfield);
+			showForce3D(abs(Efield), 90, CEFIELD);
 			}else{
-			force3D(abs(Efield), -90, cEfield);}
+			showForce3D(abs(Efield), -90, CEFIELD);}
 		pop();
 
 		push();
 		rotateX(PI/2);
-		velocity3D(3, 0, cpovAlice);
+		showVelocity3D(3, 0, CPOVALICE);
 		pop();
 	pop();
 }

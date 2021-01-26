@@ -3,36 +3,36 @@
 
 @font-face {
 	font-family: 'romanFont';
-	src: url('ComicNeue-Angular-Light.ttf'); 
+	src: url('ComicNeue-Angular-Light.ttf');
 	format('truetype');
 		}
 @font-face {
 	font-family: 'italicFont';
-	src: url('ComicNeue-Angular-Light-Oblique.ttf'); 
+	src: url('ComicNeue-Angular-Light-Oblique.ttf');
 	format('truetype');
 		}
-		
+
 @font-face {
 	font-family: 'titleFont';
-	src: url('ComicNeue-Angular-Bold.ttf'); 
+	src: url('ComicNeue-Angular-Bold.ttf');
 	format('truetype');
 		}
 
 @font-face {
 	font-family: 'comicFont';
-	src: url('fonts/BackIssuesBB_reg.ttf'); 
+	src: url('fonts/BackIssuesBB_reg.ttf');
 	format('truetype');
 }
 
 @font-face {
 	font-family: 'speechFont';
-	src: url('fonts/SF_Cartoonist_Hand.ttf'); 
+	src: url('fonts/SF_Cartoonist_Hand.ttf');
 	format('truetype');
 }
 
 @font-face {
 	font-family: 'handFont';
-	src: url('fonts/SF_Cartoonist_Hand.ttf'); 
+	src: url('fonts/SF_Cartoonist_Hand.ttf');
 	format('truetype');
 }
 
@@ -232,11 +232,11 @@ left: -12px;
 
 /*teacher dialogue*/
 
-.teacherone 		{ padding:12px 15px; width:80%; margin-bottom:10px; color:#003366; font-size:16px; font-family: 'Open Sans'; position:relative; line-height:16px; background:#d6ebfd; border:1px solid #9bccf6; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
+.teacherone 		{ padding:12px 15px; width:80%; margin-bottom:10px; color:#003366; font-size:16px; font-family:romanFont; position:relative; line-height:16px; background:#d6ebfd; border:1px solid #9bccf6; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
 .teacherone:after{ content:url(cssGraphics/speechbubble1.png); width:14px; height:27px; position:absolute; bottom:-26px; left:1%; margin:0 4px;}
-.teachertwo 		{ padding:12px 15px; width:85%; margin-bottom:10px; float:right; color:#003366; font-size:16px; font-family: 'Open Sans'; position:relative; line-height:16px; background:#ccf6ff; border:1px solid #9bccf6; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
+.teachertwo 		{ padding:12px 15px; width:85%; margin-bottom:10px; float:right; color:#003366; font-size:16px; font-family:romanFont; position:relative; line-height:16px; background:#ccf6ff; border:1px solid #9bccf6; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
 .teachertwo:after{ content:url(cssGraphics/speechbubble2.png); width:14px; height:27px; position:absolute; bottom:-26px; right:1%; margin:0 4px;}
-.teacherthree 	{ padding:12px 15px; margin-left:12%; width:68%; color:#003366; font-size:16px; font-family: 'Open Sans'; position:relative; line-height:16px; background:#bfdffb; border:1px solid #80c1fa; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
+.teacherthree 	{ padding:12px 15px; margin-left:12%; width:68%; color:#003366; font-size:16px; font-family:romanFont; position:relative; line-height:16px; background:#bfdffb; border:1px solid #80c1fa; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px;}
 .teacherthree:after{ content:url(cssGraphics/speechbubble3.png); width:14px; height:27px; position:absolute; bottom:-26px; left:50%; margin:0 4px;}
 
 /*Added to do coaching session blocks 2016-11-22*/

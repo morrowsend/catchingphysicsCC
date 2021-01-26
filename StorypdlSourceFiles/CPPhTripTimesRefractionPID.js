@@ -25,20 +25,20 @@ function preload() {
 function setup() {
     createCanvas(800, 600);
  const yloc =550;
- controllers[0]= new controlPuck();
+ controllers[0]= new CreateControlPuck();
  controllers[0].create(sourceLocX,yloc);
- controllers[1]= new controlStripHorizontal();
+ controllers[1]= new CreateControlStripHorizontal();
  controllers[1].create(waypointLocX,yloc);
- controllers[2]= new controlPuck();
+ controllers[2]= new CreateControlPuck();
  controllers[2].create(detectorLocX,yloc);
  
 }
 
 function draw() {
 
-background(cWhite);
+background(CWHITE);
 noStroke();
-fill(cdeviceLightGrey);
+fill(CDEVICELIGHTGREY);
 rect(20, waypointLocY, 700, 200)
 
 var sourcetowaypoint = createVector(0,0);
@@ -67,27 +67,27 @@ waypointtodetector.sub(waypointlocation);
 
 push();
 	translate(sourcelocation.x, sourcelocation.y);
-	transducer(clight, degrees(sourcetowaypoint.heading()));
+	drawTransducer(CLIGHT, degrees(sourcetowaypoint.heading()));
 pop();
 
 push();
 	translate(detectorlocation.x, detectorlocation.y);
-	transducer(cBlack, (degrees(waypointtodetector.heading())-180));
+	drawTransducer(CBLACK, (degrees(waypointtodetector.heading())-180));
 pop();
 
 
-pathC(sourcelocation.x, sourcelocation.y, waypointlocation.x, waypointlocation.y, cconcyan);
-pathC(detectorlocation.x, detectorlocation.y, waypointlocation.x, waypointlocation.y, cconcyan);
+showPathC(sourcelocation.x, sourcelocation.y, waypointlocation.x, waypointlocation.y, CCONCYAN);
+showPathC(detectorlocation.x, detectorlocation.y, waypointlocation.x, waypointlocation.y, CCONCYAN);
 
 var triptime = sourcetowaypoint.mag()+waypointtodetector.mag()*refractiveIndex;
 
 // the waypoints
 push();
 	translate(waypointlocation.x, waypointlocation.y);
-	waypoint(cconcyan);
+	drawWaypoint(CCONCYAN);
 	push();
 		translate(0, 40);
-		durationpov(triptime,maxtime,cconcyan);		
+		showDurationPoV(triptime,maxtime,CCONCYAN);		
 	pop();
 pop();
 
@@ -98,11 +98,11 @@ push();
 	translate(756, waypointLocY+40);
 	strokeWeight(8);
 	strokeCap(SQUARE);
-	stroke(cconcyan);
+	stroke(CCONCYAN);
 	line(4, 0, 4, -(triptime-200)*.3);
 pop();
 
-title("Exploring trip times in refraction");
+placeTitleBold("Exploring trip times in refraction");
 
 }
 

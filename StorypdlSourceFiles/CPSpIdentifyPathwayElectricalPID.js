@@ -14,28 +14,28 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
 	push();
 		translate(20,80);
-		subHead('qualitative: what is calculated',0, 0);
-		wordsframe("Look for a potential difference across a part of a circuit, and a current in that part.", 10,10,232,60);
+		placeSubHead('qualitative: what is calculated',0, 0);
+		placeWordsFrame("Look for a potential difference across a part of a circuit, and a current in that part.", 10,10,232,60);
 		push();
 		translate(295, 13);
 			scale(1.2);
-			powerPathway("electrical");
+			drawPowerPathway("electrical");
 		pop();
 		translate(0,102);
-		subHead('quantitative: how much',0, 0);
-		wordsframe("You will calculate a power in watts.", 10,10,232,60);
+		placeSubHead('quantitative: how much',0, 0);
+		placeWordsFrame("You will calculate a power in watts.", 10,10,232,60);
 		push();
 			translate(333,76);
 			scale(1.2);
-			power(5);
+			showPower(5);
 		pop();
 	pop();
 
-titleBold("Identifying an electrical working pathway");
+placeTitleBold("Identifying an electrical working pathway");
 }
 
 function keyTyped() {

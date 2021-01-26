@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(680, 450);
-    separationSet=new IanSlider(40,300,100,15,0,[0.7],false);
-    gravitySet=new IanSlider(40,100,100,15,0,[0.7],false);
+    separationSet=new createSliderDivider(40,300,100,15,0,[0.7],false);
+    gravitySet=new createSliderDivider(40,100,100,15,0,[0.7],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     separationSet.draw();
     gravitySet.draw();
@@ -28,13 +28,13 @@ function draw() {
 
     push();
     translate(350, 250);
-    pspace2D(150, 200,  " force","distance", variedseparation*80, 3*theforce);
+    createPossSpace2D(150, 200,  " force","distance", variedseparation*80, 3*theforce);
     pop();
 
 
-	words("vary\ndistance\nfrom\nplanet",65,310);
-    words("set\ngravitational\npull of\nplanet",65,110);
-	titleBold("Possibilities limited: Set gravity, vary separation, see the force");
+	placeWords("vary\ndistance\nfrom\nplanet",65,310);
+    placeWords("set\ngravitational\npull of\nplanet",65,110);
+	placeTitleBold("Possibilities limited: Set gravity, vary separation, see the force");
 }
 
 function mousePressed(){

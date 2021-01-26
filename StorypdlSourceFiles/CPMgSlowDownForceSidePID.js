@@ -1,4 +1,4 @@
-// MgSlowDownForceSidePID
+// CPMgSlowDownForceSidePID
 
 
 function preload() {
@@ -17,33 +17,33 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
-    conceptualPane(120, 170, 200, 180);
-    conceptualPane(350, 170, 200, 180);
-    transitionEvolve(235, 170, 0);
+    background(CWHITE);
+    placeConceptualPane(120, 170, 200, 180);
+    placeConceptualPane(350, 170, 200, 180);
+    placeTransitionEvolve(235, 170, 0);
     
     imageMode(CENTER);
     image(KazFast,120,180);
 	push();
 		translate(85,100);
-		velocity(7, 90, cpovAlice);
+		showVelocity(7, 90, CPOVALICE);
 	pop();
 	push();
 		translate(120,170);
-		force(-5, 90, cdrag);
+		showForce(-5, 90, CDRAG);
 	pop();
     
     image(KazSlow,350,180);
 	push();
 		translate(335,100);
-		velocity(3, 90, cpovAlice);
+		showVelocity(3, 90, CPOVALICE);
 	pop();
 	push();
 		translate(350,170);
-		force(-5, 90, cdrag);
+		showForce(-5, 90, CDRAG);
 	pop();
  
-	titleBold("Force changes motion: slowing down");  
+	placeTitleBold("Force changes motion: slowing down");  
 }
 
 function keyTyped() {

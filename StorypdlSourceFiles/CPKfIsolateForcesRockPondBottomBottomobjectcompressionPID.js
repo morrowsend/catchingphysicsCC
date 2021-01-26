@@ -14,21 +14,21 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	physicalPane(250, 250, 200, 350);
-	conceptualPane(480, 250, 200, 350);
-	transitionRedescribe(365, 250,0);
+	placePhysicalPane(250, 250, 200, 350);
+	placeConceptualPane(480, 250, 200, 350);
+	placeTransitionRedescribe(365, 250,0);
 	imageMode(CENTER);
 	image(rockbottom,250,200);
 
 	push();
 	translate(480, 250);
-	mass(4, cideaBrown);
+	showMass(4, CIDEABROWN);
 	translate(0, 20);
-	force(9, 0, ccompression);
+	showForce(9, 0, CCOMPRESSION);
 	pop();
 
 
-	titleBold("Interactions between the bottom and the rock replaced by a compression force");
+	placeTitleBold("Interactions between the bottom and the rock replaced by a compression force");
 }

@@ -22,18 +22,18 @@ function preload() {
 function setup() {
     createCanvas(700,460);
 
-    magnitudes[0]= new controlPuckpositive();
+    magnitudes[0]= new CreateControlPuckPositive();
 	magnitudes[0].create(locpucks[0],locpucks[1]);
 
-	boxesbutton = new checkButton(474, 406,"trade-off",false);
-	emptiedbutton = new checkButton(20, 406,"emptied",false);
+	boxesbutton = new CreateCheckButton(474, 406,"trade-off",false);
+	emptiedbutton = new CreateCheckButton(20, 406,"emptied",false);
 
-	storeChoice=new radioButtons(20, 73,["chemical","gravity","kinetic","thermal","elastic","vibration","nuclear","electric-magnetic"],false);
+	storeChoice=new CreateRadioButtons(20, 73,["chemical","gravity","kinetic","thermal","elastic","vibration","nuclear","electric-magnetic"]);
 }
 
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	boxesbutton.drawButton();
 	emptiedbutton.drawButton();
 	var storekind=storeChoice.makeChoice();
@@ -92,21 +92,21 @@ function draw() {
 		 }
 
 
-	subHead("for the "+storekind+" store", 180, 80);
+	placeSubHead("for the "+storekind+" store", 180, 80);
 
 	push();
         translate(180,120);
-		subHead('qualitative',0, 0);
+		placeSubHead('qualitative',0, 0);
 		translate(150,0);
-		subHead('quantitative',0, 0);
+		placeSubHead('quantitative',0, 0);
 	pop();
 
-	words("set quantities", locpucks[0]-40,locpucks[1]-45);
+	placeWords("set quantities", locpucks[0]-40,locpucks[1]-45);
 
       values[0] = createVector(magnitudes[0].getValues().xSet,magnitudes[0].getValues().ySet).mult(scaleFactor);
 
-	words(tradeoffx, locpucks[0],locpucks[1]+61);
-	words(tradeoffy, locpucks[0]+50, locpucks[1]-28);
+	placeWords(tradeoffx, locpucks[0],locpucks[1]+61);
+	placeWords(tradeoffy, locpucks[0]+50, locpucks[1]-28);
 
 	if (storekind==="electric-magnetic"){
 		 storekind="electricmagnetic"
@@ -116,31 +116,31 @@ function draw() {
 	push();
 		translate(220, 350);
 		if (emptiedbutton.buttonisChecked){
-			storeEmptied(storekind);
-			wordsframe(storekind+' store emptied if: ' + storeemptying, -40, 2,150,200);
+			drawStoreEmptied(storekind);
+			placeWordsFrame(storekind+' store emptied if: ' + storeemptying, -40, 2,150,200);
 			} else{
-			storeFilled(storekind);
-			wordsframe(storekind+' store filled if: ' + storefilling, -40, 2,250,200);
+			drawStoreFilled(storekind);
+			placeWordsFrame(storekind+' store filled if: ' + storefilling, -40, 2,250,200);
 			}
 	pop();
 
 	push();
 		translate(351,238);
-		energy(values[0].x*values[0].y/1500);
+		showEnergy(values[0].x*values[0].y/1500);
 	pop();
 
 
 
 	if (boxesbutton.buttonisChecked){
 
-	if((storekind=="kinetic")||(storekind=="elastic")||(storekind=="vibration")){	tradeOfftriangle(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,cconlightgreen,cconpink);
+	if((storekind=="kinetic")||(storekind=="elastic")||(storekind=="vibration")){	drawTradeOffTriangle(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,CCONLIGHTGREEN,CCONPINK);
 	}else{
-	tradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,cconlightgreen,cconpink);
+	drawTradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,CCONLIGHTGREEN,CCONPINK);
 }
 }
 
 
- titleBold("Calculations for energy shifted to or from a store (spot the trade-offs)");
+ placeTitleBold("Calculations for energy shifted to or from a store (spot the trade-offs)");
 }
 
 function mouseReleased(){

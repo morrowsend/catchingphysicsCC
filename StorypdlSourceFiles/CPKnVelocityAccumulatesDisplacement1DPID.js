@@ -15,13 +15,13 @@ function preload() {
 
 function setup(){
     createCanvas(800, 400);
-    controlbutton=new controlButton(20,350,60,30);
-    displacmentSet=new IanSlider(40,220,100,15,0,[0.7],false);
-    velocitySet=new IanSlider(200,220,100,15,0,[0.7],false);
+    controlbutton=new CreateControlButton(20,350,60,30);
+    displacmentSet=new createSliderDivider(40,220,100,15,0,[0.7],false);
+    velocitySet=new createSliderDivider(200,220,100,15,0,[0.7],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     
     velocitySet.draw();
     controlbutton.drawButton();
@@ -37,44 +37,44 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
             displacmentSet.draw();
-            words("set\ninitial\ndisplacement",70,230);
+            placeWords("set\ninitial\ndisplacement",70,230);
             objectLocation=initialdisplacement;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
+            placeWords("pause",28,height-32);
             runtime++;
             objectLocation+=velocityAccumlates*5;
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
+            placeWords("reset",28,height-32);
             break;
                       }
     
     push();
     translate(300,170);
-    displacement(objectLocation/10,90,cpovCharlie);
+    showDisplacement(objectLocation/10,90,CPOVCHARLIE);
     pop();
     push();
     translate(300+objectLocation,120);
-    PoVObject("Alice");
+    drawPoVObject("Alice");
     translate((-velocityAccumlates*50),32);
-    velocity(velocityAccumlates*pxscale,90,cpovCharlie);
+    showVelocity(velocityAccumlates*PXSCALE,90,CPOVCHARLIE);
     pop();
     
     push();
     translate(40,120);
-    PoV("CharlieRight");
+    drawPoV("CharlieRight");
     pop();
         
 
 
-    words("set\nvelocity",230,230);
-  titleBold("set velocity and watch displacement accumulate");  
+    placeWords("set\nvelocity",230,230);
+  placeTitleBold("set velocity and watch displacement accumulate");  
 }
 
 function mousePressed(){

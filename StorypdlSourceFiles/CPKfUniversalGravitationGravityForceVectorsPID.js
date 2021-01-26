@@ -16,15 +16,15 @@ function preload() {
 
 function setup(){
     createCanvas(800, 800);
-    controllers[0]= new controlPuck();
-    controllers[1]= new controlPuck();
+    controllers[0]= new CreateControlPuck();
+    controllers[1]= new CreateControlPuck();
 	controllers[0].create(60,200);
 	controllers[1].create(740,600);
 }
     
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     origins[0]=createVector(200,200);
     origins[1]=createVector(600,600);
         
@@ -40,23 +40,23 @@ function draw() {
     
     push();
 		translate(origins[0].x,origins[0].y);
-		fill(cideaBlue);
+		fill(CIDEABLUE);
 		ellipseMode(CENTER)
 		ellipse(0,0,20,20);
-		force(theForce*pxscale*2, degrees(locations[0].heading()-PI/2), cforceRed);
+		showForce(theForce*PXSCALE*2, degrees(locations[0].heading()-PI/2), CFORCERED);
 	pop();
 	
 	push();
 		translate(origins[1].x,origins[1].y);
-		fill(cideaRed);
+		fill(CIDEARED);
 		ellipseMode(CENTER)
 		ellipse(0,0,20,20);
-		force(-theForce*pxscale*2, degrees(locations[0].heading()-PI/2), cforceBlue);
+		showForce(-theForce*PXSCALE*2, degrees(locations[0].heading()-PI/2), CFORCEBLUE);
 	pop();
 	
-	words('set the\nlocations\nby dragging\nthe pucks', 20, 80);
+	placeWords('set the\nlocations\nby dragging\nthe pucks', 20, 80);
 
-    titleBold("Varying gravitational force by changing separation");
+    placeTitleBold("Varying gravitational force by changing separation");
 }
 function keyTyped() {
 	if (key === "s") {

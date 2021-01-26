@@ -1,4 +1,4 @@
-// MgBikeJourneyPID
+// CPMgBikeJourneyPID
 
 const motionlocations=[
 [-196,-151,"first turn"],
@@ -26,10 +26,10 @@ function preload() {
 }
 function setup(){
 	createCanvas(900, 600);    
-    displacementsbutton = new checkButton(254,550,"show progress from the start   ",false);
-    segmentsbutton = new checkButton(20,550,"show the leg of the journey   ",false);
-    backgroundbutton = new checkButton(511+234,550,"show map",false);   
-    setStep=new IanSlider(745,102,400,15,(motionlocations.length-1),[0],false)
+    displacementsbutton = new CreateCheckButton(254,550,"show progress from the start   ",false);
+    segmentsbutton = new CreateCheckButton(20,550,"show the leg of the journey   ",false);
+    backgroundbutton = new CreateCheckButton(511+234,550,"show map",false);   
+    setStep=new createSliderDivider(745,102,400,15,(motionlocations.length-1),[0],false)
 	
 	lastDisplacement=createVector(0,0);
 	thisTrackstep=createVector(0,0);
@@ -40,7 +40,7 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	if (backgroundbutton.buttonisChecked){
 	imageMode(CENTER);
 	image(thebackground,width/2-100, height/2);
@@ -55,7 +55,7 @@ function draw() {
 	push();
 		translate(width/2, height/2);
 	// 	ellipse(0,0,5,5); origin marker
-		fill(cideaBlue);
+		fill(CIDEABLUE);
 		for (let i = 0; i<motionlocations.length*setStep.getValue(); i++){
 			if (i!=0){
 				lastDisplacement.set(displacements[i-1].x,-displacements[i-1].y);
@@ -68,10 +68,10 @@ function draw() {
 				lastDisplacement.set(0,0);
 			}
 			if (segmentsbutton.buttonisChecked){
-				trackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
+				showTrackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
 			}
 			if (displacementsbutton.buttonisChecked){
-			displacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), cpovAlice); //draws displacements
+			showDisplacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), CPOVALICE); //draws displacements
 			}
 // 			ellipse(displacements[i].x,-displacements[i].y,8,8);// draws marker
 			push();
@@ -84,14 +84,14 @@ function draw() {
 			}
 	pop();
 	
-words("at home",765, 502);
+placeWords("at home",765, 502);
 	for (i = 0; i < motionlocations.length; i++) {
-words(motionlocations[i][2], 765, 422-78*i);
+placeWords(motionlocations[i][2], 765, 422-78*i);
 				}
 
 	
 
-	titleBold("A journey by bike");
+	placeTitleBold("A journey by bike");
 }
 
 

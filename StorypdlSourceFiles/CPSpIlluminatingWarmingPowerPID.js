@@ -9,31 +9,31 @@ function preload() {
 
 function setup(){
     createCanvas(356,280);
-	magnitudes= new controlPuckpositive();
+	magnitudes= new CreateControlPuckPositive();
 	magnitudes.create(60,130);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     values = createVector(magnitudes.getValues().xSet,magnitudes.getValues().ySet).mult(20);
 
-	words("set values...", 20,85);
-	words("activity", 53,191);
-	words("frequency", 110, 102);
+	placeWords("set values...", 20,85);
+	placeWords("activity", 53,191);
+	placeWords("frequency", 110, 102);
 
 	push();
 		translate(160,218);
-		quantum(values.x);
+		showQuantum(values.x);
 		translate(80,0);
-		quantity(values.y,cactivity,"");
+		showQuantity(values.y,CACTIVITY,"");
     pop();
 
 	push();
 		translate(304,128);
-		power(values.x*values.y/18);
+		showPower(values.x*values.y/18);
     pop();
 
-   titleBold("Illuminating or warming and power");
+   placeTitleBold("Illuminating or warming and power");
 }
 
 function keyTyped() {

@@ -8,15 +8,15 @@ function preload() {
 }
 function setup() {
 	createCanvas(860,430);
-	sliderHeight=new IanSlider(40,220,100,15,0,[0],false);
-	sliderArea=new IanSlider(40,80,60,15,2,[0.334],false);
-	forcesbutton = new checkButton(716,80,"show forces",false);
-	distancesbutton = new checkButton(697,120,"show distances",false);
-	morebutton = new checkButton(713,160,"tell me more",false);
+	sliderHeight=new createSliderDivider(40,220,100,15,0,[0],false);
+	sliderArea=new createSliderDivider(40,80,60,15,2,[0.334],false);
+	forcesbutton = new CreateCheckButton(716,80,"show forces",false);
+	distancesbutton = new CreateCheckButton(697,120,"show distances",false);
+	morebutton = new CreateCheckButton(713,160,"tell me more",false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 	forcesbutton.drawButton();
 	distancesbutton.drawButton();
 	morebutton.drawButton();
@@ -34,16 +34,16 @@ function draw() {
 	
 	    if(morebutton.buttonisChecked){
 	    if (ratio!=1){
-			advicedroid(450, 80, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 270, 90);
+			placeAdviceDroid(450, 80, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 270, 90);
 	    }else{
-			advicedroid(790, 200, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 270, 90);
+			placeAdviceDroid(790, 200, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 270, 90);
 	    }
 		}
 	
-	words("choose\nhow to share\nthe load", 70, 90);
-    words("lift the load\nby pushing\non one end", 70, 230);
+	placeWords("choose\nhow to share\nthe load", 70, 90);
+    placeWords("lift the load\nby pushing\non one end", 70, 230);
 
- titleBold("sharing a load with a lever system");
+ placeTitleBold("sharing a load with a lever system");
 }
 
 function keyTyped() {
@@ -54,14 +54,14 @@ function keyTyped() {
 }
 
 function leversystemY(multiplier, leftDisplacement){
-    fill(cpulleylightGrey);
+    fill(CPULLEYLIGHTGREY);
     var lengthL = 120;
     var ForceL = 20;
     var ForceR =ForceL/multiplier;
     var lengthR = lengthL*multiplier;
 
     strokeWeight(4);
-    stroke(cpulleylightGrey);
+    stroke(CPULLEYLIGHTGREY);
     triangle(0, 0, -20, 20,20, 20);
     push();
     
@@ -72,12 +72,12 @@ function leversystemY(multiplier, leftDisplacement){
 		translate(lengthR,0);
 		rotate(-atan(leftDisplacement/lengthL));
 		if (forcesbutton.buttonisChecked){
-			force(ForceR,0, ccompression);
+			showForce(ForceR,0, CCOMPRESSION);
 		}
 		if (distancesbutton.buttonisChecked){
 			noFill();
 			strokeWeight(2);
-			stroke(cideaRed);
+			stroke(CIDEARED);
 			line(0, 0, 0, -(leftDisplacement/lengthL)*lengthR);
 				}
 		push();
@@ -91,16 +91,16 @@ function leversystemY(multiplier, leftDisplacement){
 		translate(-lengthL,0);
 		rotate(-atan(leftDisplacement/lengthL));
 		noStroke();
-		fill(cideaBrown);
+		fill(CIDEABROWN);
 		rect(-15,0,45,-50);
 		if (distancesbutton.buttonisChecked){
 			noFill();
 			strokeWeight(2);
-			stroke(cideaRed);
+			stroke(CIDEARED);
 			line(0, 0, 0, leftDisplacement);
 				}
 		if (forcesbutton.buttonisChecked){
-			force(ForceL,0, ccompression);
+			showForce(ForceL,0, CCOMPRESSION);
 		}
     pop();
 
@@ -118,7 +118,7 @@ function mouseReleased(){
 
 function supporthand(){
 	noFill();
-	stroke(cdrawTiFo);
+	stroke(CDRAWTIFO);
 	strokeWeight(1);
 	beginShape();
         vertex(216.26, 211.22);

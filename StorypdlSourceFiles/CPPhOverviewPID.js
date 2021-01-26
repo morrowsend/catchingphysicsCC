@@ -1,5 +1,5 @@
-// CPPhOverviewPID
-    
+// {CPPhOverviewPID}{800}{600}
+
 
 
 // data for this topic
@@ -75,39 +75,40 @@ const textOffset = 4;
 
 
 function preload() {
-    romanFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
+	romanFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
+	titleFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
 
 function setup() {
     createCanvas(800,600);
-    crosslinksbutton = new checkButton(width-130, 65,"the gains",false); 
+    crosslinksbutton = new CreateCheckButton(width-130, 65,"the gains",false);
 //     noLoop();
 }
 
 
-function draw() { 	
-    background(cWhite);
-	title("Connections in the photons reader");
+function draw() {
+    background(CWHITE);
+	placeTitleBold("Connections in the photons reader");
 	crosslinksbutton.drawButton();
 
 
 push();
 		translate(0, 100);
-		
+
 		if (crosslinksbutton.buttonisChecked){
-            for (i in ideaCrossLinks) {
-        drawcatchingPhysicsCrossLink(ideasBoxes[ideaCrossLinks[i][linkStartIndex]][xlocIndex],ideasBoxes[ideaCrossLinks[i][linkStartIndex]][ylocIndex],ideasBoxes[ideaCrossLinks[i][linkEndIndex]][xlocIndex],ideasBoxes[ideaCrossLinks[i][linkEndIndex]][ylocIndex],ideaCrossLinks[i][linkweightIndex]);
+            for (i=0;i<ideaCrossLinks.length;i++) {
+        placeCatchingPhysicsCrossLink(ideasBoxes[ideaCrossLinks[i][linkStartIndex]][xlocIndex],ideasBoxes[ideaCrossLinks[i][linkStartIndex]][ylocIndex],ideasBoxes[ideaCrossLinks[i][linkEndIndex]][xlocIndex],ideasBoxes[ideaCrossLinks[i][linkEndIndex]][ylocIndex],ideaCrossLinks[i][linkweightIndex]);
         }
     }
 
 
-        for (i in ideaFlowLinks) {
-        drawcatchingPhysicsFlowLink(ideasBoxes[ideaFlowLinks[i][linkStartIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[i][linkStartIndex]][ylocIndex],ideasBoxes[ideaFlowLinks[i][linkEndIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[i][linkEndIndex]][ylocIndex],ideaFlowLinks[i][linkweightIndex]);
-        }
-        
-				
+    for (j=0; j<ideaFlowLinks.length; j++) {
+		placeCatchingPhysicsFlowLink(ideasBoxes[ideaFlowLinks[j][linkStartIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[j][linkStartIndex]][ylocIndex],ideasBoxes[ideaFlowLinks[j][linkEndIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[j][linkEndIndex]][ylocIndex],ideaFlowLinks[j][linkweightIndex]);
+	}
+
+
         for (i in ideasBoxes) {
-        drawcatchingPhysicsIdeaBox(ideasBoxes[i][textIndex],ideasBoxes[i][xlocIndex],ideasBoxes[i][ylocIndex],ideasBoxes[i][widthIndex],ideasBoxes[i][heightIndex]);
+        placeCatchingPhysicsIdeaBox(ideasBoxes[i][textIndex],ideasBoxes[i][xlocIndex],ideasBoxes[i][ylocIndex],ideasBoxes[i][widthIndex],ideasBoxes[i][heightIndex]);
         }
 	pop();
   }

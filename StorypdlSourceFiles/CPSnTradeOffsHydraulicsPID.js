@@ -17,37 +17,37 @@ function preload() {
 function setup() {
     createCanvas(640,400);
     
-    magnitudes[0]= new controlPuckpositive();
+    magnitudes[0]= new CreateControlPuckPositive();
 	magnitudes[0].create(locpucks[0],locpucks[1]);
     
-    boxesbutton = new checkButton(474, 340,"trade-off",false);
+    boxesbutton = new CreateCheckButton(474, 340,"trade-off",false);
 }
 
 
 function draw() {
-	background(cWhite);
-	words("set quantities", locpucks[0]-40,locpucks[1]-45);
+	background(CWHITE);
+	placeWords("set quantities", locpucks[0]-40,locpucks[1]-45);
 	boxesbutton.drawButton();
 
       values[0] = createVector(magnitudes[0].getValues().xSet,magnitudes[0].getValues().ySet).mult(scaleFactor);
     
-	words("distance", locpucks[0],locpucks[1]+61);
-	words("force", locpucks[0]+50, locpucks[1]-28);
+	placeWords("distance", locpucks[0],locpucks[1]+61);
+	placeWords("force", locpucks[0]+50, locpucks[1]-28);
 console.log(values[0].y);
 	push();
 		translate(100, 300);
-		hydraulicsystem((values[0].y/30)+.3,(values[0].x*4));
+		drawHydraulicSystem((values[0].y/30)+.3,(values[0].x*4));
 	pop();
 	
 	push();
 		translate(391,301);
-		energy(((values[0].y/10)+.3*(values[0].x*2))/4);
+		showEnergy(((values[0].y/10)+.3*(values[0].x*2))/4);
 	pop();
         
 	if (boxesbutton.buttonisChecked){
-	tradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,cconlightgreen,cconpink);
+	drawTradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,CCONLIGHTGREEN,CCONPINK);
 	}
- titleBold("Trade-offs for a hydraulic system");
+ placeTitleBold("Trade-offs for a hydraulic system");
 }
 
 function mouseReleased(){

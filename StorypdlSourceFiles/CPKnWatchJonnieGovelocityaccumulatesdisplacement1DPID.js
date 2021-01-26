@@ -25,16 +25,16 @@ function preload() {
 function setup(){
     createCanvas(800, 500);
     
-    controlbutton=new controlButton(20,450,60,30);
+    controlbutton=new CreateControlButton(20,450,60,30);
     
-    displacmentSet=new IanSlider(40,220,100,15,0,[0.7],false);
-    velocitySet=new IanSlider(200,220,100,15,0,[0.7],false);
+    displacmentSet=new createSliderDivider(40,220,100,15,0,[0.7],false);
+    velocitySet=new createSliderDivider(200,220,100,15,0,[0.7],false);
 
 }
 
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     
     velocitySet.draw();
@@ -53,17 +53,17 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			displacementOne=0;
 			runtime=0;
 			Jonnieposition=0;
             displacmentSet.draw();
-            words("set\nwhere your\nhuman starts",70,230);
+            placeWords("set\nwhere your\nhuman starts",70,230);
             Jonnieposition=initialdisplacement;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
+            placeWords("pause",28,height-32);
             masterTicker++;
     
     if (masterTicker%20==0){
@@ -76,13 +76,13 @@ function draw() {
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
+            placeWords("reset",28,height-32);
             break;
                       }
     
     push();
     translate(300,JonnieTrackheight);
-    displacement(Jonnieposition/5,90,cpovCharlie);
+    showDisplacement(Jonnieposition/5,90,CPOVCHARLIE);
     pop();
     
     push();
@@ -127,18 +127,18 @@ switch (stepNumber) {
   
     
     translate((-Jonnievelocity*50)+Jonnieposition,JonnieTrackheight-32);
-    velocity(Jonnievelocity*pxscale,90,cpovCharlie);
+    showVelocity(Jonnievelocity*PXSCALE,90,CPOVCHARLIE);
     pop();
     
     push();
     translate(40,120);
-    PoV("CharlieRight");
+    drawPoV("CharlieRight");
     pop();
         
 
 
-    words("set\nboy\nvelocity",230,230);
-  titleBold("take your human for a walk: watch Jonnie go");  
+    placeWords("set\nboy\nvelocity",230,230);
+  placeTitleBold("take your human for a walk: watch Jonnie go");  
 }
 
 function mousePressed(){

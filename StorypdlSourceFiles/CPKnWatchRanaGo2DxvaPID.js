@@ -30,11 +30,11 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
     
-    controlbutton=new controlButton(20,550,60,30);
+    controlbutton=new CreateControlButton(20,550,60,30);
     
     const xloc =60;
     for (let i = 0; i<3; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 108+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -42,7 +42,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     
 
@@ -60,17 +60,17 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
-            words("set\nwhere your\nhog starts",112,80);
-            words("set\nhedgehog\ninitial\nvelocity",112,170);
+            placeWords("set\nwhere your\nhog starts",112,80);
+            placeWords("set\nhedgehog\ninitial\nvelocity",112,170);
             ranaposition=initialdisplacement;
             ranavelocity=initialvelocity;
             break;
         case 1:
 //            running
-           words("pause",28,height-32);
-            fill(cWhite);
+           placeWords("pause",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 180);
             masterTicker++;
@@ -86,8 +86,8 @@ function draw() {
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
-            fill(cWhite);
+            placeWords("reset",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 180);
             break;
@@ -95,11 +95,11 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(ranaposition.heading());
-		displacement(ranaposition.mag(),90,cpovAlice);
+		showDisplacement(ranaposition.mag(),90,CPOVALICE);
     pop();
 
     push();
-		translate(300+ranaposition.x*pixelscaling,300+ranaposition.y*pixelscaling);
+		translate(300+ranaposition.x*PIXELSCALING,300+ranaposition.y*PIXELSCALING);
 		push();
 		rotate(ranavelocity.heading()); 
         if (ranavelocity.mag()!=0){              
@@ -134,26 +134,26 @@ function draw() {
 			pop();
 			push();
 				rotate(ranavelocity.heading());
-				translate((-ranavelocity.mag()*pxscale*pxscale/2),-32);
-				velocity(ranavelocity.mag()*pxscale,90,cpovAlice);
+				translate((-ranavelocity.mag()*PXSCALE*PXSCALE/2),-32);
+				showVelocity(ranavelocity.mag()*PXSCALE,90,CPOVALICE);
 			pop();
 			push();
 				rotate(ranaacceleration.heading());
-				translate((-ranaacceleration.mag()*pxscale*pxscale/2),-60);
-				acceleration(ranaacceleration.mag()*pxscale,90, cacceleration);
+				translate((-ranaacceleration.mag()*PXSCALE*PXSCALE/2),-60);
+				showAcceleration(ranaacceleration.mag()*PXSCALE,90, CACCELERATION);
 			pop();
     pop();
     
     push();
 		translate(300,300);
 		rotate(ranaposition.heading());
-		PoV("AliceRight");
+		drawPoV("AliceRight");
     pop();
         
 
 
-	words("set\nhedgehog\nacceleration",112,260);
-	titleBold("take your hedhehog for a walk: watch Rana go");  
+	placeWords("set\nhedgehog\nacceleration",112,260);
+	placeTitleBold("take your hedhehog for a walk: watch Rana go");  
 }
 
 

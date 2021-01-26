@@ -20,24 +20,24 @@ function preload() {
 function setup(){
     createCanvas(700, 700);
     
-    accelerationsetter=new controlPuck();
+    accelerationsetter=new CreateControlPuck();
     accelerationsetter.create(70,accelerationheight);
-    deltasetter=new controlStripHorizontalPositive();
+    deltasetter=new CreateControlStripHorizontalPositive();
     deltasetter.create(40,durationheight);
     
-    initialvelocitysetter=new controlPuck();
+    initialvelocitysetter=new CreateControlPuck();
     initialvelocitysetter.create(70,530);
     
-    deltalocationsetter=new controlPuck();
+    deltalocationsetter=new CreateControlPuck();
     deltalocationsetter.create(520,530);
     
 }
 
 function draw() {
-    background(cWhite);
-    conceptualPane(width/2, 200, width-40, 250);
-    conceptualPane(width/2, 530, width-40, 350);
-    transitionStep(width/2, 340, 90);
+    background(CWHITE);
+    placeConceptualPane(width/2, 200, width-40, 250);
+    placeConceptualPane(width/2, 530, width-40, 350);
+    placeTransitionStep(width/2, 340, 90);
     
     var accumulateacceleration = createVector(accelerationsetter.getValues().xSet,-accelerationsetter.getValues().ySet).mult(scaleFactoracceleration);
     var durationaccumulation=createVector(-deltasetter.getValues().xSet,deltasetter.getValues().ySet);
@@ -50,36 +50,36 @@ function draw() {
     //top pane display
     push();
 		translate(220, accelerationheight);
-		velocity(accumulateacceleration.mag(), degrees(accumulateacceleration.heading())+90, cideaGreen);
+		showVelocity(accumulateacceleration.mag(), degrees(accumulateacceleration.heading())+90, CIDEAGREEN);
 	pop();
 	push();		
 		translate(220, durationheight);
-		durationpov(durationaccumulation.x, 1,cideaGreen);
+		showDurationPoV(durationaccumulation.x, 1,CIDEAGREEN);
 	pop();
 	push();
 		translate(320, accumulatedvelocityheight);
-		displacement(accumulatedvelocity.mag(), degrees(accumulatedvelocity.heading())+90, cideaGreen);
+		showDisplacement(accumulatedvelocity.mag(), degrees(accumulatedvelocity.heading())+90, CIDEAGREEN);
 	pop();
-	words("set velocity", 30, 100);
-	words("set duration", 30, 280);
+	placeWords("set velocity", 30, 100);
+	placeWords("set duration", 30, 280);
 
  //bottom pane display 
 	push();
 		translate(250, 530);
-		displacement(initialvelocity.mag(), degrees(initialvelocity.heading())+90, cideaRed);
+		showDisplacement(initialvelocity.mag(), degrees(initialvelocity.heading())+90, CIDEARED);
 		push();
 			translate(80, 0);
 			translate(deltavelocitylocationoffset.x, deltavelocitylocationoffset.y);
-			displacement(accumulatedvelocity.mag(), degrees(accumulatedvelocity.heading())+90, cideaGreen);
+			showDisplacement(accumulatedvelocity.mag(), degrees(accumulatedvelocity.heading())+90, CIDEAGREEN);
 		pop();
-		if (abs(deltavelocitylocationoffset.y-initialvelocity.y*pxscale)<5 && (abs(deltavelocitylocationoffset.x-initialvelocity.x*pxscale)-80)<5 && deltavelocitylocationoffset.y!=0 && deltavelocitylocationoffset.x!=0){
-				displacement(finalvelocity.mag(), degrees(finalvelocity.heading())+90, cideaBlue);
+		if (abs(deltavelocitylocationoffset.y-initialvelocity.y*PXSCALE)<5 && (abs(deltavelocitylocationoffset.x-initialvelocity.x*PXSCALE)-80)<5 && deltavelocitylocationoffset.y!=0 && deltavelocitylocationoffset.x!=0){
+				showDisplacement(finalvelocity.mag(), degrees(finalvelocity.heading())+90, CIDEABLUE);
 		}
 	pop();
-	words("set\ninitial\ndisplacement", 120, 510);
-	words("place\ntail to tip", 570, 510);
+	placeWords("set\ninitial\ndisplacement", 120, 510);
+	placeWords("place\ntail to tip", 570, 510);
 
-  titleBold("calculating an accumulation in displacement, then a resultant displacement");  
+  placeTitleBold("calculating an accumulation in displacement, then a resultant displacement");  
 }
 
 

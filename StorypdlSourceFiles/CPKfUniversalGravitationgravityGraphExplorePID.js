@@ -9,15 +9,15 @@ function preload() {
 
 function setup(){
     createCanvas(730, 450);
-    mass1Set=new IanSlider(20,80,60,15,4,[0.7],false);
-    mass2Set=new IanSlider(20,180,60,15,4,[0.7],false);
-	exploreThisGraph= new exploreRelationshipGraph;
+    mass1Set=new createSliderDivider(20,80,60,15,4,[0.7],false);
+    mass2Set=new createSliderDivider(20,180,60,15,4,[0.7],false);
+	exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(200,150,200,1,"separation / m","gravity force / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     mass1Set.draw();
     mass2Set.draw();
@@ -34,23 +34,23 @@ function draw() {
     
     push();
 		translate(300, 400);
-		mass(mass1Set.getValue()*3, cideaBlue);
+		showMass(mass1Set.getValue()*3, CIDEABLUE);
 		push();
 			translate(mass1Set.getValue()*1.5, 0);
-			force(theForce*pxscale*2, 90, cforceRed);
+			showForce(theForce*PXSCALE*2, 90, CFORCERED);
 		pop();
 		translate(theSeparation*200, 0);
-		mass(mass2Set.getValue()*3, cideaRed);
+		showMass(mass2Set.getValue()*3, CIDEARED);
 		push();
 			translate(mass2Set.getValue()*1.5, 0);
-			force(theForce*pxscale*2, -90, cforceBlue);
+			showForce(theForce*PXSCALE*2, -90, CFORCEBLUE);
 		pop();
     pop();
     
     
-    words('set masses', 50, 90);
+    placeWords('set masses', 50, 90);
 
-  titleBold("The gravity force depends on the values of both masses and the separation");
+  placeTitleBold("The gravity force depends on the values of both masses and the separation");
 }
 
 function mousePressed(){

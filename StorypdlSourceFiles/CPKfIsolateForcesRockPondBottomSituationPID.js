@@ -14,13 +14,13 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	physicalPane(120, 150, 200, 100);
+	placePhysicalPane(120, 150, 200, 100);
 	imageMode(CENTER);
 	image(situation,120,150);
 
-	advicedroid(480, 80, "Identifying the forces on the rock. First isolate the rock its environment, then consider the interactions with the environment that it had, but no longer has. Each will be replaced with a force.", 280, 90);
+	placeAdviceDroid(480, 80, "Identifying the forces on the rock. First isolate the rock its environment, then consider the interactions with the environment that it had, but no longer has. Each will be replaced with a force.", 280, 90);
 
-	titleBold("The situation: a rock rests on the bottom, in a liquid");
+	placeTitleBold("The situation: a rock rests on the bottom, in a liquid");
 }

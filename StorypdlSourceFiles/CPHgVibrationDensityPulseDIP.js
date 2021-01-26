@@ -1,51 +1,51 @@
-// HgVibrationDensityPulseDIP
+// {CPHgVibrationDensityPulseDIP}{700}{450}
 
 var wherePulse=100;
 
 function preload() {
-	chatterFont= loadFont("../../__support/SF_Cartoonist_Hand.ttf");
-	romanFont= loadFont("../../__support/ComicNeue-Angular-Light.ttf");
-	italicFont= loadFont("../../__support/ComicNeue-Angular-Light-Oblique.ttf");
-	titleFont = loadFont("../../__support/ComicNeue-Angular-Bold.ttf");
+	chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
+	romanFont= loadFont("../__support/ComicNeue-Angular-Light.ttf");
+	italicFont= loadFont("../__support/ComicNeue-Angular-Light-Oblique.ttf");
+	titleFont = loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
+
 function setup() {
     createCanvas(700,450);
 }
 
 
 function draw() {
-background(cWhite);
-   
+background(CWHITE);
 
 	  push();
 	  fill(120);
 	  rect(20,80,660,200);
 	  pop();
-	  
+
 	  drawPulse(wherePulse, 80, 80, 198);
-	  
+
 	  push();
 	  noStroke();
 	  fill(255);
 	  rect(660,80,700,200);
 	  pop();
-	  
+
 	  wherePulse=wherePulse+1;
 	  wherePulse=wherePulse%800;
-	  
-	  
+
+
 	  push();
 	  translate(400,400);
 	  if (wherePulse>300 && wherePulse<380){
-	  quantity(6*abs(cos(wherePulse/10)),cideaGrey,'');
+	  showQuantity(6*abs(cos(wherePulse/10)),CIDEAGREY,'');
 	  } else{
-	  quantity(6,cideaGrey,'')
+	  showQuantity(6,CIDEAGREY,'')
 	  }
-	  words('density in the medium\nright here',20,0);
+	  placeWords('density in the medium\nright here',20,0);
 	  pop();
-	  
-	
-	  title('pulses of density from source to detector');
+
+
+	  placeTitleBold('pulses of density from source to detector');
 }
 
 function keyTyped() {

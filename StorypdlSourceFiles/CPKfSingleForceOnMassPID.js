@@ -13,18 +13,18 @@ function setup() {
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     push();
     translate(60,200);
-    mass(4,cdeviceGrey);
+    showMass(4,CDEVICEGREY);
     translate(0,-20);
-   force(8,0,ctension);
+   showForce(8,0,CTENSION);
     pop();
 
-    advicedroid(330, 60, "The force is shown by a coloured arrow, always touching the thing.\nThe thing is just a rectangle or circle: keep it simple!\n\nThe force is exerted by the environment, so you don't nnned to show any of the surroundings.", 280, 160);
+    placeAdviceDroid(330, 60, "The force is shown by a coloured arrow, always touching the thing.\nThe thing is just a rectangle or circle: keep it simple!\n\nThe force is exerted by the environment, so you don't nnned to show any of the surroundings.", 280, 160);
 
-  titleBold("drawing a force exerted on something");
+  placeTitleBold("drawing a force exerted on something");
 }
 
 function keyTyped() {

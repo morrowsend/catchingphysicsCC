@@ -24,16 +24,16 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
 
-	powerbutton = new checkButton(520, 80,"picture the power  ",false);
+	powerbutton = new CreateCheckButton(520, 80,"picture the power  ",false);
 
-	photonSet=new IanSlider(photonSetloc[0],photonSetloc[1],120,15,2,[0.3],false);
-	materialSet=new IanSlider(materialSetloc[0],materialSetloc[1],160,15,3,[0.75],false);
+	photonSet=new createSliderDivider(photonSetloc[0],photonSetloc[1],120,15,2,[0.3],false);
+	materialSet=new createSliderDivider(materialSetloc[0],materialSetloc[1],160,15,3,[0.75],false);
 
 }
 
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     materialSet.draw();
     photonSet.draw();
@@ -48,7 +48,7 @@ function draw() {
 
 
     for (i = 0; i < photonData.length; i++) {
-words(photonData[i][0]+"("+photonData[i][1]+" THz)", photonSetloc[0]+30, photonSetloc[1]+10+i*36)
+placeWords(photonData[i][0]+"("+photonData[i][1]+" THz)", photonSetloc[0]+30, photonSetloc[1]+10+i*36)
 fill(photonData[i][2])
 rect(photonSetloc[0]+150, photonSetloc[1]+5+i*36,20,8);
 				}
@@ -60,19 +60,19 @@ rect(photonSetloc[0]+150, photonSetloc[1]+5+i*36,20,8);
 
     push();
 		translate(260, 136);
-		quantum(photonenergy);
-		words("quantum energy\n(the key)", 40, 0);
+		showQuantum(photonenergy);
+		placeWords("quantum energy\n(the key)", 40, 0);
 		translate(0, 164);
-		energy(photonenergy);
+		showEnergy(photonenergy);
 
 		translate(60, 0);
-		energy(materialenergy);
+		showEnergy(materialenergy);
 		translate(0,140);
-		energy(materialenergy);
-		words("material energy gap\n(the lock)", 40, 0);
+		showEnergy(materialenergy);
+		placeWords("material energy gap\n(the lock)", 40, 0);
 		fill(materialcolour);
 		rect(-20, 0, 40, 10);
-		rect(-20, -materialenergy*pxscale, 40, -10);
+		rect(-20, -materialenergy*PXSCALE, 40, -10);
 	pop();
 
 	var powerincident = 8;
@@ -97,18 +97,18 @@ if(powerbutton.buttonisChecked){
 
 	push();
 		translate(550, 550);
-		power(powerincident);
-		words("incident",-30,20);
-		words("absorbed",55,20);
-		words("transmitted",140,20);
+		showPower(powerincident);
+		placeWords("incident",-30,20);
+		placeWords("absorbed",55,20);
+		placeWords("transmitted",140,20);
 		translate(85, 0);
-		power(powerabsorbed);
-		translate(85, -powerabsorbed*pxscale);
-		power(powertransmitted);
+		showPower(powerabsorbed);
+		translate(85, -powerabsorbed*PXSCALE);
+		showPower(powertransmitted);
 	pop();
 }
 
-  titleBold("Lock(energy to change the matter) and key(photon energy)");
+  placeTitleBold("Lock(energy to change the matter) and key(photon energy)");
 }
 
 function mousePressed(){

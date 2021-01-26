@@ -14,14 +14,14 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	physicalPane(170, 190, 300, 200);
+	placePhysicalPane(170, 190, 300, 200);
 
-	advicedroid(500, 90, "Here are three interacting objects.\n\nSee how to build a good description of the forces exerted by and acting on these objects as a result of the interactions between the objects.", 216, 128);
+	placeAdviceDroid(500, 90, "Here are three interacting objects.\n\nSee how to build a good description of the forces exerted by and acting on these objects as a result of the interactions between the objects.", 216, 128);
 
 	imageMode(CENTER);
 	image(situation,170,190);
 
-	titleBold("Three interacting objects");
+	placeTitleBold("Three interacting objects");
 }

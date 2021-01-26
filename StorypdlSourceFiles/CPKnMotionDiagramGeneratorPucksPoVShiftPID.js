@@ -25,20 +25,20 @@ function preload() {
 function setup(){
 	createCanvas(800, 800);
 		
-	valuesbutton = new checkButton(100,750,"values",false);
+	valuesbutton = new CreateCheckButton(100,750,"values",false);
     
-    displacementsbutton = new checkButton(203,750,"displacements",false);
+    displacementsbutton = new CreateCheckButton(203,750,"displacements",false);
     
-    segmentsbutton = new checkButton(350,750,"track segments",false);
+    segmentsbutton = new CreateCheckButton(350,750,"track segments",false);
     
     const xloc =width-50;
     for (let i = 1; i<numberVectors; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 141+90*(i-1);
 		controllers[i].create(xloc,yloc);
     }
     
-    controllers[0]= new controlPuck();
+    controllers[0]= new CreateControlPuck();
     controllers[0].create(xloc,height-50);
 	
 	lastDisplacement=createVector(0,0);
@@ -48,8 +48,8 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
-	conceptualPane(width/2, height/2, 600, 600);
+	background(CWHITE);
+	placeConceptualPane(width/2, height/2, 600, 600);
 	
 	for (let i = 1; i<controllers.length; i++){
 		displacements[i]=createVector(controllers[i].getValues().xSet,controllers[i].getValues().ySet,).mult(scaleFactor);
@@ -64,28 +64,28 @@ function draw() {
 	push();
 	translate(width/2+PoVLoc.x, height/2+PoVLoc.y);
 	if (PoVLoc.x<0){
-	PoV("AliceRight")
+	drawPoV("AliceRight")
 	} else{
-	PoV("AliceLeft")
+	drawPoV("AliceLeft")
 	}
 	pop();
 	if(valuesbutton.buttonisChecked){
 		if (-300<mouseX-width/2 && mouseX-width/2<300 && mouseY-width/2<300 && -300<mouseY-width/2){
 		mouseDisplacement.set(mouseX-width/2,-mouseY+width/2);
-			meterinteger(mouseDisplacement.mag(), "", 20, 730);
-			meterinteger(degrees(mouseDisplacement.heading()), "", 20, 765);
+			placeMeterInteger(mouseDisplacement.mag(), "", 20, 730);
+			placeMeterInteger(degrees(mouseDisplacement.heading()), "", 20, 765);
 			push();
 				translate(width/2, height/2);
-				displacement(mouseDisplacement.mag()*.1, -degrees(mouseDisplacement.heading()-PI/2), cideaGreen);
+				showDisplacement(mouseDisplacement.mag()*.1, -degrees(mouseDisplacement.heading()-PI/2), CIDEAGREEN);
 			pop();
 		}
-		words("an image appears every 60 seconds; one unit on the screen represents 1 metre", 100, 740);
+		placeWords("an image appears every 60 seconds; one unit on the screen represents 1 metre", 100, 740);
 	}
 		
 	push();
 		translate(width/2, height/2);
 	// 	ellipse(0,0,5,5); origin marker
-		fill(cideaBlue);
+		fill(CIDEABLUE);
 		noStroke();
 		for (let i = 1; i<controllers.length; i++){
 			if (i!=1){
@@ -102,12 +102,12 @@ function draw() {
 			PoVdisplacements[i].add(PoVLoc);
 // 			PoVdisplacements[i].mult(-1);
 			if (segmentsbutton.buttonisChecked){
-				trackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
+				showTrackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
 			}
 			if (displacementsbutton.buttonisChecked){
 			push();
 				translate(PoVLoc.x, PoVLoc.y);
-				displacement(-PoVdisplacements[i].mag()*0.1, degrees(PoVdisplacements[i].heading()+PI/2), cpovAlice); //draws displacements
+				showDisplacement(-PoVdisplacements[i].mag()*0.1, degrees(PoVdisplacements[i].heading()+PI/2), CPOVALICE); //draws displacements
 			pop();
 			}
 // 			ellipse(displacements[i].x,-displacements[i].y,8,8);// draws marker
@@ -122,7 +122,7 @@ function draw() {
 	pop();
 	
 
-	titleBold("A motion diagram: you can vary the point of view");
+	placeTitleBold("A motion diagram: you can vary the point of view");
 }
 
 function mouseReleased(){

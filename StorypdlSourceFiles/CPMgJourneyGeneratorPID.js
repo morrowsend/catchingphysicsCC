@@ -1,4 +1,4 @@
-// MgJourneyGeneratorPID
+// {CPMgJourneyGeneratorPID}{800}{800}
 
 const numberVectors =6;
 const scaleFactor=500;
@@ -21,38 +21,38 @@ function preload() {
 }
 function setup(){
 	createCanvas(800, 800);
-		
-	displacementsbutton = new checkButton(254,750,"show progress from the start   ",false);
-    segmentsbutton = new checkButton(20,750,"show the leg of the journey   ",false);
-  
+
+	displacementsbutton = new CreateCheckButton(254,750,"show progress from the start   ",false);
+    segmentsbutton = new CreateCheckButton(20,750,"show the leg of the journey   ",false);
+
     const xloc =width-50;
     for (let i = 0; i<numberVectors; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 141+90*i;
 		controllers[i].create(xloc,yloc);
     }
-	
+
 	lastDisplacement=createVector(0,0);
 	mouseDisplacement=createVector(0,0);
 	thisTrackstep=createVector(0,0);
-	
+
 }
 
 function draw() {
-	background(cWhite);
-	conceptualPane(width/2, height/2, 600, 600);
-	
+	background(CWHITE);
+	placeConceptualPane(width/2, height/2, 600, 600);
+
 	for (let i = 0; i<controllers.length; i++){
 		displacements[i]=createVector(controllers[i].getValues().xSet,controllers[i].getValues().ySet,).mult(scaleFactor);
     }
-	
+
 	displacementsbutton.drawButton();
-	segmentsbutton.drawButton();	
-	
+	segmentsbutton.drawButton();
+
 	push();
 		translate(width/2, height/2);
 	// 	ellipse(0,0,5,5); origin marker
-		fill(cideaBlue);
+		fill(CIDEABLUE);
 		noStroke();
 		for (let i = 0; i<controllers.length; i++){
 			if (i!=0){
@@ -66,10 +66,10 @@ function draw() {
 				lastDisplacement.set(0,0);
 			}
 			if (segmentsbutton.buttonisChecked){
-				trackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
+				showTrackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
 			}
 			if (displacementsbutton.buttonisChecked){
-			displacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), cpovAlice); //draws displacements
+			showDisplacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), CPOVALICE); //draws displacements
 			}
 			ellipse(displacements[i].x,-displacements[i].y,8,8);// draws marker
 			push();
@@ -81,9 +81,9 @@ function draw() {
 			pop();
 			}
 	pop();
-	
 
-	titleBold("Journey generator: drag the pucks to set each leg");
+
+	placeTitleBold("Journey generator: drag the pucks to set each leg");
 }
 
 function mouseReleased(){

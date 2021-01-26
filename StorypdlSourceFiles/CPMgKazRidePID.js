@@ -1,4 +1,4 @@
-// MgKazRidePID
+// CPMgKazRidePID
 
 var stateof=0;
 var runtime=0;
@@ -29,11 +29,11 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
     
-    controlbutton=new controlButton(20,550,60,30);
+    controlbutton=new CreateControlButton(20,550,60,30);
     
      const xloc =60;
     for (let i = 0; i<2; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 108+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -41,7 +41,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     
 	controlbutton.drawButton();
@@ -60,16 +60,16 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
             
-            words("set\nwhere your\nbike starts",112,80);
+            placeWords("set\nwhere your\nbike starts",112,80);
             runtime=0;
             kazposition=initialdisplacement;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
-            fill(cWhite);
+            placeWords("pause",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 90);
             masterTicker++;
@@ -84,8 +84,8 @@ function draw() {
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
-            fill(cWhite);
+            placeWords("reset",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 90);
             break;
@@ -94,11 +94,11 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(kazposition.heading());
-		displacement(kazposition.mag(),90,cpovAlice);
+		showDisplacement(kazposition.mag(),90,CPOVALICE);
     pop();
 
     push();
-		translate(300+kazposition.x*pixelscaling,300+kazposition.y*pixelscaling);
+		translate(300+kazposition.x*PIXELSCALING,300+kazposition.y*PIXELSCALING);
         
  push();
 		rotate(kazvelocity.heading()); 
@@ -134,22 +134,22 @@ function draw() {
 			pop();
 			push();
 				rotate(kazvelocity.heading());
-				translate((-Rspeed*pxscale*pxscale/2),-32);
-				velocity(Rspeed*pxscale,90,cpovAlice);
+				translate((-Rspeed*PXSCALE*PXSCALE/2),-32);
+				showVelocity(Rspeed*PXSCALE,90,CPOVALICE);
 			pop();
     pop();
     
     push();
 		translate(300,300);
 		rotate(kazposition.heading());
-		PoV("AliceRight");
+		drawPoV("AliceRight");
     pop();
         
 
 
-	words("set\nbike\nspeed,\ndirection",112,170);
+	placeWords("set\nbike\nspeed,\ndirection",112,170);
 	
-	titleBold("Take your bike for a ride. A bird's-eye view of the journey.");  
+	placeTitleBold("Take your bike for a ride. A bird's-eye view of the journey.");  
 }
 
 function mouseReleased(){

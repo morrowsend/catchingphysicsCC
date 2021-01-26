@@ -1,4 +1,4 @@
-// KnAccelerationAccumulatesVelocityAccumulatesDisplacement1DPID
+// CPKnAccelerationAccumulatesVelocityAccumulatesDisplacement1DPID
 
 
 var stateof=0;
@@ -16,83 +16,83 @@ function preload() {
 
 function setup(){
     createCanvas(800, 400);
-    
-    controlbutton=new controlButton(20,350,60,30);
-    
-    displacmentSet=new IanSlider(40,220,100,15,0,[0.7],false);
-    velocitySet=new IanSlider(200,220,100,15,0,[0.7],false);
-    accelerationSet=new IanSlider(360,220,100,15,0,[0.7],false);
+
+    controlbutton=new CreateControlButton(20,350,60,30);
+
+    displacmentSet=new createSliderDivider(40,220,100,15,0,[0.7],false);
+    velocitySet=new createSliderDivider(200,220,100,15,0,[0.7],false);
+    accelerationSet=new createSliderDivider(360,220,100,15,0,[0.7],false);
 
 }
 
 function draw() {
-    background(cWhite);
-    
+    background(CWHITE);
+
     accelerationSet.draw();
     controlbutton.drawButton();
     var initialdisplacement = (displacmentSet.getValue()-0.5)*200;
-    var initialVelocity = (velocitySet.getValue()-0.5)*pxscale;
+    var initialVelocity = (velocitySet.getValue()-0.5)*PXSCALE;
     var accelerationAccumlates = (accelerationSet.getValue(0)-0.5)*2;
-    
+
     if (controlbutton.buttonwasPressed){
 		stateof++;
 		stateof=stateof%3;
 		controlbutton.buttonwasPressed=false;
-    }  
-    
+    }
+
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
             displacmentSet.draw();
-            words("set\ninitial\ndisplacement",70,230);
+            placeWords("set\ninitial\ndisplacement",70,230);
             velocitySet.draw();
-            words("set\ninitial\nvelocity",230,230);
+            placeWords("set\ninitial\nvelocity",230,230);
             velocityNow=initialVelocity;
             objectLocation=initialdisplacement;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
+            placeWords("pause",28,height-32);
             runtime++;
             velocityNow+=accelerationAccumlates*.05;
             objectLocation+=velocityNow*5;
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
+            placeWords("reset",28,height-32);
             break;
                       }
-    
-    
+
+
     push();
         translate(300+objectLocation,120);
-        PoVObject("Bob");
+        drawPoVObject("Bob");
         push();
             translate((-velocityNow*50),32);
-            velocity(velocityNow*pxscale,90,cpovAlice);
+            showVelocity(velocityNow*PXSCALE,90,CPOVALICE);
         pop();
         push();
             translate((-accelerationAccumlates*50),-32);
-            acceleration(accelerationAccumlates*pxscale,90,cacceleration);
+            showAcceleration(accelerationAccumlates*PXSCALE,90,CACCELERATION);
         pop();
     pop();
-    
+
     push();
     translate(300,170);
-    displacement(objectLocation/10,90,cpovAlice);
+    showDisplacement(objectLocation/10,90,CPOVALICE);
     pop();
-    
+
     push();
     translate(40,120);
-    PoV("AliceRight");
+    drawPoV("AliceRight");
     pop();
-        
 
 
-    words("set\nacceleration",390,230);
-  titleBold("set acceleration and velocity, watch the accumulations");  
+
+    placeWords("set\nacceleration",390,230);
+  placeTitleBold("set acceleration and velocity, watch the accumulations");
 }
 
 function mousePressed(){

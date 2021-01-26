@@ -16,18 +16,18 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	physicalPane(250, 150, 200, 100);
-	physicalPane(250, 280, 200, 100);
-	physicalPane(250, 410, 200, 100);
-	transitionIntervene(250, 215,-90);
-	transitionIntervene(250, 345,90);
+	placePhysicalPane(250, 150, 200, 100);
+	placePhysicalPane(250, 280, 200, 100);
+	placePhysicalPane(250, 410, 200, 100);
+	placeTransitionIntervene(250, 215,-90);
+	placeTransitionIntervene(250, 345,90);
 	imageMode(CENTER);
 	image(environment,250,150);
 	image(situation,250,280);
 	image(object,250,410);
 
 
-	titleBold("Object separated from environment");
+	placeTitleBold("Object separated from environment");
 }

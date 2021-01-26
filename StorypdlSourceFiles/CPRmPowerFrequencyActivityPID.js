@@ -12,41 +12,41 @@ function preload() {
 function setup(){
 	createCanvas(470, 400);
 
-    photonSet=new IanSlider(300,220,100,15,1,[0],false);
+    photonSet=new createSliderDivider(300,220,100,15,1,[0],false);
 
-	emittedactivitySet=new IanSlider(20,220,100,15,0,[0.7],false);
+	emittedactivitySet=new createSliderDivider(20,220,100,15,0,[0.7],false);
 
-	animatebutton =  new checkButton(200,360,"animate",false);
+	animatebutton =  new CreateCheckButton(200,360,"animate",false);
 }
 
 function draw(){
- background(cWhite);
+ background(CWHITE);
 
  emittedactivitySet.draw();
  animatebutton.drawButton();
  emittedactivity=emittedactivitySet.getValue()*7;
- words("set\naverage\nactivity", 50, 230);
+ placeWords("set\naverage\nactivity", 50, 230);
 
 photonSet.draw();
-    words("set\nphoton\nfrequency", 380, 230);
+    placeWords("set\nphoton\nfrequency", 380, 230);
     var thisphotonenergy = (1+photonSet.getValue())*2;
-    words(photonType[2], 330, 230);
-    words(photonType[1], 330, 270);
-    words(photonType[0], 330, 310);
+    placeWords(photonType[2], 330, 230);
+    placeWords(photonType[1], 330, 270);
+    placeWords(photonType[0], 330, 310);
 
     push();
 		translate(308, 120);
-		quantum(thisphotonenergy);
+		showQuantum(thisphotonenergy);
 	pop();
 
  push();
 		translate(130, 120);
-		transducer(clight, 0);
+		drawTransducer(CLIGHT, 0);
 		push();
 			translate(40, 120);
-			power(emittedactivity*thisphotonenergy/4);
+			showPower(emittedactivity*thisphotonenergy/4);
 			translate(-22, 80);
-			quantity(emittedactivity*0.6,cactivity,"");
+			showQuantity(emittedactivity*0.6,CACTIVITY,"");
 		pop();
 
 	pop();
@@ -55,14 +55,14 @@ photonSet.draw();
 	push();
 		translate(140, 120);
 		if (Math.random()*emittedactivity>0.3 && frameCount%20==0){
-				quantum(thisphotonenergy);
+				showQuantum(thisphotonenergy);
 				}
 	pop();
 	}
 
 
 
-titleBold("power set by photon frequency and activity")
+placeTitleBold("power set by photon frequency and activity")
 
 }
 

@@ -15,37 +15,37 @@ function setup() {
     cp2 = color(119, 161, 244);
     cp3 = color(78, 109, 238);
     cp4 = color(37, 58, 232);
-    setDepth=new IanSlider(320,140,240,15,2,[0.67],false);
+    setDepth=new createSliderDivider(320,140,240,15,2,[0.67],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     pressureGradient(20, 100, 200, 320, cp1, cp4);
     setDepth.draw();
     push();
 		translate(450,100);
-		stroke(cdeviceGrey);
+		stroke(CDEVICEGREY);
 		strokeWeight(4);
 		line(0,0,0,320);
 		line(0,320,80,320);
 		line(80,320,80,0);
-		pressureparticles(1);
+		drawPressureParticles(1);
 		translate(0,80);
-		pressureparticles(2);
+		drawPressureParticles(2);
 		translate(0,80);
-		pressureparticles(3);
+		drawPressureParticles(3);
 		translate(0,80);
-		pressureparticles(4);
+		drawPressureParticles(4);
     pop();
 
     push();
 		translate(100,140-(setDepth.getValue()-1)*240);
-		pressuregauge((1-setDepth.getValue())*4);
+		drawPressureGauge((1-setDepth.getValue())*4);
 		translate(440,0);
-		pressuregauge((1-setDepth.getValue())*4);
+		drawPressureGauge((1-setDepth.getValue())*4);
     pop();
 
-    titleBold("what the particles do at different pressures");
+    placeTitleBold("what the particles do at different pressures");
 }
 
 function mousePressed(){
@@ -71,7 +71,7 @@ function pressureGradient(xloc, yloc, fluidWidth, fluidDepth, pressurestart, pre
       stroke(plotColour);
       line(xloc, i, xloc+fluidWidth, i);
     }
-    stroke(cdeviceGrey);
+    stroke(CDEVICEGREY);
     strokeWeight(4);
     line(xloc,yloc,xloc,yloc+fluidDepth);
     line(xloc,yloc+fluidDepth,xloc+fluidWidth,yloc+fluidDepth);

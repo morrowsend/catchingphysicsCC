@@ -1,4 +1,4 @@
-// MgNoChangeForceSidePID
+// CPMgNoChangeForceSidePID
 
 
 function preload() {
@@ -17,35 +17,35 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
-    conceptualPane(120, 170, 200, 180);
-    conceptualPane(350, 170, 200, 180);
-    transitionEvolve(235, 170, 0);
+    background(CWHITE);
+    placeConceptualPane(120, 170, 200, 180);
+    placeConceptualPane(350, 170, 200, 180);
+    placeTransitionEvolve(235, 170, 0);
     
     imageMode(CENTER);
     image(KazOne,120,180);
 	push();
 		translate(100,100);
-		velocity(4, 90, cpovAlice);
+		showVelocity(4, 90, CPOVALICE);
 	pop();
 	push();
 		translate(120,170);
-		force(-3, 90, cdrag);
-		force(3, 90, cgrip);
+		showForce(-3, 90, CDRAG);
+		showForce(3, 90, CGRIP);
 	pop();
     
     image(KazTwo,350,180);
 	push();
 		translate(340,100);
-		velocity(4, 90, cpovAlice);
+		showVelocity(4, 90, CPOVALICE);
 	pop();
 	push();
 		translate(350,170);
-		force(-3, 90, cdrag);
-		force(3, 90, cgrip);
+		showForce(-3, 90, CDRAG);
+		showForce(3, 90, CGRIP);
 	pop();
  
-	titleBold("No change in motion");  
+	placeTitleBold("No change in motion");  
 }
 
 function keyTyped() {

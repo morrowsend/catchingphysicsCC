@@ -15,39 +15,39 @@ function preload() {
 
 function setup(){
 	createCanvas(600,340);
-	magnitudes[0]= new controlPuckpositive();
+	magnitudes[0]= new CreateControlPuckPositive();
 	magnitudes[0].create(locpucks[0],locpucks[1]);
-	boxesbutton = new checkButton(locpucks[0]+tradeOffOffset, 374-81,"trade-off",false);
+	boxesbutton = new CreateCheckButton(locpucks[0]+tradeOffOffset, 374-81,"trade-off",false);
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
 	values[0] = createVector(magnitudes[0].getValues().xSet,magnitudes[0].getValues().ySet).mult(scaleFactor);
 
-	words("set quantities", locpucks[0]-40,locpucks[1]-45);
-	words("current", locpucks[0],locpucks[1]+61);
-	words("pd", locpucks[0]+50, locpucks[1]);
+	placeWords("set quantities", locpucks[0]-40,locpucks[1]-45);
+	placeWords("current", locpucks[0],locpucks[1]+61);
+	placeWords("pd", locpucks[0]+50, locpucks[1]);
 	boxesbutton.drawButton();
 
 	push();
 		translate(35, 185);
-		circuitSimple("bulb");
+		drawCircuitSimple("bulb");
 	pop();
 
 	push();
 		translate(350+36-62,130+80-24);
 		scale(1.2);
-		energy(values[0].x*values[0].y/1500);
+		showEnergy(values[0].x*values[0].y/1500);
 		translate(0,60);
-		duration(12, 36);
+		showDuration(12, 36);
 	pop();
 
 	if (boxesbutton.buttonisChecked){
-  tradeOff(locpucks[0]+tradeOffOffset,locpucks[1],values[0].x,values[0].y,ccurrent,cpotentialdifference);
+  drawTradeOff(locpucks[0]+tradeOffOffset,locpucks[1],values[0].x,values[0].y,CCURRENT,CPOTENTIALDIFFERENCE);
 }
 
-titleBold("Energy shifted by a simple circuit: compensation and trade-offs");
+placeTitleBold("Energy shifted by a simple circuit: compensation and trade-offs");
 }
 
 function mouseReleased(){

@@ -15,26 +15,26 @@ function preload() {
 function setup(){
     createCanvas(800,620);
 
-    activitySet=new IanSlider(40,500,100,15,0,[0.7],false);
-    numberSet=new IanSlider(200,500,100,15,4,[0.2],false);
-    qualitySet=new IanSlider(350,500,100,15,1,[0.5],false);
-	powerbeambutton = new checkButton(477,60, "power in beam",false);
-	powerabsorberbutton = new checkButton(629,60, "power dissipated",false);
+    activitySet=new createSliderDivider(40,500,100,15,0,[0.7],false);
+    numberSet=new createSliderDivider(200,500,100,15,4,[0.2],false);
+    qualitySet=new createSliderDivider(350,500,100,15,1,[0.5],false);
+	powerbeambutton = new CreateCheckButton(477,60, "power in beam",false);
+	powerabsorberbutton = new CreateCheckButton(629,60, "power dissipated",false);
 
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 	powerbeambutton.drawButton();
 	powerabsorberbutton.drawButton();
 
     numberSet.draw();
-    words("set number\nof absorbers\nin beam", 230, 510);
+    placeWords("set number\nof absorbers\nin beam", 230, 510);
     activitySet.draw();
-    words("set activity", 70, 510);
+    placeWords("set activity", 70, 510);
     qualitySet.draw();
-    words("good absorber", 530-150, 510);
-    words("poor absorber", 530-150, 605);
+    placeWords("good absorber", 530-150, 510);
+    placeWords("poor absorber", 530-150, 605);
 
     var numberofabsorbers = (numberSet.getValue()*5).toFixed(0);
     var activity = (activitySet.getValue())*12;
@@ -44,44 +44,44 @@ function draw() {
 
     push();
 		translate(80, 200);
-		transducer(clight, 0);
+		drawTransducer(CLIGHT, 0);
 	pop();
 
 	push()
 	translate(150, 200);
 	for (i = 1; i <= numberofabsorbers; i++) {
-		absorber(quality, 60, 80);
+		drawAbsorber(quality, 60, 80);
 		translate(120,0)
 		push();
 		translate(-30, 180);
 		if(powerbeambutton.buttonisChecked){
-			power((activity*pow(fracabs,i)));
+			showPower((activity*pow(fracabs,i)));
 		}
 		push();
 			translate(0, 100);
-			quantity(activity*pow(fracabs,i)*.8, cactivity,"");
+			showQuantity(activity*pow(fracabs,i)*.8, CACTIVITY,"");
 		pop();
 
 		var dissipatedpower = (activity*pow(fracabs,i-1)-activity*pow(fracabs,i));
 		var nowpower =activity*pow(fracabs,i);
-		translate(-60, -activity*pow(fracabs,i)*pxscale);
+		translate(-60, -activity*pow(fracabs,i)*PXSCALE);
 		if(powerabsorberbutton.buttonisChecked){
-			power(dissipatedpower);
+			showPower(dissipatedpower);
 		}
 	pop();
 				}
 			translate(0,-60);
 	for (i = 0; i < 5-numberofabsorbers; i++) {
-				absorber(quality, 60, 80);
+				drawAbsorber(quality, 60, 80);
 		translate(120,0)
 		push();
 		translate(-30, 240);
 		if(powerbeambutton.buttonisChecked){
-			power(nowpower);
+			showPower(nowpower);
 		}
 		push();
 			translate(0, 100);
-			quantity(nowpower*.8, cactivity,"");
+			showQuantity(nowpower*.8, CACTIVITY,"");
 		pop();
 	pop();
 				}
@@ -92,10 +92,10 @@ function draw() {
 	translate(120, 380);
 	for (i = 0; i < 5; i++) {
 	translate(120, 0)
-		power(activity);
+		showPower(activity);
 		push();
 		translate(0, 100);
-		quantity(activity*.8, cactivity,"");
+		showQuantity(activity*.8, CACTIVITY,"");
 		pop();
 				}
 				pop();
@@ -105,12 +105,12 @@ function draw() {
 
 	push();
 		translate(122, 380);
-		power(activity);
+		showPower(activity);
 		translate(0, 100);
-		quantity(activity*.8, cactivity,"");
+		showQuantity(activity*.8, CACTIVITY,"");
 	pop();
 
-  titleBold("Adding absorbers: fractional decay");
+  placeTitleBold("Adding absorbers: fractional decay");
 }
 
 function mousePressed(){

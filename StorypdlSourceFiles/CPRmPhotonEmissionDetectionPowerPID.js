@@ -10,41 +10,41 @@ function preload() {
 function setup(){
 	createCanvas(800,400);
 
-	emittedpowerSet=new IanSlider(20,220,100,15,0,[0.7],false);
-	detectedpowerSet=new IanSlider(720,220,100,15,0,[0.6],false);
+	emittedpowerSet=new createSliderDivider(20,220,100,15,0,[0.7],false);
+	detectedpowerSet=new createSliderDivider(720,220,100,15,0,[0.6],false);
 
-	animatebutton =  new checkButton(400,360,"animate",false);
+	animatebutton =  new CreateCheckButton(400,360,"animate",false);
 
 }
 
 function draw(){
- background(cWhite);
+ background(CWHITE);
 
  emittedpowerSet.draw();
  animatebutton.drawButton();
  emittedpower=emittedpowerSet.getValue()*7;
- words("set\naverage\nactivity", 50, 230);
+ placeWords("set\naverage\nactivity", 50, 230);
 
  detectedpowerSet.draw();
  detectedpower=detectedpowerSet.getValue()*7;
- words("set\naverage\nactivity", 750, 230);
+ placeWords("set\naverage\nactivity", 750, 230);
 
  push();
 		translate(130, 120);
-		transducer(clight, 0);
+		drawTransducer(CLIGHT, 0);
 		push();
 			translate(40, 120);
-			power(emittedpower);
+			showPower(emittedpower);
 			translate(-22, 80);
-			quantity(emittedpower*0.6,cactivity,"");
+			showQuantity(emittedpower*0.6,CACTIVITY,"");
 		pop();
 		translate(538, 0);
-		transducer(cBlack, 180);
+		drawTransducer(CBLACK, 180);
 		push();
 			translate(-40, 120);
-			power(detectedpower);
+			showPower(detectedpower);
 			translate(-22, 80);
-			quantity(detectedpower*0.6,cactivity,"");
+			showQuantity(detectedpower*0.6,CACTIVITY,"");
 		pop();
 
 	pop();
@@ -53,18 +53,18 @@ function draw(){
 	push();
 		translate(140, 120);
 		if (Math.random()*emittedpower>0.3 && frameCount%20==0){
-				quantum(2);
+				showQuantum(2);
 				}
 		translate(518, 0);
 		if (Math.random()*detectedpower>0.3 && frameCount%20==0){
-				quantum(2);
+				showQuantum(2);
 				}
 	pop();
 	}
 
 
 
-titleBold("Set the power by changing the number of photons emitted and detected each second")
+placeTitleBold("Set the power by changing the number of photons emitted and detected each second")
 
 }
 

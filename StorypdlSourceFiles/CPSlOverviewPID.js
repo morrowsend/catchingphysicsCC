@@ -1,4 +1,4 @@
-// CPSlOverviewPID
+// {CPSlOverviewPID}{800}{600}
 
 
 
@@ -47,9 +47,9 @@ const linkcolourIndex=3;
 const cornerRound = 5;
 const textOffset = 4;
 
-
 function preload() {
 	romanFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
+	titleFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
 
 function setup() {
@@ -59,21 +59,21 @@ function setup() {
 
 
 function draw() {
-	background(cWhite);
-	title("Connections in the setting limits reader");
+	background(CWHITE);
+	placeTitleBold("Connections in the setting limits reader");
 
 
 push();
 		translate(0, 100);
 
 
-		for (i in ideaFlowLinks) {
-		drawcatchingPhysicsFlowLink(ideasBoxes[ideaFlowLinks[i][linkStartIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[i][linkStartIndex]][ylocIndex],ideasBoxes[ideaFlowLinks[i][linkEndIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[i][linkEndIndex]][ylocIndex],ideaFlowLinks[i][linkweightIndex]);
-		}
+	for (j=0; j<ideaFlowLinks.length; j++) {
+		placeCatchingPhysicsFlowLink(ideasBoxes[ideaFlowLinks[j][linkStartIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[j][linkStartIndex]][ylocIndex],ideasBoxes[ideaFlowLinks[j][linkEndIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[j][linkEndIndex]][ylocIndex],ideaFlowLinks[j][linkweightIndex]);
+	}
 
 
 		for (i in ideasBoxes) {
-		drawcatchingPhysicsIdeaBox(ideasBoxes[i][textIndex],ideasBoxes[i][xlocIndex],ideasBoxes[i][ylocIndex],ideasBoxes[i][widthIndex],ideasBoxes[i][heightIndex]);
+		placeCatchingPhysicsIdeaBox(ideasBoxes[i][textIndex],ideasBoxes[i][xlocIndex],ideasBoxes[i][ylocIndex],ideasBoxes[i][widthIndex],ideasBoxes[i][heightIndex]);
 		}
 	pop();
   }

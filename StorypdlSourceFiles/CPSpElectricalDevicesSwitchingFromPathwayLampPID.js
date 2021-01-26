@@ -10,20 +10,20 @@ function preload() {
 function setup(){
 	createCanvas(800, 600);
 //    noLoop();
-	inputtoDivvy=new IanSlider(20,320,100,15,0,[0.7],false);
-	twoWayDivvy=new IanSlider(750,320,150,15,0,[0.4],false);
+	inputtoDivvy=new createSliderDivider(20,320,100,15,0,[0.7],false);
+	twoWayDivvy=new createSliderDivider(750,320,150,15,0,[0.4],false);
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	twoWayDivvy.draw();
 	inputtoDivvy.draw();
 	var bottomslice = twoWayDivvy.getValue(0);
 	var topslice = 1-twoWayDivvy.getValue(0);
 
-	 describePowerTwo("electrical","particles","radiation",topslice,bottomslice);
+	 drawDescribePowerTwo("electrical","particles","radiation",topslice,bottomslice);
 
-	titleBold('A lamp switches from the electrical pathway');
+	placeTitleBold('A lamp switches from the electrical pathway');
 }
 
 function mousePressed(){

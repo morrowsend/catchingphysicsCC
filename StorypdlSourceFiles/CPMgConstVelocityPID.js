@@ -1,4 +1,4 @@
-// MgConstVelocityPID
+// CPMgConstVelocityPID
 
 var stateof=0;
 var runtime=0;
@@ -29,13 +29,13 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
     
-    sliderForces=new IanSlider(700,80,60,15,1,[0.5],false);
+    sliderForces=new createSliderDivider(700,80,60,15,1,[0.5],false);
     
-    controlbutton=new controlButton(20,550,60,30);
+    controlbutton=new CreateControlButton(20,550,60,30);
     
     const xloc =60;
     for (let i = 0; i<2; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 108+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -43,7 +43,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     sliderForces.draw();
     
@@ -63,19 +63,19 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
 			braking=false;
-            words("set\nwhere you\nstart",112,80);
-            words("set\nstarting\nspeed,\ndirection",112,170);
+            placeWords("set\nwhere you\nstart",112,80);
+            placeWords("set\nstarting\nspeed,\ndirection",112,170);
             kazposition=initialdisplacement;
             kazvelocity=initialvelocity;
             break;
         case 1:
 //            running
 			
-           words("pause",28,height-32);
-            fill(cWhite);
+           placeWords("pause",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 180);
             masterTicker++;
@@ -92,8 +92,8 @@ function draw() {
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
-            fill(cWhite);
+            placeWords("reset",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 180);
             break;
@@ -101,11 +101,11 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(kazposition.heading());
-		displacement(kazposition.mag(),90,cpovAlice);
+		showDisplacement(kazposition.mag(),90,CPOVALICE);
     pop();
 
     push();
-		translate(300+kazposition.x*pixelscaling,300+kazposition.y*pixelscaling);
+		translate(300+kazposition.x*PIXELSCALING,300+kazposition.y*PIXELSCALING);
 		push();
 		rotate(kazvelocity.heading());              
 			switch (stepNumber) {
@@ -136,14 +136,14 @@ function draw() {
 			pop();
 			push();
 				rotate(kazvelocity.heading());
-				translate((-kazvelocity.mag()*pxscale*pxscale/2),-32);
-				velocity(kazvelocity.mag()*pxscale,90,cpovAlice);
+				translate((-kazvelocity.mag()*PXSCALE*PXSCALE/2),-32);
+				showVelocity(kazvelocity.mag()*PXSCALE,90,CPOVALICE);
 			pop();
 			if (stateof!=0){
 			push();
 				rotate(kazvelocity.heading());
-				force(theforces*500,270, cgrip);
-				force(theforces*500,90, cdrag);
+				showForce(theforces*500,270, CGRIP);
+				showForce(theforces*500,90, CDRAG);
 			pop();
 			}
     pop();
@@ -151,15 +151,15 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(kazposition.heading());
-		PoV("AliceRight");
+		drawPoV("AliceRight");
     pop();
         
-	words("no wind", 750-26, 100+16);
-	words("headwind", 750-26, 100+16-30);
-	words("tailwind", 750-26, 100+16+30);
+	placeWords("no wind", 750-26, 100+16);
+	placeWords("headwind", 750-26, 100+16-30);
+	placeWords("tailwind", 750-26, 100+16+30);
 
 	
-	titleBold("No change, on a bike");  
+	placeTitleBold("No change, on a bike");  
 }
 
 function mousePressed(){

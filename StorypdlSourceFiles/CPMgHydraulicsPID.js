@@ -1,4 +1,4 @@
-// MgHydraulicsPID
+// CPMgHydraulicsPID
 
 
 function preload() {
@@ -9,18 +9,18 @@ function preload() {
 }
 function setup() {
     createCanvas(600,400);
-   sliderHeight=new IanSlider(40,220,100,15,0,[0],false);
-	sliderArea=new IanSlider(40,80,60,15,2,[0.334],false);
+   sliderHeight=new createSliderDivider(40,220,100,15,0,[0],false);
+	sliderArea=new createSliderDivider(40,80,60,15,2,[0.334],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
 	sliderHeight.draw();
 	var volumeshiftedLR = (1-sliderHeight.getValue())*1200;
-    
+
     sliderArea.draw();
-    
+
     var ratio = 1+int(sliderArea.getValue()*3);
     push();
 		translate(156+238, 155-volumeshiftedLR/20);
@@ -33,15 +33,15 @@ function draw() {
 		scale(-1,1);
 		hydraulicsystemY(ratio,volumeshiftedLR);
 	pop();
-	
-	words("choose\nhow to share\nthe load", 70, 90);
-    words("lift the load\nby shifting\nthe fluid", 70, 230);
 
- titleBold("sharing a load with hydraulic system");
+	placeWords("choose\nhow to share\nthe load", 70, 90);
+    placeWords("lift the load\nby shifting\nthe fluid", 70, 230);
+
+ placeTitleBold("sharing a load with hydraulic system");
 }
 function supporthand(){
 	noFill();
-	stroke(cdrawTiFo);
+	stroke(CDRAWTIFO);
 	strokeWeight(1);
 	beginShape();
         vertex(216.26, 211.22);
@@ -142,7 +142,7 @@ function hydraulicsystemY(ratio,volumeshiftedLR){
   var fluidheightRH=(fillabletubeheight/2)-volumeshiftedLR/areaRH;
 
   noStroke();
-  fill(cpulleylightGrey);
+  fill(CPULLEYLIGHTGREY);
   rectMode(CORNERS);
   //fluid
  rect(-areaLH,0,jointubewidth+areaRH,-jointubeheight);
@@ -150,7 +150,7 @@ function hydraulicsystemY(ratio,volumeshiftedLR){
   rect(jointubewidth,-jointubeheight,jointubewidth+areaRH,-fluidheightRH);
 
 //tubes
-  stroke(cpulleylightGrey);
+  stroke(CPULLEYLIGHTGREY);
   strokeWeight(2);
   line(-areaLH,0,jointubewidth+areaRH,0);
   line(0,-jointubeheight,jointubewidth,-jointubeheight);
@@ -159,13 +159,13 @@ function hydraulicsystemY(ratio,volumeshiftedLR){
   line(jointubewidth+areaRH,0,jointubewidth+areaRH,-systemtubeheight);
   line(jointubewidth,-jointubeheight,jointubewidth,-systemtubeheight);
   // pistons
-  stroke(cideaGrey);
+  stroke(CIDEAGREY);
   strokeWeight(2);
   line(-areaLH,-fluidheightLH, 0, -fluidheightLH);
   line(jointubewidth,-fluidheightRH, jointubewidth+areaRH, -fluidheightRH);
   //load
   noStroke();
-  fill(cideaBrown);
+  fill(CIDEABROWN);
   rectMode(CORNER);
   rect(jointubewidth+(areaRH/2)-8,-fluidheightRH,16,-fluidheightRH-50);
 }

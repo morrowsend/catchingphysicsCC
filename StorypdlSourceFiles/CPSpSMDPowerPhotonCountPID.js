@@ -14,51 +14,51 @@ function preload() {
 
 function setup(){
   createCanvas(900, 450);
-  powershow= new checkButton(710,251,"power in beam",true);
-  countshow= new checkButton(710,370,"photon count",true);
+  powershow= new CreateCheckButton(710,251,"power in beam",true);
+  countshow= new CreateCheckButton(710,370,"photon count",true);
 }
 
 function draw(){
- background(cWhite);
+ background(CWHITE);
 
  powershow.drawButton();
  countshow.drawButton();
 
  push();
 		translate(130, 120);
-		beamC(0,0, 480, 0, clight);
-		transducer(clight, 0);
+		showBeamC(0,0, 480, 0, CLIGHT);
+		drawTransducer(CLIGHT, 0);
 		translate(480, 0);
-		transducer(cBlack, 180);
+		drawTransducer(CBLACK, 180);
 		translate(-170-108, 0);
-		absorber("good", 60, 80);
+		drawAbsorber("good", 60, 80);
 	pop();
 
  if (countshow.buttonisChecked){
    push();
 	translate(140, 400);
-	quantity(6, cactivity,"");
-	words("many photons\neach second", 20, -20);
+	showQuantity(6, CACTIVITY,"");
+	placeWords("many photons\neach second", 20, -20);
 	translate(425, 0);
-	quantity(2, cactivity,"");
-	words("few photons\neach second", 20, -20);
+	showQuantity(2, CACTIVITY,"");
+	placeWords("few photons\neach second", 20, -20);
   pop();
  }
 
   if (powershow.buttonisChecked){
 	  push();
 			translate(161, 280);
-			power(6);
+			showPower(6);
 			translate(151, 0);
-			power(6);
+			showPower(6);
 			translate(109, 0);
-			power(2);
+			showPower(2);
 			translate(165, 0);
-			power(2);
+			showPower(2);
 		pop();
 }
 
-titleBold("Brightness of beam set by number of photons")
+placeTitleBold("Brightness of beam set by number of photons")
 
 }
 

@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(620, 450);
-    totalmassSet=new IanSlider(20,80,100,15,0,[0.7],false);
-    chunkdivideSet=new IanSlider(420,80,100,15,0,[0.5],false);
+    totalmassSet=new createSliderDivider(20,80,100,15,0,[0.7],false);
+    chunkdivideSet=new createSliderDivider(420,80,100,15,0,[0.5],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     chunkdivideSet.draw();
     totalmassSet.draw();
@@ -30,24 +30,24 @@ function draw() {
 
     push();
     translate(250, 250);
-    pspace2D(150, 150,  " charge on object two","charge on object one", chunkone*70, 70*chunktwo);
+    createPossSpace2D(150, 150,  " charge on object two","charge on object one", chunkone*70, 70*chunktwo);
     pop();
 
     push();
     translate(440,400);
-    quantity((chunkone+chunktwo)*pxscale, celectric, "");
+    showQuantity((chunkone+chunktwo)*PXSCALE, CELECTRIC, "");
     translate(60,0);
-    quantity(chunkone*pxscale, celectric, "")
-    translate(20,-chunkone*pxscale*pxscale);
-    quantity(chunktwo*pxscale, celectric, "")
+    showQuantity(chunkone*PXSCALE, CELECTRIC, "")
+    translate(20,-chunkone*PXSCALE*PXSCALE);
+    showQuantity(chunktwo*PXSCALE, CELECTRIC, "")
     pop();
 
 
-	words("share out charge",445,135);
-	words("all charge on object one",445,85);
-	words("all charge on object two",445,185);
-  words("set\ntotal\ncharge",45,90);
-	titleBold("Possibilities limited: charge is conserved");
+	placeWords("share out charge",445,135);
+	placeWords("all charge on object one",445,85);
+	placeWords("all charge on object two",445,185);
+  placeWords("set\ntotal\ncharge",45,90);
+	placeTitleBold("Possibilities limited: charge is conserved");
 }
 
 function mousePressed(){

@@ -27,11 +27,11 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
     
-    controlbutton=new controlButton(20,550,60,30);
+    controlbutton=new CreateControlButton(20,550,60,30);
     
      const xloc =60;
     for (let i = 0; i<2; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 108+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -39,7 +39,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     
    var initialdisplacement = createVector(controllers[0].getValues().xSet,-controllers[0].getValues().ySet).mult(scaleFactorDisplacement);
@@ -59,15 +59,15 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
-            words("set\nwhere your\nhuman starts",112,80);
+            placeWords("set\nwhere your\nhuman starts",112,80);
             Jonnieposition = initialdisplacement;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
-            fill(cWhite);
+            placeWords("pause",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 90);
             masterTicker++;
@@ -82,8 +82,8 @@ function draw() {
 					break;
         case 2:
 //            paused
-            words("reset",28,height-32);
-            fill(cWhite);
+            placeWords("reset",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 90);
             break;
@@ -92,11 +92,11 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(Jonnieposition.heading());
-		displacement(Jonnieposition.mag(),90,cpovCharlie);
+		showDisplacement(Jonnieposition.mag(),90,CPOVCHARLIE);
     pop();
 
     push();
-		translate(300+Jonnieposition.x*pixelscaling,300+Jonnieposition.y*pixelscaling);
+		translate(300+Jonnieposition.x*PIXELSCALING,300+Jonnieposition.y*PIXELSCALING);
         
 		push();
 			rotate(Jonnievelocity.heading()); 
@@ -134,21 +134,21 @@ function draw() {
 		pop();
 		push();
 			rotate(Jonnievelocity.heading());
-			translate((-Jspeed*pxscale*pxscale/2),-32);
-			velocity(Jspeed*pxscale,90,cpovCharlie);
+			translate((-Jspeed*PXSCALE*PXSCALE/2),-32);
+			showVelocity(Jspeed*PXSCALE,90,CPOVCHARLIE);
 		pop();
     pop();
     
     push();
 		translate(300,300);
 		rotate(Jonnieposition.heading());
-		PoV("CharlieRight");
+		drawPoV("CharlieRight");
     pop();
         
 
 
-	words("set\nhuman\nvelocity",112,170);
-	titleBold("take your human for a walk: watch Jonnie go");  
+	placeWords("set\nhuman\nvelocity",112,170);
+	placeTitleBold("take your human for a walk: watch Jonnie go");  
 }
 
 

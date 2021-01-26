@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(680, 450);
-    forceSet=new IanSlider(40,100,100,15,0,[0.7],false);
-    massSet=new IanSlider(40,300,100,15,0,[0.7],false);
+    forceSet=new createSliderDivider(40,100,100,15,0,[0.7],false);
+    massSet=new createSliderDivider(40,300,100,15,0,[0.7],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     forceSet.draw();
     massSet.draw();
@@ -27,13 +27,13 @@ function draw() {
 
     push();
 		translate(350, 250);
-		pspace2D(150, 200, "mass", "acceleration", variedMass*45, 30*accelerationnow);
+		createPossSpace2D(150, 200, "mass", "acceleration", variedMass*45, 30*accelerationnow);
     pop();
 
 
-	words("set\nforce",70,110);
-    words("vary\nmass",70,310);
-	titleBold("Possibilities limited: Set force, vary mass, see the acceleration");
+	placeWords("set\nforce",70,110);
+    placeWords("vary\nmass",70,310);
+	placeTitleBold("Possibilities limited: Set force, vary mass, see the acceleration");
 }
 
 function mousePressed(){

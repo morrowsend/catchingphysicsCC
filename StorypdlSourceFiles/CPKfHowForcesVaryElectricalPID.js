@@ -9,14 +9,14 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    chargeSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    chargeSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"separation / m","electrical / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     chargeSet.draw();
     exploreThisGraph.draw();
@@ -30,14 +30,14 @@ function draw() {
     
     push();
 		translate(35, 450);
-		mass(3, cideaGrey);
-		force(theForce*pxscale, 90, cmagnetic);
+		showMass(3, CIDEAGREY);
+		showForce(theForce*PXSCALE, 90, CMAGNETIC);
     pop();
     
     
-    words('set charge\nnearby', 50, 280);
+    placeWords('set charge\nnearby', 50, 280);
 
-  titleBold("Affecting the electric force: set how much charge is nearby, vary separation");
+  placeTitleBold("Affecting the electric force: set how much charge is nearby, vary separation");
 }
 
 function mousePressed(){

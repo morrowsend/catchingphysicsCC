@@ -16,49 +16,49 @@ function preload() {
 function setup(){
 	createCanvas(600,500);
 
-	magnitudes[0]= new controlPuckpositive();
+	magnitudes[0]= new CreateControlPuckPositive();
 	magnitudes[0].create(locpucks[0],locpucks[1]);
-	boxesbutton = new checkButton(494-18, 374,"trade-off",false);
+	boxesbutton = new CreateCheckButton(494-18, 374,"trade-off",false);
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	boxesbutton.drawButton();
 
 	values[0] = createVector(magnitudes[0].getValues().xSet,magnitudes[0].getValues().ySet).mult(scaleFactor);
 
-	words("set quantities", locpucks[0]-40,locpucks[1]-45);
-	words("current", locpucks[0],locpucks[1]+61);
-	words("pd", locpucks[0]+50, locpucks[1]);
+	placeWords("set quantities", locpucks[0]-40,locpucks[1]-45);
+	placeWords("current", locpucks[0],locpucks[1]+61);
+	placeWords("pd", locpucks[0]+50, locpucks[1]);
 
 
 push();
 		translate(350, 80);
 		push();
 			scale(1.2);
-			powerPathway("electrical");
+			drawPowerPathway("electrical");
 		pop();
 
 		push();
 			translate(36,138);
 			scale(1.2);
-			power(values[0].x*values[0].y/1500);
+			showPower(values[0].x*values[0].y/1500);
 		pop();
 
 	pop();
 
 	if (boxesbutton.buttonisChecked){
-  tradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,ccurrent,cpotentialdifference);
+  drawTradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,CCURRENT,CPOTENTIALDIFFERENCE);
 }
 
 	push();
 		translate(20,80);
-		subHead('qualitative: what is calculated',0, 0);
+		placeSubHead('qualitative: what is calculated',0, 0);
 		translate(0,52);
-		subHead('quantitative: how much',0, 0);
+		placeSubHead('quantitative: how much',0, 0);
 	pop();
 
-titleBold("Calculating the power in the electrical working pathway");
+placeTitleBold("Calculating the power in the electrical working pathway");
 }
 
 function mouseReleased(){

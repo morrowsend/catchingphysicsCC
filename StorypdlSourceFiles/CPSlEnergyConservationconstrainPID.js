@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(660, 450);
-    totalmassSet=new IanSlider(20,80,100,15,0,[0.7],false);
-    chunkdivideSet=new IanSlider(420,80,100,15,0,[0.5],false);
+    totalmassSet=new createSliderDivider(20,80,100,15,0,[0.7],false);
+    chunkdivideSet=new createSliderDivider(420,80,100,15,0,[0.5],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     chunkdivideSet.draw();
     totalmassSet.draw();
@@ -30,24 +30,24 @@ function draw() {
 
     push();
     translate(250, 250);
-    pspace2D(150, 150,  " energy in store two","energy in store one", chunkone*70, 70*chunktwo);
+    createPossSpace2D(150, 150,  " energy in store two","energy in store one", chunkone*70, 70*chunktwo);
     pop();
 
     push();
     translate(440,400);
-    energy((chunkone+chunktwo)*pxscale);
+    showEnergy((chunkone+chunktwo)*PXSCALE);
     translate(60,0);
-    energy(chunkone*pxscale);
-    translate(40,-chunkone*pxscale*pxscale);
-    energy(chunktwo*pxscale);
+    showEnergy(chunkone*PXSCALE);
+    translate(40,-chunkone*PXSCALE*PXSCALE);
+    showEnergy(chunktwo*PXSCALE);
     pop();
 
 
-	words("share out energy",445,135);
-	words("all energy in store one",445,85);
-	words("all energy in store two",445,185);
-  words("set\ntotal\nenergy",45,90);
-	titleBold("Possibilities limited: energy is conserved");
+	placeWords("share out energy",445,135);
+	placeWords("all energy in store one",445,85);
+	placeWords("all energy in store two",445,185);
+  placeWords("set\ntotal\nenergy",45,90);
+	placeTitleBold("Possibilities limited: energy is conserved");
 }
 
 function mousePressed(){

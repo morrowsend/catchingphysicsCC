@@ -1,4 +1,4 @@
-// MgSimplerWorld
+// CPMgSimplerWorld
 
 function preload() {
     chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
@@ -9,11 +9,11 @@ function preload() {
 }
 function setup(){
     createCanvas(400, 250);
- 	transitionProgress=new IanSlider(250,100,80,15,0,[1],false);
+ 	transitionProgress=new createSliderDivider(250,100,80,15,0,[1],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     transitionProgress.draw();
     
@@ -24,9 +24,9 @@ function draw() {
 
     ellipse(100, 150, 100, 100);
     
-    words("lived-in world",280,110);
-	words("physics-world",280,180);
-	titleBold("Seeing very simply");  
+    placeWords("lived-in world",280,110);
+	placeWords("physics-world",280,180);
+	placeTitleBold("Seeing very simply");  
 }
 
 function mousePressed(){

@@ -12,21 +12,21 @@ function preload() {
 function setup(){
     createCanvas(800,520);
 
-    activitySet=new IanSlider(40,400,100,15,0,[0.7],false);
-    numberSet=new IanSlider(200,400,100,15,6,[0.14],false);
-    qualitySet=new IanSlider(350,400,100,15,1,[0.5],false);
+    activitySet=new createSliderDivider(40,400,100,15,0,[0.7],false);
+    numberSet=new createSliderDivider(200,400,100,15,6,[0.14],false);
+    qualitySet=new createSliderDivider(350,400,100,15,1,[0.5],false);
 
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     numberSet.draw();
-    words("set number\nof absorbers\nin beam", 230, 410);    activitySet.draw();
-    words("set activity", 70, 410);
+    placeWords("set number\nof absorbers\nin beam", 230, 410);    activitySet.draw();
+    placeWords("set activity", 70, 410);
     qualitySet.draw();
-    words("good absorber", 380, 410);
-    words("poor absorber", 380, 505);
+    placeWords("good absorber", 380, 410);
+    placeWords("poor absorber", 380, 505);
 
     var numberofabsorbers = (numberSet.getValue()*7).toFixed(0);
     var activity = (activitySet.getValue())*12;
@@ -36,20 +36,20 @@ function draw() {
 
     push();
 		translate(80, 200);
-		transducer(clight, 0);
+		drawTransducer(CLIGHT, 0);
 		translate(600,0);
-		transducer(cBlack, 180);
+		drawTransducer(CBLACK, 180);
 	pop();
 
 	push()
 	translate(180, 200);
 	for (i = 1; i <= numberofabsorbers; i++) {
-		absorber(quality, 30, 80);
+		drawAbsorber(quality, 30, 80);
 		translate(60,0)
 				}
 			translate(0,-80);
 	for (i = 0; i < 7-numberofabsorbers; i++) {
-				absorber(quality, 30, 80);
+				drawAbsorber(quality, 30, 80);
 		translate(60,0)
 				}
 	pop();
@@ -57,9 +57,9 @@ function draw() {
 
     push();
 		translate(80, 370);
-		quantity(activity, cactivity, "");
+		showQuantity(activity, CACTIVITY, "");
 		translate(600, 0);
-		quantity((activity*pow(fracabs,numberofabsorbers)), cactivity,"");
+		showQuantity((activity*pow(fracabs,numberofabsorbers)), CACTIVITY,"");
 	pop();
 
 
@@ -67,7 +67,7 @@ function draw() {
 
 
 
-  titleBold("Change the number of slices of absorber: notice fractional absorption");
+  placeTitleBold("Change the number of slices of absorber: notice fractional absorption");
 }
 
 function mousePressed(){

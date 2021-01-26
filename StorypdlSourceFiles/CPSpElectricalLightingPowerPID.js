@@ -9,26 +9,26 @@ function preload() {
 
 function setup(){
     createCanvas(506,340);
-	magnitudes= new controlPuckpositive();
+	magnitudes= new CreateControlPuckPositive();
 	magnitudes.create(60,130);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     values = createVector(magnitudes.getValues().xSet,magnitudes.getValues().ySet).mult(200);
 
-	words("set values...", 20,85);
-	words("current", 55,191);
-	words("voltage", 110, 102);
+	placeWords("set values...", 20,85);
+	placeWords("current", 55,191);
+	placeWords("voltage", 110, 102);
 
 	push();
 		translate(174,198);
-		circuitSimple("bulb");
+		drawCircuitSimple("bulb");
 		translate(280,0);
-		power(values.x*values.y/1800);
+		showPower(values.x*values.y/1800);
     pop();
 
-   titleBold("Lighting using an electrical circuit");
+   placeTitleBold("Lighting using an electrical circuit");
 }
 
 function keyTyped() {

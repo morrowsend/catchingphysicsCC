@@ -9,14 +9,14 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    fluidSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    fluidSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"immersion / m","buoyancy / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     fluidSet.draw();
     exploreThisGraph.draw();
@@ -28,15 +28,15 @@ function draw() {
     
     push();
 		translate(235, 450);
-		mass(3, cideaGrey);
+		showMass(3, CIDEAGREY);
 		translate(0, 15);
-		force(F*pxscale*3, 0, cbuoyancy);
+		showForce(F*PXSCALE*3, 0, CBUOYANCY);
     pop();
     
     
-    words('choose the density\nof the fluid which you\nimmerse the object in', 50, 280);
+    placeWords('choose the density\nof the fluid which you\nimmerse the object in', 50, 280);
 
-  titleBold("The local environment affects the buoyancy force: choose fluid, vary immersion");
+  placeTitleBold("The local environment affects the buoyancy force: choose fluid, vary immersion");
 }
 
 function mousePressed(){

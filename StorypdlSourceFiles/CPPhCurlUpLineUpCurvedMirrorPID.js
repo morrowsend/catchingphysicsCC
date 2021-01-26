@@ -18,7 +18,7 @@ const sourcelocations=[];
 var detectorlocation="";
 const scaleFactorMirror=150;
 const maxtime=1000;
-const contribcolours=[ccongreen,cconpink,cconorange,cconlightgreen,ccongray,cconpurple,cconcyan];
+const contribcolours=[CCONGREEN,CCONPINK,CCONORANGE,CCONLIGHTGREEN,CCONGRAY,CCONPURPLE,CCONCYAN];
 var contribdata=[];
 
 
@@ -32,7 +32,7 @@ function preload() {
 function setup() {
     createCanvas(800, 700);
  for (let i = 0; i<numberWaypoints; i++){
-		controllers[i]= new controlStripHorizontal();
+		controllers[i]= new CreateControlStripHorizontal();
 		let yloc = diagramcentreLocY-3*verticalspacingWaypoints+i*verticalspacingWaypoints; //3 above, 3 below, one on centre line
 		controllers[i].create(waypointLocX+138,yloc);
 		waypointlocations[i]=createVector(waypointLocX,yloc);
@@ -48,7 +48,7 @@ function setup() {
 
 function draw() {
 
-background(cWhite);
+background(CWHITE);
 
 for (let i = 0; i<numberWaypoints; i++){
 	waypointoffsets[i]=createVector(-controllers[i].getValues().xSet,-controllers[i].getValues().ySet).mult(scaleFactorMirror);
@@ -56,12 +56,12 @@ for (let i = 0; i<numberWaypoints; i++){
 	waypointlocationsstet[i].set(waypointlocations[i]);
 	push();
 	translate(waypointlocations[i].x, waypointlocations[i].y);
-	waypoint(contribcolours[i]);
+	drawWaypoint(contribcolours[i]);
 	pop();
-	pathC(sourcelocations[i].x, sourcelocations[i].y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
-	pathC(detectorlocation.x, detectorlocation.y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
+	showPathC(sourcelocations[i].x, sourcelocations[i].y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
+	showPathC(detectorlocation.x, detectorlocation.y, waypointlocations[i].x, waypointlocations[i].y, contribcolours[i]);
 	if (i!=6){
-	stroke(cBlack);
+	stroke(CBLACK);
 	line(waypointlocationsstet[i].x, waypointlocationsstet[i].y, waypointlocationsstet[i+1].x, waypointlocationsstet[i+1].y);
 	}
 	waypointstodetector[i].set(detectorlocation).sub(waypointlocations[i]);
@@ -70,7 +70,7 @@ for (let i = 0; i<numberWaypoints; i++){
 // durations
 	push();
 		translate(sourcelocations[i].x-20, sourcelocations[i].y);
-		durationpov(triptimes[i],maxtime,contribcolours[i]);
+		showDurationPoV(triptimes[i],maxtime,contribcolours[i]);
 		stroke(contribcolours[i]);
 		strokeWeight(4);
 		strokeCap(SQUARE);
@@ -81,19 +81,19 @@ for (let i = 0; i<numberWaypoints; i++){
 
 push();
 	translate(detectorLocX-70, diagramcentreLocY);
-	phasormultiple(4, .04, contribdata);
+	showPhasorMultiple(4, .04, contribdata);
 pop();
 
 
 
 push();
 	translate(detectorlocation.x, detectorlocation.y);
-	transducer(cBlack, 0);
+	drawTransducer(CBLACK, 0);
 pop();
 
 
 
-titleBold("Photon engineering a focusing mirror using trip times for paths");
+placeTitleBold("Photon engineering a focusing mirror using trip times for paths");
 
 }
 

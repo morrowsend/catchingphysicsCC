@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(680, 450);
-    extensionSet=new IanSlider(40,300,100,15,0,[0.7],false);
-    stiffnessSet=new IanSlider(40,100,100,15,0,[0.7],false);
+    extensionSet=new createSliderDivider(40,300,100,15,0,[0.7],false);
+    stiffnessSet=new createSliderDivider(40,100,100,15,0,[0.7],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     extensionSet.draw();
     stiffnessSet.draw();
@@ -28,13 +28,13 @@ function draw() {
 
     push();
     translate(350, 250);
-    pspace2D(150, 200,  " force","extension", variedextension*80, 60*theforce);
+    createPossSpace2D(150, 200,  " force","extension", variedextension*80, 60*theforce);
     pop();
 
 
-	words("vary\nextension",70,310);
-    words("set\nstiffness",70,110);
-	titleBold("Possibilities limited: Set stiffness, vary extension, see the force");
+	placeWords("vary\nextension",70,310);
+    placeWords("set\nstiffness",70,110);
+	placeTitleBold("Possibilities limited: Set stiffness, vary extension, see the force");
 }
 
 function mousePressed(){

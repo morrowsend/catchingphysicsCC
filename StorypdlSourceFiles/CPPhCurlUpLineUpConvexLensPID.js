@@ -20,7 +20,7 @@ var sourcelocation="";
 var detectorlocation="";
 const scaleFactorLens=150;
 const maxtime=1000;
-const contribcolours=[ccongreen,cconpink,cconorange,cconlightgreen,ccongray,cconpurple,cconcyan];
+const contribcolours=[CCONGREEN,CCONPINK,CCONORANGE,CCONLIGHTGREEN,CCONGRAY,CCONPURPLE,CCONCYAN];
 const refractiveIndex =2.0;
 
 
@@ -35,7 +35,7 @@ function preload() {
 function setup() {
     createCanvas(900, 700);
  for (let i = 0; i<numberWaypoints; i++){
-		controllers[i]= new controlStripHorizontalPositive();
+		controllers[i]= new CreateControlStripHorizontalPositive();
 		let yloc = diagramcentreLocY-3*verticalspacingWaypoints+i*verticalspacingWaypoints; //3 above, 3 below, one on centre line
 		controllers[i].create(810,yloc);
 		waypointlocations[i]=createVector(waypointLocX,yloc);
@@ -53,7 +53,7 @@ function setup() {
 
 function draw() {
 
-background(cWhite);
+background(CWHITE);
 
 for (let i = 0; i<numberWaypoints; i++){
 	waypointoffsets[i]=createVector(-controllers[i].getValues().xSet,-controllers[i].getValues().ySet).mult(scaleFactorLens);
@@ -63,15 +63,15 @@ for (let i = 0; i<numberWaypoints; i++){
 	waypointlocationsR[i].set(waypointoffsets[i].add(waypointlocations[i]));
 	push();
 	translate(waypointlocationsL[i].x, waypointlocationsL[i].y);
-	waypoint(contribcolours[i]);
+	drawWaypoint(contribcolours[i]);
 	pop();
 	push();
 	translate(waypointlocationsR[i].x, waypointlocationsR[i].y);
-	waypoint(contribcolours[i]);
+	drawWaypoint(contribcolours[i]);
 	pop();
-	pathC(sourcelocation.x, sourcelocation.y, waypointlocationsL[i].x, waypointlocationsL[i].y, contribcolours[i]);
-	pathC(waypointlocationsL[i].x, waypointlocationsL[i].y,waypointlocationsR[i].x, waypointlocationsR[i].y, contribcolours[i]);
-	pathC(detectorlocation.x, detectorlocation.y, waypointlocationsR[i].x, waypointlocationsR[i].y, contribcolours[i]);
+	showPathC(sourcelocation.x, sourcelocation.y, waypointlocationsL[i].x, waypointlocationsL[i].y, contribcolours[i]);
+	showPathC(waypointlocationsL[i].x, waypointlocationsL[i].y,waypointlocationsR[i].x, waypointlocationsR[i].y, contribcolours[i]);
+	showPathC(detectorlocation.x, detectorlocation.y, waypointlocationsR[i].x, waypointlocationsR[i].y, contribcolours[i]);
 	if (i!=6){
 	noStroke();
 	fill('rgba(120,120,120, 0.15)');
@@ -81,7 +81,7 @@ for (let i = 0; i<numberWaypoints; i++){
 	vertex(waypointlocationsR[i+1].x,waypointlocationsR[i+1].y);
 	vertex(waypointlocationsR[i].x,waypointlocationsR[i].y);
 	endShape(CLOSE);
-	stroke(cBlack);
+	stroke(CBLACK);
 	// line(waypointlocationsL[i].x, waypointlocationsL[i].y, waypointlocationsL[i+1].x, waypointlocationsL[i+1].y);
 // 	line(waypointlocationsR[i].x, waypointlocationsR[i].y, waypointlocationsR[i+1].x, waypointlocationsR[i+1].y);
 	}
@@ -92,7 +92,7 @@ for (let i = 0; i<numberWaypoints; i++){
 // durations
 	push();
 		translate(48, waypointlocations[i].y);
-		durationpov(triptimes[i],maxtime,contribcolours[i]);
+		showDurationPoV(triptimes[i],maxtime,contribcolours[i]);
 		stroke(contribcolours[i]);
 		strokeWeight(4);
 		strokeCap(SQUARE);
@@ -104,22 +104,22 @@ for (let i = 0; i<numberWaypoints; i++){
 
 push();
 	translate(detectorlocation.x, detectorlocation.y);
-	transducer(cBlack, 180);
+	drawTransducer(CBLACK, 180);
 pop();
 
 push();
 	translate(sourcelocation.x, sourcelocation.y);
-	transducer(clight, 0);
+	drawTransducer(CLIGHT, 0);
 pop();
 
 push();
 			translate(detectorlocation.x, detectorlocation.y);
-phasormultiple(3, .08, [[triptimes[0],contribcolours[0]],[triptimes[1],contribcolours[1]],[triptimes[2],contribcolours[2]],[triptimes[3],contribcolours[3]],[triptimes[4],contribcolours[4]],[triptimes[5],contribcolours[5]],[triptimes[6],contribcolours[6]]]);
+showPhasorMultiple(3, .08, [[triptimes[0],contribcolours[0]],[triptimes[1],contribcolours[1]],[triptimes[2],contribcolours[2]],[triptimes[3],contribcolours[3]],[triptimes[4],contribcolours[4]],[triptimes[5],contribcolours[5]],[triptimes[6],contribcolours[6]]]);
 	pop();
 
 
 
-titleBold("Engineering a lens using curling up and lining up");
+placeTitleBold("Engineering a lens using curling up and lining up");
 
 }
 

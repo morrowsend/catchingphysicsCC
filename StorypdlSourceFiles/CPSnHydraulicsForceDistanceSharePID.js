@@ -10,16 +10,16 @@ function preload() {
 }
 function setup() {
 	createCanvas(800,400);
-	sliderHeight=new IanSlider(40,220,100,15,0,[0],false);
-	sliderArea=new IanSlider(40,80,60,15,2,[0.334],false);
-	forcesbutton = new checkButton(656,80,"show forces",false);
-	distancesbutton = new checkButton(637,120,"show distances",false);
-	morebutton = new checkButton(653,160,"tell me more",false);
+	sliderHeight=new createSliderDivider(40,220,100,15,0,[0],false);
+	sliderArea=new createSliderDivider(40,80,60,15,2,[0.334],false);
+	forcesbutton = new CreateCheckButton(656,80,"show forces",false);
+	distancesbutton = new CreateCheckButton(637,120,"show distances",false);
+	morebutton = new CreateCheckButton(653,160,"tell me more",false);
 
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 	forcesbutton.drawButton();
 	distancesbutton.drawButton();
 	morebutton.drawButton();
@@ -31,7 +31,7 @@ function draw() {
     
     var ratio = 1+int(sliderArea.getValue()*3);
     if(distancesbutton.buttonisChecked){
-    stroke(cideaRed);
+    stroke(CIDEARED);
     strokeWeight(4);
     line(404, 177, 404, 237-volumeshiftedLR/20);
 }
@@ -40,7 +40,7 @@ function draw() {
 		if(forcesbutton.buttonisChecked){
 			push();
 				translate(36, 55)
-				force(loadweight/ratio, 0, ccompression);
+				showForce(loadweight/ratio, 0, CCOMPRESSION);
 			pop();
 		}
 		scale(0.2);
@@ -52,18 +52,18 @@ function draw() {
 		hydraulicsystemY(ratio,volumeshiftedLR);
 	pop();
 	
-	words("choose\nhow to share\nthe load", 70, 90);
-    words("lift the load\nby shifting\nthe fluid", 70, 230);
+	placeWords("choose\nhow to share\nthe load", 70, 90);
+    placeWords("lift the load\nby shifting\nthe fluid", 70, 230);
     
     if(morebutton.buttonisChecked){
-advicedroid(580, 80, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 170, 129);
+placeAdviceDroid(580, 80, "There is a trade-off.\n\nChoose to share most of the load – push further.\nChoose to push further – less force needed.", 170, 129);
 		}
 
- titleBold("sharing a load with hydraulic system");
+ placeTitleBold("sharing a load with hydraulic system");
 }
 function supporthand(){
 	noFill();
-	stroke(cdrawTiFo);
+	stroke(CDRAWTIFO);
 	strokeWeight(1);
 	beginShape();
         vertex(216.26, 211.22);
@@ -164,7 +164,7 @@ function hydraulicsystemY(ratio,volumeshiftedLR){
   var fluidheightRH=(fillabletubeheight/2)-volumeshiftedLR/areaRH;
 
   noStroke();
-  fill(cpulleylightGrey);
+  fill(CPULLEYLIGHTGREY);
   rectMode(CORNERS);
   //fluid
  rect(-areaLH,0,jointubewidth+areaRH,-jointubeheight);
@@ -172,7 +172,7 @@ function hydraulicsystemY(ratio,volumeshiftedLR){
   rect(jointubewidth,-jointubeheight,jointubewidth+areaRH,-fluidheightRH);
 
 //tubes
-  stroke(cpulleylightGrey);
+  stroke(CPULLEYLIGHTGREY);
   strokeWeight(2);
   line(-areaLH,0,jointubewidth+areaRH,0);
   line(0,-jointubeheight,jointubewidth,-jointubeheight);
@@ -181,25 +181,25 @@ function hydraulicsystemY(ratio,volumeshiftedLR){
   line(jointubewidth+areaRH,0,jointubewidth+areaRH,-systemtubeheight);
   line(jointubewidth,-jointubeheight,jointubewidth,-systemtubeheight);
   // pistons
-  stroke(cideaGrey);
+  stroke(CIDEAGREY);
   strokeWeight(2);
   line(-areaLH,-fluidheightLH, 0, -fluidheightLH);
   line(jointubewidth,-fluidheightRH, jointubewidth+areaRH, -fluidheightRH);
   if(distancesbutton.buttonisChecked){
-  stroke(cideaRed);
+  stroke(CIDEARED);
     strokeWeight(4);
     line(jointubewidth-10, 1200/areaRH-fillabletubeheight/2, jointubewidth-10, -fluidheightRH);
     
   }
   //load
 	translate(jointubewidth+(areaRH/2), -fluidheightRH);
-	stroke(cideaBrown);
+	stroke(CIDEABROWN);
 	strokeWeight(16);
 	strokeCap(SQUARE);
 	line(0, 0, 0, -loadweight*7);
 
 	if(forcesbutton.buttonisChecked){
-		force(loadweight, 0, ccompression);
+		showForce(loadweight, 0, CCOMPRESSION);
 	}
 }
 

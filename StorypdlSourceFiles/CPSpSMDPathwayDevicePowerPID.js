@@ -12,67 +12,67 @@ function preload() {
 
 function setup(){
   createCanvas(900, 450); 
-  powershow= new checkButton(710,351,"power in beam",true);
-  deviceshow= new checkButton(710,211,"devices and pathways",true);
+  powershow= new CreateCheckButton(710,351,"power in beam",true);
+  deviceshow= new CreateCheckButton(710,211,"devices and pathways",true);
 }
 
 function draw(){
- background(cWhite);
+ background(CWHITE);
  
  powershow.drawButton();
  deviceshow.drawButton();
  
  push();
 		translate(130, 120);
-		beamC(0,0, 480, 0, clight);
-		transducer(clight, 0);
+		showBeamC(0,0, 480, 0, CLIGHT);
+		drawTransducer(CLIGHT, 0);
 		translate(480, 0);
-		transducer(cBlack, 180);
+		drawTransducer(CBLACK, 180);
 		translate(-170-108, 0);
-		absorber("good", 60, 80);
+		drawAbsorber("good", 60, 80);
 	pop();
 	
  if (deviceshow.buttonisChecked){  
    push();
 			translate(102,250);
-			device("one");
+			drawDevice("one");
 			push();
 				translate(-83,-50);
-				powerPathway("electrical");
+				drawPowerPathway("electrical");
 			pop();
 			push();
 				translate(28,15);
-				powerPathway("radiation");
+				drawPowerPathway("radiation");
 			pop();
   pop();
   
   push();
 			translate(363,250);
-			device("two");
+			drawDevice("two");
 			push();
 				translate(-83,-50);
-				powerPathway("radiation");
+				drawPowerPathway("radiation");
 			pop();
 			push();
 				translate(28,-10);
-				powerPathway("radiation");
+				drawPowerPathway("radiation");
 			pop();
 			push();
 				translate(28,15);
-				powerPathway("particles");
+				drawPowerPathway("particles");
 			pop();
 	pop();
   
   push();
 			translate(638,250);
-			device("one");
+			drawDevice("one");
 			push();
 				translate(-83,-50);
-				powerPathway("radiation");
+				drawPowerPathway("radiation");
 			pop();
 			push();
 				translate(28,15);
-				powerPathway("particles");
+				drawPowerPathway("particles");
 			pop();
   pop();
  } 
@@ -80,17 +80,17 @@ function draw(){
   if (powershow.buttonisChecked){
 	  push();
 			translate(161, 380);
-			power(6);
+			showPower(6);
 			translate(151, 0);
-			power(6);
+			showPower(6);
 			translate(109, 0);
-			power(4);
+			showPower(4);
 			translate(165, 0);
-			power(4);
+			showPower(4);
 		pop();
 }
    
-titleBold("transmission, absorption, power")
+placeTitleBold("transmission, absorption, power")
 
 }
 

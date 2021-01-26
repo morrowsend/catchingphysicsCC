@@ -9,14 +9,14 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    massSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    massSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"separation / m","magnetic / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     massSet.draw();
     exploreThisGraph.draw();
@@ -30,14 +30,14 @@ function draw() {
     
     push();
 		translate(35, 450);
-		mass(3, cideaGrey);
-		force(theForce*pxscale*2, 90, cmagnetic);
+		showMass(3, CIDEAGREY);
+		showForce(theForce*PXSCALE*2, 90, CMAGNETIC);
     pop();
     
     
-    words('set strength\nof magnet', 50, 280);
+    placeWords('set strength\nof magnet', 50, 280);
 
-  titleBold("Affecting the magnetic force: set strength of magnet nearby, vary separation");
+  placeTitleBold("Affecting the magnetic force: set strength of magnet nearby, vary separation");
 }
 
 function mousePressed(){

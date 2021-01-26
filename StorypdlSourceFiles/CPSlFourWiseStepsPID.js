@@ -28,16 +28,15 @@ function setup(){
     }
 
 function draw() {
-    background(cdeviceLightGrey);
 
-    physicalPane(143, 130, 100, 100);
-    physicalPane(193, 280, 200, 100);
-    conceptualPane(193, 430, 200, 100);
-    physicalPane(393, 430, 100, 100);
+    placePhysicalPane(143, 130, 100, 100);
+    placePhysicalPane(193, 280, 200, 100);
+    placeConceptualPane(193, 430, 200, 100);
+    placePhysicalPane(393, 430, 100, 100);
 
-    transitionStep(143, 205, 90);
-    transitionRedescribe(143, 355, 90);
-    transitionStep(318, 280+150, 0);
+    placeTransitionStep(143, 205, 90);
+    placeTransitionRedescribe(143, 355, 90);
+    placeTransitionStep(318, 280+150, 0);
 
 //     step actions
 	if (stepsbutton.checked()){
@@ -46,23 +45,23 @@ function draw() {
 		paneNumber("03","C",143,430);
 		paneNumber("04","P",393,430);
 	}else{
-		words("describe\n  process\n\indicate\n  purpose", 103, 100);
-		words("bound process\n  in space and time", 103, 250);
-		words("identify stores\n\nestimate changes in energy\n  in each store", 103, 400);
-		words("insights\n  described\n& validate\n  purpose", 353, 400);
+		placeWords("describe\n  process\n\indicate\n  purpose", 103, 100);
+		placeWords("bound process\n  in space and time", 103, 250);
+		placeWords("identify stores\n\nestimate changes in energy\n  in each store", 103, 400);
+		placeWords("insights\n  described\n& validate\n  purpose", 353, 400);
 	}
 
  if (physicalconceptualbutton.checked()){
-  thinkRL("Separate tangible (green) \nand conceptual (blue)", 421, 341, 170,90);
+  placeRightLinesDroid(401,301,"Separate tangible (green) and conceptual (blue)", 170,70);
   }
 
 
 
 if (feedbackbutton.checked()){
-    linkBarRight(440, 430, 100);
-    linkBarUp(540, 430, 300);
-    linkArrowLeft(540, 130, 345)
-	thinkRL("Relate step 04 to step01\nto check for insight", 668, 340, 170,90);
+    placeLinkBarRight(440, 430, 100,CENERGY);
+    placeLinkBarUp(540, 430, 300,CENERGY);
+    placeLinkArrowLeft(540, 130, 345,CENERGY)
+	placeRightLinesDroid(648,340,"Relate step 04 to step01 to check for insight", 170,70);
 }
 
 
@@ -71,19 +70,19 @@ if (feedbackbutton.checked()){
 //     lived in world
 
 if (livedinbutton.checked()){
-	linkArrowRight(45, 130, 45);
+	placeLinkArrowRight(45, 130, 45,CBLACK);
     push();
 		translate(35, 110);
 		scale(0.2);
-		drawGirl4();
+		placeGirl4();
 		translate(-80, 0);
-		drawBoy1();
+		placeBoy1();
 	pop();
 				}
 
 
 
-   titleBold("Creating an energy description: four steps to enlightenment/avoidance of pain");
+   placeTitleBold("Creating an energy description: four steps to enlightenment/avoidance of pain");
 }
 
 

@@ -11,12 +11,12 @@ function preload() {
 
 function setup() {
     createCanvas(380,600);
-    setPressureTop=new IanSlider(280,250,60,15,2,[0.33],false);
-    setPressureBottom=new IanSlider(280,370,60,15,2,[0.67],false);
+    setPressureTop=new createSliderDivider(280,250,60,15,2,[0.33],false);
+    setPressureBottom=new createSliderDivider(280,370,60,15,2,[0.67],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     setPressureTop.draw();
     setPressureBottom.draw();
@@ -27,28 +27,28 @@ function draw() {
 
     push();
 		translate(100,260);
-		stroke(cdeviceGrey);
+		stroke(CDEVICEGREY);
 		strokeWeight(4);
 		line(-20,80,100,80);
-		pressureparticles(presureAbove);
+		drawPressureParticles(presureAbove);
 		translate(0,80);
-		pressureparticles(pressureBelow);
+		drawPressureParticles(pressureBelow);
     pop();
 
     push();
 		translate(180,310);
-		pressuregauge(presureAbove);
+		drawPressureGauge(presureAbove);
 		translate(0,80);
-		pressuregauge(pressureBelow);
+		drawPressureGauge(pressureBelow);
     pop();
 
     push();
 		translate(140,340);
-		force((pressureBelow-presureAbove)*8,0,cbuoyancy);
+		showForce((pressureBelow-presureAbove)*8,0,CBUOYANCY);
     pop();
 
 
-    titleBold("difference in bombardment and force");
+    placeTitleBold("difference in bombardment and force");
 
 }
 

@@ -11,16 +11,16 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    roughnessSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    roughnessSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"supporting force / N","slip / N");
     exploreThisGraph.setLabels();
 
-	choiceButton= new radioButtons(20, 90+22,["supporting force","speed"],false);
+	choiceButton= new CreateRadioButtons(20, 90+22,["supporting force","speed"]);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     roughnessSet.draw();
     exploreThisGraph.draw();
@@ -36,11 +36,11 @@ function draw() {
 		exploreThisGraph.plotValues(speed,F);
 		push();
 			translate(235, 450);
-			mass(3, cideaGrey);
+			showMass(3, CIDEAGREY);
 			translate(0, 15);
-			force(F*pxscale*2, 90, cslip);
+			showForce(F*PXSCALE*2, 90, CSLIP);
 			translate(speed*5, -45);
-			velocity(speed*pxscale, -90, cforceGreen);
+			showVelocity(speed*PXSCALE, -90, CFORCEGREEN);
 		pop();
     } else {
 		exploreThisGraph.xlabel.html("supporting force / N");
@@ -51,19 +51,19 @@ function draw() {
 		exploreThisGraph.plotValues(x,F);
 		push();
 			translate(235, 450);
-			mass(3, cideaGrey);
+			showMass(3, CIDEAGREY);
 			translate(0, 15);
-			force(F*pxscale*2, 90, cslip);
+			showForce(F*PXSCALE*2, 90, CSLIP);
 			translate(30, -45);
-			velocity(8, -90, cforceGreen);
+			showVelocity(8, -90, CFORCEGREEN);
 		pop();
 
    }
 
 
-    words('set roughness\nof the surface', 50, 280);
+    placeWords('set roughness\nof the surface', 50, 280);
 
-  titleBold("Affecting the slip force: choose the surface roughness, vary supporting force or speed");
+  placeTitleBold("Affecting the slip force: choose the surface roughness, vary supporting force or speed");
 }
 
 function mousePressed(){

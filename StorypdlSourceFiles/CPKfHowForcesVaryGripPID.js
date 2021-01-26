@@ -9,14 +9,14 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    roughnessSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    roughnessSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"supporting force / N","grip / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     roughnessSet.draw();
     exploreThisGraph.draw();
@@ -28,17 +28,17 @@ function draw() {
     
     push();
 		translate(235, 450);
-		mass(3, cideaGrey);
+		showMass(3, CIDEAGREY);
 		translate(0, 15);
-		force(F*pxscale*2, 90, cgrip);
+		showForce(F*PXSCALE*2, 90, CGRIP);
 		translate(0, -15);
-		force(x*pxscale*2.8, 0, ccompression);
+		showForce(x*PXSCALE*2.8, 0, CCOMPRESSION);
     pop();
     
     
-    words('set roughness\nof the surface', 50, 280);
+    placeWords('set roughness\nof the surface', 50, 280);
 
-  titleBold("Affecting the grip force: choose the surface roughness, vary supporting force");
+  placeTitleBold("Affecting the grip force: choose the surface roughness, vary supporting force");
 }
 
 function mousePressed(){

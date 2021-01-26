@@ -9,13 +9,13 @@ function preload() {
 }
 function setup(){
   createCanvas(600, 600, WEBGL);
-justWords("An electromagnetic wave – drag to rotate", "invertedtitle", 20, 10, width-60);
+justplaceWords("An electromagnetic wave – drag to rotate", "invertedtitle", 20, 10, width-60);
 
 
 }
 
 function draw(){
- background(cWhite);
+ background(CWHITE);
    orbitControl();
    
    var omegatee = frameCount/200;
@@ -33,23 +33,23 @@ push();
 	push();
 		var Bfield =12*sin(omegatee+delay*i);
 		if (Bfield>0){
-		force3D(abs(Bfield), 90, cBfield);
+		showForce3D(abs(Bfield), 90, CBFIELD);
 		}else{
-		force3D(abs(Bfield), -90, cBfield);}
+		showForce3D(abs(Bfield), -90, CBFIELD);}
 	pop();
 	
 	push();
 		rotateZ(PI/2);
 		var Efield =8*cos(omegatee+delay*i);
 		if (Efield>0){
-		force3D(abs(Efield), 90, cEfield);
+		showForce3D(abs(Efield), 90, CEFIELD);
 		}else{
-		force3D(abs(Efield), -90, cEfield);}
+		showForce3D(abs(Efield), -90, CEFIELD);}
 	pop();
 	
 	push();
 	rotateX(PI/2);
-	velocity3D(3, 0, cpovAlice);
+	showVelocity3D(3, 0, CPOVALICE);
 	pop();
 pop();
 }

@@ -9,14 +9,14 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    stiffnessSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    stiffnessSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"distortion / m","compression / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     stiffnessSet.draw();
     exploreThisGraph.draw();
@@ -28,15 +28,15 @@ function draw() {
     
     push();
 		translate(35, 450);
-		mass(3, cideaGrey);
+		showMass(3, CIDEAGREY);
 		translate(-15, 0);
-		force(F*pxscale*5, 90, ccompression);
+		showForce(F*PXSCALE*5, 90, CCOMPRESSION);
     pop();
     
     
-    words('set stiffness\nof the distorted part\nof the environment', 50, 280);
+    placeWords('set stiffness\nof the distorted part\nof the environment', 50, 280);
 
-  titleBold("The local environment affects the compression force: set stiffness, vary distortion");
+  placeTitleBold("The local environment affects the compression force: set stiffness, vary distortion");
 }
 
 function mousePressed(){

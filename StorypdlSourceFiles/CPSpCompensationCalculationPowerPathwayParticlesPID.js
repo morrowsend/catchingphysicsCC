@@ -18,51 +18,51 @@ function preload() {
 function setup(){
 	createCanvas(600,500);
 
-	magnitudes[0]= new controlPuckpositive();
+	magnitudes[0]= new CreateControlPuckPositive();
 	magnitudes[0].create(locpucks[0],locpucks[1]);
 
-	boxesbutton = new checkButton(444, 374,"trade-off",false);
+	boxesbutton = new CreateCheckButton(444, 374,"trade-off",false);
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	boxesbutton.drawButton();
 
 	values[0] = createVector(magnitudes[0].getValues().xSet,magnitudes[0].getValues().ySet).mult(scaleFactor);
 
-	words("set quantities", locpucks[0]-40,locpucks[1]-45);
-	words("particles / second", locpucks[0],locpucks[1]+61);
-	words("energy / particle", locpucks[0]+50, locpucks[1]);
+	placeWords("set quantities", locpucks[0]-40,locpucks[1]-45);
+	placeWords("particles / second", locpucks[0],locpucks[1]+61);
+	placeWords("energy / particle", locpucks[0]+50, locpucks[1]);
 
 
 push();
 		translate(350, 80);
 		push();
 			scale(1.2);
-			powerPathway("particles");
+			drawPowerPathway("particles");
 		pop();
 
 		push();
 			translate(36,130);
 			scale(1.2);
-			power(values[0].x*values[0].y/1500);
+			showPower(values[0].x*values[0].y/1500);
 		pop();
 
 	pop();
 
 	if (boxesbutton.buttonisChecked){
-  tradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,ccurrent,cpotentialdifference);
+  drawTradeOff(locpucks[0],locpucks[1]+tradeOffOffset,values[0].x,values[0].y,CCURRENT,CPOTENTIALDIFFERENCE);
 }
 
 	push();
 
 		translate(20,80);
-		subHead('qualitative',0, 0);
+		placeSubHead('qualitative',0, 0);
 		translate(0,54);
-		subHead('quantitative',0, 0);
+		placeSubHead('quantitative',0, 0);
 	pop();
 
-titleBold("Calculating the power in the heating by particles pathway");
+placeTitleBold("Calculating the power in the heating by particles pathway");
 }
 
 function mouseReleased(){

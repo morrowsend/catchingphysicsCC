@@ -9,14 +9,14 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    massSet=new IanSlider(20,270,60,15,4,[0.7],false);
-exploreThisGraph= new exploreRelationshipGraph;
+    massSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"separation / m","gravity / N");
     exploreThisGraph.setLabels();
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     massSet.draw();
     exploreThisGraph.draw();
@@ -32,14 +32,14 @@ function draw() {
     
     push();
 		translate(35, 450);
-		mass(3, cideaGrey);
-		force(theForce*pxscale*5, 90, cgravity);
+		showMass(3, CIDEAGREY);
+		showForce(theForce*PXSCALE*5, 90, CGRAVITY);
     pop();
     
     
-    words('set mass', 50, 280);
+    placeWords('set mass', 50, 280);
 
-  titleBold("The environment affects the gravity force: set mass nearby, vary separation");
+  placeTitleBold("The environment affects the gravity force: set mass nearby, vary separation");
 }
 
 function mousePressed(){

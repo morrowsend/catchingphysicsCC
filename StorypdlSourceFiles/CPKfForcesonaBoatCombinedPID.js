@@ -16,11 +16,11 @@ function preload() {
 
 function setup(){
     createCanvas(474, 350);
-    transitionProgress=new IanSlider(20,100,200,15,0,[0],false);
+    transitionProgress=new createSliderDivider(20,100,200,15,0,[0],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     push();
 		translate(10, 30);
 		noStroke();
@@ -39,45 +39,45 @@ function draw() {
 		pop();
 
 	transitionProgress.draw();
-	words("combine", 40, 110);
-	advicedroid(402, 80, "Direction and length are important for force arrows, so slide the force arrows to combine them.\n\nDon't spin or stretch the force arrows.", 140, 170);
+	placeWords("combine", 40, 110);
+	placeAdviceDroid(402, 80, "Direction and length are important for force arrows, so slide the force arrows to combine them.\n\nDon't spin or stretch the force arrows.", 140, 170);
 	
     push();
  translate(translateObject(forcebuoyancy1locations[0],forcebuoyancy1locations[2]),translateObject(forcebuoyancy1locations[1],forcebuoyancy1locations[3]));
-    force(4,0,cbuoyancy);
+    showForce(4,0,CBUOYANCY);
     pop();
     
 push();
  translate(translateObject(forcebuoyancy2locations[0],forcebuoyancy2locations[2]),translateObject(forcebuoyancy2locations[1],forcebuoyancy2locations[3]));
-    force(4,0,cbuoyancy);
+    showForce(4,0,CBUOYANCY);
     pop();
     
     push();
  translate(translateObject(forcebuoyancy3locations[0],forcebuoyancy3locations[2]),translateObject(forcebuoyancy3locations[1],forcebuoyancy3locations[3]));
-    force(4,0,cbuoyancy);
+    showForce(4,0,CBUOYANCY);
     pop();
     
     push();
  translate(translateObject(forcebuoyancy4locations[0],forcebuoyancy4locations[2]),translateObject(forcebuoyancy4locations[1],forcebuoyancy4locations[3]));
-    force(4,0,cbuoyancy);
+    showForce(4,0,CBUOYANCY);
     pop();
     
     push();
  translate(translateObject(forcebuoyancyLlocations[0],forcebuoyancyLlocations[2]),translateObject(forcebuoyancyLlocations[1],forcebuoyancyLlocations[3]));
-    force(3,90,cbuoyancy);
+    showForce(3,90,CBUOYANCY);
     pop();
     
     push();
 	translate(translateObject(forcebuoyancyRlocations[0],forcebuoyancyRlocations[2]),translateObject(forcebuoyancyRlocations[1],forcebuoyancyRlocations[3]));
-		force(3,-90,cbuoyancy);
+		showForce(3,-90,CBUOYANCY);
     pop();
     
     push();
 		translate(180,175);
-		force(16,180,cgravity);
+		showForce(16,180,CGRAVITY);
     pop();
     
-	titleBold("buoyancy and gravity forces on a simplified boat");  
+	placeTitleBold("buoyancy and gravity forces on a simplified boat");  
 }
 
 function mousePressed(){

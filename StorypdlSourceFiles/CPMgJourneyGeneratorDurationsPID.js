@@ -1,4 +1,4 @@
-// MgJourneyGeneratorDurationsPID
+// {CPMgJourneyGeneratorDurationsPID}{640}{380}
 
 const numberVectors =6;
 const controllers=[];
@@ -15,28 +15,28 @@ function preload() {
 }
 function setup(){
 	createCanvas(640, 330);
-		
+
     const yloc =240;
     for (let i = 0; i<numberVectors; i++){
-		controllers[i]= new controlStripVerticalPositive();
+		controllers[i]= new CreateControlStripVerticalPositive();
 		let xloc = 130+90*i;
 		controllers[i].create(xloc,yloc);
     }
-	
+
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	image(thedisplaced,17,60);
-	
+
 	for (let i = 0; i<controllers.length; i++){
 		durations[i]=controllers[i].getValues().ySet*10;
     }
-  
+
 	push();
 		translate(40, 280);
-words("this leg", -0, -130);
-words("all legs", -0, 0);
+placeWords("this leg", -0, -130);
+placeWords("all legs", -0, 0);
 			for (let i = 0; i<controllers.length; i++){
 			translate(90, 0);
 			cumulativeduration=0;
@@ -51,10 +51,10 @@ words("all legs", -0, 0);
 				journeyclock(cumulativeduration,durations[i],maxjourneylength);
 			}else{
 				journeyclock(0,durations[i],maxjourneylength);
-			}	
+			}
 	}
 	pop();
-	titleBold("Journey generator: drag the strips to set durations each leg");
+	placeTitleBold("Journey generator: drag the strips to set durations each leg");
 }
 
 function journeyclock(starttime,howlong,maxjourneylength){
@@ -62,10 +62,10 @@ function journeyclock(starttime,howlong,maxjourneylength){
 	var angleone = (starttime/maxjourneylength) * 2*PI;
 	var angletwo = ((starttime+howlong)/maxjourneylength) * 2*PI;
 	noStroke();
-	fill(cideaBlue);
+	fill(CIDEABLUE);
 	ellipse(0,0,durationsize,durationsize);
 	if (howlong!=0){
-	fill(cdurationclockYellow);
+	fill(CDURATIONCLOCKYELLOW);
 arc(0,0,durationsize,durationsize,-HALF_PI+angleone, -HALF_PI+angletwo);
 }
    }

@@ -12,18 +12,18 @@ function preload() {
 
 function setup(){
     createCanvas(800, 500);
-    fluidSet=new IanSlider(20,270,60,15,4,[0.7],false);
-    exploreThisGraph= new exploreRelationshipGraph;
+    fluidSet=new createSliderDivider(20,270,60,15,4,[0.7],false);
+    exploreThisGraph= new CreateExploreRelationshipGraph;
     exploreThisGraph.create(270,150,200,1,"immersion / JustUnit{m 3}","drag / N");
     exploreThisGraph.setLabels();
 
-	choiceButton= new radioButtons(20, 90+22,["speed","immersion"],false);
+	choiceButton= new CreateRadioButtons(20, 90+22,["speed","immersion"]);
 
 
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     fluidSet.draw();
     exploreThisGraph.draw();
@@ -39,11 +39,11 @@ function draw() {
 		exploreThisGraph.plotValues(speed,F);
 		push();
 			translate(235, 450);
-			mass(3, cideaGrey);
+			showMass(3, CIDEAGREY);
 			translate(15, 0);
-			force(F*pxscale*2, 90, cdrag);
+			showForce(F*PXSCALE*2, 90, CDRAG);
 			translate(speed*5-15, -30);
-			velocity(speed*pxscale, -90, cforceGreen);
+			showVelocity(speed*PXSCALE, -90, CFORCEGREEN);
 		pop();
     } else {
 		exploreThisGraph.xlabel.html(pmlparse("immersion / JustUnit{m 3}"));
@@ -54,19 +54,19 @@ function draw() {
 		exploreThisGraph.plotValues(immersion,F);
 		push();
 			translate(235, 450);
-			mass(3, cideaGrey);
+			showMass(3, CIDEAGREY);
 			translate(15, 0);
-			force(F*pxscale*2, 90, cdrag);
+			showForce(F*PXSCALE*2, 90, CDRAG);
 			translate(-15, -30);
-			velocity(8, -90, cforceGreen);
+			showVelocity(8, -90, CFORCEGREEN);
 		pop();
 
    }
 
 
-    words('choose fluid', 50, 280);
+    placeWords('choose fluid', 50, 280);
 
-  titleBold("Affecting the drag force: choose the fluid, vary immersion or speed");
+  placeTitleBold("Affecting the drag force: choose the fluid, vary immersion or speed");
 }
 
 function mousePressed(){

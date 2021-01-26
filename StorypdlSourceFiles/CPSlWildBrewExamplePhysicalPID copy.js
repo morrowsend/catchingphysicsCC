@@ -19,17 +19,17 @@ function preload() {
 function setup(){
 	createCanvas(900, 700);
 	noLoop();
-	justWords("first snapshot","passComment",20, 130,150);
-	justWords("second snapshot","passComment",width-190, 130,150);
-	justWords(describesnapshot1,"passCommentL",20, 550,380);
-	justWords(describesnapshot2,"passCommentR",width-420, 550,380);
-	justWords(describeprocess,"passComment",20, 60,840);
+	justplaceWords("first snapshot","passComment",20, 130,150);
+	justplaceWords("second snapshot","passComment",width-190, 130,150);
+	justplaceWords(describesnapshot1,"passCommentL",20, 550,380);
+	justplaceWords(describesnapshot2,"passCommentR",width-420, 550,380);
+	justplaceWords(describeprocess,"passComment",20, 60,840);
 
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	image(snapShot1,20,130);
 	image(snapShot2,width-420,130);
-titleBold("The physical description of the change.");
+placeTitleBold("The physical description of the change.");
 }

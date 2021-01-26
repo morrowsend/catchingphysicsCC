@@ -12,35 +12,35 @@ function setup(){
 	}
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 push();
 		translate(40, 80);
 		push();
 			scale(1.2);
-			powerPathway("mechanical");
+			drawPowerPathway("mechanical");
 		pop();
-		words("mechanical working", 80,20);
+		placeWords("mechanical working", 80,20);
 		translate(0,60);
 		push();
 			scale(1.2);
-			powerPathway("electrical");
+			drawPowerPathway("electrical");
 		pop();
-		words("electrical working", 80,20);
+		placeWords("electrical working", 80,20);
 		translate(0,60);
 		push();
 			scale(1.2);
-			powerPathway("particles");
+			drawPowerPathway("particles");
 		pop();
-		words("heating by particles", 80,20);
+		placeWords("heating by particles", 80,20);
 		translate(0,60);
 		push();
 			scale(1.2);
-			powerPathway("radiation");
+			drawPowerPathway("radiation");
 		pop();
-		words("heating by radiation", 80,20);
+		placeWords("heating by radiation", 80,20);
 
 		pop()
-	titleBold("The four (calculable) pathways");
+	placeTitleBold("The four (calculable) pathways");
 }
 
 function keyTyped() {

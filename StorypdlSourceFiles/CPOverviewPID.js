@@ -1,4 +1,4 @@
-// CPOverviewPID
+// {CPOverviewPID}{800}{600}
 
 // data for the whole
 
@@ -53,27 +53,25 @@ const textOffset = 4;
 
 
 function preload() {
-    romanFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
+	romanFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
+	titleFont= loadFont("../__support/ComicNeue-Angular-Bold.ttf");
 }
 
 function setup() {
-    createCanvas(800,600);
-    noLoop();
+	createCanvas(800,600);
+	noLoop();
 }
 
 
-function draw() { 	
-    background(cWhite);
-	title("Connections in catching physics");
-for (i in ideasBoxes) {
-teststring=ideasBoxes[i][1];
-console.log(i,teststring.includes("hearing"));
-}
-        for (i in ideaFlowLinks) {
-        drawcatchingPhysicsFlowLink(ideasBoxes[ideaFlowLinks[i][linkStartIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[i][linkStartIndex]][ylocIndex],ideasBoxes[ideaFlowLinks[i][linkEndIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[i][linkEndIndex]][ylocIndex],ideaFlowLinks[i][linkweightIndex]);
-        }
-				
-        for (i in ideasBoxes) {
-        drawcatchingPhysicsIdeaBox(ideasBoxes[i][textIndex],ideasBoxes[i][xlocIndex],ideasBoxes[i][ylocIndex],ideasBoxes[i][widthIndex],ideasBoxes[i][heightIndex]);
-        }
+function draw() {
+	background(CWHITE);
+	placeTitleBold("Connections in catching physics");
+
+		for (j=0; j<ideaFlowLinks.length; j++) {
+			placeCatchingPhysicsFlowLink(ideasBoxes[ideaFlowLinks[j][linkStartIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[j][linkStartIndex]][ylocIndex],ideasBoxes[ideaFlowLinks[j][linkEndIndex]][xlocIndex],ideasBoxes[ideaFlowLinks[j][linkEndIndex]][ylocIndex],ideaFlowLinks[j][linkweightIndex]);
+		}
+
+		for (i in ideasBoxes) {
+		placeCatchingPhysicsIdeaBox(ideasBoxes[i][textIndex],ideasBoxes[i][xlocIndex],ideasBoxes[i][ylocIndex],ideasBoxes[i][widthIndex],ideasBoxes[i][heightIndex]);
+		}
   }

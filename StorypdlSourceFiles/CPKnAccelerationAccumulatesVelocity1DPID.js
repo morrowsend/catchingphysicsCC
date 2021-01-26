@@ -15,20 +15,20 @@ function preload() {
 function setup(){
     createCanvas(800, 400);
     
-    controlbutton=new controlButton(20,350,60,30);
+    controlbutton=new CreateControlButton(20,350,60,30);
     
-    velocitySet=new IanSlider(40,220,100,15,0,[0.7],false);
-    accelerationSet=new IanSlider(200,220,100,15,0,[0.7],false);
+    velocitySet=new createSliderDivider(40,220,100,15,0,[0.7],false);
+    accelerationSet=new createSliderDivider(200,220,100,15,0,[0.7],false);
 
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     
     accelerationSet.draw();
     controlbutton.drawButton();
     
-    var initialVelocity = (velocitySet.getValue()-0.5)*pxscale;
+    var initialVelocity = (velocitySet.getValue()-0.5)*PXSCALE;
     var accelerationAccumlates = (accelerationSet.getValue(0)-0.5)*2;
     
     if (controlbutton.buttonwasPressed){
@@ -40,48 +40,48 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
             velocitySet.draw();
-            words("set\ninitial\nvelocity",70,230);
+            placeWords("set\ninitial\nvelocity",70,230);
             velocityNow=initialVelocity;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
+            placeWords("pause",28,height-32);
             runtime++;
             velocityNow+=accelerationAccumlates*.05;
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
+            placeWords("reset",28,height-32);
             break;
                       }
     
     
     push();
         translate(300,120);
-        PoVObject("Alice");
+        drawPoVObject("Alice");
         push();
             translate((-velocityNow*50),32);
-            velocity(velocityNow*pxscale,90,cconcyan);
+            showVelocity(velocityNow*PXSCALE,90,CCONCYAN);
         pop();
         push();
             translate((-accelerationAccumlates*50),-32);
-            acceleration(accelerationAccumlates*pxscale,90,cacceleration);
+            showAcceleration(accelerationAccumlates*PXSCALE,90,CACCELERATION);
         pop();
     pop();
     
     push();
     translate(40,120);
-    PoV("CharlieRight");
+    drawPoV("CharlieRight");
     pop();
     
         
 
 
-    words("set\nacceleration",230,230);
-  titleBold("set acceleration and watch velocity accumulate");  
+    placeWords("set\nacceleration",230,230);
+  placeTitleBold("set acceleration and watch velocity accumulate");  
 }
 
 function mousePressed(){

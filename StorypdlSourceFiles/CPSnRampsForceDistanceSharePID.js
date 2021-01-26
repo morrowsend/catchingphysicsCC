@@ -11,15 +11,15 @@ function preload() {
 }
 function setup() {
 	createCanvas(780,530);
-	sliderHeight=new IanSlider(40,220,100,15,0,[0],false);
-	sliderInverseSlope=new IanSlider(40,80,60,15,0,[0.334],false);
-	forcesbutton = new checkButton(642,80,"show force",false);
-	distancesbutton = new checkButton(623,120,"show distance",false);
-	morebutton = new checkButton(633,160,"tell me more",false);
+	sliderHeight=new createSliderDivider(40,220,100,15,0,[0],false);
+	sliderInverseSlope=new createSliderDivider(40,80,60,15,0,[0.334],false);
+	forcesbutton = new CreateCheckButton(642,80,"show force",false);
+	distancesbutton = new CreateCheckButton(623,120,"show distance",false);
+	morebutton = new CreateCheckButton(633,160,"tell me more",false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 	forcesbutton.drawButton();
 	distancesbutton.drawButton();
 	morebutton.drawButton();
@@ -33,34 +33,34 @@ function draw() {
     var slopeangle = atan2(-rampheight, ramphorizontal);
 	push();
 		translate(50, 500);
-		fill(cideaGrey);
+		fill(CIDEAGREY);
 		noStroke();
 		triangle(0,0,ramphorizontal, -rampheight,ramphorizontal, -0);
 		line(0, 0, ramphorizontal, -rampheight);
 		if (distancesbutton.buttonisChecked){
-			stroke(cideaRed);
+			stroke(CIDEARED);
 			strokeWeight(2);
 			line(0,0,liftedby*ramphorizontal/rampheight, -liftedby);
 		}
 		translate(liftedby*ramphorizontal/rampheight, -liftedby);
 		rotate(slopeangle);
 		noStroke();
-		fill(cideaBrown);
+		fill(CIDEABROWN);
 		rect(-15,0,45,-50);
 		translate(0, -25);
 		if (forcesbutton.buttonisChecked){
-			force(loadweight*sin(slopeangle), -90, cideaGreen);
+			showForce(loadweight*sin(slopeangle), -90, CIDEAGREEN);
 		}
 	pop();
 	
 	    if(morebutton.buttonisChecked){
-			advicedroid(450, 80, "There is a trade-off.\n\nChoose to push a short distance – more force needed.\nChoose to push further – less force needed.", 270, 110);
+			placeAdviceDroid(450, 80, "There is a trade-off.\n\nChoose to push a short distance – more force needed.\nChoose to push further – less force needed.", 270, 110);
 		}
 	
-	words("choose\nhow gradual\nto make the slope", 70, 90);
-    words("lift the load\nup the slope", 70, 230);
+	placeWords("choose\nhow gradual\nto make the slope", 70, 90);
+    placeWords("lift the load\nup the slope", 70, 230);
 
- titleBold("making choices with a ramp");
+ placeTitleBold("making choices with a ramp");
 }
 
 function keyTyped() {

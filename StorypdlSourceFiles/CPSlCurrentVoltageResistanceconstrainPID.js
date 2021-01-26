@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(680, 450);
-    voltageSet=new IanSlider(40,300,100,15,0,[0.7],false);
-    resistanceSet=new IanSlider(40,100,100,15,0,[0.7],false);
+    voltageSet=new createSliderDivider(40,300,100,15,0,[0.7],false);
+    resistanceSet=new createSliderDivider(40,100,100,15,0,[0.7],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     voltageSet.draw();
     resistanceSet.draw();
@@ -28,13 +28,13 @@ function draw() {
 
     push();
     translate(350, 250);
-    pspace2D(150, 200,  " current","voltage", variedvoltage*80, 6*thecurrent);
+    createPossSpace2D(150, 200,  " current","voltage", variedvoltage*80, 6*thecurrent);
     pop();
 
 
-	words("vary\nvoltage",70,310);
-    words("set\nresistance",70,110);
-	titleBold("Possibilities limited: Set resistance, vary voltage, see the current");
+	placeWords("vary\nvoltage",70,310);
+    placeWords("set\nresistance",70,110);
+	placeTitleBold("Possibilities limited: Set resistance, vary voltage, see the current");
 }
 
 function mousePressed(){

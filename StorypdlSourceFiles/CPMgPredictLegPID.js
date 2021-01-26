@@ -1,4 +1,4 @@
-// MgPredictLegPID
+// CPMgPredictLegPID
 
 // adapted from the acceleration accumulates velocity, so internal variables still speak of the source accumulation
 
@@ -20,16 +20,16 @@ function preload() {
 function setup(){
     createCanvas(600, 350);
     
-    accelerationsetter=new controlPuck();
+    accelerationsetter=new CreateControlPuck();
     accelerationsetter.create(70,accelerationheight);
-    deltasetter=new controlStripHorizontalPositive();
+    deltasetter=new CreateControlStripHorizontalPositive();
     deltasetter.create(40,durationheight);
     
     
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
  
     var accumulateacceleration = createVector(accelerationsetter.getValues().xSet,-accelerationsetter.getValues().ySet).mult(scaleFactoracceleration);
     var durationaccumulation=createVector(-deltasetter.getValues().xSet,deltasetter.getValues().ySet);
@@ -37,28 +37,28 @@ function draw() {
 
     push();
 		translate(220, accelerationheight);
-		velocity(accumulateacceleration.mag(), degrees(accumulateacceleration.heading())+90, cideaGreen);
+		showVelocity(accumulateacceleration.mag(), degrees(accumulateacceleration.heading())+90, CIDEAGREEN);
 	pop();
 	push();		
 		translate(220, durationheight);
-		durationpov(durationaccumulation.x, 1,cideaGreen);
+		showDurationPoV(durationaccumulation.x, 1,CIDEAGREEN);
 	pop();
 	push();
 		translate(380, accumulatedvelocityheight);
-		leadlinediagramnegative("start here", 0, 0);
-		displacement(accumulatedvelocity.mag(), degrees(accumulatedvelocity.heading())+90, cideaGreen);
+		placeLeadLineNegative("start here", 0, 0);
+		showDisplacement(accumulatedvelocity.mag(), degrees(accumulatedvelocity.heading())+90, CIDEAGREEN);
 		push();
 			rotate(accumulatedvelocity.heading());
-			translate(accumulatedvelocity.mag()*pxscale, 0);
+			translate(accumulatedvelocity.mag()*PXSCALE, 0);
 			rotate(-accumulatedvelocity.heading());
-			leadlinediagramshort("end up here", 0, 0);
+			placeLeadLineShort("end up here", 0, 0);
 		pop();
 	pop();
-	words("set how fast\nand direction", 30, 80);
-	words("set how long for", 30, 280);
+	placeWords("set how fast\nand direction", 30, 80);
+	placeWords("set how long for", 30, 280);
 	
 
-  titleBold("Set speed, direction, time. See where you end up.");  
+  placeTitleBold("Set speed, direction, time. See where you end up.");  
 }
 
 

@@ -10,12 +10,12 @@ function preload() {
 
 function setup(){
     createCanvas(680, 450);
-    volumeSet=new IanSlider(40,300,100,15,0,[0.7],false);
-    densitySet=new IanSlider(40,100,100,15,0,[0.7],false);
+    volumeSet=new createSliderDivider(40,300,100,15,0,[0.7],false);
+    densitySet=new createSliderDivider(40,100,100,15,0,[0.7],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 
     volumeSet.draw();
     densitySet.draw();
@@ -28,14 +28,14 @@ function draw() {
 
     push();
     translate(350, 250);
-    pspace2D(150, 200,  " mass","volume", variedVolume*80, 60*themass);
+    createPossSpace2D(150, 200,  " mass","volume", variedVolume*80, 60*themass);
     pop();
 
 
 
-	words("vary\nvolume",70,310);
-    words("set\ndensity",70,110);
-	titleBold("Explore possibilities: Set density, vary volume, see the mass");
+	placeWords("vary\nvolume",70,310);
+    placeWords("set\ndensity",70,110);
+	placeTitleBold("Explore possibilities: Set density, vary volume, see the mass");
 }
 
 function mousePressed(){

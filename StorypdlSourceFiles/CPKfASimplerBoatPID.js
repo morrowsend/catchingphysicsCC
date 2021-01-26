@@ -9,11 +9,11 @@ function preload() {
 
 function setup(){
     createCanvas(400, 250);
-    transitionProgress=new IanSlider(20,100,80,15,0,[0],false);
+    transitionProgress=new createSliderDivider(20,100,80,15,0,[0],false);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     noStroke();
 	fill(200,transitionProgress.getValue()*255);
 	rect(100,120,140,40);
@@ -29,11 +29,11 @@ function draw() {
 	arc(175, 120, 180, 80, 0, PI, CHORD);
 
 	transitionProgress.draw();
-	words("simpler", 40, 110);
+	placeWords("simpler", 40, 110);
 	
-	advicedroid(330, 80, "a box is simpler to think with.", 80, 70);
+	placeAdviceDroid(330, 80, "a box is simpler to think with.", 80, 70);
 
-	titleBold("re-imagining a boat");
+	placeTitleBold("re-imagining a boat");
 }
 
 function mousePressed(){

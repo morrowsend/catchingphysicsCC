@@ -10,14 +10,14 @@ function preload() {
 function setup(){
 	createCanvas(600, 600);
 //    noLoop();
-	inputtoDivvy=new IanSlider(20,320,100,15,0,[0.7],false);
+	inputtoDivvy=new createSliderDivider(20,320,100,15,0,[0.7],false);
 }
 
 function draw() {
-	background(cpaneBlue);
+	background(CPANEBLUE);
 	inputtoDivvy.draw();
-	describePowerOne("electrical","electrical");
-	titleBold('An ideal wire does not switch to or from the electrical pathway');
+	drawDescribePowerOne("electrical","electrical");
+	placeTitleBold('An ideal wire does not switch to or from the electrical pathway');
 }
 
 function mousePressed(){

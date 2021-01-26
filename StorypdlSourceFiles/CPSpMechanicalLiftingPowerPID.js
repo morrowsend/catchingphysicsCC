@@ -9,31 +9,31 @@ function preload() {
 
 function setup(){
     createCanvas(356,280);
-	magnitudes= new controlPuckpositive();
+	magnitudes= new CreateControlPuckPositive();
 	magnitudes.create(60,130);
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     values = createVector(magnitudes.getValues().xSet,magnitudes.getValues().ySet).mult(20);
 
-	words("set values...", 20,85);
-	words("force", 66,191);
-	words("velocity", 110, 102);
+	placeWords("set values...", 20,85);
+	placeWords("force", 66,191);
+	placeWords("velocity", 110, 102);
 
 	push();
 		translate(200,218);
-		force(values.x, 0, cforceRed);
+		showForce(values.x, 0, CFORCERED);
 		translate(30,0);
-		velocity(values.y, 0, cforceGreen);
+		showVelocity(values.y, 0, CFORCEGREEN);
     pop();
 
 	push();
 		translate(304,128);
-		power(values.x*values.y/18);
+		showPower(values.x*values.y/18);
     pop();
 
-   titleBold("Lifting and power");
+   placeTitleBold("Lifting and power");
 }
 
 function keyTyped() {

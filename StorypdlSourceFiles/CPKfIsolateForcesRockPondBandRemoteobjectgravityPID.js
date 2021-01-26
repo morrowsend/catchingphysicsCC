@@ -14,20 +14,20 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 
-	physicalPane(250, 250, 200, 350);
-	conceptualPane(480, 250, 200, 350);
-	transitionRedescribe(365, 250,0);
+	placePhysicalPane(250, 250, 200, 350);
+	placeConceptualPane(480, 250, 200, 350);
+	placeTransitionRedescribe(365, 250,0);
 	imageMode(CENTER);
 	image(justrock,250,250);
 
 	push();
 	translate(480, 250);
-	mass(4, cideaBrown);
-	force(17, 180, cgravity);
+	showMass(4, CIDEABROWN);
+	showForce(17, 180, CGRAVITY);
 	pop();
 
 
-	titleBold("Interactions between Earth and the rock replaced by a gravity force");
+	placeTitleBold("Interactions between Earth and the rock replaced by a gravity force");
 }

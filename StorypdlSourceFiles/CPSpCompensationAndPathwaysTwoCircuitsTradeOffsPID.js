@@ -17,45 +17,45 @@ function preload() {
 function setup(){
 	createCanvas(620,520);
 	for (let i = 0; i<2; i++){
-		magnitudes[i]= new controlPuck();
+		magnitudes[i]= new CreateControlPuck();
 		magnitudes[i].create(locpucks[i][0],locpucks[i][1]);
 	}
-	boxesbutton = new checkButton(width-132, 192,"trade-offs",false);
+	boxesbutton = new CreateCheckButton(width-132, 192,"trade-offs",false);
 
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	boxesbutton.drawButton();
 	for (let i = 0; i<2; i++){
 	values[i] = createVector(magnitudes[i].getValues().xSet,magnitudes[i].getValues().ySet).mult(scaleFactor);
 	}
 
-	words("set first circuit", locpucks[0][0]-40,locpucks[0][1]-45);
-	words("current", locpucks[0][0]-5,locpucks[0][1]+58);
-	words("pd", locpucks[0][0]+50, locpucks[0][1]-28);
+	placeWords("set first circuit", locpucks[0][0]-40,locpucks[0][1]-45);
+	placeWords("current", locpucks[0][0]-5,locpucks[0][1]+58);
+	placeWords("pd", locpucks[0][0]+50, locpucks[0][1]-28);
 
-	words("set second circuit", locpucks[1][0]-40,locpucks[1][1]-45);
-	words("current", locpucks[1][0]-5,locpucks[1][1]+58);
-	words("pd", locpucks[1][0]+50, locpucks[1][1]-28);
+	placeWords("set second circuit", locpucks[1][0]-40,locpucks[1][1]-45);
+	placeWords("current", locpucks[1][0]-5,locpucks[1][1]+58);
+	placeWords("pd", locpucks[1][0]+50, locpucks[1][1]-28);
 
 		push();
 			translate(locpucks[0][0],locpucks[0][1]+powerbarOffset);
 			scale(1.2);
-			power(values[0].x*values[0].y/1800);
+			showPower(values[0].x*values[0].y/1800);
 		pop();
 		push();
 			translate(locpucks[1][0],locpucks[1][1]+powerbarOffset);
 			scale(1.2);
-			power(values[1].x*values[1].y/1800);
+			showPower(values[1].x*values[1].y/1800);
 		pop();
 
 
 	if (boxesbutton.buttonisChecked){
-	tradeOff(locpucks[0][0],locpucks[0][1]+tradeOffOffset,values[0].x,values[0].y,ccurrent,cpotentialdifference);
-	tradeOff(locpucks[1][0],locpucks[1][1]+tradeOffOffset,values[1].x,values[1].y,ccurrent,cpotentialdifference);
+	drawTradeOff(locpucks[0][0],locpucks[0][1]+tradeOffOffset,values[0].x,values[0].y,CCURRENT,CPOTENTIALDIFFERENCE);
+	drawTradeOff(locpucks[1][0],locpucks[1][1]+tradeOffOffset,values[1].x,values[1].y,CCURRENT,CPOTENTIALDIFFERENCE);
 }
-   titleBold("Trade offs: set current and pd twice, to get the same power");
+   placeTitleBold("Trade offs: set current and pd twice, to get the same power");
 }
 
 function mouseReleased(){

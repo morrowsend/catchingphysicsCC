@@ -21,30 +21,30 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
 
-    	powerbutton = new checkButton(520, 80,"picture the power  ",false);
+    	powerbutton = new CreateCheckButton(520, 80,"picture the power  ",false);
 
-		photonSet=new IanSlider(photonSetloc[0],photonSetloc[1],120,15,0,[0.3],false);
-		materialSet=new IanSlider(materialSetloc[0],materialSetloc[1],160,15,0,[0.75],false);
-		tightnessSet=new IanSlider(tightnessSetloc[0],tightnessSetloc[1],100,15,0,[0.75],false);
+		photonSet=new createSliderDivider(photonSetloc[0],photonSetloc[1],120,15,0,[0.3],false);
+		materialSet=new createSliderDivider(materialSetloc[0],materialSetloc[1],160,15,0,[0.75],false);
+		tightnessSet=new createSliderDivider(tightnessSetloc[0],tightnessSetloc[1],100,15,0,[0.75],false);
 
 }
 
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
 	powerbutton.drawButton();
     materialSet.draw();
-    words("choose\nmaterial", materialSetloc[0]+30, materialSetloc[1]+10)
+    placeWords("choose\nmaterial", materialSetloc[0]+30, materialSetloc[1]+10)
     tightnessSet.draw();
-    words("require\nclose match", tightnessSetloc[0]+30, tightnessSetloc[1]+100);
-    words("require\nloose match", tightnessSetloc[0]+30, tightnessSetloc[1]+10)
+    placeWords("require\nclose match", tightnessSetloc[0]+30, tightnessSetloc[1]+100);
+    placeWords("require\nloose match", tightnessSetloc[0]+30, tightnessSetloc[1]+10)
     photonSet.draw();
 
     noStroke();
     rectMode(CENTER);
 
     for (i = 0; i < photonData.length; i++) {
-words(photonData[i][0]+"("+photonData[i][1]+" THz)", photonSetloc[0]+30, photonSetloc[1]+10+i*36)
+placeWords(photonData[i][0]+"("+photonData[i][1]+" THz)", photonSetloc[0]+30, photonSetloc[1]+10+i*36)
 fill(photonData[i][2])
 rect(photonSetloc[0]+150, photonSetloc[1]+5+i*36,20,8);
 				}
@@ -61,19 +61,19 @@ rect(photonSetloc[0]+150, photonSetloc[1]+5+i*36,20,8);
 
     push();
 		translate(260, 136);
-		quantum(photonenergy);
-		words("quantum energy\n(the key)", 40, 0);
+		showQuantum(photonenergy);
+		placeWords("quantum energy\n(the key)", 40, 0);
 		translate(0, 164);
-		energy(photonenergy);
+		showEnergy(photonenergy);
 
 		translate(60, 0);
-		energy(materialenergy);
+		showEnergy(materialenergy);
 		translate(0,140);
-		energy(materialenergy);
-		words("material energy gap\n(the lock)", 40, 0);
+		showEnergy(materialenergy);
+		placeWords("material energy gap\n(the lock)", 40, 0);
 		fill(materialcolour);
 		rect(-20, 0, 40, 10);
-		rect(-20, -materialenergy*pxscale, 40, -10);
+		rect(-20, -materialenergy*PXSCALE, 40, -10);
 	pop();
 
 	var powerincident = 8;
@@ -100,20 +100,20 @@ if(powerbutton.buttonisChecked){
 
 	push();
 		translate(550, 550);
-		power(powerincident);
-		words("incident",-30,20);
-		words("absorbed",70,20);
-		words("transmitted",170,20);
+		showPower(powerincident);
+		placeWords("incident",-30,20);
+		placeWords("absorbed",70,20);
+		placeWords("transmitted",170,20);
 		translate(100, 0);
-		power(powerabsorbed);
-		translate(100, -powerabsorbed*pxscale);
-		power(powertransmitted);
+		showPower(powerabsorbed);
+		translate(100, -powerabsorbed*PXSCALE);
+		showPower(powertransmitted);
 	pop();
 }
 
 
 
-  titleBold("Resonance: key matches lock, more or less");
+  placeTitleBold("Resonance: key matches lock, more or less");
 }
 
 function mousePressed(){

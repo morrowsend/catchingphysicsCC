@@ -1,4 +1,4 @@
-// MgForceChangesMotionPID
+// CPMgForceChangesMotionPID
 
 var stateof=0;
 var runtime=0;
@@ -29,11 +29,11 @@ function preload() {
 function setup(){
     createCanvas(800, 600);
     
-    controlbutton=new controlButton(20,550,60,30);
+    controlbutton=new CreateControlButton(20,550,60,30);
     
     const xloc =60;
     for (let i = 0; i<3; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 108+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -41,7 +41,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
     
 
@@ -59,17 +59,17 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 			runtime=0;
-            words("set\nwhere you\nstart",112,80);
-            words("set\nstarting\nspeed,\ndirection",112,170);
+            placeWords("set\nwhere you\nstart",112,80);
+            placeWords("set\nstarting\nspeed,\ndirection",112,170);
             kazposition=initialdisplacement;
             kazvelocity=initialvelocity;
             break;
         case 1:
 //            running
-           words("pause",28,height-32);
-            fill(cWhite);
+           placeWords("pause",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 180);
             masterTicker++;
@@ -85,8 +85,8 @@ function draw() {
             break;
         case 2:
 //            paused
-            words("reset",28,height-32);
-            fill(cWhite);
+            placeWords("reset",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 180);
             break;
@@ -94,11 +94,11 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(kazposition.heading());
-		displacement(kazposition.mag(),90,cpovAlice);
+		showDisplacement(kazposition.mag(),90,CPOVALICE);
     pop();
 
     push();
-		translate(300+kazposition.x*pixelscaling,300+kazposition.y*pixelscaling);
+		translate(300+kazposition.x*PIXELSCALING,300+kazposition.y*PIXELSCALING);
 		push();
 		rotate(kazvelocity.heading()); 
         if (kazvelocity.mag()!=0){              
@@ -133,26 +133,26 @@ function draw() {
 			pop();
 			push();
 				rotate(kazvelocity.heading());
-				translate((-kazvelocity.mag()*pxscale*pxscale/2),-32);
-				velocity(kazvelocity.mag()*pxscale,90,cpovAlice);
+				translate((-kazvelocity.mag()*PXSCALE*PXSCALE/2),-32);
+				showVelocity(kazvelocity.mag()*PXSCALE,90,CPOVALICE);
 			pop();
 			push();
 				rotate(kazacceleration.heading());
-				translate((-kazacceleration.mag()*pxscale*pxscale/2),0);
-				force(kazacceleration.mag()*pxscale,90, cgrip);
+				translate((-kazacceleration.mag()*PXSCALE*PXSCALE/2),0);
+				showForce(kazacceleration.mag()*PXSCALE,90, CGRIP);
 			pop();
     pop();
     
     push();
 		translate(300,300);
 		rotate(kazposition.heading());
-		PoV("AliceRight");
+		drawPoV("AliceRight");
     pop();
         
 
 
-	words("set\nforce",112,260);
-	titleBold("change bike motion with forces");  
+	placeWords("set\nforce",112,260);
+	placeTitleBold("change bike motion with forces");  
 }
 
 

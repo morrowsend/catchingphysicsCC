@@ -14,25 +14,25 @@ function setup() {
     cp2 = color(119, 161, 244);
     cp3 = color(78, 109, 238);
     cp4 = color(37, 58, 232);
-    setDepth=new IanSlider(600,300,100,15,0,[0.9],false);
+    setDepth=new createSliderDivider(600,300,100,15,0,[0.9],false);
 }
 
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     
     pressureGradient(0, 200, 700, 250, cp1, cp4);
     setDepth.draw();
     
     push();
     translate(300,200-(setDepth.getValue()-1)*80);
-    fill(cdeviceGrey);
+    fill(CDEVICEGREY);
     
     rect(-200,0,400,-100);
-    force((setDepth.getValue()-1)*18,180,cbuoyancy);
+    showForce((setDepth.getValue()-1)*18,180,CBUOYANCY);
     pop();
 
-    titleBold("making holes in water, experiencing force");
+    placeTitleBold("making holes in water, experiencing force");
 
 }
 
@@ -61,7 +61,7 @@ function pressureGradient(xloc, yloc, fluidWidth, fluidDepth, pressurestart, pre
       stroke(plotColour);
       line(xloc, i, xloc+fluidWidth, i);
     }
-    stroke(cdeviceGrey);
+    stroke(CDEVICEGREY);
     strokeWeight(4);
     line(xloc,yloc,xloc,yloc+fluidDepth);
     line(xloc,yloc+fluidDepth,xloc+fluidWidth,yloc+fluidDepth);

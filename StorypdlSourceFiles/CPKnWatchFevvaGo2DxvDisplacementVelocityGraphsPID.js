@@ -9,8 +9,8 @@ const scaleFactorDisplacement=20;
 const scaleFactorVelocity=2;
 var Fevvaposition; // you need to create any accumulated vectors here
 
-// var velcyxvalues = new Array(0);
-// var velcyyvalues = new Array(0);
+// var velcyxvalues = new ArshowRay(0);
+// var velcyyvalues = new ArshowRay(0);
 
 function preload() {
 	chatterFont= loadFont("../__support/SF_Cartoonist_Hand.ttf");
@@ -29,11 +29,11 @@ function preload() {
 function setup(){
     createCanvas(950, 800);
     
-        controlbutton=new controlButton(20,height-50,60,30);
+        controlbutton=new CreateControlButton(20,height-50,60,30);
     
      const xloc =60;
     for (let i = 0; i<2; i++){
-		controllers[i]= new controlPuck();
+		controllers[i]= new CreateControlPuck();
 		let yloc = 108+90*i;
 		controllers[i].create(xloc,yloc);
     }
@@ -49,7 +49,7 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     imageMode(CENTER);
 	controlbutton.drawButton();
    var initialdisplacement = createVector(controllers[0].getValues().xSet,-controllers[0].getValues().ySet).mult(scaleFactorDisplacement);
@@ -66,16 +66,16 @@ function draw() {
     switch(stateof){
         case 0:
 //            ready to go
-            words("go",28,height-32);
+            placeWords("go",28,height-32);
 
-            words("set\nwhere your\ncrow starts",112,80);
+            placeWords("set\nwhere your\ncrow starts",112,80);
             resetVariables();
             Fevvaposition = initialdisplacement;
             break;
         case 1:
 //            running
-            words("pause",28,height-32);
-            fill(cWhite);
+            placeWords("pause",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 90);
             masterTicker++;
@@ -99,8 +99,8 @@ function draw() {
 					break;
         case 2:
 //            paused
-            words("reset",28,height-32);
-            fill(cWhite);
+            placeWords("reset",28,height-32);
+            fill(CWHITE);
             noStroke();
             rect(14, 63, 90, 90);
 			displYSparker.plot();
@@ -113,11 +113,11 @@ function draw() {
     push();
 		translate(300,300);
 		rotate(Fevvaposition.heading());
-		displacement(Fevvaposition.mag(),90,cpovCharlie);
+		showDisplacement(Fevvaposition.mag(),90,CPOVCHARLIE);
     pop();
 
     push();
-		translate(300+Fevvaposition.x*pixelscaling,300+Fevvaposition.y*pixelscaling);
+		translate(300+Fevvaposition.x*PIXELSCALING,300+Fevvaposition.y*PIXELSCALING);
         
 		push();
 			rotate(Fevvavelocity.heading()); 
@@ -155,23 +155,23 @@ function draw() {
 		pop();
 		push();
 			rotate(Fevvavelocity.heading());
-			translate((-Fspeed*pxscale*pxscale/2),-32);
-			velocity(Fspeed*pxscale,90,cpovCharlie);
+			translate((-Fspeed*PXSCALE*PXSCALE/2),-32);
+			showVelocity(Fspeed*PXSCALE,90,CPOVCHARLIE);
 		pop();
     pop();
     
     push();
 		translate(300,300);
 		rotate(Fevvaposition.heading());
-		PoV("CharlieRight");
+		drawPoV("CharlieRight");
     pop();
         
 if (runtime>=400){
  stateof=2;
  }
 
-	words("set\nbird\nvelocity",112,170);
-	title("take your crow for a flight: watch Fevva go");  
+	placeWords("set\nbird\nvelocity",112,170);
+	placeTitleBold("take your crow for a flight: watch Fevva go");  
 }
 
 

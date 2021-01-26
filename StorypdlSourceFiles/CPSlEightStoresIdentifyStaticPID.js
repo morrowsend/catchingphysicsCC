@@ -52,7 +52,7 @@ function setup() {
 
 
 function draw() {
-background(cWhite);
+background(CWHITE);
 
 IDfilledStore("thermal",thermalfilled,start);
 IDemptiedStore("thermal",thermalemptied,start);
@@ -70,7 +70,7 @@ IDemptiedStore("vibration",vibrationemptied,start+offset*5);
 IDemptiedStore("nuclear",nuclearemptied,start+offset*6);
 IDemptiedStore("electricmagnetic",electricmagneticemptied,start+offset*7);
 
- titleBold("Identifying energy stores which are filled and emptied using physical clues");
+ placeTitleBold("Identifying energy stores which are filled and emptied using physical clues");
 }
 
 function IDfilledStore(storeKind,filledtext,yloc){
@@ -79,13 +79,13 @@ function IDfilledStore(storeKind,filledtext,yloc){
      }else{
          var storeDescriptor="electric-magnetic";
      }
-     justWords(storeDescriptor+' store filled if: ' + filledtext,"explanatorytextalignL",xlocfilled+50, yloc+10,150);
+     justplaceWords(storeDescriptor+' store filled if: ' + filledtext,"explanatorytextalignL",xlocfilled+50, yloc+10,150);
     push();
         translate(xlocfilled,yloc+210);
-        storeFilled(storeKind);
+        drawStoreFilled(storeKind);
         translate(-30,-197);
         noFill();
-        stroke(cdeviceLightGrey);
+        stroke(CDEVICELIGHTGREY);
         line(70,-8,230,-8);
         line(230,-8,230,176);
         line(70,176,230,176);
@@ -100,13 +100,13 @@ function IDemptiedStore(storeKind,emptiedtext,yloc){
      }else{
          var storeDescriptor="electric-magnetic";
      }
-     justWords(storeDescriptor+' store emptied if: ' + emptiedtext,"explanatorytextalignL",xlocemptied+50, yloc+10,150);
+     justplaceWords(storeDescriptor+' store emptied if: ' + emptiedtext,"explanatorytextalignL",xlocemptied+50, yloc+10,150);
     push();
         translate(xlocemptied,yloc+210);
-        storeEmptied(storeKind);
+        drawStoreEmptied(storeKind);
         translate(-30,-197);
         noFill();
-        stroke(cdeviceLightGrey);
+        stroke(CDEVICELIGHTGREY);
         line(70,-8,230,-8);
         line(230,-8,230,176);
         line(70,176,230,176);

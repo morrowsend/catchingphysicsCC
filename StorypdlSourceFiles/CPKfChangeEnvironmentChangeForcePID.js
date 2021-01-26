@@ -13,43 +13,43 @@ function setup(){
 }
 
 function draw() {
-	background(cWhite);
+	background(CWHITE);
 	
-	advicedroid(380, 80, "See how varying the environment affects the forces exerted on the object for each group of forces.", 120, 140);
+	placeAdviceDroid(380, 80, "See how varying the environment affects the forces exerted on the object for each group of forces.", 120, 140);
 
-	wordsframe("Support forces: tension, compression, buoyancy.", 40, 295, 100, 100);
-	wordsframe("Frictional forces:\ngrip, slip, drag.", 150, 295, 100, 100);
-	wordsframe("Non-contact forces: gravity, magnetic, electric.", 268, 295, 100, 100);
+	placeWordsFrame("Support forces: tension, compression, buoyancy.", 40, 295, 100, 100);
+	placeWordsFrame("Frictional forces:\ngrip, slip, drag.", 150, 295, 100, 100);
+	placeWordsFrame("Non-contact forces: gravity, magnetic, electric.", 268, 295, 100, 100);
 	
 	push();
 		translate(60, 100);
-		force(3, 0, ctension);
+		showForce(3, 0, CTENSION);
 		translate(0, 80);
-		force(4, 0, ccompression);
+		showForce(4, 0, CCOMPRESSION);
 		translate(0, 80);
-		force(5, 0, cbuoyancy);
+		showForce(5, 0, CBUOYANCY);
 	pop();
 	
 	push();
 		translate(170, 100);
-		force(5, 90, cgrip);
+		showForce(5, 90, CGRIP);
 		translate(0, 80);
-		force(-4, 90, cslip);
+		showForce(-4, 90, CSLIP);
 		translate(0, 80);
-		force(3, 90, cdrag);
+		showForce(3, 90, CDRAG);
 	pop();
 	
 	push();
 		translate(278, 100);
-		force(4, 180, cgravity);
+		showForce(4, 180, CGRAVITY);
 		translate(0, 80);
-		force(-5, 0, cmagnetic);
+		showForce(-5, 0, CMAGNETIC);
 		translate(0, 80);
-		force(3, 180, celectric);
+		showForce(3, 180, CELECTRIC);
 	pop();
 
 
-	titleBold("Change the environment: change the force");
+	placeTitleBold("Change the environment: change the force");
 }
 
 function keyTyped() {

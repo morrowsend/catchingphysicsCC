@@ -40,20 +40,20 @@ function preload() {
 function setup(){
     createCanvas(900, 1000);
     for (let i = 0; i<numberoffluxions; i++){
-		fluxions[i]= new controlPuck();
+		fluxions[i]= new CreateControlPuck();
 		let xloc = xlocfluxion1+xstepdisplay*i;
 		fluxions[i].create(xloc,ylocfluxion);
     }
     
     
-    fluents[0]= new controlPuck();
+    fluents[0]= new CreateControlPuck();
     fluents[0].create(xlocfluentIntial,ylocfluentIntial);
     
 
     
-    displacementsbutton = new checkButton(20,542,"displacements",false);
+    displacementsbutton = new CreateCheckButton(20,542,"displacements",false);
     
-    segmentsbutton = new checkButton(177,542,"track segments",false);
+    segmentsbutton = new CreateCheckButton(177,542,"track segments",false);
     
     lastDisplacement=createVector(0,0);
 	mouseDisplacement=createVector(0,0);
@@ -61,13 +61,13 @@ function setup(){
 }
 
 function draw() {
-    background(cWhite);
+    background(CWHITE);
     
-    conceptualPane(width/2, 283, width-40, 450);
+    placeConceptualPane(width/2, 283, width-40, 450);
     
-    conceptualPane(width/2, 738, width-40, 400);
+    placeConceptualPane(width/2, 738, width-40, 400);
     
-    transitionRedescribe(width/2, 523, 0);
+    placeTransitionRedescribe(width/2, 523, 0);
     
     displacementsbutton.drawButton();
 	segmentsbutton.drawButton();
@@ -86,7 +86,7 @@ function draw() {
     
     
 //     eye-guiding grid
-    stroke(cideaGrey);
+    stroke(CIDEAGREY);
     strokeWeight(0.5);
     push();
 		translate(xlocfluent1,0);
@@ -99,7 +99,7 @@ function draw() {
     push();
 		translate(xlocfluent1,0);
 		for (let i = 1; i<fluxions.length+2; i++){
-			words("t="+i,-11,75);
+			placeWords("t="+i,-11,75);
 			translate(xstepdisplay, 0);
 		}
     pop();
@@ -118,7 +118,7 @@ function draw() {
 	push();
 		translate(xlocfluxion1, ylocfluxionrep);
 		for (let i = 0; i<pqfluxions.length; i++){
-			velocity(pqfluxions[i].mag(), degrees(-pqfluxions[i].heading()+PI/2), cideaBlue);
+			showVelocity(pqfluxions[i].mag(), degrees(-pqfluxions[i].heading()+PI/2), CIDEABLUE);
 			translate(xstepdisplay, 0);
 				}
     pop();
@@ -126,7 +126,7 @@ function draw() {
     push();
 		translate(xlocfluent1, ylocfluentrep);
 		for (let i = 0; i<pqfluents.length; i++){
-				displacement(pqfluents[i].mag(), degrees(-pqfluents[i].heading()+PI/2), cideaGreen);
+				showDisplacement(pqfluents[i].mag(), degrees(-pqfluents[i].heading()+PI/2), CIDEAGREEN);
 			translate(xstepdisplay, 0);
 			}
     pop();
@@ -136,7 +136,7 @@ function draw() {
 	push();
 		translate(width/2, 738);
 	// 	ellipse(0,0,5,5); origin marker
-		fill(cideaBlue);
+		fill(CIDEABLUE);
 		noStroke();
 		for (let i = 0; i<fluxions.length+1; i++){
 			if (i!=0){
@@ -150,10 +150,10 @@ function draw() {
 				lastDisplacement.set(0,0);
 			}
 			if (segmentsbutton.buttonisChecked){
-				trackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
+				showTrackSegment(lastDisplacement.x, lastDisplacement.y, displacements[i].x,-displacements[i].y); //draws the trackSegments showing track
 			}
 			if (displacementsbutton.buttonisChecked){
-			displacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), cideaGreen); //draws displacements
+			showDisplacement(displacements[i].mag()*0.1, degrees(-displacements[i].heading()+PI/2), CIDEAGREEN); //draws displacements
 			}
 			ellipse(displacements[i].x,-displacements[i].y,8,8);// draws marker
 			push();
@@ -168,13 +168,13 @@ function draw() {
 	
 
 	
-	words("set\ninitial\ndisplacement", 750, 172);
-	words("set\nthe velocities\nfor each interval", 750, 78);
+	placeWords("set\ninitial\ndisplacement", 750, 172);
+	placeWords("set\nthe velocities\nfor each interval", 750, 78);
 
-	words("displacement\nat\nthis\ntime", 750, ylocfluentrep);
-	words("velocity\nduring\nthis\ninterval", 750, ylocfluxionrep);
+	placeWords("displacement\nat\nthis\ntime", 750, ylocfluentrep);
+	placeWords("velocity\nduring\nthis\ninterval", 750, ylocfluxionrep);
 	
-    titleBold("Velocity accumulates displacement, interval by interval");
+    placeTitleBold("Velocity accumulates displacement, interval by interval");
 }
 
 function mouseReleased(){
